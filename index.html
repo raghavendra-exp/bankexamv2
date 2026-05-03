@@ -21,110 +21,180 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --blu:#1E3A8A;--blu2:#2563EB;--tl:#0D9488;--tl2:#0F766E;
-  --txt:#0F172A;--txt2:#334155;--txt3:#64748B;--txtm:#2563EB;
-  --bdr:#E2E8F0;--bdr2:#CBD5E1;--sf:#FFFFFF;--sf2:#F8FAFC;--sf3:#F1F5F9;
-  --r:12px;--rl:18px;--sh:0 1px 8px rgba(15,23,42,.06);--shm:0 4px 20px rgba(15,23,42,.1);
+  --d1:#050C1A;--d2:#091428;--d3:#0D1D3E;
+  --pr:#4F46E5;--pr2:#6366F1;--pr3:#818CF8;
+  --ac:#F59E0B;--ac2:#FCD34D;
+  --gr:#10B981;--gr2:#34D399;
+  --pi:#EC4899;--pi2:#F9A8D4;
+  --cy:#06B6D4;--cy2:#67E8F9;
+  --rd:#EF4444;--rd2:#FCA5A5;
+  --txt:#0F172A;--txt2:#334155;--txt3:#64748B;
+  --bdr:#E2E8F0;--sf:#fff;--sf2:#F8FAFC;--sf3:#F1F5F9;
+  --r:14px;--rl:20px;
+  --sh:0 1px 10px rgba(15,23,42,.07);--shm:0 6px 28px rgba(15,23,42,.12);--shl:0 20px 60px rgba(0,0,0,.2);
 }
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.6;color:var(--txt2);background:var(--sf2)}
-a{color:var(--blu2);text-decoration:none}
-.hdr{background:linear-gradient(160deg,#060D1F 0%,#0A1530 50%,#0D1D42 100%);position:sticky;top:0;z-index:400;box-shadow:0 2px 20px rgba(0,0,0,.4)}
-.hdr-inner{max-width:1100px;margin:0 auto;padding:0 22px;height:60px;display:flex;align-items:center;gap:14px}
-.logo-wrap{display:flex;align-items:center;gap:11px;flex:1;min-width:0;text-decoration:none}
-.logo-ic{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#2563EB,#0D9488);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.logo-txt h1{font-size:15px;font-weight:900;color:#fff;letter-spacing:-.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.logo-txt p{font-size:10px;color:rgba(255,255,255,.4);margin-top:1px}
-.hdr-nav{display:flex;gap:8px;flex-shrink:0}
-.hdr-nav a{padding:6px 13px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.15);transition:all .15s}
-.hdr-nav a:hover{background:rgba(255,255,255,.1);color:#fff}
-.hero{background:linear-gradient(160deg,#060D1F 0%,#0A1530 40%,#0D1D42 70%,#0A2040 100%);padding:60px 22px 50px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(37,99,235,.18),transparent 55%),radial-gradient(ellipse at 75% 30%,rgba(13,148,136,.14),transparent 50%)}
-.hero-tag{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);font-size:11px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:20px;position:relative}
-.hero h2{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.15;margin-bottom:16px;position:relative}
-.hero h2 span{background:linear-gradient(135deg,#60A5FA,#34D399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:16px;color:rgba(255,255,255,.55);max-width:580px;margin:0 auto 28px;position:relative;line-height:1.7}
-.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;margin-bottom:32px}
-.btn-p{padding:12px 24px;border-radius:26px;font-size:14px;font-weight:800;text-decoration:none;background:linear-gradient(135deg,#2563EB,#0D9488);color:#fff;box-shadow:0 4px 18px rgba(37,99,235,.4);transition:all .15s}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,99,235,.5)}
-.btn-s{padding:10px 18px;border-radius:22px;font-size:12px;font-weight:700;text-decoration:none;background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.15);transition:all .15s}
-.btn-s:hover{background:rgba(255,255,255,.14);color:#fff}
-.live-strip{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;position:relative;padding-bottom:4px}
-.live-pill{padding:5px 13px;border-radius:20px;font-size:11px;font-weight:700;text-decoration:none;transition:all .15s;border:1px solid transparent}
-.live-pill:hover{transform:translateY(-1px)}
-.lp-bank{background:#EFF6FF;border-color:#BFDBFE;color:#1E40AF}.lp-bank:hover{background:#DBEAFE}
-.lp-rail{background:#FFF7ED;border-color:#FED7AA;color:#9A3412}.lp-rail:hover{background:#FFEDD5}
-.lp-upsc{background:#FFFBEB;border-color:#FDE68A;color:#78350F}.lp-upsc:hover{background:#FEF3C7}
-.lp-ssc{background:#F0FDF4;border-color:#BBF7D0;color:#14532D}.lp-ssc:hover{background:#DCFCE7}
-.lp-jee{background:#F5F3FF;border-color:#DDD6FE;color:#4C1D95}.lp-jee:hover{background:#EDE9FE}
-.lp-neet{background:#F0FDFA;border-color:#99F6E4;color:#134E4A}.lp-neet:hover{background:#CCFBF1}
-.lp-mba{background:#FFFBEB;border-color:#FDE68A;color:#78350F}.lp-mba:hover{background:#FEF3C7}
-.lp-psc{background:#FAF5FF;border-color:#DDD6FE;color:#5B21B6}.lp-psc:hover{background:#F3E8FF}
-.lp-teach{background:#F0FDF4;border-color:#BBF7D0;color:#14532D}.lp-teach:hover{background:#DCFCE7}
-.lp-def{background:#F0F4E8;border-color:#C8D9A0;color:#1A3300}.lp-def:hover{background:#E4EDD0}
-.lp-gate{background:#EFF6FF;border-color:#BFDBFE;color:#1E40AF}.lp-gate:hover{background:#DBEAFE}
-.lp-law{background:#FAF5FF;border-color:#DDD6FE;color:#6B21A8}.lp-law:hover{background:#F3E8FF}
-.wrap{max-width:1100px;margin:0 auto;padding:36px 22px 80px}
-.sec-hd{font-size:22px;font-weight:900;color:var(--txt);margin-bottom:6px;letter-spacing:-.3px}
-.sec-sub{font-size:14px;color:var(--txt3);margin-bottom:22px}
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.cat-card{background:var(--sf);border-radius:var(--rl);border:1.5px solid var(--bdr);box-shadow:var(--sh);overflow:hidden;transition:all .18s;display:flex;flex-direction:column}
-.cat-card:hover{box-shadow:var(--shm);transform:translateY(-2px);border-color:var(--bdr2)}
-.cat-hdr{display:flex;align-items:center;gap:12px;padding:16px 18px 12px}
-.cat-ic{font-size:28px;line-height:1;flex-shrink:0}
-.cat-t{font-size:14px;font-weight:800;color:var(--txt)}
-.cat-c{font-size:11px;color:var(--txt3);margin-top:1px}
-.cat-st{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;margin-left:auto;flex-shrink:0;white-space:nowrap}
-.cs-live{background:#DCFCE7;color:#14532D}.cs-soon{background:#FEF3C7;color:#92400E}
-.cat-exams{display:flex;flex-wrap:wrap;gap:5px;padding:0 18px 12px}
-.ep{font-size:11px;padding:3px 10px;border-radius:14px;background:var(--sf2);border:1px solid var(--bdr);color:var(--txt3);text-decoration:none;transition:all .12s;font-weight:500}
-.ep:hover{border-color:var(--bdr2);color:var(--txtm)}
-.cat-ft{margin-top:auto;padding:10px 18px 14px;display:flex;align-items:center;justify-content:space-between}
-.cat-lnk{font-size:12px;font-weight:700;color:var(--txtm);text-decoration:none;display:flex;align-items:center;gap:4px}
-.cat-lnk:hover{gap:7px}.arr{transition:margin .15s}
-.th-b{border-top:3px solid #2563EB}.th-o{border-top:3px solid #EA580C}.th-y{border-top:3px solid #D97706}
-.th-g{border-top:3px solid #059669}.th-v{border-top:3px solid #7C3AED}.th-t{border-top:3px solid #0D9488}
-.th-a{border-top:3px solid #D97706}.th-p{border-top:3px solid #7C3AED}.th-s{border-top:3px solid #EA580C}
-.th-k{border-top:3px solid #3D5016}.th-c{border-top:3px solid #1B4F8A}.th-l{border-top:3px solid #7C0A2B}
-.cta-sec{background:linear-gradient(135deg,#0A1530,#0D1D42);border-radius:var(--rl);padding:36px 32px;text-align:center;margin:32px 0}
-.cta-sec h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:-.3px}
-.cta-sec p{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:24px}
-.cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.cta-btn{padding:11px 22px;border-radius:24px;font-size:13px;font-weight:700;text-decoration:none;transition:all .15s}
-.cta-btn-p{background:linear-gradient(135deg,#2563EB,#0D9488);color:#fff}.cta-btn-p:hover{opacity:.9}
-.cta-btn-s{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.2)}.cta-btn-s:hover{background:rgba(255,255,255,.18)}
-.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.ai-card{background:var(--sf);border:1px solid var(--bdr);border-radius:var(--r);padding:16px;text-align:center;text-decoration:none;transition:all .15s}
-.ai-card:hover{box-shadow:var(--shm);transform:translateY(-2px)}
-.ai-card-ic{font-size:28px;margin-bottom:8px}
-.ai-card h4{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:3px}
-.ai-card p{font-size:11px;color:var(--txt3)}
-.cmp-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--bdr)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.6;color:var(--txt2);background:#F0F4FF;overflow-x:hidden}
+a{color:var(--pr);text-decoration:none}
+
+/* ── HEADER ── */
+.hdr{background:rgba(5,12,26,.97);backdrop-filter:blur(12px);position:sticky;top:0;z-index:500;border-bottom:1px solid rgba(255,255,255,.06)}
+.hdr-inner{max-width:1160px;margin:0 auto;padding:0 20px;height:58px;display:flex;align-items:center;gap:12px}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex:1;min-width:0;text-decoration:none}
+.logo-badge{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--pr),var(--cy));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;box-shadow:0 0 0 2px rgba(99,102,241,.3)}
+.logo-txt h1{font-size:14px;font-weight:800;color:#fff;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo-txt p{font-size:9px;color:rgba(255,255,255,.35);margin-top:1px}
+.hdr-links{display:flex;gap:6px;flex-shrink:0}
+.hdr-links a{padding:6px 12px;border-radius:18px;font-size:11px;font-weight:700;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid rgba(255,255,255,.1);transition:all .15s}
+.hdr-links a:hover{background:rgba(255,255,255,.08);color:#fff}
+.hdr-links .hdr-cta{background:var(--pr);color:#fff;border-color:var(--pr)}
+.hdr-links .hdr-cta:hover{background:var(--pr2)}
+
+/* ── HERO ── */
+.hero{background:var(--d1);min-height:94vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 20px 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hero-bg-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35}
+.hb1{width:600px;height:600px;background:radial-gradient(circle,#4F46E5,transparent 70%);top:-150px;left:-100px}
+.hb2{width:500px;height:500px;background:radial-gradient(circle,#06B6D4,transparent 70%);bottom:-100px;right:-80px}
+.hb3{width:350px;height:350px;background:radial-gradient(circle,#EC4899,transparent 70%);top:30%;left:40%;opacity:.2}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:50px 50px}
+.hero-inner{max-width:820px;position:relative;z-index:2}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:30px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);font-size:12px;font-weight:700;color:var(--pr3);margin-bottom:24px;letter-spacing:.04em}
+.hero-eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--gr2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h2{font-size:clamp(30px,5.5vw,56px);font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1.1;margin-bottom:20px}
+.hero h2 .gr{background:linear-gradient(135deg,var(--gr2),var(--cy2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h2 .yl{background:linear-gradient(135deg,var(--ac),var(--pi2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.5);max-width:580px;margin:0 auto 32px;line-height:1.75}
+.hero-sub strong{color:rgba(255,255,255,.85)}
+
+.hero-stats{display:flex;gap:0;justify-content:center;margin-bottom:36px;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);max-width:520px;margin-left:auto;margin-right:auto;margin-bottom:36px}
+.hs{flex:1;padding:16px 12px;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.hs:last-child{border-right:none}
+.hs-n{font-size:24px;font-weight:900;color:#fff;display:block;line-height:1}
+.hs-l{font-size:10px;color:rgba(255,255,255,.4);margin-top:4px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+
+.hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.btn-hero{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:800;text-decoration:none;transition:all .2s;letter-spacing:-.2px}
+.btn-hero-p{background:linear-gradient(135deg,var(--pr),var(--cy));color:#fff;box-shadow:0 6px 24px rgba(79,70,229,.5)}
+.btn-hero-p:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(79,70,229,.6)}
+.btn-hero-s{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.15)}
+.btn-hero-s:hover{background:rgba(255,255,255,.14);color:#fff}
+
+.exam-chips{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.chip{padding:6px 14px;border-radius:22px;font-size:12px;font-weight:700;text-decoration:none;transition:all .2s;border:1.5px solid}
+.chip:hover{transform:translateY(-2px)}
+.ch-b{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.3);color:#93C5FD}
+.ch-o{background:rgba(234,88,12,.12);border-color:rgba(234,88,12,.3);color:#FDBA74}
+.ch-y{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.3);color:#FCD34D}
+.ch-g{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);color:#6EE7B7}
+.ch-v{background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.3);color:#C4B5FD}
+.ch-t{background:rgba(6,182,212,.12);border-color:rgba(6,182,212,.3);color:#67E8F9}
+.ch-p{background:rgba(236,72,153,.12);border-color:rgba(236,72,153,.3);color:#F9A8D4}
+.ch-r{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.3);color:#FCA5A5}
+.ch-k{background:rgba(101,163,13,.12);border-color:rgba(101,163,13,.3);color:#BEF264}
+.ch-c{background:rgba(14,165,233,.12);border-color:rgba(14,165,233,.3);color:#7DD3FC}
+.ch-m{background:rgba(217,119,6,.12);border-color:rgba(217,119,6,.3);color:#FDE68A}
+.ch-l{background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.3);color:#DDD6FE}
+
+/* ── HOW IT WORKS ── */
+.how-strip{background:#fff;padding:32px 20px;border-bottom:1px solid var(--bdr)}
+.how-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+.how-step{display:flex;align-items:center;gap:10px;padding:10px 24px}
+.how-num{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--pr),var(--cy));color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.how-txt strong{font-size:13px;font-weight:700;color:var(--txt);display:block}
+.how-txt span{font-size:11px;color:var(--txt3)}
+.how-arr{font-size:20px;color:var(--bdr);padding:0 4px}
+
+/* ── SECTION LABELS ── */
+.wrap{max-width:1160px;margin:0 auto;padding:52px 20px 80px}
+.sec-eyebrow{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pr);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.sec-eyebrow::before{content:"";width:20px;height:2px;background:linear-gradient(90deg,var(--pr),var(--cy))}
+.sec-hd{font-size:clamp(20px,3vw,28px);font-weight:900;color:var(--txt);margin-bottom:8px;letter-spacing:-.5px}
+.sec-sub{font-size:14px;color:var(--txt3);margin-bottom:28px;max-width:560px}
+
+/* ── TOOL CARDS ── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.cat-card{background:#fff;border-radius:var(--rl);border:1.5px solid var(--bdr);box-shadow:var(--sh);overflow:hidden;transition:all .2s;display:flex;flex-direction:column;cursor:pointer}
+.cat-card:hover{box-shadow:var(--shm);transform:translateY(-3px)}
+.cat-card:hover .cat-arrow{transform:translateX(4px)}
+.card-top{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px}
+.card-ic-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.ci-b{background:linear-gradient(135deg,#EFF6FF,#DBEAFE)}.ci-o{background:linear-gradient(135deg,#FFF7ED,#FFEDD5)}
+.ci-y{background:linear-gradient(135deg,#FFFBEB,#FEF3C7)}.ci-g{background:linear-gradient(135deg,#F0FDF4,#DCFCE7)}
+.ci-v{background:linear-gradient(135deg,#F5F3FF,#EDE9FE)}.ci-t{background:linear-gradient(135deg,#ECFEFF,#CFFAFE)}
+.ci-a{background:linear-gradient(135deg,#FFFBEB,#FEF9C3)}.ci-p{background:linear-gradient(135deg,#FAF5FF,#F3E8FF)}
+.ci-s{background:linear-gradient(135deg,#FFF7ED,#FFEDD5)}.ci-k{background:linear-gradient(135deg,#F0F4E8,#E4EDD0)}
+.ci-c{background:linear-gradient(135deg,#EFF6FF,#DBEAFE)}.ci-l{background:linear-gradient(135deg,#FAF5FF,#F3E8FF)}
+.card-hd{flex:1;min-width:0}
+.card-title{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:3px}
+.card-meta{font-size:11px;color:var(--txt3);font-weight:600}
+.live-dot{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;background:#DCFCE7;color:#14532D;font-size:10px;font-weight:800;margin-left:8px}
+.live-dot::before{content:"";width:5px;height:5px;border-radius:50%;background:#22C55E;animation:pulse 2s infinite}
+.card-desc{font-size:12.5px;color:var(--txt3);padding:0 20px 12px;line-height:1.6}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;padding:0 20px 14px}
+.tag{font-size:10.5px;padding:3px 9px;border-radius:12px;font-weight:600;background:var(--sf3);color:var(--txt3);border:1px solid var(--bdr)}
+.card-footer{margin-top:auto;padding:12px 20px;border-top:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;background:var(--sf2)}
+.card-tabs{font-size:10px;color:var(--txt3)}
+.card-link{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:800;color:var(--pr);text-decoration:none}
+.cat-arrow{transition:transform .2s;font-size:14px}
+
+/* ── TOP ACCENT BARS ── */
+.tb-b{border-top:3px solid #3B82F6}.tb-o{border-top:3px solid #F97316}.tb-y{border-top:3px solid #EAB308}
+.tb-g{border-top:3px solid #22C55E}.tb-v{border-top:3px solid #8B5CF6}.tb-t{border-top:3px solid #06B6D4}
+.tb-a{border-top:3px solid #F59E0B}.tb-p{border-top:3px solid #A855F7}.tb-s{border-top:3px solid #F97316}
+.tb-k{border-top:3px solid #65A30D}.tb-c{border-top:3px solid #0EA5E9}.tb-l{border-top:3px solid #9333EA}
+
+/* ── FEATURE STRIP ── */
+.feat-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:20px}
+.feat-item{background:#fff;border:1.5px solid var(--bdr);border-radius:var(--r);padding:18px 16px;display:flex;align-items:flex-start;gap:12px;transition:all .18s}
+.feat-item:hover{border-color:var(--pr);box-shadow:0 4px 16px rgba(79,70,229,.1)}
+.feat-ic{font-size:26px;flex-shrink:0;line-height:1}
+.feat-txt strong{font-size:13px;font-weight:700;color:var(--txt);display:block;margin-bottom:3px}
+.feat-txt span{font-size:11.5px;color:var(--txt3);line-height:1.5}
+
+/* ── AI PLATFORMS ── */
+.ai-strip{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:28px 0}
+.ai-pill{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;border:2px solid;transition:all .18s}
+.ai-pill:hover{transform:translateY(-2px)}
+.ap-cl{background:#FFF7ED;border-color:#FED7AA;color:#92400E}
+.ap-gp{background:#F0FDF4;border-color:#BBF7D0;color:#14532D}
+.ap-gm{background:#EFF6FF;border-color:#BFDBFE;color:#1E40AF}
+.ap-pp{background:#F5F3FF;border-color:#DDD6FE;color:#4C1D95}
+.ap-cp{background:#EFF6FF;border-color:#BFDBFE;color:#1E3A8A}
+.ap-mt{background:#EFF6FF;border-color:#BAE6FD;color:#0C4A6E}
+
+/* ── COMPARISON TABLE ── */
+.cmp-wrap{overflow-x:auto;border-radius:var(--r);border:1.5px solid var(--bdr);background:#fff}
 .cmp-tbl{width:100%;border-collapse:collapse;font-size:13px}
-.cmp-tbl th{background:var(--sf3);padding:11px 14px;text-align:left;font-weight:700;border-bottom:2px solid var(--bdr);white-space:nowrap;color:var(--txt)}
-.cmp-tbl td{padding:10px 14px;border-bottom:1px solid var(--bdr);color:var(--txt2);vertical-align:middle}
+.cmp-tbl thead tr{background:linear-gradient(135deg,var(--d2),var(--d3))}
+.cmp-tbl th{padding:13px 16px;text-align:left;font-weight:700;color:#fff;white-space:nowrap;border-bottom:none}
+.cmp-tbl th:first-child{color:rgba(255,255,255,.6);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.cmp-tbl td{padding:11px 16px;border-bottom:1px solid var(--bdr);color:var(--txt2);vertical-align:middle}
 .cmp-tbl tr:last-child td{border-bottom:none}
-.cmp-tbl tr:hover td{background:var(--sf2)}
-.faq-item{background:var(--sf);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;margin-bottom:8px}
-.faq-q{padding:15px 18px;font-size:14px;font-weight:700;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
-.faq-q::after{content:"›";font-size:20px;color:var(--txt3);transition:transform .2s;flex-shrink:0}
-.faq-item.open .faq-q::after{transform:rotate(90deg)}
-.faq-a{display:none;padding:0 18px 15px;font-size:13px;color:var(--txt2);line-height:1.8}
+.cmp-tbl tbody tr:hover td{background:#F8FAFF}
+.cmp-tbl td:first-child{font-weight:600;color:var(--txt);font-size:12.5px}
+
+/* ── FAQ ── */
+.faq-item{background:#fff;border:1.5px solid var(--bdr);border-radius:var(--r);overflow:hidden;margin-bottom:8px;transition:border-color .2s}
+.faq-item.open{border-color:var(--pr)}
+.faq-q{padding:16px 20px;font-size:14px;font-weight:700;color:var(--txt);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;gap:12px}
+.faq-ic{width:22px;height:22px;border-radius:50%;background:var(--sf3);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--txt3);transition:all .2s;flex-shrink:0}
+.faq-item.open .faq-ic{background:var(--pr);color:#fff;transform:rotate(45deg)}
+.faq-a{display:none;padding:0 20px 16px;font-size:13.5px;color:var(--txt2);line-height:1.8;border-top:1px solid var(--bdr)}
 .faq-item.open .faq-a{display:block}
-.ckbar{position:fixed;bottom:0;left:0;right:0;z-index:9000;background:#060D1F;border-top:1px solid rgba(255,255,255,.08);padding:13px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;transform:translateY(0);transition:transform .3s;box-shadow:0 -4px 20px rgba(0,0,0,.4)}
-.ckbar.gone{transform:translateY(115%)}
-.ck-txt{flex:1;font-size:12px;color:rgba(255,255,255,.6)}.ck-txt a{color:#60A5FA;cursor:pointer;text-decoration:underline}
-.ck-acc{padding:8px 17px;border-radius:8px;background:#2563EB;color:#fff;border:none;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit}
-.ck-dec{padding:8px 13px;border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);font-size:12px;cursor:pointer;font-family:inherit}
-.pmov{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);z-index:8000;display:none;justify-content:center;align-items:center;padding:20px}
-.pmov.open{display:flex}
-.pmbox{background:var(--sf);border-radius:var(--rl);width:min(680px,95vw);max-height:86vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.pmhd{background:linear-gradient(135deg,#060D1F,#0D1D42);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.pmhd h2{font-size:15px;font-weight:700;color:#fff}
-.pmcls{background:none;border:none;color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;line-height:1;padding:0 4px}
-.pmbody{padding:22px 26px;overflow-y:auto;font-size:13px;line-height:1.8;color:#334155}
-.pmbody h3{font-size:14px;font-weight:700;color:#0F172A;margin:16px 0 8px}.pmbody h3:first-child{margin-top:0}
-.pmbody p,.pmbody li{color:#475569;margin-bottom:7px}.pmbody ul{padding-left:18px}.pmbody a{color:#2563EB}
+
+/* ── SOCIAL CTA ── */
+.soc-cta{background:linear-gradient(135deg,var(--d1),var(--d3));border-radius:var(--rl);padding:40px 30px;text-align:center;position:relative;overflow:hidden}
+.soc-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(79,70,229,.3),transparent 55%),radial-gradient(circle at 80% 20%,rgba(6,182,212,.2),transparent 50%)}
+.soc-cta h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;position:relative;letter-spacing:-.4px}
+.soc-cta p{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:24px;position:relative}
+.soc-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;position:relative}
+.soc-btn{display:flex;align-items:center;gap:8px;padding:11px 20px;border-radius:26px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;border:1.5px solid rgba(255,255,255,.15)}
+.soc-btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.sb-fb{background:#1877F2;color:#fff}.sb-ig{background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);color:#fff}.sb-yt{background:#FF0000;color:#fff}
+
+/* ── SOCIAL FLOAT ── */
 .soc-fl{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:300;display:flex;flex-direction:column;gap:2px}
 .sfl{display:flex;align-items:center;overflow:hidden;width:40px;transition:width .25s;border-radius:0 10px 10px 0;text-decoration:none;box-shadow:2px 2px 8px rgba(0,0,0,.25)}
 .sfl:hover{width:148px}
@@ -132,29 +202,52 @@ a{color:var(--blu2);text-decoration:none}
 .sfl-lb{font-size:11px;font-weight:700;color:#fff;white-space:nowrap;padding-right:14px;opacity:0;transition:opacity .18s .06s}
 .sfl:hover .sfl-lb{opacity:1}
 .sfl-fb{background:#1877F2}.sfl-ig{background:linear-gradient(180deg,#f09433,#dc2743,#bc1888)}.sfl-yt{background:#FF0000}
-.ft{background:linear-gradient(180deg,#0A1530,#060D1F)}
-.ft-sr{padding:22px 20px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.06)}
-.ftsb{display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:24px;font-size:12px;font-weight:700;text-decoration:none;color:#fff;transition:all .14s;border:none;cursor:pointer;font-family:inherit}
+
+/* ── COOKIE / MODAL ── */
+.ckbar{position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(5,12,26,.97);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.08);padding:13px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;transform:translateY(0);transition:transform .3s}
+.ckbar.gone{transform:translateY(115%)}
+.ck-txt{flex:1;font-size:12px;color:rgba(255,255,255,.6)}.ck-txt a{color:var(--cy2);cursor:pointer;text-decoration:underline}
+.ck-acc{padding:8px 17px;border-radius:22px;background:var(--pr);color:#fff;border:none;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit}
+.ck-dec{padding:8px 13px;border-radius:22px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);font-size:12px;cursor:pointer;font-family:inherit}
+.pmov{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);z-index:8000;display:none;justify-content:center;align-items:center;padding:20px}
+.pmov.open{display:flex}
+.pmbox{background:#fff;border-radius:var(--rl);width:min(680px,95vw);max-height:86vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shl)}
+.pmhd{background:linear-gradient(135deg,var(--d1),var(--d3));padding:16px 22px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.pmhd h2{font-size:15px;font-weight:700;color:#fff}
+.pmcls{background:none;border:none;color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;line-height:1;padding:0 4px}
+.pmbody{padding:22px 26px;overflow-y:auto;font-size:13px;line-height:1.8;color:#334155}
+.pmbody h3{font-size:14px;font-weight:700;color:#0F172A;margin:16px 0 8px}.pmbody h3:first-child{margin-top:0}
+.pmbody p,.pmbody li{margin-bottom:7px}.pmbody ul{padding-left:18px}.pmbody a{color:var(--pr)}
+
+/* ── FOOTER ── */
+.ft{background:linear-gradient(180deg,var(--d2),var(--d1))}
+.ft-top{padding:24px 20px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.06)}
+.ftsb{display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:24px;font-size:12px;font-weight:700;text-decoration:none;color:#fff;transition:all .14s}
 .ftsb:hover{transform:translateY(-1px);filter:brightness(1.1)}
 .ftb-fb{background:#1877F2}.ftb-ig{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)}.ftb-yt{background:#FF0000}
-.ft-contact{padding:11px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03)}
-.ft-contact p{font-size:12px;color:rgba(255,255,255,.45)}
-.ft-contact a{color:rgba(255,255,255,.65);text-decoration:none;font-weight:600}
+.ft-contact{padding:11px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02)}
+.ft-contact p{font-size:12px;color:rgba(255,255,255,.4)}
+.ft-contact a{color:rgba(255,255,255,.65);font-weight:600;text-decoration:none}
 .ft-contact a:hover{color:#fff}
-.ft-links{display:flex;justify-content:center;gap:16px;padding:12px 20px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.04)}
-.ftlnk{color:rgba(255,255,255,.4);font-size:11px;text-decoration:none;cursor:pointer;transition:color .13s;border:none;background:none;font-family:inherit}
-.ftlnk:hover{color:rgba(255,255,255,.82)}
+.ft-nav{display:flex;justify-content:center;gap:14px;padding:12px 20px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.04)}
+.ftlnk{color:rgba(255,255,255,.35);font-size:11px;text-decoration:none;transition:color .13s;background:none;border:none;cursor:pointer;font-family:inherit}
+.ftlnk:hover{color:rgba(255,255,255,.8)}
 .ft-bot{padding:14px 20px;text-align:center}
-.ft-bot p{font-size:11px;color:rgba(255,255,255,.35)}.ft-bot strong{color:rgba(255,255,255,.6)}
-.ft-cr{margin-top:5px;font-size:10px;color:rgba(255,255,255,.2)}
-.toast{position:fixed;bottom:22px;right:20px;background:#060D1F;color:#fff;padding:11px 18px;border-radius:12px;font-size:13px;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.3);transform:translateY(80px);opacity:0;transition:all .28s;z-index:9999;border-left:3px solid #34D399}
+.ft-bot p{font-size:11px;color:rgba(255,255,255,.3)}.ft-bot strong{color:rgba(255,255,255,.55)}
+.ft-cr{margin-top:5px;font-size:10px;color:rgba(255,255,255,.18)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:22px;right:20px;background:var(--d1);color:#fff;padding:11px 18px;border-radius:var(--r);font-size:13px;font-weight:600;box-shadow:var(--shl);transform:translateY(80px);opacity:0;transition:all .28s;z-index:9999;border-left:3px solid var(--gr2)}
 .toast.show{transform:translateY(0);opacity:1}
-@media(max-width:768px){.cat-grid{grid-template-columns:1fr}.hero h2{font-size:26px}.cta-sec{padding:24px 18px}.hdr-nav a:not(:last-child){display:none}}
-@media(max-width:480px){.soc-fl{display:none}.ai-grid{grid-template-columns:1fr 1fr}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){.hero{min-height:auto}.feat-strip{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.cat-grid{grid-template-columns:1fr}.how-strip .how-arr{display:none}.feat-strip{grid-template-columns:1fr}.ai-strip{justify-content:flex-start}.hero h2{font-size:28px}.hdr-links a:not(.hdr-cta){display:none}}
+@media(max-width:480px){.soc-fl{display:none}.hero-stats{flex-wrap:wrap}}
 </style>
 </head>
 <body>
-<!-- Social floaters -->
+<!-- Social float -->
 <div class="soc-fl">
   <a class="sfl sfl-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener"><div class="sfl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg></div><span class="sfl-lb">Raghavbegins</span></a>
   <a class="sfl sfl-ig" href="https://www.instagram.com/raghav3o" target="_blank" rel="noopener"><div class="sfl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div><span class="sfl-lb">@raghav3o</span></a>
@@ -163,32 +256,17 @@ a{color:var(--blu2);text-decoration:none}
 <!-- Cookie bar -->
 <div class="ckbar" id="ckbar">
   <div class="ck-txt">We use cookies &amp; Google AdSense to keep these tools free. <a href="privacy-policy.html">Privacy Policy</a></div>
-  <div style="display:flex;gap:8px;flex-shrink:0">
-    <button class="ck-acc" onclick="ckOk()">Accept All</button>
-    <button class="ck-dec" onclick="ckNo()">Essential Only</button>
-  </div>
+  <div style="display:flex;gap:8px;flex-shrink:0"><button class="ck-acc" onclick="ckOk()">Accept All</button><button class="ck-dec" onclick="ckNo()">Essential Only</button></div>
 </div>
 <!-- Privacy modal -->
 <div class="pmov" id="pmov" onclick="if(event.target===this)closePM()">
-  <div class="pmbox">
-    <div class="pmhd"><h2>&#x1F4DC; Privacy &amp; Cookie Policy</h2><button class="pmcls" onclick="closePM()">&#x2715;</button></div>
+  <div class="pmbox"><div class="pmhd"><h2>&#x1F4DC; Privacy &amp; Cookie Policy</h2><button class="pmcls" onclick="closePM()">&#x2715;</button></div>
     <div class="pmbody">
-      <h3>About This Site</h3>
-      <p><strong>Indian Exam AI Prompt Generator</strong> by <strong>Raghavbegins</strong> &mdash; a free educational platform for 80+ Indian competitive exams. No login or registration required. All prompt generation runs in your browser; no input data is sent to our servers.</p>
-      <h3>Data &amp; Cookies</h3>
-      <p>We use Google Analytics (anonymous) and Google AdSense (with consent). We do not collect names, emails, or personal data.</p>
-      <ul>
-        <li>Opt out of personalised ads: <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ad Settings</a></li>
-        <li>Opt out of Analytics: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">GA Opt-out</a></li>
-      </ul>
-      <h3>Contact Us</h3>
-      <p>
-        &#x1F4E7; <a href="mailto:raghavbegins@gmail.com">raghavbegins@gmail.com</a><br>
-        &#x1F310; India &mdash; Educational platform<br>
-        &#x1F4AC; <a href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener">facebook.com/Raghavbegins</a>
-      </p>
-      <p>Full policy: <a href="privacy-policy.html">Privacy Policy page</a> &middot; <a href="contact.html">Contact Us</a></p>
-      <p style="margin-top:14px;font-size:10px;color:#94A3B8">Last updated April 2026 &middot; Raghavbegins &middot; India</p>
+      <h3>About</h3><p><strong>Indian Exam AI Prompt Generator</strong> by <strong>Raghavbegins</strong> &mdash; free educational platform, no login required. All prompt generation runs in your browser.</p>
+      <h3>Cookies &amp; Data</h3><p>We use Google Analytics (anonymous) and Google AdSense (with consent). We do not collect personal data.</p>
+      <ul><li>Opt out ads: <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ad Settings</a></li><li>Opt out analytics: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">GA Opt-out</a></li></ul>
+      <h3>Contact</h3><p>&#x1F4E7; <a href="mailto:raghavbegins@gmail.com">raghavbegins@gmail.com</a> &nbsp;&middot;&nbsp; &#x1F1EE;&#x1F1F3; India &nbsp;&middot;&nbsp; <a href="contact.html">Contact page</a> &nbsp;&middot;&nbsp; <a href="privacy-policy.html">Full Privacy Policy</a></p>
+      <p style="margin-top:12px;font-size:10px;color:#94A3B8">Last updated April 2026 &middot; Raghavbegins &middot; India &middot; Educational platform</p>
     </div>
   </div>
 </div>
@@ -196,282 +274,275 @@ a{color:var(--blu2);text-decoration:none}
 <header class="hdr">
   <div class="hdr-inner">
     <a class="logo-wrap" href="index.html">
-      <div class="logo-ic">&#x1F4DA;</div>
-      <div class="logo-txt"><h1>Indian Exam AI Prompt Generator</h1><p>12 free tools &middot; UPSC &middot; GATE &middot; CLAT &middot; JEE &middot; NEET &middot; Banking &middot; SSC &middot; Railway &middot; Raghavbegins</p></div>
+      <div class="logo-badge">&#x1F4DA;</div>
+      <div class="logo-txt"><h1>Indian Exam AI Prompt Generator</h1><p>12 free tools &middot; 80+ Indian exams &middot; Raghavbegins</p></div>
     </a>
-    <nav class="hdr-nav">
+    <nav class="hdr-links">
+      <a href="#tools">Tools</a>
       <a href="contact.html">Contact</a>
       <a href="privacy-policy.html">Privacy</a>
+      <a href="#tools" class="hdr-cta">Get Started &#x2192;</a>
     </nav>
   </div>
 </header>
-<!-- Hero -->
+
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-tag">&#x2728; 100% Free &nbsp;&middot;&nbsp; No login &nbsp;&middot;&nbsp; AI-powered</div>
-  <h2>Your AI study partner for<br><span>Indian Competitive Exams</span></h2>
-  <p>Generate expert-level study prompts, practice sets &amp; PYQ analysis for <strong style="color:rgba(255,255,255,.8)"><strong>12</strong> live tools</strong> covering 80+ Indian exams. Paste into Claude, ChatGPT, Gemini &amp; more.</p>
-  <div class="hero-btns">
-    <a href="#tools" class="btn-p">&#x1F4DA; Explore All Tools</a>
-    <a href="bank_exam_prompt_generator.html" class="btn-s">&#x1F3E6; Banking</a>
-    <a href="upsc_prompt_generator.html" class="btn-s">&#x1F3DB;&#xFE0F; UPSC</a>
-    <a href="gate_psu_exam_prompt_generator.html" class="btn-s">&#x2699;&#xFE0F; PSU/GATE</a>
-    <a href="jee_exam_prompt_generator.html" class="btn-s">&#x2697;&#xFE0F; JEE</a>
-    <a href="neet_exam_prompt_generator.html" class="btn-s">&#x1F9EC; NEET</a>
-    <a href="law_entrance_exam_prompt_generator.html" class="btn-s">&#x2696;&#xFE0F; Law</a>
-    <a href="defence_exam_prompt_generator.html" class="btn-s">&#x1F396;&#xFE0F; Defence</a>
+  <div class="hero-bg">
+    <div class="hero-bg-blob hb1"></div>
+    <div class="hero-bg-blob hb2"></div>
+    <div class="hero-bg-blob hb3"></div>
+    <div class="hero-grid"></div>
   </div>
-  <div class="live-strip">
-    <a href="bank_exam_prompt_generator.html" class="live-pill lp-bank">&#x1F3E6; Banking Exams</a>
-    <a href="railway_exam_prompt_generator.html" class="live-pill lp-rail">&#x1F686; Railway Exams</a>
-    <a href="upsc_prompt_generator.html" class="live-pill lp-upsc">&#x1F3DB;&#xFE0F; UPSC / IAS</a>
-    <a href="ssc_exam_prompt_generator.html" class="live-pill lp-ssc">&#x1F4CB; SSC Exams</a>
-    <a href="jee_exam_prompt_generator.html" class="live-pill lp-jee">&#x2697;&#xFE0F; JEE Exams</a>
-    <a href="neet_exam_prompt_generator.html" class="live-pill lp-neet">&#x1F9EC; NEET</a>
-    <a href="mba_exam_prompt_generator.html" class="live-pill lp-mba">&#x1F4BC; MBA / CAT</a>
-    <a href="psc_exam_prompt_generator.html" class="live-pill lp-psc">&#x1F3DB;&#xFE0F; State PSC</a>
-    <a href="teaching_exam_prompt_generator.html" class="live-pill lp-teach">&#x1F4DA; Teaching</a>
-    <a href="defence_exam_prompt_generator.html" class="live-pill lp-def">&#x1F396;&#xFE0F; Defence</a>
-    <a href="gate_psu_exam_prompt_generator.html" class="live-pill lp-gate">&#x2699;&#xFE0F; PSU / GATE</a>
-    <a href="law_entrance_exam_prompt_generator.html" class="live-pill lp-law">&#x2696;&#xFE0F; Law Entrance</a>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span></span> 100% Free &nbsp;&middot;&nbsp; No Login &nbsp;&middot;&nbsp; AI-powered &nbsp;&middot;&nbsp; Updated Daily</div>
+    <h2>Stop Wasting Hours.<br>Start Studying <span class="gr">Smarter</span> with <span class="yl">AI.</span></h2>
+    <p class="hero-sub">Generate expert-level study prompts for <strong>80+ Indian competitive exams</strong> in seconds. Paste into Claude, ChatGPT or Gemini &mdash; and get a personal tutor that knows your exact exam.</p>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-n">12</span><div class="hs-l">Live Tools</div></div>
+      <div class="hs"><span class="hs-n">80+</span><div class="hs-l">Exams Covered</div></div>
+      <div class="hs"><span class="hs-n">6</span><div class="hs-l">AI Platforms</div></div>
+      <div class="hs"><span class="hs-n">0&#x20B9;</span><div class="hs-l">Cost Forever</div></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#tools" class="btn-hero btn-hero-p">&#x1F680; Start Preparing Now</a>
+      <a href="bank_exam_prompt_generator.html" class="btn-hero btn-hero-s">&#x1F3E6; Try Banking Tool</a>
+    </div>
+    <div class="exam-chips">
+      <a href="upsc_prompt_generator.html" class="chip ch-y">&#x1F3DB;&#xFE0F; UPSC / IAS</a>
+      <a href="gate_psu_exam_prompt_generator.html" class="chip ch-c">&#x2699;&#xFE0F; GATE / PSU</a>
+      <a href="law_entrance_exam_prompt_generator.html" class="chip ch-l">&#x2696;&#xFE0F; CLAT / AILET</a>
+      <a href="jee_exam_prompt_generator.html" class="chip ch-v">&#x2697;&#xFE0F; JEE</a>
+      <a href="neet_exam_prompt_generator.html" class="chip ch-t">&#x1F9EC; NEET</a>
+      <a href="bank_exam_prompt_generator.html" class="chip ch-b">&#x1F3E6; Banking</a>
+      <a href="railway_exam_prompt_generator.html" class="chip ch-o">&#x1F686; Railway</a>
+      <a href="ssc_exam_prompt_generator.html" class="chip ch-g">&#x1F4CB; SSC</a>
+      <a href="defence_exam_prompt_generator.html" class="chip ch-k">&#x1F396;&#xFE0F; Defence</a>
+      <a href="mba_exam_prompt_generator.html" class="chip ch-m">&#x1F4BC; MBA/CAT</a>
+      <a href="psc_exam_prompt_generator.html" class="chip ch-p">&#x1F5FA;&#xFE0F; State PSC</a>
+      <a href="teaching_exam_prompt_generator.html" class="chip ch-r">&#x1F4DA; Teaching</a>
+    </div>
   </div>
 </section>
-<!-- Main content -->
+
+<!-- HOW IT WORKS -->
+<div class="how-strip">
+  <div class="how-inner">
+    <div class="how-step"><div class="how-num">1</div><div class="how-txt"><strong>Pick your exam</strong><span>12 categories, 80+ exams</span></div></div>
+    <div class="how-arr">&#8594;</div>
+    <div class="how-step"><div class="how-num">2</div><div class="how-txt"><strong>Select topic &amp; sections</strong><span>Toggle exactly what you need</span></div></div>
+    <div class="how-arr">&#8594;</div>
+    <div class="how-step"><div class="how-num">3</div><div class="how-txt"><strong>Generate prompt</strong><span>One click, instant output</span></div></div>
+    <div class="how-arr">&#8594;</div>
+    <div class="how-step"><div class="how-num">4</div><div class="how-txt"><strong>Open in AI</strong><span>Claude, ChatGPT, Gemini &amp; more</span></div></div>
+    <div class="how-arr">&#8594;</div>
+    <div class="how-step"><div class="how-num">5</div><div class="how-txt"><strong>Study &amp; crack it</strong><span>Expert-level answers instantly</span></div></div>
+  </div>
+</div>
 <main class="wrap">
+
+  <!-- FEATURES -->
+  <div style="margin-bottom:40px">
+    <div class="sec-eyebrow">Why students love it</div>
+    <h2 class="sec-hd">Everything you need. Nothing you don't.</h2>
+    <p class="sec-sub">Built specifically for Indian competitive exam aspirants — every feature designed around how toppers actually study.</p>
+    <div class="feat-strip">
+      <div class="feat-item"><div class="feat-ic">&#x1F3AF;</div><div class="feat-txt"><strong>Exam-calibrated prompts</strong><span>Auto-adjusts for GATE, CLAT, UPSC, JEE level — exact year, pattern &amp; marking scheme</span></div></div>
+      <div class="feat-item"><div class="feat-ic">&#x1F4CA;</div><div class="feat-txt"><strong>10-year PYQ analysis</strong><span>Frequency tables, concept clusters, 1M vs 2M split — in one prompt</span></div></div>
+      <div class="feat-item"><div class="feat-ic">&#x1F9EA;</div><div class="feat-txt"><strong>Practice sets on demand</strong><span>CLAT passage style, GATE NAT, UPSC MCQs — all patterns supported</span></div></div>
+      <div class="feat-item"><div class="feat-ic">&#x1F4C5;</div><div class="feat-txt"><strong>Year auto-detection</strong><span>Always shows current exam cycle — no manual updates needed</span></div></div>
+      <div class="feat-ic-wrap" style="display:none"></div>
+      <div class="feat-item"><div class="feat-ic">&#x26A1;</div><div class="feat-txt"><strong>One-click AI launch</strong><span>Opens Claude, ChatGPT, Gemini, Perplexity with prompt pre-copied</span></div></div>
+      <div class="feat-item"><div class="feat-ic">&#x1F4F1;</div><div class="feat-txt"><strong>Mobile-first design</strong><span>Study on your phone. Works perfectly on all screen sizes</span></div></div>
+    </div>
+  </div>
+
+  <!-- TOOLS GRID -->
   <div id="tools" style="margin-bottom:8px">
-    <h2 class="sec-hd">&#x1F4DA; All Exam Tools</h2>
-    <p class="sec-sub">Each tool has 5 tabs: Study Prompt · Practice Set · PYQ Analysis · Specialist Tab · Syllabus &amp; Strategy</p>
+    <div class="sec-eyebrow">All exam tools</div>
+    <h2 class="sec-hd">12 tools. 80+ exams. All free.</h2>
+    <p class="sec-sub">Each tool has 5 tabs: Study Prompt · Practice Set · PYQ Analysis · Specialist Deep-Dive · Syllabus &amp; Strategy</p>
   </div>
   <div class="cat-grid">
-    <div class="cat-card th-b">
-      <div class="cat-hdr"><div class="cat-ic">&#x1F3E6;</div><div><div class="cat-t">Banking &amp; Finance</div><div class="cat-c">15 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="bank_exam_prompt_generator.html" class="ep">SBI PO</a><a href="bank_exam_prompt_generator.html" class="ep">IBPS PO</a><a href="bank_exam_prompt_generator.html" class="ep">RRB PO</a><a href="bank_exam_prompt_generator.html" class="ep">SBI Clerk</a><a href="bank_exam_prompt_generator.html" class="ep">RBI Grade B</a><a href="bank_exam_prompt_generator.html" class="ep">+10 more</a></div>
-      <div class="cat-ft"><a href="bank_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">Quant &middot; English &middot; Reasoning &middot; Banking GA</span></div>
-    </div>
-    <div class="cat-card th-o">
-      <div class="cat-hdr"><div class="cat-ic">&#x1F686;</div><div><div class="cat-t">Railways</div><div class="cat-c">8 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="railway_exam_prompt_generator.html" class="ep">NTPC</a><a href="railway_exam_prompt_generator.html" class="ep">Group D</a><a href="railway_exam_prompt_generator.html" class="ep">ALP</a><a href="railway_exam_prompt_generator.html" class="ep">JE</a><a href="railway_exam_prompt_generator.html" class="ep">Station Master</a><a href="railway_exam_prompt_generator.html" class="ep">+3 more</a></div>
-      <div class="cat-ft"><a href="railway_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">Maths &middot; GK &middot; Reasoning &middot; Technical</span></div>
-    </div>
-    <div class="cat-card th-y">
-      <div class="cat-hdr"><div class="cat-ic">&#x1F3DB;&#xFE0F;</div><div><div class="cat-t">UPSC Civil Services</div><div class="cat-c">6 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="upsc_prompt_generator.html" class="ep">IAS / CSE</a><a href="upsc_prompt_generator.html" class="ep">IPS</a><a href="upsc_prompt_generator.html" class="ep">IFS</a><a href="upsc_prompt_generator.html" class="ep">CDS</a><a href="upsc_prompt_generator.html" class="ep">CAPF</a><a href="upsc_prompt_generator.html" class="ep">NDA</a></div>
-      <div class="cat-ft"><a href="upsc_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">GS Papers &middot; Optional &middot; Mains Essay &middot; Interview</span></div>
-    </div>
-    <div class="cat-card th-g">
-      <div class="cat-hdr"><div class="cat-ic">&#x1F4CB;</div><div><div class="cat-t">SSC (Staff Selection)</div><div class="cat-c">10 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="ssc_exam_prompt_generator.html" class="ep">CGL</a><a href="ssc_exam_prompt_generator.html" class="ep">CHSL</a><a href="ssc_exam_prompt_generator.html" class="ep">MTS</a><a href="ssc_exam_prompt_generator.html" class="ep">JE</a><a href="ssc_exam_prompt_generator.html" class="ep">GD Constable</a><a href="ssc_exam_prompt_generator.html" class="ep">+5 more</a></div>
-      <div class="cat-ft"><a href="ssc_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">Quant &middot; English &middot; Reasoning &middot; GK &middot; JE Technical</span></div>
-    </div>
-    <div class="cat-card th-v">
-      <div class="cat-hdr"><div class="cat-ic">&#x2697;&#xFE0F;</div><div><div class="cat-t">Engineering (JEE)</div><div class="cat-c">4 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="jee_exam_prompt_generator.html" class="ep">JEE Mains</a><a href="jee_exam_prompt_generator.html" class="ep">JEE Advanced</a><a href="jee_exam_prompt_generator.html" class="ep">BITSAT</a><a href="jee_exam_prompt_generator.html" class="ep">VITEEE</a></div>
-      <div class="cat-ft"><a href="jee_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">Physics &middot; Chemistry &middot; Mathematics &middot; PYQ Analysis</span></div>
-    </div>
-    <div class="cat-card th-t">
-      <div class="cat-hdr"><div class="cat-ic">&#x1F9EC;</div><div><div class="cat-t">Medical (NEET)</div><div class="cat-c">3 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="neet_exam_prompt_generator.html" class="ep">NEET UG</a><a href="neet_exam_prompt_generator.html" class="ep">AIIMS</a><a href="neet_exam_prompt_generator.html" class="ep">JIPMER</a></div>
-      <div class="cat-ft"><a href="neet_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">Biology &middot; Physics &middot; Chemistry &middot; Botany &middot; Zoology</span></div>
-    </div>
-    <div class="cat-card th-a">
-      <div class="cat-hdr"><div class="cat-ic">&#x1F4BC;</div><div><div class="cat-t">MBA / Management</div><div class="cat-c">6 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="mba_exam_prompt_generator.html" class="ep">CAT</a><a href="mba_exam_prompt_generator.html" class="ep">XAT</a><a href="mba_exam_prompt_generator.html" class="ep">SNAP</a><a href="mba_exam_prompt_generator.html" class="ep">IIFT</a><a href="mba_exam_prompt_generator.html" class="ep">NMAT</a><a href="mba_exam_prompt_generator.html" class="ep">MAT</a></div>
-      <div class="cat-ft"><a href="mba_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">VARC &middot; DILR &middot; Quant &middot; GD &middot; PI prep &nbsp;<em style="color:var(--txt3)">Coming soon: CAT</em></span></div>
-    </div>
-    <div class="cat-card th-p">
-      <div class="cat-hdr"><div class="cat-ic">&#x1F5FA;&#xFE0F;</div><div><div class="cat-t">State PSC</div><div class="cat-c">10 states &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="psc_exam_prompt_generator.html" class="ep">UPPSC</a><a href="psc_exam_prompt_generator.html" class="ep">BPSC</a><a href="psc_exam_prompt_generator.html" class="ep">MPSC</a><a href="psc_exam_prompt_generator.html" class="ep">RPSC</a><a href="psc_exam_prompt_generator.html" class="ep">TNPSC</a><a href="psc_exam_prompt_generator.html" class="ep">+5 more</a></div>
-      <div class="cat-ft"><a href="psc_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">GS &middot; State Specific &middot; Regional History &middot; Interview</span></div>
-    </div>
-    <div class="cat-card th-s">
-      <div class="cat-hdr"><div class="cat-ic">&#x1F4DA;</div><div><div class="cat-t">Teaching</div><div class="cat-c">8 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="teaching_exam_prompt_generator.html" class="ep">CTET</a><a href="teaching_exam_prompt_generator.html" class="ep">DSSSB</a><a href="teaching_exam_prompt_generator.html" class="ep">KVS</a><a href="teaching_exam_prompt_generator.html" class="ep">NVS</a><a href="teaching_exam_prompt_generator.html" class="ep">UP-TET</a><a href="teaching_exam_prompt_generator.html" class="ep">+3 more</a></div>
-      <div class="cat-ft"><a href="teaching_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">CDP &middot; Language &middot; Maths/Science &middot; Pedagogy</span></div>
-    </div>
-    <div class="cat-card th-k">
-      <div class="cat-hdr"><div class="cat-ic">&#x1F396;&#xFE0F;</div><div><div class="cat-t">Defence (Non-UPSC)</div><div class="cat-c">8 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="defence_exam_prompt_generator.html" class="ep">NDA</a><a href="defence_exam_prompt_generator.html" class="ep">AFCAT</a><a href="defence_exam_prompt_generator.html" class="ep">Agniveer</a><a href="defence_exam_prompt_generator.html" class="ep">Coast Guard</a><a href="defence_exam_prompt_generator.html" class="ep">MNS</a><a href="defence_exam_prompt_generator.html" class="ep">+3 more</a></div>
-      <div class="cat-ft"><a href="defence_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">Maths &middot; GK &middot; Science &middot; SSB Interview</span></div>
-    </div>
-    <div class="cat-card th-c">
-      <div class="cat-hdr"><div class="cat-ic">&#x2699;&#xFE0F;</div><div><div class="cat-t">PSU / GATE</div><div class="cat-c">12 PSUs &middot; 8 branches</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="gate_psu_exam_prompt_generator.html" class="ep">GATE CS</a><a href="gate_psu_exam_prompt_generator.html" class="ep">GATE ECE</a><a href="gate_psu_exam_prompt_generator.html" class="ep">GATE EE</a><a href="gate_psu_exam_prompt_generator.html" class="ep">GATE ME</a><a href="gate_psu_exam_prompt_generator.html" class="ep">BHEL</a><a href="gate_psu_exam_prompt_generator.html" class="ep">NTPC &middot; ISRO +8</a></div>
-      <div class="cat-ft"><a href="gate_psu_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">Engg Maths &middot; CS &middot; ECE &middot; EE &middot; ME &middot; PSU Interview</span></div>
-    </div>
-    <div class="cat-card th-l">
-      <div class="cat-hdr"><div class="cat-ic">&#x2696;&#xFE0F;</div><div><div class="cat-t">Law Entrance</div><div class="cat-c">8 exams &middot; 5 tools</div></div><div class="cat-st cs-live">&#x25CF; Live</div></div>
-      <div class="cat-exams"><a href="law_entrance_exam_prompt_generator.html" class="ep">CLAT</a><a href="law_entrance_exam_prompt_generator.html" class="ep">AILET</a><a href="law_entrance_exam_prompt_generator.html" class="ep">LSAT India</a><a href="law_entrance_exam_prompt_generator.html" class="ep">DU LLB</a><a href="law_entrance_exam_prompt_generator.html" class="ep">MH CET Law</a><a href="law_entrance_exam_prompt_generator.html" class="ep">+3 more</a></div>
-      <div class="cat-ft"><a href="law_entrance_exam_prompt_generator.html" class="cat-lnk">Open tool <span class="arr">&#8594;</span></a><span style="font-size:11px;color:var(--txt3)">Legal Reasoning &middot; English &middot; GK &middot; Logic &middot; NLU Cutoffs</span></div>
-    </div>
+
+    <a href="bank_exam_prompt_generator.html" class="cat-card tb-b" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-b">&#x1F3E6;</div><div class="card-hd"><div class="card-title">Banking &amp; Finance <span class="live-dot">Live</span></div><div class="card-meta">SBI &middot; IBPS &middot; RRB &middot; RBI &middot; 15 exams</div></div></div>
+      <div class="card-desc">Complete prep for SBI PO/Clerk, IBPS PO/Clerk/SO, RRB PO/Clerk, RBI Grade B &amp; NABARD. Quant, English, Reasoning, Banking GA &amp; Bank PO specialist tab.</div>
+      <div class="card-tags"><span class="tag">Quant</span><span class="tag">Reasoning</span><span class="tag">Banking GK</span><span class="tag">English</span><span class="tag">Bank PO Specialist</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Bank PO · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="railway_exam_prompt_generator.html" class="cat-card tb-o" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-o">&#x1F686;</div><div class="card-hd"><div class="card-title">Railways <span class="live-dot">Live</span></div><div class="card-meta">NTPC &middot; Group D &middot; ALP &middot; JE &middot; 8 exams</div></div></div>
+      <div class="card-desc">Full prep for RRB NTPC, Group D, ALP, JE, Station Master &amp; RPF. Maths, GK, Reasoning + ALP/JE Technical specialist with Railway-specific current affairs.</div>
+      <div class="card-tags"><span class="tag">Maths</span><span class="tag">GK</span><span class="tag">Reasoning</span><span class="tag">ALP Technical</span><span class="tag">JE Technical</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Technical · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="upsc_prompt_generator.html" class="cat-card tb-y" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-y">&#x1F3DB;&#xFE0F;</div><div class="card-hd"><div class="card-title">UPSC Civil Services <span class="live-dot">Live</span></div><div class="card-meta">IAS &middot; IPS &middot; IFS &middot; CDS &middot; 6 exams</div></div></div>
+      <div class="card-desc">Complete IAS prep: GS Papers 1–4, Essay, CSAT, Prelims strategy, Mains answer writing &amp; Interview. Optional subject support &amp; UPSC editorial analysis.</div>
+      <div class="card-tags"><span class="tag">GS 1–4</span><span class="tag">Essay</span><span class="tag">CSAT</span><span class="tag">Mains Writing</span><span class="tag">Interview</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Mains+Interview · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="ssc_exam_prompt_generator.html" class="cat-card tb-g" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-g">&#x1F4CB;</div><div class="card-hd"><div class="card-title">SSC (Staff Selection) <span class="live-dot">Live</span></div><div class="card-meta">CGL &middot; CHSL &middot; MTS &middot; JE &middot; 10 exams</div></div></div>
+      <div class="card-desc">CGL Tier 1&amp;2, CHSL, MTS, Stenographer, GD Constable &amp; SSC JE. Quant, English, Reasoning, GK + JE Technical drill for Civil/Electrical/Mechanical.</div>
+      <div class="card-tags"><span class="tag">Quant</span><span class="tag">English</span><span class="tag">GK</span><span class="tag">Reasoning</span><span class="tag">JE Technical</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · JE Drill · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="jee_exam_prompt_generator.html" class="cat-card tb-v" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-v">&#x2697;&#xFE0F;</div><div class="card-hd"><div class="card-title">Engineering (JEE) <span class="live-dot">Live</span></div><div class="card-meta">JEE Mains &middot; Advanced &middot; BITSAT &middot; VITEEE</div></div></div>
+      <div class="card-desc">Physics, Chemistry &amp; Mathematics for JEE Mains &amp; Advanced. Chapter-wise prompts, 10-year PYQ analysis, NTA pattern MCQs, JEE Advanced deep-dive &amp; IIT cutoffs.</div>
+      <div class="card-tags"><span class="tag">Physics</span><span class="tag">Chemistry</span><span class="tag">Mathematics</span><span class="tag">JEE Advanced</span><span class="tag">IIT Cutoffs</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · JEE Advanced · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="neet_exam_prompt_generator.html" class="cat-card tb-t" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-t">&#x1F9EC;</div><div class="card-hd"><div class="card-title">Medical (NEET) <span class="live-dot">Live</span></div><div class="card-meta">NEET UG &middot; AIIMS &middot; JIPMER</div></div></div>
+      <div class="card-desc">Biology (Botany &amp; Zoology), Physics &amp; Chemistry for NEET UG &amp; AIIMS. NCERT-linked prompts, 10-year PYQ patterns, topic-wise MCQ banks &amp; NEET PG overview.</div>
+      <div class="card-tags"><span class="tag">Biology</span><span class="tag">Physics</span><span class="tag">Chemistry</span><span class="tag">NCERT Focus</span><span class="tag">AIIMS PG</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · AIIMS/PG · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="mba_exam_prompt_generator.html" class="cat-card tb-a" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-a">&#x1F4BC;</div><div class="card-hd"><div class="card-title">MBA / Management <span class="live-dot">Live</span></div><div class="card-meta">CAT &middot; XAT &middot; SNAP &middot; IIFT &middot; NMAT &middot; MAT</div></div></div>
+      <div class="card-desc">VARC, DILR &amp; Quantitative Aptitude for CAT, XAT, SNAP &amp; IIFT. Passage-based reading, data interpretation, GD &amp; PI preparation with IIM cutoff analysis.</div>
+      <div class="card-tags"><span class="tag">VARC</span><span class="tag">DILR</span><span class="tag">Quant</span><span class="tag">GD &amp; PI</span><span class="tag">IIM Cutoffs</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · GD+PI · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="psc_exam_prompt_generator.html" class="cat-card tb-p" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-p">&#x1F5FA;&#xFE0F;</div><div class="card-hd"><div class="card-title">State PSC <span class="live-dot">Live</span></div><div class="card-meta">UPPSC &middot; BPSC &middot; MPSC &middot; RPSC &middot; TNPSC &middot; 10 states</div></div></div>
+      <div class="card-desc">State-specific GS, regional history, geography &amp; culture for UPPSC, BPSC, MPSC, RPSC, TNPSC &amp; more. Includes state current affairs &amp; interview preparation.</div>
+      <div class="card-tags"><span class="tag">State GS</span><span class="tag">Regional History</span><span class="tag">State CA</span><span class="tag">Interview</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Specialist · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="teaching_exam_prompt_generator.html" class="cat-card tb-s" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-s">&#x1F4DA;</div><div class="card-hd"><div class="card-title">Teaching Exams <span class="live-dot">Live</span></div><div class="card-meta">CTET &middot; DSSSB &middot; KVS &middot; NVS &middot; UP-TET &middot; 8 exams</div></div></div>
+      <div class="card-desc">Child Development &amp; Pedagogy, Language papers, Maths/Science for CTET, DSSSB, KVS &amp; NVS. Includes teaching methodology &amp; classroom scenario questions.</div>
+      <div class="card-tags"><span class="tag">CDP</span><span class="tag">Language</span><span class="tag">Maths/Science</span><span class="tag">Pedagogy</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Pedagogy · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="defence_exam_prompt_generator.html" class="cat-card tb-k" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-k">&#x1F396;&#xFE0F;</div><div class="card-hd"><div class="card-title">Defence (Non-UPSC) <span class="live-dot">Live</span></div><div class="card-meta">NDA &middot; AFCAT &middot; Agniveer &middot; Coast Guard &middot; MNS</div></div></div>
+      <div class="card-desc">Maths, GK, Science &amp; English for NDA, AFCAT, Agniveer Army/Navy/AF, Coast Guard &amp; MNS. Includes SSB Interview deep-drill covering all 6 stages.</div>
+      <div class="card-tags"><span class="tag">Maths</span><span class="tag">GK</span><span class="tag">Science</span><span class="tag">SSB Interview</span><span class="tag">Agniveer</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · SSB Drill · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="gate_psu_exam_prompt_generator.html" class="cat-card tb-c" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-c">&#x2699;&#xFE0F;</div><div class="card-hd"><div class="card-title">PSU / GATE <span class="live-dot">Live</span></div><div class="card-meta">GATE CS &middot; ECE &middot; EE &middot; ME &middot; BHEL &middot; NTPC &middot; ISRO &middot; DRDO</div></div></div>
+      <div class="card-desc">Engineering Maths, General Aptitude + full branch subjects for GATE CS, ECE, EE &amp; ME. NAT + MCQ pattern, 1M vs 2M analysis &amp; PSU interview prep (BHEL/NTPC/ISRO/ONGC).</div>
+      <div class="card-tags"><span class="tag">GATE CS</span><span class="tag">GATE ECE/EE/ME</span><span class="tag">NAT Questions</span><span class="tag">PSU Interview</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · PSU Interview · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+    <a href="law_entrance_exam_prompt_generator.html" class="cat-card tb-l" style="text-decoration:none">
+      <div class="card-top"><div class="card-ic-wrap ci-l">&#x2696;&#xFE0F;</div><div class="card-hd"><div class="card-title">Law Entrance <span class="live-dot">Live</span></div><div class="card-meta">CLAT &middot; AILET &middot; LSAT India &middot; DU LLB &middot; MH CET Law</div></div></div>
+      <div class="card-desc">Legal Reasoning, English &amp; GK for CLAT (2020+ passage pattern), AILET &amp; LSAT India. Principle-Fact drill, NLU cutoffs, landmark case laws &amp; current affairs strategy.</div>
+      <div class="card-tags"><span class="tag">Legal Reasoning</span><span class="tag">English</span><span class="tag">Current Affairs</span><span class="tag">NLU Cutoffs</span></div>
+      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Legal Drill · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+    </a>
+
+  </div><!-- /cat-grid -->
+
+  <!-- AI PLATFORMS -->
+  <div style="margin:52px 0 28px">
+    <div class="sec-eyebrow">Powered by</div>
+    <h2 class="sec-hd">Works with all major AI platforms</h2>
+    <p class="sec-sub">Generate prompt here &rarr; one click to open in any AI &rarr; get expert answers instantly. All free tiers supported.</p>
+  </div>
+  <div class="ai-strip">
+    <a href="https://claude.ai/new" target="_blank" rel="noopener" class="ai-pill ap-cl">&#x1F916; <strong>Claude</strong> — Best for detailed explanations</a>
+    <a href="https://chat.openai.com/" target="_blank" rel="noopener" class="ai-pill ap-gp">&#x1F4AC; <strong>ChatGPT</strong> — Best for practice MCQs</a>
+    <a href="https://gemini.google.com/" target="_blank" rel="noopener" class="ai-pill ap-gm">&#x2728; <strong>Gemini</strong> — Best for current affairs</a>
+    <a href="https://www.perplexity.ai/" target="_blank" rel="noopener" class="ai-pill ap-pp">&#x1F50D; <strong>Perplexity</strong> — Best for web-sourced info</a>
+    <a href="https://copilot.microsoft.com/" target="_blank" rel="noopener" class="ai-pill ap-cp">&#x1FA9F; <strong>Copilot</strong> — Microsoft AI</a>
+    <a href="https://www.meta.ai/" target="_blank" rel="noopener" class="ai-pill ap-mt">&#x1F310; <strong>Meta AI</strong> — Free &amp; fast</a>
   </div>
 
-  <!-- CTA section -->
-  <div class="cta-sec" style="margin-top:32px">
-    <h3>&#x1F916; How It Works</h3>
-    <p>Select any exam tool &rarr; choose topic &rarr; toggle sections &rarr; generate prompt &rarr; paste into your favourite AI</p>
-    <div class="cta-btns">
-      <a href="bank_exam_prompt_generator.html" class="cta-btn cta-btn-p">&#x1F3E6; Try Banking Tool</a>
-      <a href="upsc_prompt_generator.html" class="cta-btn cta-btn-s">&#x1F3DB;&#xFE0F; Try UPSC Tool</a>
-      <a href="gate_psu_exam_prompt_generator.html" class="cta-btn cta-btn-s">&#x2699;&#xFE0F; Try GATE Tool</a>
-    </div>
-  </div>
-
-  <!-- AI Platforms -->
-  <div style="margin:32px 0 22px">
-    <h2 class="sec-hd">&#x1F916; Works with all major AI platforms</h2>
-    <p class="sec-sub">Generate your prompt here &rarr; one click to open in any AI &rarr; paste &amp; get expert answers instantly</p>
-  </div>
-  <div class="ai-grid">
-    <a href="https://claude.ai/new" target="_blank" rel="noopener" class="ai-card"><div class="ai-card-ic">&#x1F916;</div><h4>Claude</h4><p>by Anthropic</p></a>
-    <a href="https://chat.openai.com/" target="_blank" rel="noopener" class="ai-card"><div class="ai-card-ic">&#x1F4AC;</div><h4>ChatGPT</h4><p>by OpenAI</p></a>
-    <a href="https://gemini.google.com/" target="_blank" rel="noopener" class="ai-card"><div class="ai-card-ic">&#x2728;</div><h4>Gemini</h4><p>by Google</p></a>
-    <a href="https://www.perplexity.ai/" target="_blank" rel="noopener" class="ai-card"><div class="ai-card-ic">&#x1F50D;</div><h4>Perplexity</h4><p>Web-aware AI</p></a>
-    <a href="https://copilot.microsoft.com/" target="_blank" rel="noopener" class="ai-card"><div class="ai-card-ic">&#x1FA9F;</div><h4>Copilot</h4><p>by Microsoft</p></a>
-    <a href="https://www.meta.ai/" target="_blank" rel="noopener" class="ai-card"><div class="ai-card-ic">&#x1F310;</div><h4>Meta AI</h4><p>by Meta</p></a>
-  </div>
-
-  <!-- Feature Comparison Table -->
-  <div style="margin:36px 0 16px">
-    <h3 style="font-size:16px;font-weight:800;color:var(--txt);margin-bottom:14px">&#x1F4CA; Feature Comparison &mdash; Banking &middot; Railway &middot; UPSC &middot; SSC &middot; JEE &middot; NEET</h3>
+  <!-- COMPARISON TABLE -->
+  <div style="margin:52px 0 16px">
+    <div class="sec-eyebrow">Feature overview</div>
+    <h2 class="sec-hd">What each tool covers</h2>
+    <p class="sec-sub">Every tool is exam-specific — not generic. Here's a quick comparison of the top 6.</p>
   </div>
   <div class="cmp-wrap">
     <table class="cmp-tbl">
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th style="color:#1E40AF">&#x1F3E6; Banking</th>
-          <th style="color:#C2410C">&#x1F686; Railway</th>
-          <th style="color:#78350F">&#x1F3DB;&#xFE0F; UPSC</th>
-          <th style="color:#14532D">&#x1F4CB; SSC</th>
-          <th style="color:#3730A3">&#x2697;&#xFE0F; JEE</th>
-          <th style="color:#0F766E">&#x1F9EC; NEET</th>
-        </tr>
-      </thead>
+      <thead><tr>
+        <th>Feature</th>
+        <th>&#x1F3E6; Banking</th>
+        <th>&#x1F686; Railway</th>
+        <th>&#x1F3DB;&#xFE0F; UPSC</th>
+        <th>&#x1F4CB; SSC</th>
+        <th>&#x2697;&#xFE0F; JEE</th>
+        <th>&#x1F9EC; NEET</th>
+      </tr></thead>
       <tbody>
-        <tr>
-          <td>Study topic prompts</td>
-          <td>&#x2705; Clerk + PO</td>
-          <td>&#x2705; NTPC / Group D / ALP</td>
-          <td>&#x2705; Prelims + Mains GS</td>
-          <td>&#x2705; CGL / CHSL / MTS</td>
-          <td>&#x2705; Mains + Advanced</td>
-          <td>&#x2705; Physics / Chem / Bio</td>
-        </tr>
-        <tr>
-          <td>Daily newspaper analysis</td>
-          <td>&#x2705; Banking focus</td>
-          <td>&#x2705; Railway GK focus</td>
-          <td>&#x2705; UPSC editorial</td>
-          <td>&#x2705; SSC GK focus</td>
-          <td>&mdash;</td>
-          <td>&mdash;</td>
-        </tr>
-        <tr>
-          <td>Practice set generator</td>
-          <td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td>
-        </tr>
-        <tr>
-          <td>PYQ analysis (10-year)</td>
-          <td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td>
-        </tr>
-        <tr>
-          <td>Specialist / advanced tab</td>
-          <td>&#x2705; Bank PO</td>
-          <td>&#x2705; ALP / JE Technical</td>
-          <td>&#x2705; Mains + Interview</td>
-          <td>&#x2705; JE Technical Drill</td>
-          <td>&#x2705; JEE Advanced</td>
-          <td>&#x2705; AIIMS / NEET PG</td>
-        </tr>
-        <tr>
-          <td>Answer writing / essay prep</td>
-          <td>&mdash;</td><td>&mdash;</td>
-          <td>&#x2705; Full Mains + PT</td>
-          <td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>
-        </tr>
-        <tr>
-          <td>Detailed syllabus &amp; strategy</td>
-          <td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td>
-        </tr>
-        <tr>
-          <td>Year auto-calibrated (current)</td>
-          <td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td>
-        </tr>
-        <tr>
-          <td>6 AI platform launchers</td>
-          <td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td>
-        </tr>
+        <tr><td>Study topic prompts</td><td>&#x2705; Clerk + PO</td><td>&#x2705; NTPC/Group D</td><td>&#x2705; Prelims+Mains</td><td>&#x2705; CGL/CHSL/MTS</td><td>&#x2705; Mains+Advanced</td><td>&#x2705; Physics/Chem/Bio</td></tr>
+        <tr><td>Newspaper / editorial analysis</td><td>&#x2705; Banking focus</td><td>&#x2705; Railway GK</td><td>&#x2705; UPSC editorial</td><td>&#x2705; SSC GK focus</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Practice set generator</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td></tr>
+        <tr><td>10-year PYQ analysis</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td></tr>
+        <tr><td>Specialist / advanced tab</td><td>&#x2705; Bank PO</td><td>&#x2705; ALP/JE Tech</td><td>&#x2705; Mains+Interview</td><td>&#x2705; JE Technical</td><td>&#x2705; JEE Advanced</td><td>&#x2705; AIIMS/NEET PG</td></tr>
+        <tr><td>Answer writing / essay prep</td><td>&mdash;</td><td>&mdash;</td><td>&#x2705; Full Mains+PT</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Syllabus &amp; strategy</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td></tr>
+        <tr><td>Current-year auto-calibration</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td></tr>
+        <tr><td>6 AI platform one-click launch</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td><td>&#x2705;</td></tr>
       </tbody>
     </table>
   </div>
 
   <!-- FAQ -->
-  <div style="margin:36px 0 16px">
-    <h2 class="sec-hd">&#x2753; Frequently Asked Questions</h2>
-    <p class="sec-sub">Everything you need to know about using these free exam tools</p>
+  <div style="margin:52px 0 16px">
+    <div class="sec-eyebrow">Questions</div>
+    <h2 class="sec-hd">Students ask us this</h2>
   </div>
-  <div id="faq-wrap">
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">What exactly does this tool generate?</div>
-      <div class="faq-a">It generates structured study prompts — detailed instructions you paste into Claude, ChatGPT, Gemini or any AI. The AI then acts as an expert tutor for that specific topic, exam, and year. You get concepts, solved examples, practice MCQs, PYQ patterns, shortcuts, and exam-day strategy — all in one go.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Is this free? Do I need to create an account?</div>
-      <div class="faq-a">100% free, no account needed. Open any tool, generate prompts, copy and paste. No login, no email, no subscription. The tools run entirely in your browser.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Which AI should I use with these prompts?</div>
-      <div class="faq-a">Claude (Anthropic) and ChatGPT (GPT-4o) give the most detailed and accurate exam responses. Gemini is great for current affairs. Perplexity is useful when you need web-sourced, up-to-date information. All 6 platforms are one-click accessible from within any tool.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Are the prompts updated for the current exam year?</div>
-      <div class="faq-a">Yes — all tools auto-detect the current year using JavaScript and calibrate content for the latest exam cycle. PYQ ranges, cutoff data, and syllabus references all update dynamically.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Which exams are covered?</div>
-      <div class="faq-a">12 major categories covering 80+ Indian competitive exams: Banking (SBI/IBPS/RRB), Railway (NTPC/Group D/ALP/JE), UPSC Civil Services, SSC (CGL/CHSL/MTS/JE), JEE (Mains + Advanced), NEET UG, MBA/CAT, State PSC (10 states), Teaching (CTET/KVS/NVS), Defence (NDA/AFCAT/Agniveer), PSU/GATE (CS/ECE/EE/ME), and Law Entrance (CLAT/AILET/LSAT India).</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Can I use these prompts on my phone?</div>
-      <div class="faq-a">Yes — all tools are fully mobile-responsive. The toggle sections, topic selectors, and one-click AI launchers all work on any screen size. Claude and ChatGPT both have mobile apps you can paste prompts into directly.</div>
-    </div>
+  <div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What exactly does this tool generate? <div class="faq-ic">+</div></div><div class="faq-a">It generates structured study prompts — detailed instructions you paste into Claude, ChatGPT, Gemini, or any AI. The AI then acts as an expert tutor for that specific topic, exam, and year. One prompt gives you: concepts, solved examples, practice MCQs, PYQ patterns, shortcuts, and exam-day strategy.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Is this 100% free? Do I need to sign up? <div class="faq-ic">+</div></div><div class="faq-a">Completely free — no account, no email, no payment. Open any tool, generate your prompt, copy and paste. Everything runs in your browser with zero data collection on your inputs.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Which AI gives the best results for Indian exams? <div class="faq-ic">+</div></div><div class="faq-a">Claude (Anthropic) and ChatGPT-4o give the most detailed and accurate exam responses. Gemini is excellent for current affairs questions. Perplexity is best when you want web-sourced, real-time data. All 6 platforms are one-click accessible from inside any tool.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Are prompts updated for the current year's exam? <div class="faq-ic">+</div></div><div class="faq-a">Yes — all tools auto-detect the current year using JavaScript and calibrate content for the latest exam cycle. PYQ ranges, cutoff data, and syllabus references all update automatically. No manual updates needed.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I use this on my phone? <div class="faq-ic">+</div></div><div class="faq-a">Absolutely — all tools are fully mobile-responsive. Toggle sections, topic selectors, and one-click AI launchers all work perfectly on any screen size. Claude and ChatGPT both have mobile apps you can paste prompts into directly.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do I still need to use textbooks or coaching? <div class="faq-ic">+</div></div><div class="faq-a">These tools complement your preparation — they don't replace NCERT, standard reference books, or quality coaching. Use them to generate focused AI tutoring sessions on weak topics, get instant practice sets, and analyse PYQ patterns. Think of it as having a personal tutor available 24/7 at zero cost.</div></div>
   </div>
 
-  <!-- Social follow CTA -->
-  <div style="background:linear-gradient(135deg,#060D1F,#0D1D42);border-radius:var(--rl);padding:30px;text-align:center;margin:36px 0 0;position:relative;overflow:hidden">
-    <div style="position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(13,148,136,.18),transparent 55%)"></div>
-    <div style="position:relative">
-      <h3 style="font-size:18px;font-weight:900;color:#fff;margin-bottom:7px">Follow Raghavbegins for daily exam updates</h3>
-      <p style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:20px">Daily current affairs &middot; GATE &amp; CLAT tips &middot; Free study material &middot; AI study hacks</p>
-      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
-        <a href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:22px;text-decoration:none;background:#1877F2;color:#fff;font-size:12px;font-weight:700">&#x1F4AC; Facebook</a>
-        <a href="https://www.instagram.com/raghav3o" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:22px;text-decoration:none;background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:#fff;font-size:12px;font-weight:700">&#x1F4F8; @raghav3o</a>
-        <a href="https://www.youtube.com/@raghav_begins" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:22px;text-decoration:none;background:#FF0000;color:#fff;font-size:12px;font-weight:700">&#x1F4FA; @raghav_begins</a>
-      </div>
+  <!-- SOCIAL CTA -->
+  <div class="soc-cta" style="margin-top:52px">
+    <h3>&#x1F4E3; Follow for daily exam updates</h3>
+    <p>Daily current affairs &middot; GATE &amp; CLAT tips &middot; Free study material &middot; Exam notifications</p>
+    <div class="soc-btns">
+      <a class="soc-btn sb-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        Raghavbegins
+      </a>
+      <a class="soc-btn sb-ig" href="https://www.instagram.com/raghav3o" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @raghav3o
+      </a>
+      <a class="soc-btn sb-yt" href="https://www.youtube.com/@raghav_begins" target="_blank" rel="noopener">
+        <svg width="18" height="13" viewBox="0 0 24 17" fill="#fff"><path d="M23.495 2.205a3.02 3.02 0 0 0-2.126-2.138C19.505 0 12 0 12 0s-7.505 0-9.369.067A3.02 3.02 0 0 0 .505 2.205 31.247 31.247 0 0 0 0 8.07a31.247 31.247 0 0 0 .505 5.865 3.02 3.02 0 0 0 2.126 2.138C4.495 16.14 12 16.14 12 16.14s7.505 0 9.369-.067a3.02 3.02 0 0 0 2.126-2.138A31.247 31.247 0 0 0 24 8.07a31.247 31.247 0 0 0-.505-5.865zM9.609 11.545V4.594l6.264 3.476-6.264 3.475z"/></svg>
+        @raghav_begins
+      </a>
     </div>
   </div>
 
 </main>
-<!-- Footer -->
+
 <footer class="ft">
-  <div class="ft-sr">
-    <a class="ftsb ftb-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-      Raghavbegins
-    </a>
-    <a class="ftsb ftb-ig" href="https://www.instagram.com/raghav3o" target="_blank" rel="noopener">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      @raghav3o
-    </a>
-    <a class="ftsb ftb-yt" href="https://www.youtube.com/@raghav_begins" target="_blank" rel="noopener">
-      <svg width="17" height="12" viewBox="0 0 24 17" fill="#fff"><path d="M23.495 2.205a3.02 3.02 0 0 0-2.126-2.138C19.505 0 12 0 12 0s-7.505 0-9.369.067A3.02 3.02 0 0 0 .505 2.205 31.247 31.247 0 0 0 0 8.07a31.247 31.247 0 0 0 .505 5.865 3.02 3.02 0 0 0 2.126 2.138C4.495 16.14 12 16.14 12 16.14s7.505 0 9.369-.067a3.02 3.02 0 0 0 2.126-2.138A31.247 31.247 0 0 0 24 8.07a31.247 31.247 0 0 0-.505-5.865zM9.609 11.545V4.594l6.264 3.476-6.264 3.475z"/></svg>
-      @raghav_begins
-    </a>
+  <div class="ft-top">
+    <a class="ftsb ftb-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg> Raghavbegins</a>
+    <a class="ftsb ftb-ig" href="https://www.instagram.com/raghav3o" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @raghav3o</a>
+    <a class="ftsb ftb-yt" href="https://www.youtube.com/@raghav_begins" target="_blank" rel="noopener"><svg width="16" height="12" viewBox="0 0 24 17" fill="#fff"><path d="M23.495 2.205a3.02 3.02 0 0 0-2.126-2.138C19.505 0 12 0 12 0s-7.505 0-9.369.067A3.02 3.02 0 0 0 .505 2.205 31.247 31.247 0 0 0 0 8.07a31.247 31.247 0 0 0 .505 5.865 3.02 3.02 0 0 0 2.126 2.138C4.495 16.14 12 16.14 12 16.14s7.505 0 9.369-.067a3.02 3.02 0 0 0 2.126-2.138A31.247 31.247 0 0 0 24 8.07a31.247 31.247 0 0 0-.505-5.865zM9.609 11.545V4.594l6.264 3.476-6.264 3.475z"/></svg> @raghav_begins</a>
   </div>
   <div class="ft-contact">
     <p>&#x1F4E7; <a href="mailto:raghavbegins@gmail.com">raghavbegins@gmail.com</a> &nbsp;&middot;&nbsp; &#x1F1EE;&#x1F1F3; India &nbsp;&middot;&nbsp; <a href="contact.html">Contact Us</a> &nbsp;&middot;&nbsp; <a href="privacy-policy.html">Privacy Policy</a></p>
   </div>
-  <div class="ft-links">
-    <a class="ftlnk" href="index.html">Home</a>
+  <div class="ft-nav">
     <a class="ftlnk" href="bank_exam_prompt_generator.html">Banking</a>
     <a class="ftlnk" href="railway_exam_prompt_generator.html">Railway</a>
     <a class="ftlnk" href="upsc_prompt_generator.html">UPSC</a>
@@ -497,12 +568,10 @@ a{color:var(--blu2);text-decoration:none}
 
 <script>
 (function(){
-  // Copyright
   try{document.getElementById("ft-cr").textContent=atob("wqkgMjAyNSBSYWdoYXZiZWdpbnMuIEFsbCByaWdodHMgcmVzZXJ2ZWQu");}catch(e){}
-  // Cookie bar
   if(localStorage.getItem("rb_ck_idx"))document.getElementById("ckbar").classList.add("gone");
 })();
-function ckOk(){localStorage.setItem("rb_ck_idx","a");document.getElementById("ckbar").classList.add("gone");showToast("Cookies accepted!");}
+function ckOk(){localStorage.setItem("rb_ck_idx","a");document.getElementById("ckbar").classList.add("gone");showToast("Cookies accepted ✓");}
 function ckNo(){localStorage.setItem("rb_ck_idx","e");document.getElementById("ckbar").classList.add("gone");}
 function openPM(){document.getElementById("pmov").classList.add("open");document.body.style.overflow="hidden";}
 function closePM(){document.getElementById("pmov").classList.remove("open");document.body.style.overflow="";}
