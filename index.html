@@ -249,64 +249,43 @@ a{color:var(--pr);text-decoration:none}
 
 
 
-/* ── UPDATES SECTION ── */
-.upd-section{background:linear-gradient(180deg,#F0F4FF,var(--sf2));padding:0 20px}
-.upd-inner{max-width:1160px;margin:0 auto;padding:48px 0 0}
-.upd-grid{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
 
-/* cards */
-.news-card{background:#fff;border:1.5px solid var(--bdr);border-radius:var(--r);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;transition:all .2s;text-decoration:none;color:inherit;margin-bottom:12px;cursor:pointer}
-.news-card:hover{border-color:var(--pr);box-shadow:0 4px 20px rgba(79,70,229,.1);transform:translateY(-2px)}
-.news-card:last-child{margin-bottom:0}
-.nc-hot{border-left:4px solid #EF4444}
-.nc-new{border-left:4px solid #10B981}
-.nc-open{border-left:4px solid #F59E0B}
-.nc-result{border-left:4px solid #6366F1}
-.news-date-wrap{display:flex;flex-direction:column;align-items:center;min-width:44px;padding-top:2px}
-.news-day{font-size:22px;font-weight:900;color:var(--pr);line-height:1}
-.news-mon{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:.06em}
-.news-body{flex:1;min-width:0}
-.news-tag{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:10px;font-size:10px;font-weight:800;margin-bottom:6px;letter-spacing:.03em}
-.nt-hot{background:#FEE2E2;color:#991B1B}
-.nt-new{background:#DCFCE7;color:#14532D}
-.nt-open{background:#FEF3C7;color:#92400E}
-.nt-result{background:#EDE9FE;color:#4C1D95}
-.nt-tip{background:#DBEAFE;color:#1E40AF}
-.news-title{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:4px;line-height:1.4}
-.news-desc{font-size:12.5px;color:var(--txt3);line-height:1.6}
-.news-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px}
-.news-prep{font-size:11.5px;font-weight:700;color:var(--pr);display:inline-flex;align-items:center;gap:3px}
-.news-src{font-size:11px;color:var(--txt3)}
+/* ── LATEST UPDATES (signature: signal-strip) ── */
+.signal-section{background:var(--ink);padding:64px 24px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.signal-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(91,79,255,.12) 1px,transparent 1px);background-size:22px 22px;mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,black,transparent 90%);pointer-events:none}
+.signal-inner{max-width:1200px;margin:0 auto;position:relative}
+.signal-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:30px}
+.signal-eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mi);display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.signal-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--mi);animation:blink 1.6s infinite}
+.signal-head h2{font-size:clamp(22px,3vw,30px);font-weight:900;color:#fff;letter-spacing:-.6px}
+.signal-updated{font-size:11px;color:var(--txt3);padding:5px 14px;border:1px solid rgba(255,255,255,.12);border-radius:20px;white-space:nowrap}
 
-/* sidebar */
-.side-card{background:#fff;border:1.5px solid var(--bdr);border-radius:var(--r);padding:18px;margin-bottom:14px}
-.side-card:last-child{margin-bottom:0}
-.side-card h4{font-size:13px;font-weight:800;color:var(--txt);margin-bottom:14px;display:flex;align-items:center;gap:7px}
-.sel{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bdr);text-decoration:none}
-.sel:last-child{border-bottom:none}
-.sel-left{display:flex;align-items:center;gap:9px}
-.sel-ic{font-size:16px;flex-shrink:0}
-.sel-nm{font-size:12.5px;font-weight:600;color:var(--txt)}
-.sel-date{font-size:10.5px;color:var(--txt3);margin-top:1px}
-.sel-status{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;white-space:nowrap;flex-shrink:0}
-.ss-open{background:#DCFCE7;color:#14532D}
-.ss-soon{background:#FEF3C7;color:#92400E}
-.ss-result{background:#EDE9FE;color:#4C1D95}
-.ss-admit{background:#DBEAFE;color:#1E3A8A}
-.ss-ongoing{background:#FEE2E2;color:#991B1B}
+.signal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.signal-card{grid-column:span 2;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;transition:all .2s;position:relative;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;gap:10px}
+.signal-card:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);transform:translateY(-3px)}
+.signal-featured{grid-column:span 4;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:24px 26px;background:linear-gradient(120deg,rgba(91,79,255,.14),rgba(0,194,255,.08));border:1px solid rgba(123,114,255,.35)}
+.signal-featured:hover{border-color:rgba(123,114,255,.55)}
+.sig-stamp{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--mi);letter-spacing:.03em;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.sig-stamp::before{content:"●";font-size:8px}
+.sig-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.02em;width:fit-content}
+.sig-tag.t-gate{background:rgba(0,194,255,.15);color:#7DD3FC}
+.sig-tag.t-upsc{background:rgba(255,184,0,.15);color:#FCD34D}
+.sig-tag.t-ssc{background:rgba(16,185,129,.15);color:#6EE7B7}
+.sig-tag.t-bank{background:rgba(91,79,255,.18);color:#B4AEFF}
+.sig-tag.t-rail{background:rgba(255,77,109,.15);color:#FCA5A5}
+.sig-tag.t-neet{background:rgba(0,255,179,.15);color:#5EEAC4}
+.sig-tag.t-law{background:rgba(168,159,255,.18);color:#D8D4FF}
+.sig-title{font-size:14.5px;font-weight:700;color:#fff;line-height:1.4}
+.signal-featured .sig-title{font-size:17px}
+.sig-desc{font-size:12.5px;color:var(--txt2);line-height:1.65}
+.sig-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px}
+.sig-src{font-size:10.5px;color:var(--txt3);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.sig-go{font-size:11.5px;font-weight:800;color:var(--mi);display:flex;align-items:center;gap:4px}
+.signal-card:hover .sig-go{gap:7px}
+.sig-featured-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:24px;background:#fff;color:var(--ink);font-size:12.5px;font-weight:800;white-space:nowrap}
 
-.tip-list{display:flex;flex-direction:column;gap:10px}
-.tip-item{display:flex;gap:10px;align-items:flex-start}
-.tip-ic{font-size:18px;flex-shrink:0;line-height:1.3}
-.tip-txt{font-size:12.5px;color:var(--txt2);line-height:1.5}
-.tip-txt strong{color:var(--txt);display:block}
-
-@media(max-width:900px){.upd-grid{grid-template-columns:1fr}}
-@media(max-width:640px){.news-card{flex-direction:column;gap:8px}.news-date-wrap{flex-direction:row;gap:6px;min-width:unset}}
-
-
-.tb-mi{border-top:3px solid #00FFB3}
-.ci-mi{background:linear-gradient(135deg,#ECFDF5,#D1FAE5)}
+@media(max-width:860px){.signal-grid{grid-template-columns:1fr 1fr}.signal-card{grid-column:span 1}.signal-featured{grid-column:span 2;grid-template-columns:1fr;text-align:left}.sig-featured-cta{width:fit-content}}
+@media(max-width:560px){.signal-grid{grid-template-columns:1fr}.signal-card{grid-column:span 1}.signal-featured{grid-column:span 1}}
 
 </style>
 </head>
@@ -404,117 +383,90 @@ a{color:var(--pr);text-decoration:none}
     <div class="how-step"><div class="how-num">5</div><div class="how-txt"><strong>Study &amp; crack it</strong><span>Expert-level answers instantly</span></div></div>
   </div>
 </div>
-<!-- UPDATES SECTION -->
-<div class="upd-section">
-  <div class="upd-inner">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:22px">
+
+
+
+
+
+
+
+<!-- LATEST UPDATES — signal strip -->
+<section class="signal-section">
+  <div class="signal-bg"></div>
+  <div class="signal-inner">
+    <div class="signal-head">
       <div>
-        <div class="sec-eyebrow">What's new</div>
-        <h2 class="sec-hd" style="margin-bottom:4px">Latest Exam Updates &amp; Notifications</h2>
-        <p style="font-size:14px;color:var(--txt3)">Exam notifications, admit cards, results &amp; application dates &mdash; June 2025</p>
+        <div class="signal-eyebrow"><span class="dot"></span> Live signal</div>
+        <h2>Today's exam &amp; job updates</h2>
       </div>
-      <span style="font-size:11px;color:var(--txt3);padding:4px 12px;background:#fff;border:1px solid var(--bdr);border-radius:20px">&#x1F4C5; Updated June 2026</span>
+      <span class="signal-updated">&#x1F4E1; Refreshed 5 July 2026</span>
     </div>
-    <div class="upd-grid">
-      <div>
-        <a href="gate_psu_exam_prompt_generator.html" class="news-card nc-hot">
-          <div class="news-date-wrap"><div class="news-day">01</div><div class="news-mon">Jun</div></div>
-          <div class="news-body"><span class="news-tag nt-hot">&#x1F525; Hot</span>
-            <div class="news-title">GATE 2026 &mdash; IIT Roorkee conducting; registration opens August 2025</div>
-            <div class="news-desc">GATE 2026 across 30 papers including new Data Science &amp; AI (DA) and Geomatics Engineering. Reg: August&ndash;September 2025. Exam: February 2026.</div>
-            <div class="news-meta"><a href="gate_psu_exam_prompt_generator.html" class="news-prep">&#x1F4DA; GATE Prep &#8594;</a><span class="news-src">gate2026.iitr.ac.in</span></div>
-          </div>
-        </a>
-        <a href="upsc_prompt_generator.html" class="news-card nc-result">
-          <div class="news-date-wrap"><div class="news-day">28</div><div class="news-mon">May</div></div>
-          <div class="news-body"><span class="news-tag nt-result">&#x1F3C6; Result</span>
-            <div class="news-title">UPSC CSE Prelims 2025 Result Declared &mdash; Mains window now open</div>
-            <div class="news-desc">UPSC Prelims 2025 result out. Qualified candidates must start Mains prep. GS 1&ndash;4, Essay &amp; Optional. Mains: September&ndash;October 2025.</div>
-            <div class="news-meta"><a href="upsc_prompt_generator.html" class="news-prep">&#x1F4DA; UPSC Prep &#8594;</a><span class="news-src">upsc.gov.in</span></div>
-          </div>
-        </a>
-        <a href="ssc_exam_prompt_generator.html" class="news-card nc-open">
-          <div class="news-date-wrap"><div class="news-day">25</div><div class="news-mon">May</div></div>
-          <div class="news-body"><span class="news-tag nt-open">&#x1F4C4; Admit Card</span>
-            <div class="news-title">SSC CGL 2025 Tier II Admit Card Released &mdash; Exam in June 2025</div>
-            <div class="news-desc">SSC CGL 2025 Tier II admit card available. Exam in June 2025. Focus: Quant (Module I &amp; II), English, Statistics &amp; General Studies.</div>
-            <div class="news-meta"><a href="ssc_exam_prompt_generator.html" class="news-prep">&#x1F4DA; SSC Prep &#8594;</a><span class="news-src">ssc.gov.in</span></div>
-          </div>
-        </a>
-        <a href="defence_exam_prompt_generator.html" class="news-card nc-new">
-          <div class="news-date-wrap"><div class="news-day">20</div><div class="news-mon">May</div></div>
-          <div class="news-body"><span class="news-tag nt-new">&#x1F4E2; Apply Now</span>
-            <div class="news-title">NDA &amp; NA (II) 2025 &mdash; Applications open, written exam 14 September</div>
-            <div class="news-desc">UPSC NDA (II) 2025 notification released. Apply at upsconline.gov.in. Written exam: 14 Sep 2025. Eligibility: 10+2 passed or appearing.</div>
-            <div class="news-meta"><a href="defence_exam_prompt_generator.html" class="news-prep">&#x1F4DA; Defence Prep &#8594;</a><span class="news-src">upsc.gov.in</span></div>
-          </div>
-        </a>
-        <a href="bank_exam_prompt_generator.html" class="news-card nc-open">
-          <div class="news-date-wrap"><div class="news-day">15</div><div class="news-mon">May</div></div>
-          <div class="news-body"><span class="news-tag nt-open">&#x1F3E6; Banking</span>
-            <div class="news-title">IBPS PO 2025 &mdash; Notification expected August; start preparation now</div>
-            <div class="news-desc">IBPS PO 2025 cycle expected August&ndash;September 2025. Prelims: October | Mains: November 2025. Early starters score significantly higher.</div>
-            <div class="news-meta"><a href="bank_exam_prompt_generator.html" class="news-prep">&#x1F4DA; Banking Prep &#8594;</a><span class="news-src">ibps.in</span></div>
-          </div>
-        </a>
-        <a href="railway_exam_prompt_generator.html" class="news-card nc-hot">
-          <div class="news-date-wrap"><div class="news-day">10</div><div class="news-mon">May</div></div>
-          <div class="news-body"><span class="news-tag nt-hot">&#x1F686; Railway</span>
-            <div class="news-title">RRB NTPC 2025 &mdash; CBT 1 dates announced; 11,558 vacancies across zones</div>
-            <div class="news-desc">RRB NTPC 2025 CBT 1 exam dates released. 11,558 vacancies for Graduate &amp; Under-Graduate posts. Syllabus: Maths, GK, General Intelligence &amp; Reasoning.</div>
-            <div class="news-meta"><a href="railway_exam_prompt_generator.html" class="news-prep">&#x1F4DA; Railway Prep &#8594;</a><span class="news-src">indianrailways.gov.in</span></div>
-          </div>
-        </a>
-        <a href="law_entrance_exam_prompt_generator.html" class="news-card nc-new">
-          <div class="news-date-wrap"><div class="news-day">05</div><div class="news-mon">May</div></div>
-          <div class="news-body"><span class="news-tag nt-new">&#x2696;&#xFE0F; Law</span>
-            <div class="news-title">CLAT 2026 &mdash; Registration opens July 2025; NLU admissions cycle begins</div>
-            <div class="news-desc">Consortium of NLUs to open CLAT 2026 registrations July 2025. Passage-based pattern across all 5 sections. 22 NLUs participating.</div>
-            <div class="news-meta"><a href="law_entrance_exam_prompt_generator.html" class="news-prep">&#x1F4DA; Law Prep &#8594;</a><span class="news-src">consortiumofnlus.ac.in</span></div>
-          </div>
-        </a>
-        <a href="jee_exam_prompt_generator.html" class="news-card nc-open">
-          <div class="news-date-wrap"><div class="news-day">01</div><div class="news-mon">May</div></div>
-          <div class="news-body"><span class="news-tag nt-open">&#x2697;&#xFE0F; JEE</span>
-            <div class="news-title">JEE Mains 2026 &mdash; Registration expected November 2025; NTA to conduct</div>
-            <div class="news-desc">NTA conducts JEE Mains 2026 in January &amp; April sessions. Reg: November 2025. New normalisation formula updated. JEE Advanced 2026: May 2026.</div>
-            <div class="news-meta"><a href="jee_exam_prompt_generator.html" class="news-prep">&#x1F4DA; JEE Prep &#8594;</a><span class="news-src">nta.ac.in</span></div>
-          </div>
-        </a>
-      </div>
-      <div>
-        <div class="side-card">
-          <h4>&#x1F4C5; Exam Calendar 2025&ndash;26</h4>
-          <div class="side-exam-list">
-            <a href="ssc_exam_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x1F4CB;</span><div><div class="sel-nm">SSC CGL Tier II</div><div class="sel-date">Exam: June 2025</div></div></div><span class="sel-status ss-admit">Admit Out</span></a>
-            <a href="defence_exam_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x1F396;&#xFE0F;</span><div><div class="sel-nm">NDA (II) 2025</div><div class="sel-date">Exam: 14 Sep 2025</div></div></div><span class="sel-status ss-open">Apply Now</span></a>
-            <a href="upsc_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x1F3DB;&#xFE0F;</span><div><div class="sel-nm">UPSC CSE Mains</div><div class="sel-date">Exam: Sep&ndash;Oct 2025</div></div></div><span class="sel-status ss-ongoing">Prep Now</span></a>
-            <a href="mba_exam_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x1F4BC;</span><div><div class="sel-nm">CAT 2025</div><div class="sel-date">Reg open &middot; Exam: Nov 2025</div></div></div><span class="sel-status ss-open">Open</span></a>
-            <a href="bank_exam_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x1F3E6;</span><div><div class="sel-nm">IBPS PO 2025</div><div class="sel-date">Notif: Aug 2025</div></div></div><span class="sel-status ss-soon">Coming</span></a>
-            <a href="railway_exam_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x1F686;</span><div><div class="sel-nm">RRB NTPC 2025</div><div class="sel-date">CBT 1 dates released</div></div></div><span class="sel-status ss-open">Active</span></a>
-            <a href="gate_psu_exam_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x2699;&#xFE0F;</span><div><div class="sel-nm">GATE 2026</div><div class="sel-date">Reg: Aug 2025 &middot; Exam: Feb 2026</div></div></div><span class="sel-status ss-soon">Coming</span></a>
-            <a href="law_entrance_exam_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x2696;&#xFE0F;</span><div><div class="sel-nm">CLAT 2026</div><div class="sel-date">Reg: July 2025</div></div></div><span class="sel-status ss-soon">Coming</span></a>
-            <a href="neet_exam_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x1F9EC;</span><div><div class="sel-nm">NEET UG 2026</div><div class="sel-date">Exam: May 2026</div></div></div><span class="sel-status ss-soon">Coming</span></a>
-            <a href="jee_exam_prompt_generator.html" class="sel"><div class="sel-left"><span class="sel-ic">&#x2697;&#xFE0F;</span><div><div class="sel-nm">JEE Mains 2026</div><div class="sel-date">Reg: Nov 2025 &middot; Exam: Jan 2026</div></div></div><span class="sel-status ss-soon">Coming</span></a>
-          </div>
+
+    <div class="signal-grid">
+
+      <a href="upsc_prompt_generator.html" class="signal-card signal-featured">
+        <div>
+          <div class="sig-stamp">15 JUN 2026 &middot; RESULT</div>
         </div>
-        <div class="side-card">
-          <h4>&#x26A1; AI Study Tips</h4>
-          <div class="tip-list">
-            <div class="tip-item"><span class="tip-ic">&#x1F3AF;</span><div class="tip-txt"><strong>One topic, deep dive</strong>One focused prompt beats five shallow ones. Ask follow-ups after the first response.</div></div>
-            <div class="tip-item"><span class="tip-ic">&#x1F4CA;</span><div class="tip-txt"><strong>PYQ Analysis first</strong>Know what examiners actually ask before studying the full chapter.</div></div>
-            <div class="tip-item"><span class="tip-ic">&#x1F501;</span><div class="tip-txt"><strong>Regenerate for more</strong>Ask "give 10 more MCQs" &mdash; infinite practice from one tool.</div></div>
-            <div class="tip-item"><span class="tip-ic">&#x1F319;</span><div class="tip-txt"><strong>Night-before revision</strong>Use "Quick Revision" mode the evening before your exam.</div></div>
-          </div>
+        <div>
+          <span class="sig-tag t-upsc">&#x1F3DB;&#xFE0F; UPSC CSE</span>
+          <div class="sig-title">Prelims 2026 result out — 13,343 candidates cleared for Mains on 21 August</div>
+          <div class="sig-desc">Result declared for the exam held 24 May 2026. DAF-I window for Mains was 19&ndash;28 June. Mains runs nine papers over five days starting 21 August 2026 — begin GS &amp; Optional revision now.</div>
         </div>
-      </div>
+        <span class="sig-featured-cta">Open UPSC Tool &#8594;</span>
+      </a>
+
+      <a href="gate_psu_exam_prompt_generator.html" class="signal-card">
+        <div class="sig-stamp">03 JUL 2026</div>
+        <span class="sig-tag t-gate">&#x2699;&#xFE0F; GATE 2027</span>
+        <div class="sig-title">Notification expected late July — IIT Madras conducting, exam Feb 2027</div>
+        <div class="sig-desc">Registration opens ~24 Aug 2026 on GOAPS, closing 29 Sep. 30 papers, pre-final year students now eligible. Exam: 6, 7, 13 &amp; 14 Feb 2027.</div>
+        <div class="sig-foot"><span class="sig-src">gate2027.iitm.ac.in</span><span class="sig-go">Prep now &#8594;</span></div>
+      </a>
+
+      <a href="ssc_exam_prompt_generator.html" class="signal-card">
+        <div class="sig-stamp">21 MAY &ndash; 26 JUN 2026</div>
+        <span class="sig-tag t-ssc">&#x1F4CB; SSC CGL 2026</span>
+        <div class="sig-title">12,256 vacancies notified — Tier 1 in August&ndash;September</div>
+        <div class="sig-desc">Application window closed 26 June after an extension. New this year: sectional timing (15 min/section) in Tier 1 &amp; a 3rd Tier-2 paper for AAO posts.</div>
+        <div class="sig-foot"><span class="sig-src">ssc.gov.in</span><span class="sig-go">Prep now &#8594;</span></div>
+      </a>
+
+      <a href="bank_exam_prompt_generator.html" class="signal-card">
+        <div class="sig-stamp">30 JUN 2026</div>
+        <span class="sig-tag t-bank">&#x1F3E6; SBI PO 2026</span>
+        <div class="sig-title">Notification released — 1,500 Probationary Officer vacancies</div>
+        <div class="sig-desc">Fresh SBI PO cycle open. Alongside, IBPS SO 2026 applications run 1&ndash;21 July for 745 specialist posts, prelims 29 August.</div>
+        <div class="sig-foot"><span class="sig-src">sbi.co.in &middot; ibps.in</span><span class="sig-go">Prep now &#8594;</span></div>
+      </a>
+
+      <a href="railway_exam_prompt_generator.html" class="signal-card">
+        <div class="sig-stamp">10 JUL 2026</div>
+        <span class="sig-tag t-rail">&#x1F686; RRB NTPC</span>
+        <div class="sig-title">Graduate CBT 2 exam today — 88,037 candidates shortlisted from CBT 1</div>
+        <div class="sig-desc">CBT 1 result (CEN 06/2025) released zone-wise 11 June. City slip and admit card already issued for today's CBT 2 covering Station Master, Goods Train Manager &amp; more.</div>
+        <div class="sig-foot"><span class="sig-src">rrb.digialm.com</span><span class="sig-go">Prep now &#8594;</span></div>
+      </a>
+
+      <a href="neet_exam_prompt_generator.html" class="signal-card">
+        <div class="sig-stamp">21 JUN 2026</div>
+        <span class="sig-tag t-neet">&#x1F9EC; NEET UG</span>
+        <div class="sig-title">Re-NEET 2026 answer key released after re-exam at 5,440 centres</div>
+        <div class="sig-desc">Following the original 3 May exam's cancellation, NTA conducted a re-exam and has now published the provisional answer key with an objection window open.</div>
+        <div class="sig-foot"><span class="sig-src">neet.nta.nic.in</span><span class="sig-go">Prep now &#8594;</span></div>
+      </a>
+
+      <a href="law_entrance_exam_prompt_generator.html" class="signal-card">
+        <div class="sig-stamp">EXPECTED MID-JUL 2026</div>
+        <span class="sig-tag t-law">&#x2696;&#xFE0F; CLAT 2027</span>
+        <div class="sig-title">Notification imminent — registration to open 1 August, exam 6 December</div>
+        <div class="sig-desc">Consortium of NLUs confirms registration begins August 2026. An Expert Committee chaired by Justice Indu Malhotra is reviewing the exam pattern for possible changes.</div>
+        <div class="sig-foot"><span class="sig-src">consortiumofnlus.ac.in</span><span class="sig-go">Prep now &#8594;</span></div>
+      </a>
+
     </div>
   </div>
-</div>
-
-
-
-
+</section>
 
 <main class="wrap">
 
