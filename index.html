@@ -251,41 +251,70 @@ a{color:var(--pr);text-decoration:none}
 
 
 /* ── LATEST UPDATES (signature: signal-strip) ── */
-.signal-section{background:var(--ink);padding:64px 24px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
-.signal-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(91,79,255,.12) 1px,transparent 1px);background-size:22px 22px;mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,black,transparent 90%);pointer-events:none}
+.signal-section{background:var(--d1);padding:64px 24px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.signal-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(79,70,229,.12) 1px,transparent 1px);background-size:22px 22px;mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,black,transparent 90%);pointer-events:none}
 .signal-inner{max-width:1200px;margin:0 auto;position:relative}
 .signal-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:30px}
-.signal-eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mi);display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.signal-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--mi);animation:blink 1.6s infinite}
+.signal-eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gr2);display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.signal-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gr2);animation:blink 1.6s infinite}
 .signal-head h2{font-size:clamp(22px,3vw,30px);font-weight:900;color:#fff;letter-spacing:-.6px}
 .signal-updated{font-size:11px;color:var(--txt3);padding:5px 14px;border:1px solid rgba(255,255,255,.12);border-radius:20px;white-space:nowrap}
 
 .signal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .signal-card{grid-column:span 2;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;transition:all .2s;position:relative;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;gap:10px}
 .signal-card:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);transform:translateY(-3px)}
-.signal-featured{grid-column:span 4;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:24px 26px;background:linear-gradient(120deg,rgba(91,79,255,.14),rgba(0,194,255,.08));border:1px solid rgba(123,114,255,.35)}
-.signal-featured:hover{border-color:rgba(123,114,255,.55)}
-.sig-stamp{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--mi);letter-spacing:.03em;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.signal-featured{grid-column:span 4;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:24px 26px;background:linear-gradient(120deg,rgba(79,70,229,.14),rgba(6,182,212,.08));border:1px solid rgba(129,140,248,.35)}
+.signal-featured:hover{border-color:rgba(129,140,248,.55)}
+.sig-stamp{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--gr2);letter-spacing:.03em;white-space:nowrap;display:flex;align-items:center;gap:6px}
 .sig-stamp::before{content:"●";font-size:8px}
 .sig-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.02em;width:fit-content}
-.sig-tag.t-gate{background:rgba(0,194,255,.15);color:#7DD3FC}
-.sig-tag.t-upsc{background:rgba(255,184,0,.15);color:#FCD34D}
+.sig-tag.t-gate{background:rgba(6,182,212,.15);color:#7DD3FC}
+.sig-tag.t-upsc{background:rgba(245,158,11,.15);color:#FCD34D}
 .sig-tag.t-ssc{background:rgba(16,185,129,.15);color:#6EE7B7}
-.sig-tag.t-bank{background:rgba(91,79,255,.18);color:#B4AEFF}
-.sig-tag.t-rail{background:rgba(255,77,109,.15);color:#FCA5A5}
-.sig-tag.t-neet{background:rgba(0,255,179,.15);color:#5EEAC4}
-.sig-tag.t-law{background:rgba(168,159,255,.18);color:#D8D4FF}
+.sig-tag.t-bank{background:rgba(79,70,229,.18);color:#C7D2FE}
+.sig-tag.t-rail{background:rgba(239,68,68,.15);color:#FCA5A5}
+.sig-tag.t-neet{background:rgba(52,211,153,.15);color:#5EEAC4}
+.sig-tag.t-law{background:rgba(129,140,248,.18);color:#E0E7FF}
 .sig-title{font-size:14.5px;font-weight:700;color:#fff;line-height:1.4}
 .signal-featured .sig-title{font-size:17px}
 .sig-desc{font-size:12.5px;color:var(--txt2);line-height:1.65}
 .sig-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px}
 .sig-src{font-size:10.5px;color:var(--txt3);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.sig-go{font-size:11.5px;font-weight:800;color:var(--mi);display:flex;align-items:center;gap:4px}
+.sig-go{font-size:11.5px;font-weight:800;color:var(--gr2);display:flex;align-items:center;gap:4px}
 .signal-card:hover .sig-go{gap:7px}
-.sig-featured-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:24px;background:#fff;color:var(--ink);font-size:12.5px;font-weight:800;white-space:nowrap}
+.sig-featured-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:24px;background:#fff;color:var(--d1);font-size:12.5px;font-weight:800;white-space:nowrap}
 
 @media(max-width:860px){.signal-grid{grid-template-columns:1fr 1fr}.signal-card{grid-column:span 1}.signal-featured{grid-column:span 2;grid-template-columns:1fr;text-align:left}.sig-featured-cta{width:fit-content}}
 @media(max-width:560px){.signal-grid{grid-template-columns:1fr}.signal-card{grid-column:span 1}.signal-featured{grid-column:span 1}}
+
+/* ── HIGH-TECH SYSTEM BAR ── */
+.sysbar{background:var(--d1);border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden;position:relative}
+.sysbar-inner{max-width:1200px;margin:0 auto;padding:7px 24px;display:flex;align-items:center;gap:18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;color:rgba(255,255,255,.4);flex-wrap:wrap}
+.sysbar-item{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.sysbar-dot{width:5px;height:5px;border-radius:50%;background:var(--gr2);box-shadow:0 0 6px var(--gr2);animation:blink 1.8s infinite}
+.sysbar-sep{color:rgba(255,255,255,.15)}
+
+/* ── SCANLINE / GLOW OVERLAYS ── */
+.hero::after{content:"";position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cy2),var(--pr3),transparent);opacity:.5;animation:scanmove 6s linear infinite;pointer-events:none;z-index:1}
+@keyframes scanmove{0%{top:8%}50%{top:88%}100%{top:8%}}
+
+/* ── GLASS / NEON TOOL CARDS ── */
+.cat-card{position:relative;isolation:isolate}
+.cat-card::before{content:"";position:absolute;inset:0;border-radius:var(--rl);padding:1.5px;background:linear-gradient(135deg,transparent,transparent);opacity:0;transition:opacity .25s;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2}
+.cat-card:hover::before{opacity:1;background:linear-gradient(135deg,var(--pr3),var(--cy2),var(--gr2))}
+.cat-card:hover{box-shadow:0 10px 40px rgba(79,70,229,.18),var(--shm)}
+.card-idtag{position:absolute;top:14px;right:16px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:9px;color:var(--txt3);letter-spacing:.03em;opacity:.55;z-index:2}
+
+/* ── COMPARISON TABLE — tech header ── */
+.cmp thead tr{background:linear-gradient(135deg,var(--d1),var(--d3))}
+.cmp th{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.01em}
+
+/* ── HERO STATS: terminal readout ── */
+.hero-stats{position:relative}
+.hs-n{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+/* ── SECTION HEADERS: tech tick ── */
+.sec-eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 
 </style>
 </head>
@@ -328,6 +357,20 @@ a{color:var(--pr);text-decoration:none}
     </nav>
   </div>
 </header>
+<div class="sysbar">
+  <div class="sysbar-inner">
+    <span class="sysbar-item"><span class="sysbar-dot"></span> SYSTEM ONLINE</span>
+    <span class="sysbar-sep">/</span>
+    <span class="sysbar-item">13 TOOLS ACTIVE</span>
+    <span class="sysbar-sep">/</span>
+    <span class="sysbar-item">80+ EXAMS INDEXED</span>
+    <span class="sysbar-sep">/</span>
+    <span class="sysbar-item">GA4 + FIREBASE TRACKING</span>
+    <span class="sysbar-sep">/</span>
+    <span class="sysbar-item">LAST SYNC: 07 JUL 2026</span>
+  </div>
+</div>
+
 
 
 <!-- HERO -->
@@ -399,7 +442,7 @@ a{color:var(--pr);text-decoration:none}
         <div class="signal-eyebrow"><span class="dot"></span> Live signal</div>
         <h2>Today's exam &amp; job updates</h2>
       </div>
-      <span class="signal-updated">&#x1F4E1; Refreshed 5 July 2026</span>
+      <span class="signal-updated">&#x1F4E1; Refreshed 7 July 2026</span>
     </div>
 
     <div class="signal-grid">
@@ -443,8 +486,8 @@ a{color:var(--pr);text-decoration:none}
       <a href="railway_exam_prompt_generator.html" class="signal-card">
         <div class="sig-stamp">10 JUL 2026</div>
         <span class="sig-tag t-rail">&#x1F686; RRB NTPC</span>
-        <div class="sig-title">Graduate CBT 2 exam today — 88,037 candidates shortlisted from CBT 1</div>
-        <div class="sig-desc">CBT 1 result (CEN 06/2025) released zone-wise 11 June. City slip and admit card already issued for today's CBT 2 covering Station Master, Goods Train Manager &amp; more.</div>
+        <div class="sig-title">Graduate CBT 2 exam in 3 days (10 Jul) — 88,037 candidates shortlisted</div>
+        <div class="sig-desc">CBT 1 result (CEN 06/2025) released zone-wise 11 June. City slip and admit card already issued — CBT 2 covers Station Master, Goods Train Manager &amp; more.</div>
         <div class="sig-foot"><span class="sig-src">rrb.digialm.com</span><span class="sig-go">Prep now &#8594;</span></div>
       </a>
 
@@ -495,84 +538,84 @@ a{color:var(--pr);text-decoration:none}
   <div class="cat-grid">
 
     <a href="bank_exam_prompt_generator.html" class="cat-card tb-b" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-b">&#x1F3E6;</div><div class="card-hd"><div class="card-title">Banking &amp; Finance <span class="live-dot">Live</span></div><div class="card-meta">SBI &middot; IBPS &middot; RRB &middot; RBI &middot; 15 exams</div></div></div>
+      <div class="card-top"><span class="card-idtag">BANK-01</span><div class="card-ic-wrap ci-b">&#x1F3E6;</div><div class="card-hd"><div class="card-title">Banking &amp; Finance <span class="live-dot">Live</span></div><div class="card-meta">SBI &middot; IBPS &middot; RRB &middot; RBI &middot; 15 exams</div></div></div>
       <div class="card-desc">Complete prep for SBI PO/Clerk, IBPS PO/Clerk/SO, RRB PO/Clerk, RBI Grade B &amp; NABARD. Quant, English, Reasoning, Banking GA &amp; Bank PO specialist tab.</div>
       <div class="card-tags"><span class="tag">Quant</span><span class="tag">Reasoning</span><span class="tag">Banking GK</span><span class="tag">English</span><span class="tag">Bank PO Specialist</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Bank PO · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="railway_exam_prompt_generator.html" class="cat-card tb-o" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-o">&#x1F686;</div><div class="card-hd"><div class="card-title">Railways <span class="live-dot">Live</span></div><div class="card-meta">NTPC &middot; Group D &middot; ALP &middot; JE &middot; 8 exams</div></div></div>
+      <div class="card-top"><span class="card-idtag">RAIL-02</span><div class="card-ic-wrap ci-o">&#x1F686;</div><div class="card-hd"><div class="card-title">Railways <span class="live-dot">Live</span></div><div class="card-meta">NTPC &middot; Group D &middot; ALP &middot; JE &middot; 8 exams</div></div></div>
       <div class="card-desc">Full prep for RRB NTPC, Group D, ALP, JE, Station Master &amp; RPF. Maths, GK, Reasoning + ALP/JE Technical specialist with Railway-specific current affairs.</div>
       <div class="card-tags"><span class="tag">Maths</span><span class="tag">GK</span><span class="tag">Reasoning</span><span class="tag">ALP Technical</span><span class="tag">JE Technical</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Technical · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="upsc_prompt_generator.html" class="cat-card tb-y" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-y">&#x1F3DB;&#xFE0F;</div><div class="card-hd"><div class="card-title">UPSC Civil Services <span class="live-dot">Live</span></div><div class="card-meta">IAS &middot; IPS &middot; IFS &middot; CDS &middot; 6 exams</div></div></div>
+      <div class="card-top"><span class="card-idtag">UPSC-03</span><div class="card-ic-wrap ci-y">&#x1F3DB;&#xFE0F;</div><div class="card-hd"><div class="card-title">UPSC Civil Services <span class="live-dot">Live</span></div><div class="card-meta">IAS &middot; IPS &middot; IFS &middot; CDS &middot; 6 exams</div></div></div>
       <div class="card-desc">Complete IAS prep: GS Papers 1–4, Essay, CSAT, Prelims strategy, Mains answer writing &amp; Interview. Optional subject support &amp; UPSC editorial analysis.</div>
       <div class="card-tags"><span class="tag">GS 1–4</span><span class="tag">Essay</span><span class="tag">CSAT</span><span class="tag">Mains Writing</span><span class="tag">Interview</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Mains+Interview · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="ssc_exam_prompt_generator.html" class="cat-card tb-g" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-g">&#x1F4CB;</div><div class="card-hd"><div class="card-title">SSC (Staff Selection) <span class="live-dot">Live</span></div><div class="card-meta">CGL &middot; CHSL &middot; MTS &middot; JE &middot; 10 exams</div></div></div>
+      <div class="card-top"><span class="card-idtag">SSC-04</span><div class="card-ic-wrap ci-g">&#x1F4CB;</div><div class="card-hd"><div class="card-title">SSC (Staff Selection) <span class="live-dot">Live</span></div><div class="card-meta">CGL &middot; CHSL &middot; MTS &middot; JE &middot; 10 exams</div></div></div>
       <div class="card-desc">CGL Tier 1&amp;2, CHSL, MTS, Stenographer, GD Constable &amp; SSC JE. Quant, English, Reasoning, GK + JE Technical drill for Civil/Electrical/Mechanical.</div>
       <div class="card-tags"><span class="tag">Quant</span><span class="tag">English</span><span class="tag">GK</span><span class="tag">Reasoning</span><span class="tag">JE Technical</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · JE Drill · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="jee_exam_prompt_generator.html" class="cat-card tb-v" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-v">&#x2697;&#xFE0F;</div><div class="card-hd"><div class="card-title">Engineering (JEE) <span class="live-dot">Live</span></div><div class="card-meta">JEE Mains &middot; Advanced &middot; BITSAT &middot; VITEEE</div></div></div>
+      <div class="card-top"><span class="card-idtag">JEE-05</span><div class="card-ic-wrap ci-v">&#x2697;&#xFE0F;</div><div class="card-hd"><div class="card-title">Engineering (JEE) <span class="live-dot">Live</span></div><div class="card-meta">JEE Mains &middot; Advanced &middot; BITSAT &middot; VITEEE</div></div></div>
       <div class="card-desc">Physics, Chemistry &amp; Mathematics for JEE Mains &amp; Advanced. Chapter-wise prompts, 10-year PYQ analysis, NTA pattern MCQs, JEE Advanced deep-dive &amp; IIT cutoffs.</div>
       <div class="card-tags"><span class="tag">Physics</span><span class="tag">Chemistry</span><span class="tag">Mathematics</span><span class="tag">JEE Advanced</span><span class="tag">IIT Cutoffs</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · JEE Advanced · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="neet_exam_prompt_generator.html" class="cat-card tb-t" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-t">&#x1F9EC;</div><div class="card-hd"><div class="card-title">Medical (NEET) <span class="live-dot">Live</span></div><div class="card-meta">NEET UG &middot; AIIMS &middot; JIPMER</div></div></div>
+      <div class="card-top"><span class="card-idtag">NEET-06</span><div class="card-ic-wrap ci-t">&#x1F9EC;</div><div class="card-hd"><div class="card-title">Medical (NEET) <span class="live-dot">Live</span></div><div class="card-meta">NEET UG &middot; AIIMS &middot; JIPMER</div></div></div>
       <div class="card-desc">Biology (Botany &amp; Zoology), Physics &amp; Chemistry for NEET UG &amp; AIIMS. NCERT-linked prompts, 10-year PYQ patterns, topic-wise MCQ banks &amp; NEET PG overview.</div>
       <div class="card-tags"><span class="tag">Biology</span><span class="tag">Physics</span><span class="tag">Chemistry</span><span class="tag">NCERT Focus</span><span class="tag">AIIMS PG</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · AIIMS/PG · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="mba_exam_prompt_generator.html" class="cat-card tb-a" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-a">&#x1F4BC;</div><div class="card-hd"><div class="card-title">MBA / Management <span class="live-dot">Live</span></div><div class="card-meta">CAT &middot; XAT &middot; SNAP &middot; IIFT &middot; NMAT &middot; MAT</div></div></div>
+      <div class="card-top"><span class="card-idtag">MBA-07</span><div class="card-ic-wrap ci-a">&#x1F4BC;</div><div class="card-hd"><div class="card-title">MBA / Management <span class="live-dot">Live</span></div><div class="card-meta">CAT &middot; XAT &middot; SNAP &middot; IIFT &middot; NMAT &middot; MAT</div></div></div>
       <div class="card-desc">VARC, DILR &amp; Quantitative Aptitude for CAT, XAT, SNAP &amp; IIFT. Passage-based reading, data interpretation, GD &amp; PI preparation with IIM cutoff analysis.</div>
       <div class="card-tags"><span class="tag">VARC</span><span class="tag">DILR</span><span class="tag">Quant</span><span class="tag">GD &amp; PI</span><span class="tag">IIM Cutoffs</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · GD+PI · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="psc_exam_prompt_generator.html" class="cat-card tb-p" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-p">&#x1F5FA;&#xFE0F;</div><div class="card-hd"><div class="card-title">State PSC <span class="live-dot">Live</span></div><div class="card-meta">UPPSC &middot; BPSC &middot; MPSC &middot; RPSC &middot; TNPSC &middot; 10 states</div></div></div>
+      <div class="card-top"><span class="card-idtag">PSC-08</span><div class="card-ic-wrap ci-p">&#x1F5FA;&#xFE0F;</div><div class="card-hd"><div class="card-title">State PSC <span class="live-dot">Live</span></div><div class="card-meta">UPPSC &middot; BPSC &middot; MPSC &middot; RPSC &middot; TNPSC &middot; 10 states</div></div></div>
       <div class="card-desc">State-specific GS, regional history, geography &amp; culture for UPPSC, BPSC, MPSC, RPSC, TNPSC &amp; more. Includes state current affairs &amp; interview preparation.</div>
       <div class="card-tags"><span class="tag">State GS</span><span class="tag">Regional History</span><span class="tag">State CA</span><span class="tag">Interview</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Specialist · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="teaching_exam_prompt_generator.html" class="cat-card tb-s" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-s">&#x1F4DA;</div><div class="card-hd"><div class="card-title">Teaching Exams <span class="live-dot">Live</span></div><div class="card-meta">CTET &middot; DSSSB &middot; KVS &middot; NVS &middot; UP-TET &middot; 8 exams</div></div></div>
+      <div class="card-top"><span class="card-idtag">TCH-09</span><div class="card-ic-wrap ci-s">&#x1F4DA;</div><div class="card-hd"><div class="card-title">Teaching Exams <span class="live-dot">Live</span></div><div class="card-meta">CTET &middot; DSSSB &middot; KVS &middot; NVS &middot; UP-TET &middot; 8 exams</div></div></div>
       <div class="card-desc">Child Development &amp; Pedagogy, Language papers, Maths/Science for CTET, DSSSB, KVS &amp; NVS. Includes teaching methodology &amp; classroom scenario questions.</div>
       <div class="card-tags"><span class="tag">CDP</span><span class="tag">Language</span><span class="tag">Maths/Science</span><span class="tag">Pedagogy</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Pedagogy · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="defence_exam_prompt_generator.html" class="cat-card tb-k" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-k">&#x1F396;&#xFE0F;</div><div class="card-hd"><div class="card-title">Defence (Non-UPSC) <span class="live-dot">Live</span></div><div class="card-meta">NDA &middot; AFCAT &middot; Agniveer &middot; Coast Guard &middot; MNS</div></div></div>
+      <div class="card-top"><span class="card-idtag">DEF-10</span><div class="card-ic-wrap ci-k">&#x1F396;&#xFE0F;</div><div class="card-hd"><div class="card-title">Defence (Non-UPSC) <span class="live-dot">Live</span></div><div class="card-meta">NDA &middot; AFCAT &middot; Agniveer &middot; Coast Guard &middot; MNS</div></div></div>
       <div class="card-desc">Maths, GK, Science &amp; English for NDA, AFCAT, Agniveer Army/Navy/AF, Coast Guard &amp; MNS. Includes SSB Interview deep-drill covering all 6 stages.</div>
       <div class="card-tags"><span class="tag">Maths</span><span class="tag">GK</span><span class="tag">Science</span><span class="tag">SSB Interview</span><span class="tag">Agniveer</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · SSB Drill · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="gate_psu_exam_prompt_generator.html" class="cat-card tb-c" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-c">&#x2699;&#xFE0F;</div><div class="card-hd"><div class="card-title">PSU / GATE <span class="live-dot">Live</span></div><div class="card-meta">GATE CS &middot; ECE &middot; EE &middot; ME &middot; BHEL &middot; NTPC &middot; ISRO &middot; DRDO</div></div></div>
+      <div class="card-top"><span class="card-idtag">GATE-11</span><div class="card-ic-wrap ci-c">&#x2699;&#xFE0F;</div><div class="card-hd"><div class="card-title">PSU / GATE <span class="live-dot">Live</span></div><div class="card-meta">GATE CS &middot; ECE &middot; EE &middot; ME &middot; BHEL &middot; NTPC &middot; ISRO &middot; DRDO</div></div></div>
       <div class="card-desc">Engineering Maths, General Aptitude + full branch subjects for GATE CS, ECE, EE &amp; ME. NAT + MCQ pattern, 1M vs 2M analysis &amp; PSU interview prep (BHEL/NTPC/ISRO/ONGC).</div>
       <div class="card-tags"><span class="tag">GATE CS</span><span class="tag">GATE ECE/EE/ME</span><span class="tag">NAT Questions</span><span class="tag">PSU Interview</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · PSU Interview · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="law_entrance_exam_prompt_generator.html" class="cat-card tb-l" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-l">&#x2696;&#xFE0F;</div><div class="card-hd"><div class="card-title">Law Entrance <span class="live-dot">Live</span></div><div class="card-meta">CLAT &middot; AILET &middot; LSAT India &middot; DU LLB &middot; MH CET Law</div></div></div>
+      <div class="card-top"><span class="card-idtag">LAW-12</span><div class="card-ic-wrap ci-l">&#x2696;&#xFE0F;</div><div class="card-hd"><div class="card-title">Law Entrance <span class="live-dot">Live</span></div><div class="card-meta">CLAT &middot; AILET &middot; LSAT India &middot; DU LLB &middot; MH CET Law</div></div></div>
       <div class="card-desc">Legal Reasoning, English &amp; GK for CLAT (2020+ passage pattern), AILET &amp; LSAT India. Principle-Fact drill, NLU cutoffs, landmark case laws &amp; current affairs strategy.</div>
       <div class="card-tags"><span class="tag">Legal Reasoning</span><span class="tag">English</span><span class="tag">Current Affairs</span><span class="tag">NLU Cutoffs</span></div>
       <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Legal Drill · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
@@ -580,7 +623,7 @@ a{color:var(--pr);text-decoration:none}
 
   
     <a href="exam-mentor-chatbot.html" class="cat-card tb-mi" style="text-decoration:none">
-      <div class="card-top"><div class="card-ic-wrap ci-mi">&#x1F916;</div><div class="card-hd"><div class="card-title">AI Exam Mentor <span class="live-dot">Live</span></div><div class="card-meta">Banking &middot; Railway &middot; UPSC &middot; SSC &middot; JEE &middot; NEET</div></div></div>
+      <div class="card-top"><span class="card-idtag">AI-13</span><div class="card-ic-wrap ci-mi">&#x1F916;</div><div class="card-hd"><div class="card-title">AI Exam Mentor <span class="live-dot">Live</span></div><div class="card-meta">Banking &middot; Railway &middot; UPSC &middot; SSC &middot; JEE &middot; NEET</div></div></div>
       <div class="card-desc">Your personal AI-powered study mentor for Indian competitive exams. Ask any exam question, get step-by-step guidance, topic explanations, study plans, and motivational support — all in one chat interface.</div>
       <div class="card-tags"><span class="tag">Chat Mentor</span><span class="tag">Study Guidance</span><span class="tag">Q&amp;A</span><span class="tag">Study Plan</span><span class="tag">All Exams</span></div>
       <div class="card-footer"><span class="card-tabs">AI Chat &middot; Exam Guidance &middot; Study Tips &middot; Topic Help</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
