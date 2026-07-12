@@ -6,7 +6,6 @@
 <meta property="og:url" content="https://raghavendra-exp.github.io/bankexamv2/exam-mentor-chatbot.html">
 <link rel="canonical" href="https://raghavendra-exp.github.io/bankexamv2/exam-mentor-chatbot.html">
 <title>Exam Prep Mentor | AI Guidance for Indian Competitive Exams</title>
-<!-- Google Analytics placeholder: replace G-B0Z2G21W4F before deployment
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0Z2G21W4F"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,382 +13,230 @@
   gtag('js', new Date());
   gtag('config', 'G-B0Z2G21W4F');
 </script>
--->
 <style>
-  :root{
-    --navy: #16324F;
-    --navy-deep: #0E2338;
-    --paper: #F3EEE3;
-    --paper-dark: #E7E0D0;
-    --seal-red: #B23A2E;
-    --pass-green: #2F6F4E;
-    --ink: #2A2A28;
-    --gold: #B08D57;
-    --font-display: Georgia, 'Times New Roman', serif;
-    --font-mono: 'Courier New', ui-monospace, Consolas, monospace;
-    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  }
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --d1:#050912;--d2:#0A1120;--d3:#111B2E;
+  --pr:#4F46E5;--pr2:#6366F1;--pr3:#818CF8;
+  --cy:#06B6D4;--cy2:#22D3EE;
+  --gr:#10B981;--gr2:#34D399;
+  --ac:#F59E0B;--rd:#EF4444;
+  --panel:#0D1524;--panel2:#111C30;
+  --bdr:rgba(255,255,255,.08);
+  --txt:#F1F5F9;--txt2:#94A3B8;--txt3:#64748B;
+  --bubble-bot:#151F33;--bubble-user:linear-gradient(135deg,var(--pr),var(--cy));
+  --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+}
+html,body{margin:0;height:100%}
+body{
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,#111B33,var(--d1) 70%);
+  font-family:var(--font-body);color:var(--txt);
+  min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px 12px;
+}
 
-  * { box-sizing: border-box; }
+/* ===== App shell ===== */
+.app{
+  width:100%;max-width:460px;height:min(820px,92vh);
+  background:var(--panel);border-radius:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px var(--bdr);
+  overflow:hidden;display:flex;flex-direction:column;
+  position:relative;
+}
 
-  body{
-    margin: 0;
-    background: var(--navy-deep);
-    font-family: var(--font-body);
-    color: var(--ink);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px 12px;
-  }
+/* ===== Header ===== */
+.chat-header{
+  background:linear-gradient(160deg,var(--d1),var(--d3));
+  padding:16px 18px 14px;border-bottom:1px solid var(--bdr);
+  flex-shrink:0;position:relative;
+}
+.chat-header::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--pr3),var(--cy2),transparent);opacity:.5;
+}
+.ch-top{display:flex;align-items:center;gap:12px}
+.ch-avatar{
+  width:42px;height:42px;border-radius:13px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--pr),var(--cy));
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  box-shadow:0 0 18px rgba(79,70,229,.5);
+}
+.ch-title{flex:1;min-width:0}
+.ch-title h1{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.2px}
+.ch-status{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gr2);font-weight:600;margin-top:1px}
+.ch-status .live-dot{width:6px;height:6px;border-radius:50%;background:var(--gr2);box-shadow:0 0 6px var(--gr2);animation:blink 1.6s infinite;display:inline-block}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+.ch-session{
+  font-family:var(--font-mono);font-size:9.5px;color:var(--txt3);
+  padding:4px 9px;border:1px solid var(--bdr);border-radius:14px;white-space:nowrap;
+}
 
-  .app{
-    width: 100%;
-    max-width: 760px;
-    background: var(--paper);
-    border-radius: 6px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-    overflow: hidden;
-    border: 1px solid rgba(176,141,87,0.4);
-  }
+/* Exam tabs — segmented pill row */
+.exam-tabs{display:flex;gap:6px;overflow-x:auto;padding-top:12px;scrollbar-width:none}
+.exam-tabs::-webkit-scrollbar{display:none}
+.exam-tab{
+  flex:0 0 auto;padding:7px 14px;border-radius:20px;
+  background:rgba(255,255,255,.05);border:1px solid var(--bdr);
+  color:var(--txt2);font-size:12px;font-weight:700;cursor:pointer;
+  transition:all .15s;font-family:inherit;white-space:nowrap;
+}
+.exam-tab:hover{background:rgba(255,255,255,.09);color:#fff}
+.exam-tab.active{
+  background:linear-gradient(135deg,var(--pr),var(--cy));color:#fff;border-color:transparent;
+  box-shadow:0 2px 12px rgba(79,70,229,.4);
+}
+.exam-tab:focus-visible,.chip:focus-visible,.send-btn:focus-visible,.chat-input:focus-visible{
+  outline:2px solid var(--cy2);outline-offset:1px;
+}
 
-  /* ===== Letterhead ===== */
-  .letterhead{
-    background: var(--navy);
-    color: var(--paper);
-    padding: 18px 24px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    border-bottom: 3px solid var(--gold);
-  }
-  .letterhead h1{
-    font-family: var(--font-display);
-    font-size: 1.35rem;
-    letter-spacing: 0.06em;
-    margin: 0;
-    text-transform: uppercase;
-  }
-  .letterhead p{
-    margin: 2px 0 0;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    opacity: 0.75;
-    text-transform: uppercase;
-  }
+/* ===== Chat window ===== */
+.chat-window{
+  flex:1;overflow-y:auto;padding:18px 16px;
+  display:flex;flex-direction:column;gap:14px;
+  background:
+    radial-gradient(rgba(79,70,229,.05) 1px,transparent 1px) 0 0/26px 26px,
+    var(--d2);
+}
+.chat-window::-webkit-scrollbar{width:5px}
+.chat-window::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:10px}
 
-  /* ===== Admit card strip ===== */
-  .admit-strip{
-    background: var(--paper);
-    padding: 16px 24px 14px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-  .field label{
-    display: block;
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #6b6558;
-    margin-bottom: 3px;
-  }
-  .field .value{
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--ink);
-  }
-  .field.status .value{
-    color: var(--pass-green);
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .live-dot{
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--pass-green);
-    display: inline-block;
-    animation: pulse 1.6s infinite;
-  }
-  @media (prefers-reduced-motion: reduce){ .live-dot{ animation: none; } }
-  @keyframes pulse{
-    0%,100%{ opacity: 1; }
-    50%{ opacity: 0.35; }
-  }
+.msg{display:flex;gap:9px;align-items:flex-end;max-width:88%}
+.msg.bot{align-self:flex-start}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.seal{
+  width:26px;height:26px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--pr),var(--cy));
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;color:#fff;
+}
 
-  /* ===== Perforation ===== */
-  .perforation{
-    height: 0;
-    border-top: 2px dashed rgba(107,101,88,0.4);
-    margin: 0 0;
-    position: relative;
-  }
-  .perforation::before, .perforation::after{
-    content: "";
-    position: absolute;
-    top: -9px;
-    width: 18px; height: 18px;
-    border-radius: 50%;
-    background: var(--navy-deep);
-  }
-  .perforation::before{ left: -9px; }
-  .perforation::after{ right: -9px; }
+.bubble{
+  padding:11px 14px;border-radius:16px;font-size:13.5px;line-height:1.55;
+  white-space:pre-wrap;word-wrap:break-word;
+}
+.msg.bot .bubble{
+  background:var(--bubble-bot);color:var(--txt);
+  border:1px solid var(--bdr);border-bottom-left-radius:4px;
+}
+.msg.user .bubble{
+  background:var(--bubble-user);color:#fff;
+  border-bottom-right-radius:4px;box-shadow:0 4px 16px rgba(79,70,229,.3);
+}
 
-  /* ===== Exam tabs ===== */
-  .exam-tabs{
-    display: flex;
-    gap: 6px;
-    padding: 14px 20px 6px;
-    overflow-x: auto;
-    background: var(--paper);
-  }
-  .exam-tab{
-    flex: 0 0 auto;
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    font-weight: 600;
-    padding: 7px 14px;
-    border-radius: 999px;
-    border: 1px solid rgba(107,101,88,0.35);
-    background: transparent;
-    color: var(--ink);
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .exam-tab:hover{ border-color: var(--gold); }
-  .exam-tab.active{
-    background: var(--navy);
-    color: var(--paper);
-    border-color: var(--navy);
-  }
-  .exam-tab:focus-visible, .chip:focus-visible, .send-btn:focus-visible, .chat-input:focus-visible{
-    outline: 2px solid var(--seal-red);
-    outline-offset: 2px;
-  }
+/* ===== Typing / searching indicator ===== */
+.typing-bubble{
+  display:flex;align-items:center;gap:8px;
+  background:var(--bubble-bot);border:1px solid var(--bdr);
+  border-bottom-left-radius:4px;padding:11px 14px;border-radius:16px;
+  font-size:12px;color:var(--txt2);
+}
+.typing-dots{display:inline-flex;gap:3px}
+.typing-dots span{
+  width:5px;height:5px;border-radius:50%;background:var(--gr2);
+  animation:tdot 1.1s infinite ease-in-out;
+}
+.typing-dots span:nth-child(2){animation-delay:.15s}
+.typing-dots span:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,80%,100%{opacity:.25;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
 
-  /* ===== Chat window ===== */
-  .chat-window{
-    background:
-      radial-gradient(rgba(107,101,88,0.05) 1px, transparent 1px) 0 0/14px 14px,
-      var(--paper);
-    height: 380px;
-    overflow-y: auto;
-    padding: 16px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+/* ===== Live web search results ===== */
+.live-wire{
+  background:var(--panel2);border:1px solid rgba(52,211,153,.25);
+  border-bottom-left-radius:4px;border-radius:16px;overflow:hidden;font-size:13px;
+  box-shadow:0 4px 20px rgba(16,185,129,.08);
+}
+.lw-head{
+  background:linear-gradient(135deg,rgba(16,185,129,.18),rgba(6,182,212,.1));
+  color:var(--gr2);padding:9px 14px;font-family:var(--font-mono);
+  font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(52,211,153,.2);
+}
+.lw-head .live-dot{background:var(--rd);box-shadow:0 0 6px var(--rd)}
+.lw-list{padding:4px 0}
+.lw-card{
+  display:block;padding:10px 14px;text-decoration:none;color:var(--txt);
+  border-bottom:1px solid rgba(255,255,255,.05);transition:background .12s;
+}
+.lw-card:last-child{border-bottom:none}
+.lw-card:hover{background:rgba(52,211,153,.06)}
+.lw-title{font-weight:700;font-size:13px;color:#fff;line-height:1.4;margin-bottom:3px}
+.lw-meta{font-family:var(--font-mono);font-size:10px;color:var(--txt3);display:flex;gap:8px;align-items:center}
+.lw-src{text-transform:uppercase;letter-spacing:.04em;color:var(--cy2)}
+.lw-foot{
+  padding:8px 14px;font-size:10px;color:var(--txt3);
+  background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.05);
+}
 
-  .msg{ display: flex; gap: 8px; max-width: 88%; }
-  .msg.bot{ align-self: flex-start; }
-  .msg.user{ align-self: flex-end; flex-direction: row-reverse; }
+/* ===== Quick actions ===== */
+.quick-actions{
+  display:flex;gap:7px;padding:10px 14px;overflow-x:auto;
+  background:var(--panel2);border-top:1px solid var(--bdr);scrollbar-width:none;flex-shrink:0;
+}
+.quick-actions::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;font-size:11.5px;font-weight:700;padding:7px 13px;
+  border-radius:20px;border:1px solid var(--bdr);background:rgba(255,255,255,.04);
+  color:var(--txt2);cursor:pointer;white-space:nowrap;transition:all .15s;font-family:inherit;
+}
+.chip:hover{background:rgba(255,255,255,.09);color:#fff;border-color:rgba(255,255,255,.18)}
+.chip.chip-live{
+  border-color:rgba(239,68,68,.4);color:#FCA5A5;background:rgba(239,68,68,.08);font-weight:800;
+}
+.chip.chip-live:hover{background:rgba(239,68,68,.18);color:#fff}
 
-  .seal{
-    flex: 0 0 auto;
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    border: 2px double var(--seal-red);
-    color: var(--seal-red);
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(-8deg);
-    background: rgba(178,58,46,0.06);
-  }
+/* ===== Input bar ===== */
+.input-bar{
+  display:flex;gap:9px;padding:12px 14px;
+  background:var(--panel2);border-top:1px solid var(--bdr);flex-shrink:0;
+}
+.chat-input{
+  flex:1;padding:11px 16px;border-radius:24px;
+  border:1px solid var(--bdr);background:rgba(255,255,255,.05);
+  color:var(--txt);font-size:13.5px;font-family:var(--font-body);
+}
+.chat-input::placeholder{color:var(--txt3)}
+.chat-input:focus{border-color:var(--pr3);background:rgba(255,255,255,.08)}
+.send-btn{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--pr),var(--cy));
+  border:none;color:#fff;cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(79,70,229,.45);transition:transform .15s;
+}
+.send-btn:hover{transform:scale(1.07)}
+.send-btn:active{transform:scale(.95)}
 
-  .bubble{
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 0.88rem;
-    line-height: 1.45;
-    white-space: pre-wrap;
-  }
-  .msg.bot .bubble{
-    background: #fff;
-    border: 1px solid rgba(107,101,88,0.25);
-    border-top-left-radius: 2px;
-  }
-  .msg.user .bubble{
-    background: var(--navy);
-    color: var(--paper);
-    border-top-right-radius: 2px;
-  }
-
-  /* ===== Quick actions ===== */
-  .quick-actions{
-    display: flex;
-    gap: 8px;
-    padding: 10px 20px;
-    overflow-x: auto;
-    background: var(--paper-dark);
-    border-top: 1px solid rgba(107,101,88,0.2);
-  }
-  .chip{
-    flex: 0 0 auto;
-    font-size: 0.75rem;
-    padding: 6px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--gold);
-    background: #fff;
-    color: var(--navy);
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .chip:hover{ background: var(--gold); color: #fff; }
-  .chip.chip-live{ border-color: var(--seal-red); color: var(--seal-red); font-weight: 700; }
-  .chip.chip-live:hover{ background: var(--seal-red); color: #fff; }
-
-  /* ===== Typing / searching indicator ===== */
-  .typing-bubble{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #fff;
-    border: 1px solid rgba(107,101,88,0.25);
-    border-top-left-radius: 2px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    color: #6b6558;
-  }
-  .typing-dots{ display: inline-flex; gap: 3px; }
-  .typing-dots span{
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--pass-green);
-    animation: tdot 1.1s infinite ease-in-out;
-  }
-  .typing-dots span:nth-child(2){ animation-delay: .15s; }
-  .typing-dots span:nth-child(3){ animation-delay: .3s; }
-  @keyframes tdot{ 0%,80%,100%{ opacity: .25; transform: scale(.8); } 40%{ opacity: 1; transform: scale(1); } }
-
-  /* ===== Live web search results (wire dispatch style) ===== */
-  .live-wire{
-    background: #fff;
-    border: 1px solid rgba(107,101,88,0.25);
-    border-top-left-radius: 2px;
-    border-radius: 8px;
-    overflow: hidden;
-    font-size: 0.85rem;
-  }
-  .lw-head{
-    background: var(--navy);
-    color: var(--paper);
-    padding: 8px 14px;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-  .lw-head .live-dot{ background: #ff6b5e; }
-  .lw-list{ padding: 6px 0; }
-  .lw-card{
-    display: block;
-    padding: 10px 14px;
-    text-decoration: none;
-    color: var(--ink);
-    border-bottom: 1px dashed rgba(107,101,88,0.2);
-    transition: background .12s;
-  }
-  .lw-card:last-child{ border-bottom: none; }
-  .lw-card:hover{ background: rgba(47,111,78,0.06); }
-  .lw-title{ font-weight: 700; font-size: 0.85rem; color: var(--navy); line-height: 1.4; margin-bottom: 3px; }
-  .lw-meta{ font-family: var(--font-mono); font-size: 0.68rem; color: #8a8474; display: flex; gap: 8px; align-items: center; }
-  .lw-src{ text-transform: uppercase; letter-spacing: .04em; }
-  .lw-foot{
-    padding: 7px 14px;
-    font-size: 0.68rem;
-    color: #8a8474;
-    background: var(--paper-dark);
-    border-top: 1px dashed rgba(107,101,88,0.25);
-  }
-
-  /* ===== Input bar ===== */
-  .input-bar{
-    display: flex;
-    gap: 10px;
-    padding: 14px 20px;
-    background: var(--paper);
-    border-top: 2px dashed rgba(107,101,88,0.4);
-  }
-  .chat-input{
-    flex: 1;
-    padding: 10px 14px;
-    border-radius: 6px;
-    border: 1px solid rgba(107,101,88,0.4);
-    font-size: 0.88rem;
-    font-family: var(--font-body);
-  }
-  .send-btn{
-    font-family: var(--font-display);
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    font-size: 0.78rem;
-    padding: 10px 18px;
-    border-radius: 6px;
-    border: 1px dashed var(--seal-red);
-    background: var(--seal-red);
-    color: #fff;
-    cursor: pointer;
-  }
-  .send-btn:hover{ background: #952f25; }
-
-  @media (max-width: 560px){
-    .admit-strip{ grid-template-columns: repeat(2, 1fr); }
-    .letterhead h1{ font-size: 1.05rem; }
-    .chat-window{ height: 320px; }
-  }
+@media (max-width:480px){
+  body{padding:0}
+  .app{max-width:100%;height:100vh;border-radius:0}
+}
 </style>
 </head>
 <body>
 
 <div class="app">
-  <div class="letterhead">
-    <div>
-      <h1>Exam Prep Mentor</h1>
-      <p>AI guidance for your exam journey</p>
+
+  <div class="chat-header">
+    <div class="ch-top">
+      <div class="ch-avatar">&#x1F393;</div>
+      <div class="ch-title">
+        <h1>Exam Prep Mentor</h1>
+        <div class="ch-status"><span class="live-dot"></span>Live &middot; <span id="examField">Banking</span> &middot; Web Search On</div>
+      </div>
+      <div class="ch-session" id="sessionField">EPM-000000</div>
     </div>
+    <div class="exam-tabs" id="examTabs"></div>
   </div>
-
-  <div class="admit-strip">
-    <div class="field">
-      <label>Candidate</label>
-      <div class="value">Aspirant</div>
-    </div>
-    <div class="field">
-      <label>Examination</label>
-      <div class="value" id="examField">Banking</div>
-    </div>
-    <div class="field">
-      <label>Session ID</label>
-      <div class="value" id="sessionField">EPM-000000</div>
-    </div>
-    <div class="field status">
-      <label>Status</label>
-      <div class="value"><span class="live-dot"></span>Live + Web Search</div>
-    </div>
-  </div>
-
-  <div class="perforation"></div>
-
-  <div class="exam-tabs" id="examTabs"></div>
 
   <div class="chat-window" id="chatWindow"></div>
 
   <div class="quick-actions" id="quickActions"></div>
 
   <div class="input-bar">
-    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about syllabus, pattern, cutoffs, study plans..." autocomplete="off">
-    <button class="send-btn" id="sendBtn">Send</button>
+    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about syllabus, pattern, cutoffs, latest news..." autocomplete="off">
+    <button class="send-btn" id="sendBtn" aria-label="Send">&#x27A4;</button>
   </div>
+
 </div>
 
 <script>
