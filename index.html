@@ -68,8 +68,8 @@ a{color:var(--pr);text-decoration:none}
 .hero-sub{font-size:17px;color:rgba(255,255,255,.5);max-width:580px;margin:0 auto 32px;line-height:1.75}
 .hero-sub strong{color:rgba(255,255,255,.85)}
 
-.hero-stats{display:flex;gap:0;justify-content:center;margin-bottom:36px;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);max-width:520px;margin-left:auto;margin-right:auto;margin-bottom:36px}
-.hs{flex:1;padding:16px 12px;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.hero-stats{display:flex;gap:0;justify-content:center;margin-bottom:36px;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);max-width:620px;margin-left:auto;margin-right:auto;margin-bottom:36px}
+.hs{flex:1;padding:16px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
 .hs:last-child{border-right:none}
 .hs-n{font-size:24px;font-weight:900;color:#fff;display:block;line-height:1}
 .hs-l{font-size:10px;color:rgba(255,255,255,.4);margin-top:4px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
@@ -386,6 +386,7 @@ a{color:var(--pr);text-decoration:none}
     <h2>Stop Wasting Hours.<br>Start Studying <span class="gr">Smarter</span> with <span class="yl">AI.</span></h2>
     <p class="hero-sub">Generate expert-level study prompts for <strong>80+ Indian competitive exams</strong> in seconds. Paste into Claude, ChatGPT or Gemini &mdash; and get a personal tutor that knows your exact exam.</p>
     <div class="hero-stats">
+      <div class="hs"><span class="hs-n" id="visitorCount">&#8212;</span><div class="hs-l">Students Visited</div></div>
       <div class="hs"><span class="hs-n">13</span><div class="hs-l">Live Tools</div></div>
       <div class="hs"><span class="hs-n">80+</span><div class="hs-l">Exams Covered</div></div>
       <div class="hs"><span class="hs-n">6</span><div class="hs-l">AI Platforms</div></div>
@@ -766,6 +767,7 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+    import { getFirestore, doc, onSnapshot, setDoc, increment } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
     const firebaseConfig = {
       apiKey: "AIzaSyCumDxKiDMd72dRmY6igXXxOypJe1JvD0g",
       authDomain: "bharatexam-d477c.firebaseapp.com",
@@ -777,6 +779,38 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
     };
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+
+    /* ── Live visitor counter ──────────────────────────────────────────
+       Stores a single running total in Firestore: stats/siteVisits.
+       Counts once per browser session (sessionStorage guard) so a
+       visitor refreshing the page repeatedly doesn't inflate the number.
+       Requires Firestore enabled + rules allowing read, and increment-only
+       writes to this doc (see note at bottom of file). */
+    try {
+      const db = getFirestore(app);
+      const counterRef = doc(db, "stats", "siteVisits");
+      const countEl = document.getElementById("visitorCount");
+
+      // Live display — updates for every visitor watching the page
+      onSnapshot(counterRef, (snap) => {
+        if (countEl) {
+          const total = snap.exists() ? (snap.data().total || 0) : 0;
+          countEl.textContent = total.toLocaleString("en-IN");
+        }
+      }, () => {
+        if (countEl) countEl.textContent = "—";
+      });
+
+      // Increment once per session only
+      if (!sessionStorage.getItem("rb_counted")) {
+        setDoc(counterRef, { total: increment(1) }, { merge: true })
+          .then(() => sessionStorage.setItem("rb_counted", "1"))
+          .catch(() => {});
+      }
+    } catch (e) {
+      const countEl = document.getElementById("visitorCount");
+      if (countEl) countEl.textContent = "—";
+    }
   </script>
 </body>
 </html>
