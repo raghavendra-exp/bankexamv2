@@ -976,7 +976,9 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
         return fetch(apiUrl, { cache: "no-store" })
           .then(function(res){ return res.json(); })
           .then(function(data){
-            if (data.status !== "ok" || !data.items || !data.items.length) throw new Error("empty feed");
+            if (data.status !== "ok" || !data.items || !data.items.length){
+              throw new Error("rss2json returned: " + (data.message || data.status || "no items"));
+            }
             return data.items.slice(0,7);
           });
       }
@@ -984,31 +986,45 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
       try {
         var db2 = getFirestore(app);
         var updatesRef = doc(db2, "content", "examUpdates");
+        var label0 = document.getElementById("signalUpdated");
+        if (label0) label0.innerHTML = "&#x1F50D; Checking for live updates&hellip;";
+        console.log("[exam updates] checking Firestore cache...");
 
         getDoc(updatesRef).then(function(snap){
           var isFresh = false;
           if (snap.exists()){
             var data = snap.data();
             var updatedMs = data.lastUpdated && data.lastUpdated.toMillis ? data.lastUpdated.toMillis() : 0;
+            var ageHours = Math.round((Date.now() - updatedMs) / 3600000);
+            console.log("[exam updates] Firestore doc found — last updated " + ageHours + "h ago, has " + (data.items ? data.items.length : 0) + " items");
             isFresh = (Date.now() - updatedMs) < THREE_DAYS_MS && data.items && data.items.length;
+          } else {
+            console.log("[exam updates] no Firestore doc yet — this must be the first run, fetching fresh content");
           }
 
           if (isFresh){
             // Shared cache still valid — render instantly, no fetch needed
+            console.log("[exam updates] cache is fresh (< 3 days old) — rendering from Firestore, no live fetch needed");
             renderCards(snap.data().items, snap.data().lastUpdated.toDate());
             return;
           }
 
           // Cache missing or 3+ days old — pull fresh headlines, show them,
           // and share them with every other visitor for the next 3 days.
+          console.log("[exam updates] cache stale or missing — fetching fresh headlines from Google News...");
           fetchFreshCards().then(function(items){
+            console.log("[exam updates] fetched " + items.length + " fresh headlines, rendering + saving to Firestore");
             renderCards(items, new Date());
             return setDoc(updatesRef, { items: items, lastUpdated: serverTimestamp() }, { merge: true });
+          }).then(function(){
+            console.log("[exam updates] successfully saved to Firestore — other visitors will see this for 3 days");
           }).catch(function(err){
-            console.error("[exam updates] live refresh failed, keeping existing content:", err.message);
+            console.error("[exam updates] live refresh failed (news fetch or Firestore write) — static fallback cards remain visible:", err.message);
+            if (label0) label0.innerHTML = "&#x26A0;&#xFE0F; Live refresh failed — showing default updates";
           });
         }).catch(function(err){
-          console.error("[exam updates] Firestore read failed, static fallback cards remain:", err.message);
+          console.error("[exam updates] Firestore read failed — check that Firestore rules allow reading content/examUpdates:", err.message);
+          if (label0) label0.innerHTML = "&#x26A0;&#xFE0F; Couldn't reach Firestore — showing default updates";
         });
       } catch (e) {
         console.error("[exam updates] Setup error, static fallback cards remain:", e.message);
