@@ -907,6 +907,7 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
     (function initExamUpdatesAutoRefresh(){
       var THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
       var RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
+      var RSS2JSON_KEY = "5ggirmhnizmtj7ywzvxmop0d15rwzg8qztvkx2fo";
       var NEWS_QUERY = "UPSC SSC banking railway GATE NEET JEE CLAT exam notification result admit card India";
 
       var TOOL_MAP = [
@@ -970,9 +971,43 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
         if (label) label.innerHTML = "&#x1F4E1; Refreshed " + fmtDate(updatedDate || new Date());
       }
 
+      function parseRssXml(xmlText){
+        var xmlDoc = new DOMParser().parseFromString(xmlText, "text/xml");
+        var nodes = xmlDoc.querySelectorAll("item");
+        var out = [];
+        for (var i = 0; i < nodes.length; i++){
+          var el = nodes[i];
+          var t = el.querySelector("title");
+          var d = el.querySelector("description");
+          var l = el.querySelector("link");
+          var p = el.querySelector("pubDate");
+          out.push({
+            title: t ? t.textContent : "",
+            description: d ? d.textContent : "",
+            link: l ? l.textContent : "",
+            pubDate: p ? p.textContent : ""
+          });
+        }
+        return out;
+      }
+
+      function fetchViaFallbackProxy(newsUrl){
+        var proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(newsUrl);
+        return fetch(proxyUrl, { cache: "no-store" })
+          .then(function(res){
+            if (!res.ok) throw new Error("fallback proxy HTTP " + res.status);
+            return res.text();
+          })
+          .then(function(xml){
+            var items = parseRssXml(xml);
+            if (!items.length) throw new Error("fallback proxy returned no items");
+            return items.slice(0,7);
+          });
+      }
+
       function fetchFreshCards(){
         var newsUrl = "https://news.google.com/rss/search?q=" + encodeURIComponent(NEWS_QUERY) + "&hl=en-IN&gl=IN&ceid=IN:en";
-        var apiUrl = RSS2JSON + encodeURIComponent(newsUrl) + "&count=8";
+        var apiUrl = RSS2JSON + encodeURIComponent(newsUrl) + "&count=8&api_key=" + RSS2JSON_KEY;
         return fetch(apiUrl, { cache: "no-store" })
           .then(function(res){ return res.json(); })
           .then(function(data){
@@ -980,6 +1015,10 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
               throw new Error("rss2json returned: " + (data.message || data.status || "no items"));
             }
             return data.items.slice(0,7);
+          })
+          .catch(function(err){
+            console.warn("[exam updates] rss2json failed (" + err.message + ") — trying fallback proxy...");
+            return fetchViaFallbackProxy(newsUrl);
           });
       }
 

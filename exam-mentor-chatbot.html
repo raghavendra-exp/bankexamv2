@@ -441,6 +441,7 @@ body{
      built-in knowledge base answer.
      ============================================================ */
   var RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
+  var RSS2JSON_KEY = "5ggirmhnizmtj7ywzvxmop0d15rwzg8qztvkx2fo";
   var LIVE_TRIGGERS = [
     "latest","notification","news","update","2026","2027",
     "admit card","hall ticket","result","cutoff 2026","vacancy",
@@ -477,7 +478,7 @@ body{
   function liveSearch(query){
     var newsUrl = "https://news.google.com/rss/search?q=" +
       encodeURIComponent(query + " India 2026") + "&hl=en-IN&gl=IN&ceid=IN:en";
-    var apiUrl = RSS2JSON + encodeURIComponent(newsUrl) + "&count=5";
+    var apiUrl = RSS2JSON + encodeURIComponent(newsUrl) + "&count=5&api_key=" + RSS2JSON_KEY;
     return fetch(apiUrl, { cache: "no-store" })
       .then(function(res){ return res.json(); })
       .then(function(data){
