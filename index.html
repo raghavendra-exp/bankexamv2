@@ -521,10 +521,10 @@ a{color:var(--pr);text-decoration:none}
         <div class="signal-eyebrow"><span class="dot"></span> Live signal</div>
         <h2>Today's exam &amp; job updates</h2>
       </div>
-      <span class="signal-updated">&#x1F4E1; Refreshed 12 July 2026</span>
+      <span class="signal-updated" id="signalUpdated">&#x1F4E1; Refreshed 12 July 2026</span>
     </div>
 
-    <div class="signal-grid">
+    <div class="signal-grid" id="signalGrid">
 
       <a href="bank_exam_prompt_generator.html" class="signal-card signal-featured reveal">
         <div>
@@ -845,7 +845,7 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
-    import { getFirestore, doc, onSnapshot, setDoc, increment } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+    import { getFirestore, doc, onSnapshot, setDoc, getDoc, increment, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
     const firebaseConfig = {
       apiKey: "AIzaSyCumDxKiDMd72dRmY6igXXxOypJe1JvD0g",
       authDomain: "bharatexam-d477c.firebaseapp.com",
@@ -892,6 +892,128 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
       const countEl = document.getElementById("visitorCount");
       if (countEl) { countEl.textContent = "?"; countEl.title = "Live counter setup incomplete"; }
     }
+
+    /* ── Exam updates auto-refresh (every 3 days) ──────────────────────
+       Content lives in Firestore: content/examUpdates { cards, lastUpdated }.
+       On load, checks the age of the cached cards:
+         - If under 3 days old  -> render the shared cached version instantly.
+         - If 3+ days old / missing -> fetch fresh headlines from Google
+           News (via the free rss2json proxy, no key/server needed),
+           render them immediately, and write them back to Firestore so
+           every other visitor gets this same refreshed version until the
+           next 3-day window — no cron job or backend required.
+       If anything fails (offline, Firestore not enabled, proxy down),
+       the 7 static cards already in the HTML stay exactly as they are. */
+    (function initExamUpdatesAutoRefresh(){
+      var THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
+      var RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
+      var NEWS_QUERY = "UPSC SSC banking railway GATE NEET JEE CLAT exam notification result admit card India";
+
+      var TOOL_MAP = [
+        { keys:["ibps","sbi","rbi","bank","nabard"], tool:"bank_exam_prompt_generator.html", tag:"t-bank", icon:"&#x1F3E6;", label:"Banking" },
+        { keys:["upsc","ias","ips","nda","cds","ifs"], tool:"upsc_prompt_generator.html", tag:"t-upsc", icon:"&#x1F3DB;&#xFE0F;", label:"UPSC" },
+        { keys:["gate","psu","bhel","ntpc power","isro","drdo"], tool:"gate_psu_exam_prompt_generator.html", tag:"t-gate", icon:"&#x2699;&#xFE0F;", label:"GATE/PSU" },
+        { keys:["ssc","cgl","chsl","mts"], tool:"ssc_exam_prompt_generator.html", tag:"t-ssc", icon:"&#x1F4CB;", label:"SSC" },
+        { keys:["rrb","railway","ntpc","alp","group d"], tool:"railway_exam_prompt_generator.html", tag:"t-rail", icon:"&#x1F686;", label:"Railway" },
+        { keys:["neet","nta medical","aiims"], tool:"neet_exam_prompt_generator.html", tag:"t-neet", icon:"&#x1F9EC;", label:"NEET" },
+        { keys:["clat","ailet","nlu","law entrance"], tool:"law_entrance_exam_prompt_generator.html", tag:"t-law", icon:"&#x2696;&#xFE0F;", label:"Law" },
+        { keys:["jee","iit","engineering entrance"], tool:"jee_exam_prompt_generator.html", tag:"t-upsc", icon:"&#x2697;&#xFE0F;", label:"JEE" }
+      ];
+
+      function categorise(text){
+        var lower = text.toLowerCase();
+        for (var i = 0; i < TOOL_MAP.length; i++){
+          for (var j = 0; j < TOOL_MAP[i].keys.length; j++){
+            if (lower.indexOf(TOOL_MAP[i].keys[j]) !== -1) return TOOL_MAP[i];
+          }
+        }
+        return { tool:"index.html#tools", tag:"t-bank", icon:"&#x1F4E2;", label:"Update" };
+      }
+
+      function stripHtml(s){ return String(s||"").replace(/<[^>]+>/g,"").replace(/&nbsp;/g," ").trim(); }
+      function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function fmtDate(d){
+        try { return d.toLocaleDateString("en-IN",{ day:"numeric", month:"long", year:"numeric" }); }
+        catch(e){ return ""; }
+      }
+
+      function cardHTML(item, isFeatured){
+        var cat = categorise(item.title + " " + (item.description||""));
+        var title = esc(stripHtml(item.title)).slice(0,140);
+        var desc = esc(stripHtml(item.description)).slice(0,190);
+        var stamp = "";
+        try { stamp = new Date(item.pubDate).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"}).toUpperCase(); } catch(e){}
+        var src = "";
+        try { src = new URL(item.link).hostname.replace("www.",""); } catch(e){ src = "news source"; }
+
+        if (isFeatured){
+          return '<a href="' + cat.tool + '" class="signal-card signal-featured reveal in-view">' +
+            '<div><div class="sig-stamp">' + stamp + ' &middot; TOP STORY</div></div>' +
+            '<div><span class="sig-tag ' + cat.tag + '">' + cat.icon + ' ' + cat.label + '</span>' +
+            '<div class="sig-title">' + title + '</div>' +
+            '<div class="sig-desc">' + desc + '</div></div>' +
+            '<span class="sig-featured-cta">Open ' + cat.label + ' Tool &#8594;</span></a>';
+        }
+        return '<a href="' + cat.tool + '" class="signal-card reveal in-view">' +
+          '<div class="sig-stamp">' + stamp + '</div>' +
+          '<span class="sig-tag ' + cat.tag + '">' + cat.icon + ' ' + cat.label + '</span>' +
+          '<div class="sig-title">' + title + '</div>' +
+          '<div class="sig-desc">' + desc + '</div>' +
+          '<div class="sig-foot"><span class="sig-src">' + esc(src) + '</span><span class="sig-go">Prep now &#8594;</span></div></a>';
+      }
+
+      function renderCards(items, updatedDate){
+        var grid = document.getElementById("signalGrid");
+        var label = document.getElementById("signalUpdated");
+        if (!grid || !items || !items.length) return;
+        grid.innerHTML = items.slice(0,7).map(function(item,i){ return cardHTML(item, i===0); }).join("");
+        if (label) label.innerHTML = "&#x1F4E1; Refreshed " + fmtDate(updatedDate || new Date());
+      }
+
+      function fetchFreshCards(){
+        var newsUrl = "https://news.google.com/rss/search?q=" + encodeURIComponent(NEWS_QUERY) + "&hl=en-IN&gl=IN&ceid=IN:en";
+        var apiUrl = RSS2JSON + encodeURIComponent(newsUrl) + "&count=8";
+        return fetch(apiUrl, { cache: "no-store" })
+          .then(function(res){ return res.json(); })
+          .then(function(data){
+            if (data.status !== "ok" || !data.items || !data.items.length) throw new Error("empty feed");
+            return data.items.slice(0,7);
+          });
+      }
+
+      try {
+        var db2 = getFirestore(app);
+        var updatesRef = doc(db2, "content", "examUpdates");
+
+        getDoc(updatesRef).then(function(snap){
+          var isFresh = false;
+          if (snap.exists()){
+            var data = snap.data();
+            var updatedMs = data.lastUpdated && data.lastUpdated.toMillis ? data.lastUpdated.toMillis() : 0;
+            isFresh = (Date.now() - updatedMs) < THREE_DAYS_MS && data.items && data.items.length;
+          }
+
+          if (isFresh){
+            // Shared cache still valid — render instantly, no fetch needed
+            renderCards(snap.data().items, snap.data().lastUpdated.toDate());
+            return;
+          }
+
+          // Cache missing or 3+ days old — pull fresh headlines, show them,
+          // and share them with every other visitor for the next 3 days.
+          fetchFreshCards().then(function(items){
+            renderCards(items, new Date());
+            return setDoc(updatesRef, { items: items, lastUpdated: serverTimestamp() }, { merge: true });
+          }).catch(function(err){
+            console.error("[exam updates] live refresh failed, keeping existing content:", err.message);
+          });
+        }).catch(function(err){
+          console.error("[exam updates] Firestore read failed, static fallback cards remain:", err.message);
+        });
+      } catch (e) {
+        console.error("[exam updates] Setup error, static fallback cards remain:", e.message);
+      }
+    })();
   </script>
 <script>
 /* ============================================================
