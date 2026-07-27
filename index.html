@@ -47,6 +47,19 @@ a{color:var(--pr);text-decoration:none}
 .hdr-links{display:flex;gap:6px;flex-shrink:0}
 .hdr-links a{padding:6px 12px;border-radius:18px;font-size:11px;font-weight:700;color:rgba(255,255,255,.65);text-decoration:none;border:1px solid rgba(255,255,255,.1);transition:all .15s}
 .hdr-links a:hover{background:rgba(255,255,255,.08);color:#fff}
+.auth-widget{flex-shrink:0;display:flex;align-items:center}
+.hdr-signin{
+  padding:6px 14px;border-radius:18px;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,.85);background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);cursor:pointer;font-family:inherit;
+  transition:all .15s;white-space:nowrap;
+}
+.hdr-signin:hover{background:rgba(255,255,255,.12)}
+.user-chip{display:flex;align-items:center;gap:7px;padding:4px 6px 4px 4px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.user-avatar{width:24px;height:24px;border-radius:50%;flex-shrink:0}
+.user-name{font-size:11px;font-weight:700;color:rgba(255,255,255,.85);max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hdr-signout{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);font-size:10px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.hdr-signout:hover{background:var(--rd);color:#fff}
 .hdr-links .hdr-cta{
   background:linear-gradient(135deg,var(--pr2),var(--cy));
   color:#fff;border-color:transparent;
@@ -435,6 +448,14 @@ a{color:var(--pr);text-decoration:none}
       <a href="privacy-policy.html">Privacy</a>
       <a href="#tools" class="hdr-cta">Get Started &#x2192;</a>
     </nav>
+    <div id="authWidget" class="auth-widget">
+      <button id="signInBtn" class="hdr-signin">&#x1F511; Sign in</button>
+      <div id="userChip" class="user-chip" style="display:none">
+        <img id="userAvatar" class="user-avatar" src="" alt="">
+        <span id="userName" class="user-name"></span>
+        <button id="signOutBtn" class="hdr-signout" title="Sign out">&#x2715;</button>
+      </div>
+    </div>
   </div>
 </header>
 <div class="sysbar">
@@ -856,7 +877,8 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
-    import { getFirestore, doc, onSnapshot, setDoc, getDoc, increment, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+    import { getFirestore, doc, onSnapshot, setDoc, getDoc, increment, serverTimestamp, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
     const firebaseConfig = {
       apiKey: "AIzaSyCumDxKiDMd72dRmY6igXXxOypJe1JvD0g",
       authDomain: "bharatexam-d477c.firebaseapp.com",
@@ -868,6 +890,86 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
     };
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+
+    /* ── Login + browsing history (signed-in users only) ───────────────
+       Site works fully WITHOUT signing in — anonymous visitors browse
+       exactly as before with zero tracking. Signing in with Google is
+       optional and only adds: (1) a saved history of tools you open,
+       visible to you're logged in as, and (2) lets the site admin view
+       everyone's history in a separate admin.html page.
+       History entries are written with an expiresAt field ~30 days out.
+       IMPORTANT (one-time setup): enable a Firestore TTL policy on the
+       "expiresAt" field (Firestore console → TTL tab) so entries are
+       auto-deleted after 1 month — no code/cron needed for that part. */
+    try {
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+      const db3 = getFirestore(app);
+
+      const signInBtn  = document.getElementById("signInBtn");
+      const userChip   = document.getElementById("userChip");
+      const userAvatar = document.getElementById("userAvatar");
+      const userName   = document.getElementById("userName");
+      const signOutBtn = document.getElementById("signOutBtn");
+
+      let currentUser = null;
+
+      if (signInBtn) {
+        signInBtn.addEventListener("click", () => {
+          signInWithPopup(auth, provider).catch((err) => {
+            console.error("[auth] sign-in failed:", err.message);
+          });
+        });
+      }
+      if (signOutBtn) {
+        signOutBtn.addEventListener("click", () => {
+          signOut(auth).catch((err) => console.error("[auth] sign-out failed:", err.message));
+        });
+      }
+
+      onAuthStateChanged(auth, (user) => {
+        currentUser = user;
+        if (user) {
+          if (signInBtn) signInBtn.style.display = "none";
+          if (userChip) userChip.style.display = "flex";
+          if (userAvatar) userAvatar.src = user.photoURL || "";
+          if (userName) userName.textContent = (user.displayName || user.email || "Signed in").split(" ")[0];
+        } else {
+          if (signInBtn) signInBtn.style.display = "";
+          if (userChip) userChip.style.display = "none";
+        }
+      });
+
+      function logHistory(toolName, url) {
+        if (!currentUser) return Promise.resolve(); // not signed in — do nothing, site works fine either way
+        const now = Date.now();
+        const expiresAt = new Date(now + 30 * 24 * 60 * 60 * 1000); // ~1 month from now
+        return addDoc(collection(db3, "history"), {
+          uid: currentUser.uid,
+          email: currentUser.email || "",
+          displayName: currentUser.displayName || "",
+          tool: toolName,
+          url: url,
+          timestamp: serverTimestamp(),
+          expiresAt: expiresAt
+        }).catch((err) => console.error("[history] failed to save entry:", err.message));
+      }
+
+      // Track clicks on every tool card — only actually writes anything
+      // if the visitor is signed in; anonymous clicks navigate instantly.
+      document.querySelectorAll(".cat-card").forEach((card) => {
+        card.addEventListener("click", function (e) {
+          if (!currentUser) return; // anonymous — normal instant navigation, nothing tracked
+          const href = card.getAttribute("href");
+          const titleEl = card.querySelector(".card-title");
+          const toolName = titleEl ? titleEl.textContent.trim().replace(/\s*Live\s*$/, "") : href;
+          e.preventDefault();
+          logHistory(toolName, href).finally(() => { window.location.href = href; });
+        });
+      });
+    } catch (e) {
+      console.error("[auth] setup error:", e.message);
+    }
 
     /* ── Live visitor counter ──────────────────────────────────────────
        Stores a single running total in Firestore: stats/siteVisits.
