@@ -845,6 +845,14 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--rail);box-sh
     <a class="ftlnk" href="defence_exam_prompt_generator.html">Defence</a>
     <a class="ftlnk" href="gate_psu_exam_prompt_generator.html">PSU/GATE</a>
     <a class="ftlnk" href="law_entrance_exam_prompt_generator.html">Law</a>
+    <a class="ft-lnk" href="net_jrf_exam_prompt_generator.html">NET/JRF</a>
+    <a class="ft-lnk" href="cuet_exam_prompt_generator.html">CUET</a>
+    <a class="ft-lnk" href="insurance_exam_prompt_generator.html">Insurance</a>
+    <a class="ft-lnk" href="cacs_exam_prompt_generator.html">CA/CS/CMA</a>
+    <a class="ft-lnk" href="judiciary_exam_prompt_generator.html">Judiciary</a>
+    <a class="ft-lnk" href="agriculture_exam_prompt_generator.html">Agriculture</a>
+    <a class="ft-lnk" href="exam-mentor-chatbot.html">AI Mentor</a>
+    <a class="ft-lnk" href="trend-analysis-generator.html">Trend Analysis</a>
     <a class="ftlnk" href="privacy-policy.html">Privacy Policy</a>
     <a class="ftlnk" href="contact.html">Contact Us</a>
   </div>
@@ -1096,7 +1104,7 @@ function fmtDt(iso){try{const d=new Date(iso+'T00:00:00');return d.toLocaleDateS
 
 // ── INIT ────────────────────────────────────────────────────
 (function init(){
-  document.getElementById('cr-ln').textContent=atob('wqkgMjAyNSBSYWdoYXZiZWdpbnMuIEFsbCByaWdodHMgcmVzZXJ2ZWQu');
+  document.getElementById('cr-ln').textContent=atob('wqkgMjAyNeKAkzIwMjYgUmFnaGF2YmVnaW5zLiBBbGwgcmlnaHRzIHJlc2VydmVkLg==');
   if(localStorage.getItem('rb_ck_rrb')) document.getElementById('ckbar').classList.add('gone');
   document.getElementById('s1-togr').innerHTML=S1S.map(s=>`<div class="togi on" data-k="${s.k}" onclick="this.classList.toggle('on')"><div class="tsw"></div><span class="tic">${s.ic}</span><span class="tgl">${s.lb}</span></div>`).join('');
   document.getElementById('np-gr').innerHTML=NPS.map((n,i)=>`<div class="npi${i<3?' chk':''}" data-id="${n.id}" onclick="tNP(this)"><div class="npchkbox">${i<3?'✓':''}</div><div><div class="npi-nm">${n.ic} ${n.nm}</div><div class="npi-sb">${n.sb}</div></div></div>`).join('');

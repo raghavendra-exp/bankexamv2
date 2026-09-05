@@ -738,6 +738,14 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--gold);box-sh
     <a class="ftlnk" href="index.html">&#8592; All Exams</a>
     <a class="ftlnk" href="bank_exam_prompt_generator.html">Banking Exams</a>
     <a class="ftlnk" href="railway_exam_prompt_generator.html">Railway Exams</a>
+    <a class="ft-lnk" href="net_jrf_exam_prompt_generator.html">NET/JRF</a>
+    <a class="ft-lnk" href="cuet_exam_prompt_generator.html">CUET</a>
+    <a class="ft-lnk" href="insurance_exam_prompt_generator.html">Insurance</a>
+    <a class="ft-lnk" href="cacs_exam_prompt_generator.html">CA/CS/CMA</a>
+    <a class="ft-lnk" href="judiciary_exam_prompt_generator.html">Judiciary</a>
+    <a class="ft-lnk" href="agriculture_exam_prompt_generator.html">Agriculture</a>
+    <a class="ft-lnk" href="exam-mentor-chatbot.html">AI Mentor</a>
+    <a class="ft-lnk" href="trend-analysis-generator.html">Trend Analysis</a>
     <a class="ftlnk" href="privacy-policy.html">Privacy Policy</a>
     <a class="ftlnk" href="contact.html">Contact Us</a>
     <button class="ftlnk" onclick="openPM()">Cookie Policy</button>
@@ -1094,7 +1102,7 @@ function fmtDt(iso){try{const d=new Date(iso+'T00:00:00');return d.toLocaleDateS
   document.getElementById('t6-togr').innerHTML=T6_SECS.map(s=>`<div class="togi on-v" data-k="${s.k}" onclick="this.classList.toggle('on-v')"><div class="tsw"></div><span class="tic">${s.ic}</span><span class="tgl">${s.lb}</span></div>`).join('');
   document.getElementById('np-gr').innerHTML=UPSC_NPS.map((n,i)=>`<div class="npi${i<2?' chk':''}" data-id="${n.id}" onclick="this.classList.toggle('chk');this.querySelector('.npchk').textContent=this.classList.contains('chk')?'✓':''"><div class="npchk">${i<2?'✓':''}</div><div><div class="npi-nm">${n.ic} ${n.nm}</div><div class="npi-sb">${n.sb}</div></div></div>`).join('');
   document.getElementById('col-gr').innerHTML=UPSC_COLS.map(c=>`<button class="cch${['editorial','govt_policy','ir','environment'].includes(c.id)?' on':''}" data-id="${c.id}" onclick="this.classList.toggle('on')">${c.lb}</button>`).join('');
-  try{document.getElementById('cr-ln').textContent=atob('wqkgMjAyNSBSYWdoYXZiZWdpbnMuIEFsbCByaWdodHMgcmVzZXJ2ZWQu')}catch(e){}
+  try{document.getElementById('cr-ln').textContent=atob('wqkgMjAyNeKAkzIwMjYgUmFnaGF2YmVnaW5zLiBBbGwgcmlnaHRzIHJlc2VydmVkLg==')}catch(e){}
   if(localStorage.getItem('rb_ck_upsc')) document.getElementById('ckbar').classList.add('gone');
 })();
 

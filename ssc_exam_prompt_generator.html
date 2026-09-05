@@ -610,6 +610,14 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--green);box-s
     <a class="ftlnk" href="bank_exam_prompt_generator.html">Banking</a>
     <a class="ftlnk" href="railway_exam_prompt_generator.html">Railway</a>
     <a class="ftlnk" href="upsc_prompt_generator.html">UPSC</a>
+    <a class="ft-lnk" href="net_jrf_exam_prompt_generator.html">NET/JRF</a>
+    <a class="ft-lnk" href="cuet_exam_prompt_generator.html">CUET</a>
+    <a class="ft-lnk" href="insurance_exam_prompt_generator.html">Insurance</a>
+    <a class="ft-lnk" href="cacs_exam_prompt_generator.html">CA/CS/CMA</a>
+    <a class="ft-lnk" href="judiciary_exam_prompt_generator.html">Judiciary</a>
+    <a class="ft-lnk" href="agriculture_exam_prompt_generator.html">Agriculture</a>
+    <a class="ft-lnk" href="exam-mentor-chatbot.html">AI Mentor</a>
+    <a class="ft-lnk" href="trend-analysis-generator.html">Trend Analysis</a>
     <a class="ftlnk" href="privacy-policy.html">Privacy Policy</a>
     <a class="ftlnk" href="contact.html">Contact Us</a>
   </div>
@@ -919,7 +927,7 @@ function fmtDt(iso){try{const d=new Date(iso+"T00:00:00");return d.toLocaleDateS
   document.getElementById('t5-togr').innerHTML=T5_SECS.map(s=>`<div class="togi on-b" data-k="${s.k}" onclick="this.classList.toggle('on-b')"><div class="tsw"></div><span class="tic">${s.ic}</span><span class="tgl">${s.lb}</span></div>`).join('');
   document.getElementById('np-gr').innerHTML=SSC_NPS.map((nn,i)=>`<div class="npi${i<2?' chk':''}" data-id="${nn.id}" onclick="this.classList.toggle('chk');this.querySelector('.npchk').textContent=this.classList.contains('chk')?'&#10003;':''"><div class="npchk">${i<2?'&#10003;':''}</div><div><div class="npi-nm">${nn.ic} ${nn.nm}</div><div class="npi-sb">${nn.sb}</div></div></div>`).join('');
   document.getElementById('col-gr').innerHTML=SSC_COLS.map(c=>`<button class="cch${['national','govt_scheme','sports'].includes(c.id)?' on':''}" data-id="${c.id}" onclick="this.classList.toggle('on')">${c.lb}</button>`).join('');
-  try{document.getElementById("ft-cr").textContent=atob("wqkgMjAyNSBSYWdoYXZiZWdpbnMuIEFsbCByaWdodHMgcmVzZXJ2ZWQu");}catch(e){}
+  try{document.getElementById("ft-cr").textContent=atob("wqkgMjAyNeKAkzIwMjYgUmFnaGF2YmVnaW5zLiBBbGwgcmlnaHRzIHJlc2VydmVkLg==");}catch(e){}
   if(localStorage.getItem("rb_ck_ssc"))document.getElementById("ckbar").classList.add("gone");
 })();
 
