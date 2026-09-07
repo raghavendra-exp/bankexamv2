@@ -317,7 +317,21 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--rail);box-sh
 .exam-chk-lbl{font-size:12px;font-weight:600;color:var(--txt)}
 .exam-chk.on .exam-chk-lbl{color:#0C4A6E}
 
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the difference between RRB NTPC, Group D, ALP, and JE?","acceptedAnswer":{"@type":"Answer","text":"NTPC (Non-Technical Popular Categories) covers clerical and commercial posts requiring graduate or 12th-pass eligibility. Group D covers Level-1 technical-support posts like Track Maintainer and Assistant, requiring 10th pass or ITI. ALP (Assistant Loco Pilot) and JE (Junior Engineer) are technical posts requiring specific diploma/ITI or engineering qualifications."}},
+{"@type":"Question","name":"Is there negative marking in RRB exams?","acceptedAnswer":{"@type":"Answer","text":"Yes. Most RRB computer-based tests deduct one-third (1/3) of a mark for each wrong answer, though the exact deduction can vary by specific notification — always confirm against your official exam notice."}},
+{"@type":"Question","name":"How many stages does RRB recruitment typically have?","acceptedAnswer":{"@type":"Answer","text":"Most RRB posts follow CBT 1, followed by CBT 2 and/or a document verification and medical examination stage; technical posts like ALP add a Computer Based Aptitude Test (CBAT), and Group D has a Physical Efficiency Test (PET) after CBT."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
 
@@ -389,8 +403,10 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--rail);box-sh
     </div>
     <div class="hbdgs">
       <span class="hbdg">NTPC</span><span class="hbdg">Group D</span><span class="hbdg">ALP</span><span class="hbdg">JE</span>
+      <span class="hbdg" id="streakBadge" style="display:none">&#x1F525; streak</span>
     </div>
   </div>
+  <div id="examCountdownStrip" style="display:flex;gap:10px;flex-wrap:wrap;padding:10px 20px;font-size:13px;opacity:.95"></div>
   <div class="tab-nav">
     <div class="tab-nav-inner">
       <button class="tnbtn act" onclick="swTab('s1',this)"><span class="tnic">📐</span> Study Prompt</button>
@@ -398,11 +414,15 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--rail);box-sh
       <button class="tnbtn" onclick="swTab('s3',this)"><span class="tnic">🎯</span> Practice Set</button>
       <button class="tnbtn" onclick="swTab('s4',this)"><span class="tnic">🔧</span> Technical (ALP/JE)</button>
       <button class="tnbtn" onclick="swTab('s5',this)"><span class="tnic">📋</span> Syllabus Prompt</button>
+      <button class="tnbtn" onclick="swTab('s6',this)"><span class="tnic">🗂️</span> Flashcards</button>
     </div>
   </div>
 </header>
 
 <!-- AD SLOT TOP -->
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div style="background:var(--sf2)"><div class="wrap"><div class="adslot"><div class="adslot-lbl">Advertisement</div><span class="adslot-ph">Responsive banner ad (728×90)</span></div></div></div>
 
 <main class="wrap" style="padding-top:24px;padding-bottom:80px">
@@ -806,6 +826,35 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--rail);box-sh
   <div class="emp" id="rs5-emp"><div style="font-size:46px;margin-bottom:12px">📋</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
 
+<!-- ════ TAB 6 — FLASHCARDS ════ -->
+<div class="tp" id="tp-s6">
+  <div class="intro-card">
+    <h2>🗂️ Flashcards</h2>
+    <p>Quick-fire revision cards for RRB NTPC / Group D general science and reasoning. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-gs" onclick="fcLoadDeck('gs')">🔬 General Science</button>
+        <button class="sp" id="fc-deck-reasoning" onclick="fcLoadDeck('reasoning')">🧩 Reasoning</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2,#cbd5e1);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3,#64748b)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3,#64748b)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- SOCIAL + FOOTER AD -->
@@ -1115,7 +1164,127 @@ function fmtDt(iso){try{const d=new Date(iso+'T00:00:00');return d.toLocaleDateS
 })();
 
 // ── HELPERS ─────────────────────────────────────────────────
-function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});}
+function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});try{localStorage.setItem('rlwy_lasttab',id);}catch(e){}}
+
+/* ── Exam countdown widget ──
+   RRB NTPC UG CBT 2 date verified against official CEN 07/2025 notice as of Sep 2026.
+   RRB Group D CBT already concluded (Aug 2026) — omitted rather than shown as stale.
+   Update EXAM_DATES whenever a new official notification comes out. */
+(function examCountdown(){
+  var EXAM_DATES = [
+    { name: "RRB NTPC UG CBT 2", date: "2026-09-17", link: "https://www.rrbcdg.gov.in" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  var now = new Date();
+  var html = "";
+  EXAM_DATES.forEach(function(e){
+    var target = new Date(e.date + "T00:00:00");
+    var diffDays = Math.ceil((target - now) / 86400000);
+    if(diffDays < 0) return;
+    var label = diffDays === 0 ? "Today!" : diffDays + " day" + (diffDays === 1 ? "" : "s");
+    html += '<a href="' + e.link + '" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:5px 10px;display:inline-flex;gap:6px;align-items:center">' +
+              '<strong>' + label + '</strong> to ' + e.name +
+            '</a>';
+  });
+  if(!html){
+    html = '<span style="opacity:.8">Check rrbcdg.gov.in for the latest exam calendar &rarr;</span>';
+  }
+  strip.innerHTML = html;
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('rlwy_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnbtn[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnbtn').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('rlwy_lastvisit');
+    var streak = parseInt(localStorage.getItem('rlwy_streak') || '0', 10);
+    if(lastVisit === todayStr){
+      /* already counted today */
+    } else {
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('rlwy_streak', String(streak));
+      localStorage.setItem('rlwy_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  gs: [
+    { f: "SI unit of electric current", b: "Ampere (A)" },
+    { f: "Which gas is most abundant in Earth's atmosphere?", b: "Nitrogen (about 78%)" },
+    { f: "The powerhouse of the cell is which organelle?", b: "Mitochondria" },
+    { f: "What is the pH of pure water at 25°C?", b: "7 (neutral)" },
+    { f: "Which vitamin is produced in the skin on sun exposure?", b: "Vitamin D" },
+    { f: "What is the chemical formula of common salt?", b: "NaCl (sodium chloride)" },
+    { f: "Which part of the human body produces insulin?", b: "The pancreas" },
+    { f: "What force keeps planets in orbit around the Sun?", b: "Gravitational force" }
+  ],
+  reasoning: [
+    { f: "In a coding-decoding question, if CAT is coded as DBU, what's the coding rule?", b: "Each letter is shifted forward by 1 in the alphabet (+1 shift)" },
+    { f: "What is a syllogism in reasoning questions?", b: "A logical argument with two statements (premises) and a conclusion, tested for validity regardless of real-world truth" },
+    { f: "In a blood-relation question, how is your father's only sister's son related to you?", b: "He is your cousin" },
+    { f: "What's the next number in the series 2, 6, 12, 20, 30, ?", b: "42 (differences increase by 2 each time: +4,+6,+8,+10,+12)" },
+    { f: "In direction-sense questions, if you face North and turn 90° clockwise, which direction do you face?", b: "East" },
+    { f: "What is a Venn diagram used for in reasoning?", b: "Showing logical relationships between sets/groups, e.g. overlaps between categories like Doctors, Men, Players" }
+  ]
+};
+var fcState = { deck: 'gs', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-gs').classList.toggle('on', name === 'gs');
+  document.getElementById('fc-deck-reasoning').classList.toggle('on', name === 'reasoning');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('gs'); });
 function togT(el){el.classList.toggle('on-t')}
 function tNP(el){el.classList.toggle('chk');el.querySelector('.npchkbox').textContent=el.classList.contains('chk')?'✓':'';}
 function sv(d){vN=Math.max(5,Math.min(15,vN+d));document.getElementById('v-n').textContent=vN}
