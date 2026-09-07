@@ -236,7 +236,21 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--green);box-s
 @media(max-width:768px){.sg3{grid-template-columns:1fr 1fr}.hdr-back span{display:none}.srch-form{width:150px}}
 @media(max-width:540px){.sg3,.sg2{grid-template-columns:1fr}.soc-fl{display:none}}
 @media(max-width:480px){.sov-grid{grid-template-columns:1fr}}
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the difference between SSC CGL, CHSL, and MTS?","acceptedAnswer":{"@type":"Answer","text":"CGL (Combined Graduate Level) is for graduate-level Group B/C posts. CHSL (Combined Higher Secondary Level) is for 12th-pass posts like LDC, JSA, and DEO. MTS (Multi-Tasking Staff) is for 10th-pass non-technical support posts."}},
+{"@type":"Question","name":"Is there negative marking in SSC exams?","acceptedAnswer":{"@type":"Answer","text":"Yes. Most SSC objective exams deduct marks for wrong answers, commonly 0.5 or 0.25 depending on the specific exam and tier — always check the exact scheme in your official notification since it varies by exam."}},
+{"@type":"Question","name":"How many tiers does the SSC CGL exam have?","acceptedAnswer":{"@type":"Answer","text":"SSC CGL has two tiers: Tier 1 (objective CBT, qualifying and scoring) and Tier 2 (objective CBT with multiple sections, some post-specific). Document verification and, for certain posts, a skill test follow after Tier 2."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
 <!-- FLOATING SOCIAL -->
@@ -278,15 +292,23 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--green);box-s
     <div class="srch-form"><input class="srch-in" id="srch-in" placeholder="Search any topic..." onkeydown="if(event.key==='Enter')doSearch()" autocomplete="off"><button class="srch-go" onclick="doSearch()">Search</button></div>
     <a class="hdr-back" href="index.html">&#8592; <span>All Exams</span></a>
   </div>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 20px 8px">
+    <span id="streakBadge" style="display:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.25)">&#x1F525; streak</span>
+    <div id="examCountdownStrip" style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px"></div>
+  </div>
   <div class="tab-nav"><div class="tni">
     <button class="tnb act" onclick="swTab('t1',this)"><span>📐</span> Study Prompt</button>
     <button class="tnb" onclick="swTab('t2',this)"><span>📰</span> Newspaper Prompt</button>
     <button class="tnb" onclick="swTab('t3',this)"><span>🎯</span> Practice Set</button>
     <button class="tnb" onclick="swTab('t4',this)"><span>🔧</span> SSC JE Technical</button>
     <button class="tnb" onclick="swTab('t5',this)"><span>📋</span> Syllabus Prompt</button>
+    <button class="tnb" onclick="swTab('t6',this)"><span>🗂️</span> Flashcards</button>
   </div></div>
 </header>
 <!-- AD TOP -->
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div style="background:var(--sf2)"><div class="wrap"><div class="adslot"><div class="adslot-lbl">Advertisement</div><span class="adslot-ph">Responsive banner ad</span></div></div></div>
 <main class="wrap">
 
@@ -581,6 +603,36 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--green);box-s
   </div>
   <div class="emp" id="t5-emp"><div style="font-size:46px;margin-bottom:12px">📋</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
+
+<!-- TAB 6: FLASHCARDS -->
+<div class="tp" id="tp-t6">
+  <div class="intro-card">
+    <h2>🗂️ Flashcards</h2>
+    <p>Quick-fire revision cards for SSC CGL/CHSL quant and general awareness. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-quant" onclick="fcLoadDeck('quant')">📐 Quant Shortcuts</button>
+        <button class="sp" id="fc-deck-gk" onclick="fcLoadDeck('gk')">🏛️ Static GK</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2,#cbd5e1);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3,#64748b)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3,#64748b)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- SOCIAL SECTION -->
@@ -931,7 +983,119 @@ function fmtDt(iso){try{const d=new Date(iso+"T00:00:00");return d.toLocaleDateS
   if(localStorage.getItem("rb_ck_ssc"))document.getElementById("ckbar").classList.add("gone");
 })();
 
-function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});}
+function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});try{localStorage.setItem('ssc_lasttab',id);}catch(e){}}
+
+/* ── Exam window widget ──
+   As of Sep 2026, SSC has NOT yet confirmed exact CGL/CHSL exam dates —
+   only tentative months. Rather than invent a specific date (which could
+   mislead an aspirant), this shows the official tentative window instead
+   of a day-countdown. Replace with a real countdown once SSC confirms
+   an exact date on ssc.gov.in. */
+(function examWindow(){
+  var WINDOWS = [
+    { name: "SSC CGL Tier 1", window: "Expected Sep\u2013Oct 2026" },
+    { name: "SSC CHSL Tier 1", window: "Expected Jul\u2013Sep 2026" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  strip.innerHTML = WINDOWS.map(function(w){
+    return '<a href="https://ssc.gov.in" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:4px 10px;display:inline-flex;gap:6px;align-items:center">' +
+             '<strong>' + w.name + ':</strong> ' + w.window + ' &rarr;' +
+           '</a>';
+  }).join('');
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('ssc_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('ssc_lastvisit');
+    var streak = parseInt(localStorage.getItem('ssc_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('ssc_streak', String(streak));
+      localStorage.setItem('ssc_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  quant: [
+    { f: "Shortcut: (a+b)² formula", b: "a² + 2ab + b²" },
+    { f: "Shortcut: (a−b)² formula", b: "a² − 2ab + b²" },
+    { f: "Shortcut: a² − b² formula", b: "(a+b)(a−b)" },
+    { f: "Formula for area of a triangle with base b and height h", b: "Area = (1/2) × b × h" },
+    { f: "Formula to convert km/h to m/s", b: "Multiply by 5/18" },
+    { f: "Formula for Simple Interest", b: "SI = (P × R × T) / 100" },
+    { f: "Sum of interior angles of a polygon with n sides", b: "(n − 2) × 180°" },
+    { f: "Formula for compound interest (annual)", b: "CI = P(1 + R/100)^T − P" }
+  ],
+  gk: [
+    { f: "Who is known as the Father of the Indian Constitution?", b: "Dr. B.R. Ambedkar" },
+    { f: "Which Article of the Indian Constitution deals with the Right to Equality?", b: "Article 14" },
+    { f: "Which is the longest river in India?", b: "The Ganga" },
+    { f: "Who founded the Mauryan Empire?", b: "Chandragupta Maurya" },
+    { f: "Which Indian city is known as the 'Silicon Valley of India'?", b: "Bengaluru" },
+    { f: "Which national park is famous for the one-horned rhinoceros?", b: "Kaziranga National Park, Assam" },
+    { f: "Who was the first President of India?", b: "Dr. Rajendra Prasad" }
+  ]
+};
+var fcState = { deck: 'quant', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-quant').classList.toggle('on', name === 'quant');
+  document.getElementById('fc-deck-gk').classList.toggle('on', name === 'gk');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('quant'); });
 function buildAIRow(rid,pid){const r=document.getElementById(rid);if(!r)return;r.innerHTML='<span class="ai-lbl">Open in →</span>'+AI_PL.map(a=>`<button class="ai-btn ${a.cls}" onclick="launchAI('${a.url}','${pid}')">${a.ic} ${a.nm}</button>`).join('');}
 function fallbackCopy(t){try{const ta=document.createElement("textarea");ta.value=t;ta.style.cssText="position:fixed;top:-9999px;opacity:0";document.body.appendChild(ta);ta.focus();ta.select();document.execCommand("copy");document.body.removeChild(ta);}catch(e){}}
 function launchAI(url,pid){const t=document.getElementById(pid).textContent;if(!t||!t.trim()){showToast("Generate a prompt first");return;}const open=()=>{const tip=document.getElementById("ai-tip");tip.classList.add("show");setTimeout(()=>tip.classList.remove("show"),3500);setTimeout(()=>window.open(url,"_blank"),400);};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(open).catch(()=>{fallbackCopy(t);open();});}else{fallbackCopy(t);open();}}
