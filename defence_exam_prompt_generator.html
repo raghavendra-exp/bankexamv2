@@ -234,7 +234,21 @@ select:focus{outline:none;border-color:var(--oli2);box-shadow:0 0 0 3px rgba(61,
 @media(max-width:768px){.sg3{grid-template-columns:1fr 1fr}.hdr-back span{display:none}.srch-form{width:150px}}
 @media(max-width:540px){.sg3,.sg2{grid-template-columns:1fr}.soc-fl{display:none}}
 @media(max-width:480px){.sov-grid{grid-template-columns:1fr}}
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the difference between NDA, CDS, and AFCAT?","acceptedAnswer":{"@type":"Answer","text":"NDA (National Defence Academy) is for candidates after Class 12, leading to a joint Army/Navy/Air Force training academy. CDS (Combined Defence Services) is for graduates seeking entry into IMA, INA, AFA, or OTA. AFCAT (Air Force Common Admission Test) is specifically for commissioned officer entry into the Indian Air Force's Flying and Ground Duty branches."}},
+{"@type":"Question","name":"What is the SSB interview?","acceptedAnswer":{"@type":"Answer","text":"The Services Selection Board (SSB) interview is a multi-day assessment (typically 5 days) that follows the written exam, testing personality, leadership, and officer-like qualities through psychological tests, group tasks, and a personal interview."}},
+{"@type":"Question","name":"Is there negative marking in CDS and NDA exams?","acceptedAnswer":{"@type":"Answer","text":"Yes. UPSC deducts one-third of the marks assigned to a question for each wrong answer in both the NDA and CDS written examinations."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
 <!-- SOCIAL FLOAT -->
@@ -274,14 +288,22 @@ select:focus{outline:none;border-color:var(--oli2);box-shadow:0 0 0 3px rgba(61,
     <div class="srch-form"><input class="srch-in" id="srch-in" placeholder="Search any topic..." onkeydown="if(event.key==='Enter')doSearch()" autocomplete="off"><button class="srch-go" onclick="doSearch()">Search</button></div>
     <a class="hdr-back" href="index.html">&#8592; <span>All Exams</span></a>
   </div>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 20px 8px">
+    <span id="streakBadge" style="display:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.25)">&#x1F525; streak</span>
+    <div id="examCountdownStrip" style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px"></div>
+  </div>
   <div class="tab-nav"><div class="tni">
     <button class="tnb act" onclick="swTab('t1',this)"><span>&#x1F4DA;</span> Study Prompt</button>
     <button class="tnb" onclick="swTab('t2',this)"><span>&#x1F9EA;</span> Practice Set</button>
     <button class="tnb" onclick="swTab('t3',this)"><span>&#x1F4DC;</span> PYQ Analysis</button>
     <button class="tnb" onclick="swTab('t4',this)"><span>&#x1F396;&#xFE0F;</span> SSB Interview Prep</button>
     <button class="tnb" onclick="swTab('t5',this)"><span>&#x1F4CB;</span> Syllabus Prompt</button>
+    <button class="tnb" onclick="swTab('t6',this)"><span>&#x1F5C2;&#xFE0F;</span> Flashcards</button>
   </div></div>
 </header>
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div style="background:var(--sf2)"><div class="wrap"><div class="adslot"><div class="adslot-lbl">Advertisement</div><span class="adslot-ph">Responsive banner ad</span></div></div></div>
 <main class="wrap">
 <!-- TAB 1: STUDY PROMPT -->
@@ -523,6 +545,36 @@ select:focus{outline:none;border-color:var(--oli2);box-shadow:0 0 0 3px rgba(61,
   <div class="ocard oc7" id="t5-oc"><div class="ohdr oh7"><div class="ohdr-m"><h3 id="t5-title">Defence exam strategy</h3><p id="t5-sub">Current cycle analysis</p></div><div class="ohdr-acts"><button class="oab oab-cp" onclick="cpOut('t5-pa','t5-cb')" id="t5-cb">&#x1F4CB; Copy</button><button class="oab" style="background:var(--nav2);color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;border:none" onclick="dlOut('t5-pa','def_syllabus')">&#x2B07; .txt</button></div></div><div class="ai-row" id="t5-air"><span class="ai-lbl">Open in &rarr;</span></div><div class="ostats" id="t5-stats"></div><div class="parea" id="t5-pa"></div></div>
   <div class="emp" id="t5-emp"><div style="font-size:46px;margin-bottom:12px">&#x1F4CB;</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
+
+<!-- TAB 6: FLASHCARDS -->
+<div class="tp" id="tp-t6">
+  <div class="intro-card">
+    <h2>&#x1F5C2;&#xFE0F; Flashcards</h2>
+    <p>Quick-fire revision cards for NDA/CDS general knowledge and elementary maths. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-gk" onclick="fcLoadDeck('gk')">&#x1F30F; General Knowledge</button>
+        <button class="sp" id="fc-deck-maths" onclick="fcLoadDeck('maths')">&#x1F522; Elementary Maths</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2,#cbd5e1);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3,#64748b)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3,#64748b)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <div style="max-width:1080px;margin:0 auto;padding:0 20px">
@@ -724,7 +776,125 @@ let ssbStageV="screening",ssbTopic="",pqN=25;
   try{document.getElementById("ft-cr").textContent=atob("wqkgMjAyNeKAkzIwMjYgUmFnaGF2YmVnaW5zLiBBbGwgcmlnaHRzIHJlc2VydmVkLg==");}catch(e){}
   if(localStorage.getItem("rb_ck_def"))document.getElementById("ckbar").classList.add("gone");
 })();
-function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});}
+function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});try{localStorage.setItem('def_lasttab',id);}catch(e){}}
+
+/* ── Exam countdown widget ──
+   CDS 2 2026 date verified against official UPSC notification as of Sep 2026.
+   AFCAT 2 2026 already concluded (8 Aug 2026) — omitted rather than shown stale.
+   Update EXAM_DATES whenever a new official notification comes out. */
+(function examCountdown(){
+  var EXAM_DATES = [
+    { name: "CDS 2 2026 Written Exam", date: "2026-09-13", link: "https://upsc.gov.in" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  var now = new Date();
+  var html = "";
+  EXAM_DATES.forEach(function(e){
+    var target = new Date(e.date + "T00:00:00");
+    var diffDays = Math.ceil((target - now) / 86400000);
+    if(diffDays < 0) return;
+    var label = diffDays === 0 ? "Today!" : diffDays + " day" + (diffDays === 1 ? "" : "s");
+    html += '<a href="' + e.link + '" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:5px 10px;display:inline-flex;gap:6px;align-items:center">' +
+              '<strong>' + label + '</strong> to ' + e.name +
+            '</a>';
+  });
+  if(!html){
+    html = '<span style="opacity:.8">Check upsc.gov.in and afcat.cdac.in for the latest exam calendar &rarr;</span>';
+  }
+  strip.innerHTML = html;
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('def_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('def_lastvisit');
+    var streak = parseInt(localStorage.getItem('def_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('def_streak', String(streak));
+      localStorage.setItem('def_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  gk: [
+    { f: "Who was the first Chief of Defence Staff (CDS) of India?", b: "General Bipin Rawat" },
+    { f: "Which is the highest gallantry award in India?", b: "Param Vir Chakra" },
+    { f: "What does IMA stand for?", b: "Indian Military Academy (Dehradun)" },
+    { f: "Which naval academy trains officers for the Indian Navy?", b: "Indian Naval Academy (INA), Ezhimala" },
+    { f: "What is the motto of the Indian Air Force?", b: "\"Nabhah Sparsham Deeptam\" (Touch the Sky with Glory)" },
+    { f: "Which committee's recommendations led to the creation of the CDS post?", b: "Based on the Kargil Review Committee's recommendations" },
+    { f: "What does OTA stand for in defence recruitment?", b: "Officers Training Academy (Chennai/Gaya)" }
+  ],
+  maths: [
+    { f: "Formula for the area of a circle", b: "Area = \u03C0r\u00B2" },
+    { f: "Formula for the volume of a cylinder", b: "Volume = \u03C0r\u00B2h" },
+    { f: "What is the value of sin(90\u00B0)?", b: "1" },
+    { f: "Formula for distance between two points (x1,y1) and (x2,y2)", b: "\u221A[(x2\u2212x1)\u00B2 + (y2\u2212y1)\u00B2]" },
+    { f: "Sum of the first n terms of an arithmetic progression", b: "Sn = n/2 × [2a + (n\u22121)d]" },
+    { f: "What is the derivative of x\u207F with respect to x?", b: "n·x^(n\u22121)" },
+    { f: "Formula for compound interest", b: "CI = P(1 + R/100)^T \u2212 P" }
+  ]
+};
+var fcState = { deck: 'gk', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-gk').classList.toggle('on', name === 'gk');
+  document.getElementById('fc-deck-maths').classList.toggle('on', name === 'maths');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('gk'); });
 function buildAIRow(rid,pid){const r=document.getElementById(rid);if(!r)return;r.innerHTML='<span class="ai-lbl">Open in →</span>'+AI_PL.map(ai=>`<button class="ai-btn ${ai.cls}" onclick="launchAI('${ai.url}','${pid}')">${ai.ic} ${ai.nm}</button>`).join('');}
 function fallbackCopy(t){try{const ta=document.createElement("textarea");ta.value=t;ta.style.cssText="position:fixed;top:-9999px;opacity:0";document.body.appendChild(ta);ta.focus();ta.select();document.execCommand("copy");document.body.removeChild(ta);}catch(e){}}
 function launchAI(url,pid){const t=document.getElementById(pid).textContent;if(!t||!t.trim()){showToast("Generate a prompt first");return;}const open=()=>{const tip=document.getElementById("ai-tip");tip.classList.add("show");setTimeout(()=>tip.classList.remove("show"),3500);setTimeout(()=>window.open(url,"_blank"),400);};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(open).catch(()=>{fallbackCopy(t);open();});}else{fallbackCopy(t);open();}}
