@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://raghavendra-exp.github.io/bankexamv2/sitemap.xml

@@ -10,11 +10,11 @@
 <meta property="og:title" content="Indian Exam AI Prompt Generator — 20 Free Tools | Raghavbegins">
 <meta property="og:description" content="Free AI study prompt generators for CLAT, GATE, UPSC, SSC, JEE, NEET, Banking, Railway, Defence and 80+ Indian competitive exams. No login required.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://raghavbegins.github.io/bankexamv2/index.html">
+<meta property="og:url" content="https://raghavendra-exp.github.io/bankexamv2/index.html">
 <meta property="og:site_name" content="Raghavbegins — Indian Exam AI Prompt Generator">
-<meta property="og:image" content="https://raghavbegins.github.io/bankexamv2/og-image.png">
-<link rel="canonical" href="https://raghavbegins.github.io/bankexamv2/index.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Indian Exam AI Prompt Generator","url":"https://raghavbegins.github.io/bankexamv2/","description":"Free AI study prompt generators for 80+ Indian competitive exams","author":{"@type":"Person","name":"Raghavbegins","url":"https://www.facebook.com/Raghavbegins"}}</script>
+<meta property="og:image" content="https://raghavendra-exp.github.io/bankexamv2/og-image.png">
+<link rel="canonical" href="https://raghavendra-exp.github.io/bankexamv2/index.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Indian Exam AI Prompt Generator","url":"https://raghavendra-exp.github.io/bankexamv2/","description":"Free AI study prompt generators for 80+ Indian competitive exams","author":{"@type":"Person","name":"Raghavbegins","url":"https://www.facebook.com/Raghavbegins"}}</script>
 <title>Indian Exam AI Prompt Generator — 20 Free Tools | UPSC · Banking · SSC · JEE · NEET · Law · GATE · AI Mentor | Raghavbegins</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0Z2G21W4F"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-B0Z2G21W4F");</script>
@@ -485,6 +485,8 @@ a{color:var(--pr);text-decoration:none}
   </div>
   <div class="hero-inner">
     <div class="hero-eyebrow"><span></span> 100% Free &nbsp;&middot;&nbsp; No Login &nbsp;&middot;&nbsp; AI-powered &nbsp;&middot;&nbsp; Updated Daily</div>
+    <div id="streakBadgeHero" style="display:none;text-align:center;font-size:13px;font-weight:600;margin-bottom:6px"></div>
+    <div id="examCountdownStrip" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;font-size:13px;margin-bottom:14px"></div>
     <h2>Stop Wasting Hours.<br>Start Studying <span class="gr">Smarter</span> with <span class="yl">AI.</span></h2>
     <p class="hero-sub">Generate expert-level study prompts for <strong>80+ Indian competitive exams</strong> in seconds. Paste into Claude, ChatGPT or Gemini &mdash; and get a personal tutor that knows your exact exam.</p>
     <div class="hero-stats">
@@ -546,6 +548,17 @@ a{color:var(--pr);text-decoration:none}
         <h2>Today's exam &amp; job updates</h2>
       </div>
       <span class="signal-updated" id="signalUpdated">&#x1F4E1; Refreshed 12 July 2026</span>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;margin:-8px 0 16px">
+      <button id="caQuizBtn" onclick="openCAQuiz()" style="background:none;border:1.5px solid currentColor;border-radius:24px;padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;opacity:.9" disabled>&#x1F9E0; Today's Current Affairs Quiz (loading&hellip;)</button>
+    </div>
+
+    <div id="caQuizModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center;padding:20px">
+      <div style="background:var(--sf,#fff);color:var(--txt2,#334155);max-width:520px;width:100%;border-radius:16px;padding:24px;position:relative;max-height:80vh;overflow:auto">
+        <button onclick="closeCAQuiz()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer">&times;</button>
+        <div id="caQuizBody"></div>
+      </div>
     </div>
 
     <div class="signal-grid" id="signalGrid">
@@ -897,6 +910,8 @@ a{color:var(--pr);text-decoration:none}
     <a class="ftlnk" href="cacs_exam_prompt_generator.html">CA/CS/CMA</a>
     <a class="ftlnk" href="judiciary_exam_prompt_generator.html">Judiciary</a>
     <a class="ftlnk" href="agriculture_exam_prompt_generator.html">Agriculture</a>
+    <a class="ftlnk" href="IBPS_SBI_Clerk_Roadmap.html">Clerk Roadmap</a>
+    <a class="ftlnk" href="IBPS_SBI_Free_Library.html">Free Library</a>
     <a class="ftlnk" href="privacy-policy.html">Privacy</a>
   </div>
   <div class="ft-bot">
@@ -1056,6 +1071,56 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
       if (countEl) { countEl.textContent = "?"; countEl.title = "Live counter setup incomplete"; }
     }
 
+    /* ── Study streak tracker (localStorage, no backend) ── */
+    try {
+      const todayStr = new Date().toDateString();
+      const lastVisit = localStorage.getItem("rb_lastvisit");
+      let streak = parseInt(localStorage.getItem("rb_streak") || "0", 10);
+      if (lastVisit !== todayStr) {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+        localStorage.setItem("rb_streak", String(streak));
+        localStorage.setItem("rb_lastvisit", todayStr);
+      }
+      const streakEl = document.getElementById("streakBadgeHero");
+      if (streakEl && streak > 0) {
+        streakEl.textContent = "\u{1F525} " + streak + "-day streak \u2014 keep it going!";
+        streakEl.style.display = "";
+      }
+    } catch (e) {
+      console.error("[streak tracker] error:", e.message);
+    }
+
+    /* ── Exam countdown widget ──
+       Dates verified against IBPS's official 2026-27 calendar as of Sep 2026.
+       IBPS/SBI dates shift slightly year to year — update EXAM_DATES below
+       whenever a new official notification comes out; don't leave stale
+       dates live past the exam. */
+    try {
+      const EXAM_DATES = [
+        { name: "IBPS Clerk Prelims", date: "2026-10-10", link: "bank_exam_prompt_generator.html" },
+        { name: "IBPS Clerk Mains",   date: "2026-12-27", link: "bank_exam_prompt_generator.html" }
+      ];
+      const stripEl = document.getElementById("examCountdownStrip");
+      if (stripEl) {
+        const now = new Date();
+        let html = "";
+        EXAM_DATES.forEach((e) => {
+          const target = new Date(e.date + "T00:00:00");
+          const diffDays = Math.ceil((target - now) / 86400000);
+          if (diffDays < 0) return;
+          const label = diffDays === 0 ? "Today!" : diffDays + " day" + (diffDays === 1 ? "" : "s");
+          html += '<a href="' + e.link + '" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:6px 14px;display:inline-flex;gap:6px;align-items:center">' +
+                    "<strong>" + label + "</strong> to " + e.name +
+                  "</a>";
+        });
+        if (html) stripEl.innerHTML = html;
+      }
+    } catch (e) {
+      console.error("[exam countdown] error:", e.message);
+    }
+
     /* ── Exam updates auto-refresh (every 3 days) ──────────────────────
        Content lives in Firestore: content/examUpdates { cards, lastUpdated }.
        On load, checks the age of the cached cards:
@@ -1071,7 +1136,7 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
       var THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
       var RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
       var RSS2JSON_KEY = "5ggirmhnizmtj7ywzvxmop0d15rwzg8qztvkx2fo";
-      var NEWS_QUERY = "UPSC SSC banking railway GATE NEET JEE CLAT exam notification result admit card India";
+      var NEWS_QUERY = "(UPSC OR SSC OR IBPS OR SBI OR railway OR RRB OR GATE OR NEET OR JEE OR CLAT) (exam OR notification OR result OR \"admit card\" OR recruitment) India";
 
       var TOOL_MAP = [
         { keys:["ibps","sbi","rbi","bank","nabard"], tool:"bank_exam_prompt_generator.html", tag:"t-bank", icon:"&#x1F3E6;", label:"Banking" },
@@ -1088,7 +1153,10 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
         var lower = text.toLowerCase();
         for (var i = 0; i < TOOL_MAP.length; i++){
           for (var j = 0; j < TOOL_MAP[i].keys.length; j++){
-            if (lower.indexOf(TOOL_MAP[i].keys[j]) !== -1) return TOOL_MAP[i];
+            var key = TOOL_MAP[i].keys[j];
+            var escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            var boundaryRe = new RegExp("\\b" + escaped + "\\b", "i");
+            if (boundaryRe.test(lower)) return TOOL_MAP[i];
           }
         }
         return { tool:"index.html#tools", tag:"t-bank", icon:"&#x1F4E2;", label:"Update" };
@@ -1132,6 +1200,73 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
         if (!grid || !items || !items.length) return;
         grid.innerHTML = items.slice(0,7).map(function(item,i){ return cardHTML(item, i===0); }).join("");
         if (label) label.innerHTML = "&#x1F4E1; Refreshed " + fmtDate(updatedDate || new Date());
+        buildCAQuiz(items);
+      }
+
+      /* ── Current-affairs quiz (built from real, live headlines — no invented facts) ── */
+      var caQuizQuestions = [];
+      var caQuizIdx = 0, caQuizScore = 0;
+      function buildCAQuiz(items){
+        var allLabels = TOOL_MAP.map(function(t){ return t.label; });
+        var pool = items.filter(function(it){
+          return categorise(it.title + " " + (it.description||"")).label !== "Update";
+        });
+        caQuizQuestions = pool.slice(0,5).map(function(it){
+          var correct = categorise(it.title + " " + (it.description||"")).label;
+          var distractors = allLabels.filter(function(l){ return l !== correct; });
+          for (var i = distractors.length - 1; i > 0; i--){
+            var j = Math.floor(Math.random()*(i+1));
+            var t = distractors[i]; distractors[i]=distractors[j]; distractors[j]=t;
+          }
+          var options = [correct].concat(distractors.slice(0,3));
+          for (var i2 = options.length - 1; i2 > 0; i2--){
+            var j2 = Math.floor(Math.random()*(i2+1));
+            var t2 = options[i2]; options[i2]=options[j2]; options[j2]=t2;
+          }
+          return { headline: esc(stripHtml(it.title)), correct: correct, options: options };
+        });
+        var btn = document.getElementById("caQuizBtn");
+        if (btn){
+          if (caQuizQuestions.length >= 3){
+            btn.disabled = false;
+            btn.innerHTML = "&#x1F9E0; Today's Current Affairs Quiz (" + caQuizQuestions.length + " Qs)";
+          } else {
+            btn.innerHTML = "&#x1F9E0; Quiz unavailable today &mdash; check back later";
+          }
+        }
+      }
+      function openCAQuiz(){
+        if (!caQuizQuestions.length) return;
+        caQuizIdx = 0; caQuizScore = 0;
+        document.getElementById("caQuizModal").style.display = "flex";
+        renderCAQuizQuestion();
+      }
+      function closeCAQuiz(){ document.getElementById("caQuizModal").style.display = "none"; }
+      function renderCAQuizQuestion(){
+        var body = document.getElementById("caQuizBody");
+        if (caQuizIdx >= caQuizQuestions.length){
+          body.innerHTML = "<h3>Quiz complete!</h3><p>You scored " + caQuizScore + " / " + caQuizQuestions.length + ".</p>" +
+            "<p style='font-size:13px;opacity:.75'>Questions are generated from today's real exam-related headlines — pick which exam category each one belongs to.</p>" +
+            "<button onclick=\"closeCAQuiz()\" style='margin-top:10px;padding:8px 16px;border-radius:8px;border:1px solid currentColor;background:none;cursor:pointer'>Close</button>";
+          return;
+        }
+        var q = caQuizQuestions[caQuizIdx];
+        body.innerHTML = "<div style='font-size:12px;opacity:.6;margin-bottom:8px'>Question " + (caQuizIdx+1) + " of " + caQuizQuestions.length + "</div>" +
+          "<p style='font-weight:600;margin-bottom:16px'>\"" + q.headline + "\"<br><span style='font-weight:400;font-size:13px;opacity:.75'>Which exam prep category does this headline belong to?</span></p>" +
+          "<div id='caQuizOptions' style='display:flex;flex-direction:column;gap:8px'>" +
+          q.options.map(function(opt){
+            return "<button onclick=\"answerCAQuiz('" + opt.replace(/'/g,"\\'") + "')\" style='padding:10px 14px;border-radius:8px;border:1px solid currentColor;background:none;cursor:pointer;text-align:left'>" + opt + "</button>";
+          }).join("") + "</div>";
+      }
+      function answerCAQuiz(chosen){
+        var q = caQuizQuestions[caQuizIdx];
+        var correct = chosen === q.correct;
+        if (correct) caQuizScore++;
+        var body = document.getElementById("caQuizBody");
+        var feedback = correct ? "&#x2705; Correct!" : ("&#x274C; Not quite &mdash; that headline maps to <strong>" + q.correct + "</strong>.");
+        var optionsDiv = document.getElementById("caQuizOptions");
+        if (optionsDiv) optionsDiv.innerHTML += "<div style='margin-top:6px;font-size:14px'>" + feedback + "</div>" +
+          "<button onclick='caQuizIdx++;renderCAQuizQuestion()' style='margin-top:10px;padding:8px 16px;border-radius:8px;border:1px solid currentColor;background:none;cursor:pointer;align-self:flex-start'>Next &#8594;</button>";
       }
 
       function parseRssXml(xmlText){

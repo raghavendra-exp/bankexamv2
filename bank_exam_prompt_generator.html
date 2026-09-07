@@ -18,10 +18,10 @@
 <meta property="og:title" content="Bank Exam Master Prompt Generator | Raghavbegins">
 <meta property="og:description" content="Generate AI study prompts for SBI, IBPS and RRB Clerk exams. Free — no login needed.">
 <meta property="og:type" content="website">
-  <meta property="og:url" content="https://raghavbegins.github.io/bankexamv2/bank_exam_prompt_generator.html">
+  <meta property="og:url" content="https://raghavendra-exp.github.io/bankexamv2/bank_exam_prompt_generator.html">
   <meta property="og:description" content="Bank Exam Master Prompt Generator | Raghavbegins. Free AI-powered study prompts, practice sets and PYQ analysis. No login required.">
   <meta property="og:site_name" content="Raghavbegins — Indian Exam AI Prompt Generator">
-  <link rel="canonical" href="https://raghavbegins.github.io/bankexamv2/bank_exam_prompt_generator.html">
+  <link rel="canonical" href="https://raghavendra-exp.github.io/bankexamv2/bank_exam_prompt_generator.html">
 <title>Bank Exam Prompt Generator | SBI · IBPS · RRB Clerk 2026-27 | Raghavbegins</title>
 <style>
 :root{
@@ -396,7 +396,21 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
 .exam-chk-lbl{font-size:12px;font-weight:600;color:var(--txt)}
 .exam-chk.on .exam-chk-lbl{color:#0C4A6E}
 
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What sections are in the IBPS/SBI Clerk exam?","acceptedAnswer":{"@type":"Answer","text":"IBPS and SBI Clerk exams have two stages. Prelims covers English Language, Quantitative Aptitude, and Reasoning Ability. Mains adds General/Financial Awareness and Computer Aptitude on top of those three sections."}},
+{"@type":"Question","name":"Is there negative marking in IBPS/SBI Clerk exams?","acceptedAnswer":{"@type":"Answer","text":"Yes, both IBPS and SBI Clerk exams deduct 0.25 marks for each wrong answer in objective questions, in both Prelims and Mains."}},
+{"@type":"Question","name":"How is this prompt generator different from just asking an AI chatbot directly?","acceptedAnswer":{"@type":"Answer","text":"This tool builds a structured, exam-specific prompt covering your chosen subject, topic, difficulty, and exam target, so the AI chatbot you paste it into responds with focused, syllabus-aligned study material instead of a generic answer."}},
+{"@type":"Question","name":"Do I need to create an account to use this tool?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and AI mentor chat all work without any sign-up. An account is only needed for the admin analytics dashboard, which is not part of the public study tools."}}
+]}
+</script>
 </head>
 <body>
 <!-- ── FLOATING SOCIAL ── -->
@@ -516,8 +530,10 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <span class="hbdg">SBI</span>
       <span class="hbdg">IBPS</span>
       <span class="hbdg">RRB</span>
+      <span class="hbdg" id="streakBadge" style="display:none">&#x1F525; streak</span>
     </div>
   </div>
+  <div id="examCountdownStrip" style="display:flex;gap:10px;flex-wrap:wrap;padding:10px 20px;font-size:13px;opacity:.95"></div>
   <div class="tab-nav">
     <div class="tab-nav-inner">
       <button class="tnbtn act" onclick="swTab('s1',this)"><span class="tnic">📐</span> Study Prompt</button>
@@ -525,11 +541,15 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <button class="tnbtn" onclick="swTab('s3',this)"><span class="tnic">🎯</span> Practice Set</button>
       <button class="tnbtn" onclick="swTab('s4',this)"><span class="tnic">🏅</span> Bank PO Study Prompt</button>
       <button class="tnb" onclick="swTab('s5',this)"><span class="tnic">📋</span> Syllabus Prompt</button>
+      <button class="tnb" onclick="swTab('s6',this)"><span class="tnic">🗂️</span> Flashcards</button>
     </div>
   </div>
 </header>
 
 <!-- ── AD SLOT TOP ── -->
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div class="wrap" style="padding-bottom:0">
   <div class="adslot"><div class="adslot-lbl">Advertisement</div>
     <!-- AdSense unit: replace XXXXXXXX with your publisher ID and slot ID
@@ -911,6 +931,35 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
   <div class="emp" id="s5-emp"><div style="font-size:46px;margin-bottom:12px">📋</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
 
+<!-- ════ TAB 6 — FLASHCARDS ════ -->
+<div class="tp" id="tp-s6">
+  <div class="intro-card">
+    <h2>🗂️ Flashcards</h2>
+    <p>Quick-fire revision cards for banking exam formulas and static GK. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-quant" onclick="fcLoadDeck('quant')">📐 Quant Formulas</button>
+        <button class="sp" id="fc-deck-gk" onclick="fcLoadDeck('gk')">🏦 Banking Static GK</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none;transition:transform .15s">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- ── SOCIAL SECTION ── -->
@@ -967,6 +1016,8 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
     <a class="ft-lnk" href="cacs_exam_prompt_generator.html">CA/CS/CMA</a>
     <a class="ft-lnk" href="judiciary_exam_prompt_generator.html">Judiciary</a>
     <a class="ft-lnk" href="agriculture_exam_prompt_generator.html">Agriculture</a>
+    <a class="ft-lnk" href="IBPS_SBI_Clerk_Roadmap.html">Clerk Roadmap</a>
+    <a class="ft-lnk" href="IBPS_SBI_Free_Library.html">Free Library</a>
     <a class="ft-lnk" href="exam-mentor-chatbot.html">AI Mentor</a>
     <a class="ft-lnk" href="trend-analysis-generator.html">Trend Analysis</a>
     <a class="ftlnk" href="privacy-policy.html">Privacy Policy</a>
@@ -1056,7 +1107,132 @@ function fmtDt(iso){try{const d=new Date(iso+'T00:00:00');return d.toLocaleDateS
 })();
 
 // ══ HELPERS ══════════════════════════════════════════
-function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});}
+function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});try{localStorage.setItem('bexam_lasttab',id);}catch(e){}}
+
+/* ── Exam countdown widget ──
+   Dates verified against IBPS's official 2026-27 calendar as of Sep 2026.
+   IBPS/SBI dates shift slightly year to year — update EXAM_DATES below
+   whenever a new official notification comes out; don't leave stale
+   dates live past the exam. */
+(function examCountdown(){
+  var EXAM_DATES = [
+    { name: "IBPS Clerk Prelims", date: "2026-10-10", link: "https://ibps.in" },
+    { name: "IBPS Clerk Mains",   date: "2026-12-27", link: "https://ibps.in" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  var now = new Date();
+  var html = "";
+  EXAM_DATES.forEach(function(e){
+    var target = new Date(e.date + "T00:00:00");
+    var diffDays = Math.ceil((target - now) / 86400000);
+    if(diffDays < 0) return; /* don't show past exams */
+    var label = diffDays === 0 ? "Today!" : diffDays + " day" + (diffDays === 1 ? "" : "s");
+    html += '<a href="' + e.link + '" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:5px 10px;display:inline-flex;gap:6px;align-items:center">' +
+              '<strong>' + label + '</strong> to ' + e.name +
+            '</a>';
+  });
+  if(!html){
+    html = '<span style="opacity:.8">Check ibps.in and sbi.co.in for the latest exam calendar &rarr;</span>';
+  }
+  strip.innerHTML = html;
+})();
+/* ── Flashcards ── */
+var FC_DECKS = {
+  quant: [
+    { f: "Simple Interest formula", b: "SI = (P × R × T) / 100" },
+    { f: "Compound Interest formula (annual)", b: "CI = P × (1 + R/100)^T − P" },
+    { f: "Profit % formula", b: "Profit % = (Profit / Cost Price) × 100" },
+    { f: "Average speed for equal distances at speeds a & b", b: "Average speed = 2ab / (a + b)" },
+    { f: "Formula for percentage change", b: "% Change = ((New − Old) / Old) × 100" },
+    { f: "Relation between LCM and HCF of two numbers a, b", b: "LCM × HCF = a × b" },
+    { f: "Formula for time taken to fill a tank by two pipes together (rates a, b)", b: "Time = 1 / (1/a + 1/b)" },
+    { f: "Sum of first n natural numbers", b: "n(n + 1) / 2" }
+  ],
+  gk: [
+    { f: "Which committee recommended setting up of RRBs (Regional Rural Banks)?", b: "The Narasimham Committee (1975)" },
+    { f: "What is the full form of CRR?", b: "Cash Reserve Ratio" },
+    { f: "What is the full form of SLR in banking?", b: "Statutory Liquidity Ratio" },
+    { f: "Which bank acts as the banker to the Government of India?", b: "Reserve Bank of India (RBI)" },
+    { f: "What does NEFT stand for?", b: "National Electronic Funds Transfer" },
+    { f: "Which is the apex institution for agricultural and rural development finance in India?", b: "NABARD (National Bank for Agriculture and Rural Development)" },
+    { f: "What is the repo rate used for?", b: "The rate at which RBI lends short-term funds to commercial banks against securities" }
+  ]
+};
+var fcState = { deck: 'quant', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-quant').classList.toggle('on', name === 'quant');
+  document.getElementById('fc-deck-gk').classList.toggle('on', name === 'gk');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('quant'); });
+
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('bexam_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnbtn[onclick*="\''+last+'\'"], .tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnbtn,.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('bexam_lastvisit');
+    var streak = parseInt(localStorage.getItem('bexam_streak') || '0', 10);
+    if(lastVisit === todayStr){
+      /* already counted today, do nothing */
+    } else {
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      if(lastVisit === yesterday.toDateString()){
+        streak += 1;
+      } else {
+        streak = 1;
+      }
+      localStorage.setItem('bexam_streak', String(streak));
+      localStorage.setItem('bexam_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
 function tog2(el){el.classList.toggle('on-t')}
 function cpOut(pid,bid){
   const t=document.getElementById(pid).textContent;

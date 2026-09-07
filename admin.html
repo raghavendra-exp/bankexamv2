@@ -104,11 +104,18 @@ tr:hover td{background:var(--sf2)}
   const provider = new GoogleAuthProvider();
   const db = getFirestore(app);
 
-  /* ⚠️ SET THIS to your own Google sign-in email before deploying.
-     This is only for the UI gate — REAL security comes from your
+  /* This is only for the UI gate — REAL security comes from your
      Firestore rules (see the note shared alongside this file), which
-     must independently restrict reads on "history" to this same email. */
-  const ADMIN_EMAIL = "raghavendra921006l@gmail.com";
+     must independently restrict reads on "history" to your admin account.
+     The admin email is stored as a SHA-256 hash below (not plaintext) so
+     it isn't harvestable from view-source; the hash check below is still
+     just a UI convenience, not the actual access control. */
+  const ADMIN_EMAIL_HASH = "55a727a1366657bb0bccca58958ea9de766e211fd2e0d383c491470b27203bf1";
+
+  async function sha256Hex(text) {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
 
   const gateArea   = document.getElementById("gateArea");
   const deniedArea = document.getElementById("deniedArea");
@@ -126,11 +133,12 @@ tr:hover td{background:var(--sf2)}
       return;
     }
 
-    if (user.email !== ADMIN_EMAIL) {
+    const signedInHash = user.email ? await sha256Hex(user.email.toLowerCase()) : "";
+    if (signedInHash !== ADMIN_EMAIL_HASH) {
       gateArea.style.display = "none";
       deniedArea.style.display = "";
       dataArea.style.display = "none";
-      console.warn("[admin] signed in as", user.email, "— not the configured admin email");
+      console.warn("[admin] signed in as an account that does not match the configured admin hash");
       return;
     }
 
