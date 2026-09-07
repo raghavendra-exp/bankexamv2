@@ -307,7 +307,21 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--gold);box-sh
 @media(max-width:768px){.sg3{grid-template-columns:1fr 1fr}.srch-form{width:150px}.srch-form:focus-within{width:180px}}
 @media(max-width:540px){.sg3,.sg2{grid-template-columns:1fr}.soc-fl{display:none}}
 @media(max-width:480px){.sov-grid{grid-template-columns:1fr}}
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How many stages does the UPSC Civil Services Examination have?","acceptedAnswer":{"@type":"Answer","text":"Three stages: the Preliminary Examination (objective, screening only, marks not counted for final merit), the Main Examination (written, descriptive), and the Personality Test (interview)."}},
+{"@type":"Question","name":"Is there negative marking in UPSC Prelims?","acceptedAnswer":{"@type":"Answer","text":"Yes. One-third of the marks assigned to a question are deducted for each wrong answer in both GS Paper 1 and CSAT."}},
+{"@type":"Question","name":"What is the difference between GS Paper 1 and CSAT in Prelims?","acceptedAnswer":{"@type":"Answer","text":"GS Paper 1 covers History, Geography, Polity, Economy, Environment, and Science & Technology, and its score determines the Prelims merit list. CSAT (Paper 2) tests comprehension, reasoning, and basic numeracy, and is only qualifying — you need 33% to pass, but the score itself doesn't count toward ranking."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, answer-writing practice, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
 <!-- FLOATING SOCIAL -->
@@ -361,6 +375,10 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--gold);box-sh
     </div>
     <a class="hdr-back" href="index.html">&#8592; All Exams</a>
   </div>
+  <div class="hdr-top" style="padding-top:0;padding-bottom:6px;justify-content:space-between">
+    <span id="streakBadge" style="display:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.25)">&#x1F525; streak</span>
+    <div id="examCountdownStrip" style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px"></div>
+  </div>
   <div class="tab-nav">
     <div class="tni">
       <button class="tnb act" onclick="swTab('t1',this)"><span>📐</span> Prelims GS</button>
@@ -369,11 +387,15 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--gold);box-sh
       <button class="tnb" onclick="swTab('t4',this)"><span>📰</span> Newspaper Prompt</button>
       <button class="tnb" onclick="swTab('t5',this)"><span>📋</span> Syllabus Prompt</button>
       <button class="tnb" onclick="swTab('t6',this)"><span>🎯</span> Other UPSC Exams</button>
+      <button class="tnb" onclick="swTab('t7',this)"><span>🗂️</span> Flashcards</button>
     </div>
   </div>
 </header>
 
 <!-- AD TOP -->
+<div class="noprint" style="max-width:1080px;margin:0 auto;padding:8px 20px 0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div style="background:var(--sf2)"><div style="max-width:1080px;margin:0 auto;padding:0 20px"><div class="adslot"><div class="adslot-lbl">Advertisement</div><span class="adslot-ph">Responsive banner ad</span></div></div></div>
 
 <main class="wrap">
@@ -707,6 +729,35 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--gold);box-sh
     <div class="parea" id="t6-pa"></div>
   </div>
   <div class="emp" id="t6-emp"><div style="font-size:46px;margin-bottom:12px">🎯</div><h3>Exam prompt appears here</h3><p>Select exam and topic then generate.</p></div>
+</div>
+
+<!-- ══════ TAB 7 — FLASHCARDS ══════ -->
+<div class="tp" id="tp-t7">
+  <div class="intro-card">
+    <h2>🗂️ Flashcards</h2>
+    <p>Quick-fire revision cards for UPSC Prelims polity and geography. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-polity" onclick="fcLoadDeck('polity')">🏛️ Polity</button>
+        <button class="sp" id="fc-deck-geo" onclick="fcLoadDeck('geo')">🗺️ Geography</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2,#cbd5e1);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3,#64748b)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3,#64748b)" id="fcProgress"></div>
+    </div>
+  </div>
 </div>
 
 </main>
@@ -1107,7 +1158,118 @@ function fmtDt(iso){try{const d=new Date(iso+'T00:00:00');return d.toLocaleDateS
 })();
 
 // ══ UTILS ═══════════════════════════════════════════════
-function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnb').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});}
+function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnb').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});try{localStorage.setItem('upsc_lasttab',id);}catch(e){}}
+
+/* ── Exam window widget ──
+   UPSC CSE 2026 Prelims (24 May) and Mains (21-30 Aug) have already
+   concluded as of this update. The 2027 cycle's exact dates are not yet
+   confirmed (notification typically ~Feb, Prelims typically ~May) —
+   shown as an estimate rather than a fabricated exact date. Replace with
+   a real countdown once UPSC confirms the 2027 notification. */
+(function examWindow(){
+  var WINDOWS = [
+    { name: "UPSC CSE 2027 Prelims", window: "Expected ~May 2027 (notification ~Feb 2027)" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  strip.innerHTML = WINDOWS.map(function(w){
+    return '<a href="https://upsc.gov.in" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:4px 10px;display:inline-flex;gap:6px;align-items:center">' +
+             '<strong>' + w.name + ':</strong> ' + w.window + ' &rarr;' +
+           '</a>';
+  }).join('');
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('upsc_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('upsc_lastvisit');
+    var streak = parseInt(localStorage.getItem('upsc_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('upsc_streak', String(streak));
+      localStorage.setItem('upsc_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  polity: [
+    { f: "Which Article of the Constitution deals with the Right to Constitutional Remedies?", b: "Article 32" },
+    { f: "How many Fundamental Duties are listed in the Constitution?", b: "11 (added by the 42nd and 86th Amendments)" },
+    { f: "Which Schedule of the Constitution deals with anti-defection?", b: "The Tenth Schedule" },
+    { f: "Who appoints the Chief Justice of India?", b: "The President of India" },
+    { f: "Which constitutional body conducts elections in India?", b: "The Election Commission of India" },
+    { f: "What is the minimum age to become a member of the Rajya Sabha?", b: "30 years" },
+    { f: "Which Article empowers the President to declare a National Emergency?", b: "Article 352" },
+    { f: "Who is the ex-officio Chairman of the Rajya Sabha?", b: "The Vice-President of India" }
+  ],
+  geo: [
+    { f: "Which is the longest mountain range in India?", b: "The Himalayas" },
+    { f: "Which river is known as the 'Sorrow of Bihar'?", b: "The Kosi River" },
+    { f: "Which is the largest coal-producing state in India?", b: "Jharkhand" },
+    { f: "What type of soil is best suited for cotton cultivation?", b: "Black soil (regur soil)" },
+    { f: "Which strait separates India from Sri Lanka?", b: "The Palk Strait" },
+    { f: "Which is the highest peak in India (excluding disputed territories)?", b: "Kangchenjunga" },
+    { f: "Which winds bring most of India's monsoon rainfall?", b: "The Southwest Monsoon winds" }
+  ]
+};
+var fcState = { deck: 'polity', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-polity').classList.toggle('on', name === 'polity');
+  document.getElementById('fc-deck-geo').classList.toggle('on', name === 'geo');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('polity'); });
 function buildAIRow(rid,pid){const r=document.getElementById(rid);r.innerHTML='<span class="ai-lbl">Open in →</span>'+AI_PL.map(a=>`<button class="ai-btn ${a.cls}" onclick="launchAI('${a.url}','${pid}')">${a.ic} ${a.nm}</button>`).join('');}
 function fallbackCopy(t){try{const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;top:-9999px;opacity:0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}}
 function launchAI(url,pid){const t=document.getElementById(pid).textContent;if(!t||!t.trim()){showToast('Generate a prompt first');return;}const open=()=>{const tip=document.getElementById('ai-tip');tip.classList.add('show');setTimeout(()=>tip.classList.remove('show'),3500);setTimeout(()=>window.open(url,'_blank'),400);};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(open).catch(()=>{fallbackCopy(t);open();});}else{fallbackCopy(t);open();}if(typeof gtag!=='undefined')gtag('event','ai_launch',{event_category:'upsc',event_label:url.split('/')[2]});}
