@@ -229,7 +229,21 @@ select:focus{outline:none;border-color:var(--ste2);box-shadow:0 0 0 3px rgba(37,
 @media(max-width:768px){.sg3{grid-template-columns:1fr 1fr}.hdr-back span{display:none}.srch-form{width:150px}}
 @media(max-width:540px){.sg3,.sg2{grid-template-columns:1fr}.soc-fl{display:none}}
 @media(max-width:480px){.sov-grid{grid-template-columns:1fr}}
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is GATE used for besides M.Tech admissions?","acceptedAnswer":{"@type":"Answer","text":"A valid GATE score is also used by many Public Sector Undertakings (PSUs) like BHEL, NTPC, ONGC, and ISRO for direct recruitment to engineering positions, without a separate entrance exam."}},
+{"@type":"Question","name":"Is there negative marking in GATE?","acceptedAnswer":{"@type":"Answer","text":"Yes, for multiple choice questions (MCQs): 1/3 mark is deducted for a 1-mark question and 2/3 mark for a 2-mark question. There is no negative marking for Multiple Select Questions (MSQs) or Numerical Answer Type (NAT) questions."}},
+{"@type":"Question","name":"How long is a GATE score valid?","acceptedAnswer":{"@type":"Answer","text":"A GATE score is valid for three years from the date the results are announced."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
 <!-- SOCIAL FLOAT -->
@@ -268,14 +282,22 @@ select:focus{outline:none;border-color:var(--ste2);box-shadow:0 0 0 3px rgba(37,
     <div class="srch-form"><input class="srch-in" id="srch-in" placeholder="Search any topic..." onkeydown="if(event.key==='Enter')doSearch()" autocomplete="off"><button class="srch-go" onclick="doSearch()">Search</button></div>
     <a class="hdr-back" href="index.html">&#8592; <span>All Exams</span></a>
   </div>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 20px 8px">
+    <span id="streakBadge" style="display:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.25)">&#x1F525; streak</span>
+    <div id="examCountdownStrip" style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px"></div>
+  </div>
   <div class="tab-nav"><div class="tni">
     <button class="tnb act" onclick="swTab('t1',this)"><span>&#x1F4DA;</span> Study Prompt</button>
     <button class="tnb" onclick="swTab('t2',this)"><span>&#x1F9EA;</span> Practice Set</button>
     <button class="tnb" onclick="swTab('t3',this)"><span>&#x1F4DC;</span> PYQ Analysis</button>
     <button class="tnb" onclick="swTab('t4',this)"><span>&#x1F3ED;</span> PSU Interview Prep</button>
     <button class="tnb" onclick="swTab('t5',this)"><span>&#x1F4CB;</span> Syllabus Prompt</button>
+    <button class="tnb" onclick="swTab('t6',this)"><span>&#x1F5C2;&#xFE0F;</span> Flashcards</button>
   </div></div>
 </header>
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div style="background:var(--sf2)"><div class="wrap"><div class="adslot"><div class="adslot-lbl">Advertisement</div><span class="adslot-ph">Responsive banner ad</span></div></div></div>
 <main class="wrap">
 <!-- TAB 1: STUDY PROMPT -->
@@ -530,6 +552,36 @@ select:focus{outline:none;border-color:var(--ste2);box-shadow:0 0 0 3px rgba(37,
   <div class="ocard oc1" id="t5-oc"><div class="ohdr oh1"><div class="ohdr-m"><h3 id="t5-title">GATE strategy prompt</h3><p id="t5-sub">Current year analysis</p></div><div class="ohdr-acts"><button class="oab oab-cp" onclick="cpOut('t5-pa','t5-cb')" id="t5-cb">&#x1F4CB; Copy</button><button class="oab" style="background:var(--ste2);color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;border:none" onclick="dlOut('t5-pa','gate_syllabus')">&#x2B07; .txt</button></div></div><div class="ai-row" id="t5-air"><span class="ai-lbl">Open in &rarr;</span></div><div class="ostats" id="t5-stats"></div><div class="parea" id="t5-pa"></div></div>
   <div class="emp" id="t5-emp"><div style="font-size:46px;margin-bottom:12px">&#x1F4CB;</div><h3>Syllabus prompt appears here</h3><p>Select branch(es) and sections then generate.</p></div>
 </div>
+
+<!-- TAB 6: FLASHCARDS -->
+<div class="tp" id="tp-t6">
+  <div class="intro-card">
+    <h2>&#x1F5C2;&#xFE0F; Flashcards</h2>
+    <p>Quick-fire revision cards for GATE Engineering Mathematics and General Aptitude. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-maths" onclick="fcLoadDeck('maths')">&#x1F522; Engineering Maths</button>
+        <button class="sp" id="fc-deck-aptitude" onclick="fcLoadDeck('aptitude')">&#x1F9E0; General Aptitude</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2,#cbd5e1);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3,#64748b)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3,#64748b)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <div style="max-width:1080px;margin:0 auto;padding:0 20px">
@@ -713,7 +765,124 @@ let psuOrgV="bhel",psuCompV="technical",pqN=20;
   try{document.getElementById("ft-cr").textContent=atob("wqkgMjAyNeKAkzIwMjYgUmFnaGF2YmVnaW5zLiBBbGwgcmlnaHRzIHJlc2VydmVkLg==");}catch(e){}
   if(localStorage.getItem("rb_ck_gate"))document.getElementById("ckbar").classList.add("gone");
 })();
-function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});}
+function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});try{localStorage.setItem('gate_lasttab',id);}catch(e){}}
+
+/* ── Exam countdown widget ──
+   GATE 2027 dates verified against IIT Madras's official notification as of Sep 2026.
+   Update EXAM_DATES whenever a new official notification comes out. */
+(function examCountdown(){
+  var EXAM_DATES = [
+    { name: "GATE 2027 (Weekend 1)", date: "2027-02-06", link: "https://gate2027.iitm.ac.in" },
+    { name: "GATE 2027 (Weekend 2)", date: "2027-02-20", link: "https://gate2027.iitm.ac.in" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  var now = new Date();
+  var html = "";
+  EXAM_DATES.forEach(function(e){
+    var target = new Date(e.date + "T00:00:00");
+    var diffDays = Math.ceil((target - now) / 86400000);
+    if(diffDays < 0) return;
+    var label = diffDays === 0 ? "Today!" : diffDays + " day" + (diffDays === 1 ? "" : "s");
+    html += '<a href="' + e.link + '" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:5px 10px;display:inline-flex;gap:6px;align-items:center">' +
+              '<strong>' + label + '</strong> to ' + e.name +
+            '</a>';
+  });
+  if(!html){
+    html = '<span style="opacity:.8">Check gate2027.iitm.ac.in for the latest exam calendar &rarr;</span>';
+  }
+  strip.innerHTML = html;
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('gate_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('gate_lastvisit');
+    var streak = parseInt(localStorage.getItem('gate_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('gate_streak', String(streak));
+      localStorage.setItem('gate_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  maths: [
+    { f: "Formula for eigenvalues: what equation gives them for matrix A?", b: "det(A \u2212 \u03BBI) = 0" },
+    { f: "Laplace Transform of e^(at)", b: "1 / (s \u2212 a), for s > a" },
+    { f: "What is the rank of a matrix?", b: "The maximum number of linearly independent rows or columns" },
+    { f: "Formula for the mean of a discrete probability distribution", b: "E(X) = \u03A3 x\u1D62 \u00D7 P(x\u1D62)" },
+    { f: "Rule for differentiation of a product of two functions (Product Rule)", b: "(uv)' = u'v + uv'" },
+    { f: "What does a Fourier Series represent?", b: "A periodic function expressed as a sum of sines and cosines" },
+    { f: "Formula for standard deviation", b: "\u03C3 = \u221A[\u03A3(x\u1D62 \u2212 \u03BC)\u00B2 / n]" }
+  ],
+  aptitude: [
+    { f: "In verbal reasoning: what is a syllogism?", b: "A logical argument with two premises and a conclusion, tested on logical validity" },
+    { f: "Formula for percentage change", b: "% Change = ((New \u2212 Old) / Old) \u00D7 100" },
+    { f: "What does 'data sufficiency' test in GATE General Aptitude?", b: "Whether the given data is enough to answer a question, without necessarily solving it fully" },
+    { f: "Formula for simple average speed over equal distances at speeds a and b", b: "2ab / (a + b)" },
+    { f: "In a number series, what's the key first step?", b: "Check differences or ratios between consecutive terms to spot the pattern" },
+    { f: "What is a common trap in GATE English usage questions?", b: "Overlooking subject-verb agreement or misplaced modifiers in longer sentences" }
+  ]
+};
+var fcState = { deck: 'maths', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-maths').classList.toggle('on', name === 'maths');
+  document.getElementById('fc-deck-aptitude').classList.toggle('on', name === 'aptitude');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('maths'); });
 function buildAIRow(rid,pid){const r=document.getElementById(rid);if(!r)return;r.innerHTML='<span class="ai-lbl">Open in →</span>'+AI_PL.map(ai=>`<button class="ai-btn ${ai.cls}" onclick="launchAI('${ai.url}','${pid}')">${ai.ic} ${ai.nm}</button>`).join('');}
 function fallbackCopy(t){try{const ta=document.createElement("textarea");ta.value=t;ta.style.cssText="position:fixed;top:-9999px;opacity:0";document.body.appendChild(ta);ta.focus();ta.select();document.execCommand("copy");document.body.removeChild(ta);}catch(e){}}
 function launchAI(url,pid){const t=document.getElementById(pid).textContent;if(!t||!t.trim()){showToast("Generate a prompt first");return;}const open=()=>{const tip=document.getElementById("ai-tip");tip.classList.add("show");setTimeout(()=>tip.classList.remove("show"),3500);setTimeout(()=>window.open(url,"_blank"),400);};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(open).catch(()=>{fallbackCopy(t);open();});}else{fallbackCopy(t);open();}}
