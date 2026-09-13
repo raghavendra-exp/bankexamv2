@@ -396,9 +396,24 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
 .exam-chk-lbl{font-size:12px;font-weight:600;color:var(--txt)}
 .exam-chk.on .exam-chk-lbl{color:#0C4A6E}
 
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the difference between LIC AAO, NIACL AO, and UIIC AO?","acceptedAnswer":{"@type":"Answer","text":"LIC AAO (Assistant Administrative Officer) is for Life Insurance Corporation of India. NIACL AO is for New India Assurance, a general insurer. UIIC AO is for United India Insurance, also a general insurer. All are officer-level entry exams for their respective public sector insurance companies, with broadly similar Prelims-Mains-Interview selection processes."}},
+{"@type":"Question","name":"What sections are typically covered in insurance AO exams?","acceptedAnswer":{"@type":"Answer","text":"Prelims typically cover Reasoning, Quantitative Aptitude, and English Language. Mains typically add General/Insurance Awareness, Computer Knowledge, and sometimes a descriptive English paper."}},
+{"@type":"Question","name":"Is there negative marking in insurance sector exams?","acceptedAnswer":{"@type":"Answer","text":"Yes, most insurance AO exams deduct 0.25 marks for each wrong answer in objective papers — always confirm the exact scheme in your current official notification."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
+<script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
 <!-- ── FLOATING SOCIAL ── -->
 <div class="soc-fl" role="complementary" aria-label="Social media">
   <a class="sfl-btn sfl-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener" aria-label="Facebook">
@@ -516,8 +531,10 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <span class="hbdg">LIC</span>
       <span class="hbdg">NIACL</span>
       <span class="hbdg">UIIC</span>
+      <span class="hbdg" id="streakBadge" style="display:none">&#x1F525; streak</span>
     </div>
   </div>
+  <div id="examCountdownStrip" style="display:flex;gap:10px;flex-wrap:wrap;padding:10px 20px;font-size:13px;opacity:.95"></div>
   <div class="tab-nav">
     <div class="tab-nav-inner">
       <button class="tnbtn act" onclick="swTab('s1',this)"><span class="tnic">📐</span> Study Prompt</button>
@@ -525,11 +542,15 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <button class="tnbtn" onclick="swTab('s3',this)"><span class="tnic">🎯</span> Practice Set</button>
       <button class="tnbtn" onclick="swTab('s4',this)"><span class="tnic">🏅</span> AO Study Prompt</button>
       <button class="tnb" onclick="swTab('s5',this)"><span class="tnic">📋</span> Syllabus Prompt</button>
+      <button class="tnb" onclick="swTab('s6',this)"><span class="tnic">🗂️</span> Flashcards</button>
     </div>
   </div>
 </header>
 
 <!-- ── AD SLOT TOP ── -->
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div class="wrap" style="padding-bottom:0">
   <div class="adslot"><div class="adslot-lbl">Advertisement</div>
     <!-- AdSense unit: replace XXXXXXXX with your publisher ID and slot ID
@@ -911,6 +932,35 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
   <div class="emp" id="s5-emp"><div style="font-size:46px;margin-bottom:12px">📋</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
 
+<!-- ════ TAB 6 — FLASHCARDS ════ -->
+<div class="tp" id="tp-s6">
+  <div class="intro-card">
+    <h2>🗂️ Flashcards</h2>
+    <p>Quick-fire revision cards for LIC/NIACL/UIIC insurance awareness and quant. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-insurance" onclick="fcLoadDeck('insurance')">&#x1F3E6; Insurance Awareness</button>
+        <button class="sp" id="fc-deck-quant" onclick="fcLoadDeck('quant')">📐 Quant Formulas</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- ── SOCIAL SECTION ── -->
@@ -1054,7 +1104,116 @@ function fmtDt(iso){try{const d=new Date(iso+'T00:00:00');return d.toLocaleDateS
 })();
 
 // ══ HELPERS ══════════════════════════════════════════
-function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});}
+function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});try{localStorage.setItem('ins_lasttab',id);}catch(e){}}
+
+/* ── Exam window widget ──
+   LIC AAO 2025-26 cycle already concluded (final result 14 May 2026).
+   As of Sep 2026 the LIC AAO 2026-27 notification has not yet been
+   released — only expected "second half of 2026" — so no exact date is
+   shown here to avoid misleading anyone. Replace with a real countdown
+   once LIC/NIACL/UIIC release an official notification. */
+(function examWindow(){
+  var WINDOWS = [
+    { name: "LIC AAO 2026-27", window: "Notification expected H2 2026" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  strip.innerHTML = WINDOWS.map(function(w){
+    return '<a href="https://licindia.in" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:4px 10px;display:inline-flex;gap:6px;align-items:center">' +
+             '<strong>' + w.name + ':</strong> ' + w.window + ' &rarr;' +
+           '</a>';
+  }).join('');
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('ins_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnbtn[onclick*="\''+last+'\'"], .tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnbtn,.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('ins_lastvisit');
+    var streak = parseInt(localStorage.getItem('ins_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('ins_streak', String(streak));
+      localStorage.setItem('ins_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  insurance: [
+    { f: "What is 'IRDAI' and what does it regulate?", b: "Insurance Regulatory and Development Authority of India — regulates the insurance sector in India" },
+    { f: "What is the difference between a 'premium' and a 'sum assured'?", b: "Premium is the amount the policyholder pays; sum assured is the amount the insurer pays out on a claim or maturity" },
+    { f: "What does 'IRDA Act' year mark the establishment of IRDAI?", b: "1999" },
+    { f: "What is 'term insurance'?", b: "A pure life insurance policy that pays a death benefit only if the insured dies within the policy term, with no maturity payout otherwise" },
+    { f: "What is a 'nominee' in an insurance policy?", b: "The person designated to receive the policy benefits in the event of the policyholder's death" },
+    { f: "What does 'ULIP' stand for?", b: "Unit Linked Insurance Plan — combines insurance cover with investment in market-linked funds" },
+    { f: "What is the 'grace period' in an insurance policy?", b: "The additional time given after the premium due date during which the policy remains in force without penalty" }
+  ],
+  quant: [
+    { f: "Formula for Simple Interest", b: "SI = (P \u00D7 R \u00D7 T) / 100" },
+    { f: "Formula for compound interest (annual)", b: "CI = P(1 + R/100)^T \u2212 P" },
+    { f: "Formula for percentage change", b: "% Change = ((New \u2212 Old) / Old) \u00D7 100" },
+    { f: "Formula for average speed for equal distances at speeds a & b", b: "2ab / (a + b)" },
+    { f: "Formula relating profit%, cost price, and selling price", b: "SP = CP \u00D7 (1 + Profit%/100)" },
+    { f: "Sum of first n natural numbers", b: "n(n + 1) / 2" }
+  ]
+};
+var fcState = { deck: 'insurance', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-insurance').classList.toggle('on', name === 'insurance');
+  document.getElementById('fc-deck-quant').classList.toggle('on', name === 'quant');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('insurance'); });
 function tog2(el){el.classList.toggle('on-t')}
 function cpOut(pid,bid){
   const t=document.getElementById(pid).textContent;

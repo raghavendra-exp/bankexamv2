@@ -517,10 +517,45 @@ a{color:var(--pr);text-decoration:none}
   </div>
 </section>
 
+<!-- STUDY TIMER -->
+<section class="wrap" style="padding-top:0">
+  <div class="card" style="max-width:520px;margin:-10px auto 0;padding:20px 24px;text-align:center;border-radius:20px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);margin-bottom:10px">&#x23F1;&#xFE0F; Study Timer (Pomodoro)</div>
+    <div id="timerDisplay" style="font-size:48px;font-weight:800;font-variant-numeric:tabular-nums;margin-bottom:6px">25:00</div>
+    <div id="timerMode" style="font-size:13px;color:var(--txt3);margin-bottom:14px">Focus session &middot; <span id="timerRounds">0</span> completed today</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button id="timerStartBtn" onclick="timerToggle()" class="btn-hero btn-hero-p" style="padding:10px 22px;font-size:14px">&#x25B6;&#xFE0F; Start</button>
+      <button onclick="timerReset()" class="btn-hero btn-hero-s" style="padding:10px 22px;font-size:14px">&#x21BA; Reset</button>
+      <select id="timerLength" onchange="timerSetLength(this.value)" style="border-radius:12px;border:1px solid var(--bdr);padding:10px 14px;font-size:13px;font-family:inherit;background:var(--sf2);color:var(--txt2)">
+        <option value="25">25 min focus</option>
+        <option value="45">45 min focus</option>
+        <option value="50">50 min focus</option>
+        <option value="15">15 min focus</option>
+      </select>
+    </div>
+    <p style="font-size:11.5px;color:var(--txt3);margin:12px 0 0">Runs right here in your browser tab &mdash; keep this tab open while you study.</p>
+  </div>
+
+  <div class="card" style="max-width:640px;margin:16px auto 0;padding:18px 24px;text-align:center;border-radius:20px;font-style:italic;color:var(--txt2)">
+    <div id="quoteText">&#x201C;Success is the sum of small efforts, repeated day in and day out.&#x201D;</div>
+    <div id="quoteAuthor" style="font-style:normal;font-size:12px;color:var(--txt3);margin-top:8px">&mdash; Robert Collier</div>
+  </div>
+
+  <div id="dashboardCard" style="display:none;max-width:640px;margin:16px auto 0">
+    <div class="card" style="padding:18px 24px;border-radius:20px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);margin-bottom:12px">&#x1F4CA; Your Study Dashboard</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center">
+        <div><div id="dashStreak" style="font-size:26px;font-weight:800">0</div><div style="font-size:11px;color:var(--txt3)">Day streak</div></div>
+        <div><div id="dashPomodoros" style="font-size:26px;font-weight:800">0</div><div style="font-size:11px;color:var(--txt3)">Focus sessions today</div></div>
+        <div><div id="dashBookmarks" style="font-size:26px;font-weight:800">0</div><div style="font-size:11px;color:var(--txt3)">Bookmarked tools</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- HOW IT WORKS -->
 <div class="how-strip">
   <div class="how-inner">
-    <div class="how-step"><div class="how-num">1</div><div class="how-txt"><strong>Pick your exam</strong><span>12 categories, 80+ exams</span></div></div>
+    <div class="how-step"><div class="how-num">1</div><div class="how-txt"><strong>Pick your exam</strong><span>20 tools, 80+ exams</span></div></div>
     <div class="how-arr">&#8594;</div>
     <div class="how-step"><div class="how-num">2</div><div class="how-txt"><strong>Select topic &amp; sections</strong><span>Toggle exactly what you need</span></div></div>
     <div class="how-arr">&#8594;</div>
@@ -648,93 +683,98 @@ a{color:var(--pr);text-decoration:none}
   <!-- TOOLS GRID -->
   <div id="tools" style="margin-bottom:8px">
     <div class="sec-eyebrow reveal">All exam tools</div>
-    <h2 class="sec-hd reveal">12 tools. 80+ exams. All free.</h2>
-    <p class="sec-sub">Each tool has 5 tabs: Study Prompt · Practice Set · PYQ Analysis · Specialist Deep-Dive · Syllabus &amp; Strategy</p>
+    <h2 class="sec-hd reveal">20 tools. 80+ exams. All free.</h2>
+    <p class="sec-sub">Each tool has 6 tabs: Study Prompt · Practice Set · PYQ Analysis · Specialist Deep-Dive · Syllabus &amp; Strategy · Flashcards</p>
   </div>
+  <div id="continueStudyingStrip" style="display:none;margin-bottom:16px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--txt3);margin-bottom:8px">&#x1F4D6; Continue studying</div>
+    <div id="continueStudyingCards" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+  </div>
+  <div id="bookmarkStrip" style="display:none;flex-wrap:wrap;gap:8px;margin-bottom:20px"></div>
   <div class="cat-grid">
 
     <a href="bank_exam_prompt_generator.html" class="cat-card reveal tb-b" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">BANK-01</span><div class="card-ic-wrap ci-b">&#x1F3E6;</div><div class="card-hd"><div class="card-title">Banking &amp; Finance <span class="live-dot">Live</span></div><div class="card-meta">SBI &middot; IBPS &middot; RRB &middot; RBI &middot; 15 exams</div></div></div>
       <div class="card-desc">Complete prep for SBI PO/Clerk, IBPS PO/Clerk/SO, RRB PO/Clerk, RBI Grade B &amp; NABARD. Quant, English, Reasoning, Banking GA &amp; Bank PO specialist tab.</div>
       <div class="card-tags"><span class="tag">Quant</span><span class="tag">Reasoning</span><span class="tag">Banking GK</span><span class="tag">English</span><span class="tag">Bank PO Specialist</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Bank PO · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · Bank PO · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="railway_exam_prompt_generator.html" class="cat-card reveal tb-o" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">RAIL-02</span><div class="card-ic-wrap ci-o">&#x1F686;</div><div class="card-hd"><div class="card-title">Railways <span class="live-dot">Live</span></div><div class="card-meta">NTPC &middot; Group D &middot; ALP &middot; JE &middot; 8 exams</div></div></div>
       <div class="card-desc">Full prep for RRB NTPC, Group D, ALP, JE, Station Master &amp; RPF. Maths, GK, Reasoning + ALP/JE Technical specialist with Railway-specific current affairs.</div>
       <div class="card-tags"><span class="tag">Maths</span><span class="tag">GK</span><span class="tag">Reasoning</span><span class="tag">ALP Technical</span><span class="tag">JE Technical</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Technical · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · Technical · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="upsc_prompt_generator.html" class="cat-card reveal tb-y" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">UPSC-03</span><div class="card-ic-wrap ci-y">&#x1F3DB;&#xFE0F;</div><div class="card-hd"><div class="card-title">UPSC Civil Services <span class="live-dot">Live</span></div><div class="card-meta">IAS &middot; IPS &middot; IFS &middot; CDS &middot; 6 exams</div></div></div>
       <div class="card-desc">Complete IAS prep: GS Papers 1–4, Essay, CSAT, Prelims strategy, Mains answer writing &amp; Interview. Optional subject support &amp; UPSC editorial analysis.</div>
       <div class="card-tags"><span class="tag">GS 1–4</span><span class="tag">Essay</span><span class="tag">CSAT</span><span class="tag">Mains Writing</span><span class="tag">Interview</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Mains+Interview · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · Mains+Interview · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="ssc_exam_prompt_generator.html" class="cat-card reveal tb-g" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">SSC-04</span><div class="card-ic-wrap ci-g">&#x1F4CB;</div><div class="card-hd"><div class="card-title">SSC (Staff Selection) <span class="live-dot">Live</span></div><div class="card-meta">CGL &middot; CHSL &middot; MTS &middot; JE &middot; 10 exams</div></div></div>
       <div class="card-desc">CGL Tier 1&amp;2, CHSL, MTS, Stenographer, GD Constable &amp; SSC JE. Quant, English, Reasoning, GK + JE Technical drill for Civil/Electrical/Mechanical.</div>
       <div class="card-tags"><span class="tag">Quant</span><span class="tag">English</span><span class="tag">GK</span><span class="tag">Reasoning</span><span class="tag">JE Technical</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · JE Drill · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · JE Drill · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="jee_exam_prompt_generator.html" class="cat-card reveal tb-v" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">JEE-05</span><div class="card-ic-wrap ci-v">&#x2697;&#xFE0F;</div><div class="card-hd"><div class="card-title">Engineering (JEE) <span class="live-dot">Live</span></div><div class="card-meta">JEE Mains &middot; Advanced &middot; BITSAT &middot; VITEEE</div></div></div>
       <div class="card-desc">Physics, Chemistry &amp; Mathematics for JEE Mains &amp; Advanced. Chapter-wise prompts, 10-year PYQ analysis, NTA pattern MCQs, JEE Advanced deep-dive &amp; IIT cutoffs.</div>
       <div class="card-tags"><span class="tag">Physics</span><span class="tag">Chemistry</span><span class="tag">Mathematics</span><span class="tag">JEE Advanced</span><span class="tag">IIT Cutoffs</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · JEE Advanced · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · JEE Advanced · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="neet_exam_prompt_generator.html" class="cat-card reveal tb-t" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">NEET-06</span><div class="card-ic-wrap ci-t">&#x1F9EC;</div><div class="card-hd"><div class="card-title">Medical (NEET) <span class="live-dot">Live</span></div><div class="card-meta">NEET UG &middot; AIIMS &middot; JIPMER</div></div></div>
       <div class="card-desc">Biology (Botany &amp; Zoology), Physics &amp; Chemistry for NEET UG &amp; AIIMS. NCERT-linked prompts, 10-year PYQ patterns, topic-wise MCQ banks &amp; NEET PG overview.</div>
       <div class="card-tags"><span class="tag">Biology</span><span class="tag">Physics</span><span class="tag">Chemistry</span><span class="tag">NCERT Focus</span><span class="tag">AIIMS PG</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · AIIMS/PG · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · AIIMS/PG · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="mba_exam_prompt_generator.html" class="cat-card reveal tb-a" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">MBA-07</span><div class="card-ic-wrap ci-a">&#x1F4BC;</div><div class="card-hd"><div class="card-title">MBA / Management <span class="live-dot">Live</span></div><div class="card-meta">CAT &middot; XAT &middot; SNAP &middot; IIFT &middot; NMAT &middot; MAT</div></div></div>
       <div class="card-desc">VARC, DILR &amp; Quantitative Aptitude for CAT, XAT, SNAP &amp; IIFT. Passage-based reading, data interpretation, GD &amp; PI preparation with IIM cutoff analysis.</div>
       <div class="card-tags"><span class="tag">VARC</span><span class="tag">DILR</span><span class="tag">Quant</span><span class="tag">GD &amp; PI</span><span class="tag">IIM Cutoffs</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · GD+PI · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · GD+PI · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="psc_exam_prompt_generator.html" class="cat-card reveal tb-p" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">PSC-08</span><div class="card-ic-wrap ci-p">&#x1F5FA;&#xFE0F;</div><div class="card-hd"><div class="card-title">State PSC <span class="live-dot">Live</span></div><div class="card-meta">UPPSC &middot; BPSC &middot; MPSC &middot; RPSC &middot; TNPSC &middot; 10 states</div></div></div>
       <div class="card-desc">State-specific GS, regional history, geography &amp; culture for UPPSC, BPSC, MPSC, RPSC, TNPSC &amp; more. Includes state current affairs &amp; interview preparation.</div>
       <div class="card-tags"><span class="tag">State GS</span><span class="tag">Regional History</span><span class="tag">State CA</span><span class="tag">Interview</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Specialist · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · Specialist · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="teaching_exam_prompt_generator.html" class="cat-card reveal tb-s" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">TCH-09</span><div class="card-ic-wrap ci-s">&#x1F4DA;</div><div class="card-hd"><div class="card-title">Teaching Exams <span class="live-dot">Live</span></div><div class="card-meta">CTET &middot; DSSSB &middot; KVS &middot; NVS &middot; UP-TET &middot; 8 exams</div></div></div>
       <div class="card-desc">Child Development &amp; Pedagogy, Language papers, Maths/Science for CTET, DSSSB, KVS &amp; NVS. Includes teaching methodology &amp; classroom scenario questions.</div>
       <div class="card-tags"><span class="tag">CDP</span><span class="tag">Language</span><span class="tag">Maths/Science</span><span class="tag">Pedagogy</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Pedagogy · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · Pedagogy · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="defence_exam_prompt_generator.html" class="cat-card reveal tb-k" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">DEF-10</span><div class="card-ic-wrap ci-k">&#x1F396;&#xFE0F;</div><div class="card-hd"><div class="card-title">Defence (Non-UPSC) <span class="live-dot">Live</span></div><div class="card-meta">NDA &middot; AFCAT &middot; Agniveer &middot; Coast Guard &middot; MNS</div></div></div>
       <div class="card-desc">Maths, GK, Science &amp; English for NDA, AFCAT, Agniveer Army/Navy/AF, Coast Guard &amp; MNS. Includes SSB Interview deep-drill covering all 6 stages.</div>
       <div class="card-tags"><span class="tag">Maths</span><span class="tag">GK</span><span class="tag">Science</span><span class="tag">SSB Interview</span><span class="tag">Agniveer</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · SSB Drill · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · SSB Drill · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="gate_psu_exam_prompt_generator.html" class="cat-card reveal tb-c" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">GATE-11</span><div class="card-ic-wrap ci-c">&#x2699;&#xFE0F;</div><div class="card-hd"><div class="card-title">PSU / GATE <span class="live-dot">Live</span></div><div class="card-meta">GATE CS &middot; ECE &middot; EE &middot; ME &middot; BHEL &middot; NTPC &middot; ISRO &middot; DRDO</div></div></div>
       <div class="card-desc">Engineering Maths, General Aptitude + full branch subjects for GATE CS, ECE, EE &amp; ME. NAT + MCQ pattern, 1M vs 2M analysis &amp; PSU interview prep (BHEL/NTPC/ISRO/ONGC).</div>
       <div class="card-tags"><span class="tag">GATE CS</span><span class="tag">GATE ECE/EE/ME</span><span class="tag">NAT Questions</span><span class="tag">PSU Interview</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · PSU Interview · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · PSU Interview · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="law_entrance_exam_prompt_generator.html" class="cat-card reveal tb-l" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">LAW-12</span><div class="card-ic-wrap ci-l">&#x2696;&#xFE0F;</div><div class="card-hd"><div class="card-title">Law Entrance <span class="live-dot">Live</span></div><div class="card-meta">CLAT &middot; AILET &middot; LSAT India &middot; DU LLB &middot; MH CET Law</div></div></div>
       <div class="card-desc">Legal Reasoning, English &amp; GK for CLAT (2020+ passage pattern), AILET &amp; LSAT India. Principle-Fact drill, NLU cutoffs, landmark case laws &amp; current affairs strategy.</div>
       <div class="card-tags"><span class="tag">Legal Reasoning</span><span class="tag">English</span><span class="tag">Current Affairs</span><span class="tag">NLU Cutoffs</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · PYQ · Legal Drill · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · PYQ · Legal Drill · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
   
@@ -756,42 +796,42 @@ a{color:var(--pr);text-decoration:none}
       <div class="card-top"><span class="card-idtag">NET-16</span><div class="card-ic-wrap ci-nj">&#x1F393;</div><div class="card-hd"><div class="card-title">UGC NET / CSIR NET / JRF <span class="live-dot">Live</span></div><div class="card-meta">Paper 1 &middot; Paper 2 (9 subjects) &middot; JRF Interview Prep</div></div></div>
       <div class="card-desc">Full 5-tab tool for UGC NET, CSIR NET, JRF &amp; SET/SLET — Paper 1 (Teaching &amp; Research Aptitude) plus 8 popular Paper 2 subjects, practice sets, and a dedicated JRF interview &amp; research proposal prep tab.</div>
       <div class="card-tags"><span class="tag">Paper 1</span><span class="tag">Paper 2</span><span class="tag">JRF Interview</span><span class="tag">Research Proposal</span><span class="tag">9 Subjects</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · Updates · Interview · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · Updates · Interview · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="cuet_exam_prompt_generator.html" class="cat-card reveal tb-cu" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">CUET-17</span><div class="card-ic-wrap ci-cu">&#x1F3EB;</div><div class="card-hd"><div class="card-title">CUET UG &amp; PG <span class="live-dot">Live</span></div><div class="card-meta">10 domains &middot; General Test &middot; CUET PG Specialist</div></div></div>
       <div class="card-desc">Full 5-tab tool for CUET UG and CUET PG — General Test plus 9 popular domain subjects (Physics, Chemistry, Maths, Biology, Business Studies, Accountancy, Economics, Political Science, English), practice sets, and a dedicated CUET PG-level specialist tab.</div>
       <div class="card-tags"><span class="tag">General Test</span><span class="tag">10 Domains</span><span class="tag">CUET PG</span><span class="tag">SOP Writing</span><span class="tag">Interview Prep</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · Updates · PG Specialist · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · Updates · PG Specialist · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="insurance_exam_prompt_generator.html" class="cat-card reveal tb-in" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">INS-18</span><div class="card-ic-wrap ci-in">&#x1F4C4;</div><div class="card-hd"><div class="card-title">Insurance: LIC &amp; NIACL <span class="live-dot">Live</span></div><div class="card-meta">5 subjects &middot; AO vs Assistant &middot; Interview Prep</div></div></div>
       <div class="card-desc">Full 5-tab tool for LIC AAO/ADO, NIACL AO/Assistant, UIIC and OICL — Quant, Reasoning, English, Insurance/GK Awareness, Computer, practice sets, and a dedicated AO-level specialist tab with IRDAI-focused current affairs.</div>
       <div class="card-tags"><span class="tag">LIC AAO/ADO</span><span class="tag">NIACL</span><span class="tag">UIIC/OICL</span><span class="tag">AO Specialist</span><span class="tag">IRDAI Updates</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · News · AO Specialist · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · News · AO Specialist · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="cacs_exam_prompt_generator.html" class="cat-card reveal tb-cc" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">CACS-19</span><div class="card-ic-wrap ci-cc">&#x1F4CA;</div><div class="card-hd"><div class="card-title">CA / CS / CMA <span class="live-dot">Live</span></div><div class="card-meta">5 core subjects &middot; Final vs Intermediate &middot; Case Studies</div></div></div>
       <div class="card-desc">Full 5-tab tool for CA (ICAI), CS (ICSI) and CMA (ICMAI) — Accounting, Costing, Law, Taxation, Audit, practice sets, and a dedicated Final/Professional-level specialist tab with case-study analysis and interview prep.</div>
       <div class="card-tags"><span class="tag">CA Foundation-Final</span><span class="tag">CS Executive-Prof.</span><span class="tag">CMA Inter-Final</span><span class="tag">Case Studies</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · News · Final Specialist · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · News · Final Specialist · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="judiciary_exam_prompt_generator.html" class="cat-card reveal tb-jd" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">JUD-20</span><div class="card-ic-wrap ci-jd">&#x2696;&#xFE0F;</div><div class="card-hd"><div class="card-title">State Judiciary (PCS-J) <span class="live-dot">Live</span></div><div class="card-meta">5 law subjects &middot; Mains vs Prelims &middot; Judgment Writing</div></div></div>
       <div class="card-desc">Full 5-tab tool for UP, Bihar, MP, Rajasthan, Delhi &amp; Maharashtra judiciary exams (Civil Judge) — Constitutional, Civil, Criminal, Procedural Law &amp; Legal GK, practice sets, and a dedicated Mains/Viva-Voce specialist tab with judgment writing prep.</div>
       <div class="card-tags"><span class="tag">Constitutional Law</span><span class="tag">Civil/Criminal Law</span><span class="tag">Judgment Writing</span><span class="tag">Viva-Voce</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · News · Mains/Viva · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · News · Mains/Viva · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
 
     <a href="agriculture_exam_prompt_generator.html" class="cat-card reveal tb-ag" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">AGR-21</span><div class="card-ic-wrap ci-ag">&#x1F33E;</div><div class="card-hd"><div class="card-title">Agriculture: ICAR &amp; AFO <span class="live-dot">Live</span></div><div class="card-meta">5 subjects &middot; Advanced vs General &middot; Research Proposal</div></div></div>
       <div class="card-desc">Full 5-tab tool for ICAR JRF/SRF, ASRB NET and IBPS AFO — Agronomy, Horticulture, Plant Science, Soil Science, Agri Economics &amp; GK, practice sets, and a dedicated advanced-level specialist tab with research proposal &amp; interview prep.</div>
       <div class="card-tags"><span class="tag">Agronomy</span><span class="tag">Horticulture</span><span class="tag">Soil Science</span><span class="tag">ICAR JRF/AFO</span></div>
-      <div class="card-footer"><span class="card-tabs">5 tools &middot; Study · Practice · News · Advanced Specialist · Syllabus</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
+      <div class="card-footer"><span class="card-tabs">6 tools &middot; Study · Practice · News · Advanced Specialist · Syllabus · Flashcards</span><span class="card-link">Open <span class="cat-arrow">&#8594;</span></span></div>
     </a>
   </div><!-- /cat-grid -->
 
@@ -1368,6 +1408,264 @@ function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.c
       }
     })();
   </script>
+
+<script>
+/* ── Study Timer (Pomodoro) — vanilla JS, no dependencies ── */
+(function(){
+  var totalSeconds = 25 * 60;
+  var remaining = totalSeconds;
+  var running = false;
+  var intervalId = null;
+  var display = document.getElementById("timerDisplay");
+  var startBtn = document.getElementById("timerStartBtn");
+  var modeEl = document.getElementById("timerMode");
+  var roundsEl = document.getElementById("timerRounds");
+  var lengthSelect = document.getElementById("timerLength");
+  if (!display) return;
+
+  function todayKey(){ return "rb_timer_rounds_" + new Date().toDateString(); }
+
+  function loadRounds(){
+    try {
+      var n = parseInt(localStorage.getItem(todayKey()) || "0", 10);
+      if (roundsEl) roundsEl.textContent = String(n);
+    } catch(e){}
+  }
+
+  function bumpRounds(){
+    try {
+      var n = parseInt(localStorage.getItem(todayKey()) || "0", 10) + 1;
+      localStorage.setItem(todayKey(), String(n));
+      if (roundsEl) roundsEl.textContent = String(n);
+      if (window.renderDashboard) window.renderDashboard();
+    } catch(e){}
+  }
+
+  function render(){
+    var m = Math.floor(remaining / 60);
+    var s = remaining % 60;
+    display.textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  }
+
+  function tick(){
+    remaining--;
+    if (remaining <= 0) {
+      clearInterval(intervalId);
+      running = false;
+      bumpRounds();
+      startBtn.textContent = "\u25B6\uFE0F Start";
+      modeEl.textContent = "Session complete \u2014 take a 5 min break!";
+      if (document.title.indexOf("\u23F0") !== 0) document.title = "\u23F0 Time's up! " + document.title;
+      remaining = totalSeconds;
+    }
+    render();
+  }
+
+  window.timerToggle = function(){
+    if (running) {
+      clearInterval(intervalId);
+      running = false;
+      startBtn.textContent = "\u25B6\uFE0F Resume";
+    } else {
+      running = true;
+      startBtn.textContent = "\u23F8\uFE0F Pause";
+      modeEl.textContent = "Focus session \u2014 stay on this tab";
+      intervalId = setInterval(tick, 1000);
+    }
+  };
+
+  window.timerReset = function(){
+    clearInterval(intervalId);
+    running = false;
+    remaining = totalSeconds;
+    startBtn.textContent = "\u25B6\uFE0F Start";
+    modeEl.innerHTML = 'Focus session &middot; <span id="timerRounds">' + (roundsEl ? roundsEl.textContent : "0") + '</span> completed today';
+    roundsEl = document.getElementById("timerRounds");
+    document.title = document.title.replace(/^\u23F0 Time's up! /, "");
+    render();
+  };
+
+  window.timerSetLength = function(minutes){
+    totalSeconds = parseInt(minutes, 10) * 60;
+    if (!running) {
+      remaining = totalSeconds;
+      render();
+    }
+  };
+
+  loadRounds();
+  render();
+})();
+
+/* ── Shared tool metadata (icon + title) for Continue Studying cards ── */
+var TOOL_META = {
+  "bank_exam_prompt_generator.html": { icon: "&#x1F3E6;", title: "Banking & Finance" },
+  "railway_exam_prompt_generator.html": { icon: "&#x1F686;", title: "Railway" },
+  "upsc_prompt_generator.html": { icon: "&#x1F3DB;&#xFE0F;", title: "UPSC / IAS" },
+  "ssc_exam_prompt_generator.html": { icon: "&#x1F4CB;", title: "SSC" },
+  "jee_exam_prompt_generator.html": { icon: "&#x2697;&#xFE0F;", title: "JEE" },
+  "neet_exam_prompt_generator.html": { icon: "&#x1F9EC;", title: "NEET" },
+  "mba_exam_prompt_generator.html": { icon: "&#x1F4BC;", title: "MBA / CAT" },
+  "psc_exam_prompt_generator.html": { icon: "&#x1F5FA;&#xFE0F;", title: "State PSC" },
+  "teaching_exam_prompt_generator.html": { icon: "&#x1F4DA;", title: "Teaching" },
+  "defence_exam_prompt_generator.html": { icon: "&#x1F396;&#xFE0F;", title: "Defence" },
+  "gate_psu_exam_prompt_generator.html": { icon: "&#x2699;&#xFE0F;", title: "GATE / PSU" },
+  "law_entrance_exam_prompt_generator.html": { icon: "&#x2696;&#xFE0F;", title: "CLAT / AILET" },
+  "exam-mentor-chatbot.html": { icon: "&#x1F916;", title: "AI Exam Mentor" },
+  "trend-analysis-generator.html": { icon: "&#x1F4C8;", title: "Trend Analysis" },
+  "net_jrf_exam_prompt_generator.html": { icon: "&#x1F393;", title: "UGC NET / JRF" },
+  "cuet_exam_prompt_generator.html": { icon: "&#x1F3EB;", title: "CUET UG & PG" },
+  "insurance_exam_prompt_generator.html": { icon: "&#x1F4C4;", title: "Insurance: LIC & NIACL" },
+  "cacs_exam_prompt_generator.html": { icon: "&#x1F4CA;", title: "CA / CS / CMA" },
+  "judiciary_exam_prompt_generator.html": { icon: "&#x2696;&#xFE0F;", title: "State Judiciary" },
+  "agriculture_exam_prompt_generator.html": { icon: "&#x1F33E;", title: "Agriculture: ICAR & AFO" },
+  "more_exams_prompt_generator.html": { icon: "&#x2795;", title: "More Exams" }
+};
+
+/* ── Continue Studying (site-wide recently visited tools) ── */
+(function(){
+  function render(){
+    var container = document.getElementById("continueStudyingCards");
+    var wrap = document.getElementById("continueStudyingStrip");
+    if (!container || !wrap) return;
+    var recents = [];
+    try { recents = JSON.parse(localStorage.getItem("rb_recent_tools") || "[]"); } catch(e){}
+    var known = recents.filter(function(r){ return TOOL_META[r.href]; }).slice(0, 5);
+    if (!known.length) { wrap.style.display = "none"; return; }
+    wrap.style.display = "";
+    container.innerHTML = known.map(function(r){
+      var meta = TOOL_META[r.href];
+      return '<a href="' + r.href + '" style="text-decoration:none;color:inherit;background:var(--sf2);border:1px solid var(--bdr);border-radius:20px;padding:6px 14px;font-size:13px;display:inline-flex;gap:6px;align-items:center">' + meta.icon + ' ' + meta.title + '</a>';
+    }).join("");
+  }
+  document.addEventListener("DOMContentLoaded", render);
+})();
+
+/* ── My Study Dashboard (combines streak, timer sessions, bookmarks) ── */
+(function(){
+  function render(){
+    var card = document.getElementById("dashboardCard");
+    if (!card) return;
+    var streak = 0, pomodoros = 0, bookmarks = 0;
+    try { streak = parseInt(localStorage.getItem("rb_streak") || "0", 10); } catch(e){}
+    try { pomodoros = parseInt(localStorage.getItem("rb_timer_rounds_" + new Date().toDateString()) || "0", 10); } catch(e){}
+    try { bookmarks = JSON.parse(localStorage.getItem("rb_bookmarked_tools") || "[]").length; } catch(e){}
+    if (!streak && !pomodoros && !bookmarks) { card.style.display = "none"; return; }
+    card.style.display = "";
+    var elS = document.getElementById("dashStreak"); if (elS) elS.textContent = String(streak);
+    var elP = document.getElementById("dashPomodoros"); if (elP) elP.textContent = String(pomodoros);
+    var elB = document.getElementById("dashBookmarks"); if (elB) elB.textContent = String(bookmarks);
+  }
+  document.addEventListener("DOMContentLoaded", render);
+  window.addEventListener("focus", render);
+  window.renderDashboard = render;
+})();
+
+/* ── Motivational Quote of the Day (deterministic per calendar day) ── */
+(function(){
+  var QUOTES = [
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "It always seems impossible until it's done.", author: "Nelson Mandela" },
+    { text: "The expert in anything was once a beginner.", author: "Helen Hayes" },
+    { text: "Discipline is choosing between what you want now and what you want most.", author: "Abraham Lincoln" },
+    { text: "You don't have to be great to start, but you have to start to be great.", author: "Zig Ziglar" },
+    { text: "Hard work beats talent when talent doesn't work hard.", author: "Tim Notke" },
+    { text: "The future depends on what you do today.", author: "Mahatma Gandhi" },
+    { text: "A little progress each day adds up to big results.", author: "Satya Nani" },
+    { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+    { text: "Push yourself, because no one else is going to do it for you.", author: "Unknown" },
+    { text: "Well done is better than well said.", author: "Benjamin Franklin" },
+    { text: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" }
+  ];
+  function render(){
+    var textEl = document.getElementById("quoteText");
+    var authorEl = document.getElementById("quoteAuthor");
+    if (!textEl || !authorEl) return;
+    var dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+    var q = QUOTES[dayOfYear % QUOTES.length];
+    textEl.textContent = "\u201C" + q.text + "\u201D";
+    authorEl.textContent = "\u2014 " + q.author;
+  }
+  document.addEventListener("DOMContentLoaded", render);
+})();
+
+/* ── Bookmark favorite tools ──
+   Injects a star toggle onto every tool card and shows a quick-access
+   strip of bookmarked tools above the full grid, so repeat visitors can
+   jump straight to what they use most. */
+(function(){
+  var BOOKMARK_KEY = "rb_bookmarked_tools";
+
+  function getBookmarks(){
+    try { return JSON.parse(localStorage.getItem(BOOKMARK_KEY) || "[]"); }
+    catch(e){ return []; }
+  }
+  function saveBookmarks(arr){
+    try { localStorage.setItem(BOOKMARK_KEY, JSON.stringify(arr)); } catch(e){}
+  }
+
+  function renderQuickStrip(){
+    var bookmarks = getBookmarks();
+    var container = document.getElementById("bookmarkStrip");
+    if (!container) return;
+    if (!bookmarks.length) {
+      container.style.display = "none";
+      return;
+    }
+    container.style.display = "";
+    container.innerHTML = bookmarks.map(function(b){
+      return '<a href="' + b.href + '" style="text-decoration:none;color:inherit;background:var(--sf2);border:1px solid var(--bdr);border-radius:20px;padding:6px 14px;font-size:13px;display:inline-flex;gap:6px;align-items:center">\u2B50 ' + b.title + '</a>';
+    }).join("");
+  }
+
+  function toggleBookmark(href, title, starEl){
+    var bookmarks = getBookmarks();
+    var idx = bookmarks.findIndex(function(b){ return b.href === href; });
+    if (idx > -1) {
+      bookmarks.splice(idx, 1);
+      starEl.textContent = "\u2606";
+      starEl.setAttribute("aria-label", "Bookmark this tool");
+    } else {
+      bookmarks.push({ href: href, title: title });
+      starEl.textContent = "\u2B50";
+      starEl.setAttribute("aria-label", "Remove bookmark");
+    }
+    saveBookmarks(bookmarks);
+    renderQuickStrip();
+    if (window.renderDashboard) window.renderDashboard();
+  }
+
+  function injectStars(){
+    var bookmarks = getBookmarks();
+    var cards = document.querySelectorAll(".cat-card");
+    cards.forEach(function(card){
+      var href = card.getAttribute("href");
+      var titleEl = card.querySelector(".card-title");
+      var title = titleEl ? titleEl.childNodes[0].textContent.trim() : href;
+      var top = card.querySelector(".card-top");
+      if (!top || top.querySelector(".bookmark-star")) return;
+      var isBookmarked = bookmarks.some(function(b){ return b.href === href; });
+      var star = document.createElement("button");
+      star.className = "bookmark-star";
+      star.type = "button";
+      star.textContent = isBookmarked ? "\u2B50" : "\u2606";
+      star.setAttribute("aria-label", isBookmarked ? "Remove bookmark" : "Bookmark this tool");
+      star.style.cssText = "margin-left:auto;background:none;border:none;font-size:20px;cursor:pointer;line-height:1;padding:4px";
+      star.addEventListener("click", function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        toggleBookmark(href, title, star);
+      });
+      top.appendChild(star);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    injectStars();
+    renderQuickStrip();
+  });
+})();
+</script>
 <script>
 /* ============================================================
    ANIMATION ENGINE — scroll-reveal + number count-up

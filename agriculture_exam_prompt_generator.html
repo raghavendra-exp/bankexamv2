@@ -396,9 +396,24 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
 .exam-chk-lbl{font-size:12px;font-weight:600;color:var(--txt)}
 .exam-chk.on .exam-chk-lbl{color:#0C4A6E}
 
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is ICAR AIEEA used for?","acceptedAnswer":{"@type":"Answer","text":"ICAR AIEEA (All India Entrance Examination for Admission) is a national-level exam conducted by NTA for admission to undergraduate and postgraduate agriculture, horticulture, forestry, fisheries, and related programmes at ICAR-affiliated agricultural universities across India."}},
+{"@type":"Question","name":"What is the difference between ICAR AIEEA and state Agriculture Field Officer (AFO) exams?", "acceptedAnswer":{"@type":"Answer","text":"ICAR AIEEA is an admission entrance exam for agricultural degree programmes. AFO exams (like IBPS AFO) are recruitment exams for officer-level agricultural banking positions in public sector banks, testing agriculture knowledge alongside reasoning, quant, and English."}},
+{"@type":"Question","name":"Is there negative marking in ICAR AIEEA?","acceptedAnswer":{"@type":"Answer","text":"Yes. ICAR AIEEA typically deducts 1 mark for each wrong answer, with 4 marks awarded for a correct answer — always confirm the exact scheme in the current official information bulletin."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
+<script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
 <!-- ── FLOATING SOCIAL ── -->
 <div class="soc-fl" role="complementary" aria-label="Social media">
   <a class="sfl-btn sfl-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener" aria-label="Facebook">
@@ -516,8 +531,10 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <span class="hbdg">ICAR</span>
       <span class="hbdg">AFO</span>
       <span class="hbdg">NET</span>
+      <span class="hbdg" id="streakBadge" style="display:none">&#x1F525; streak</span>
     </div>
   </div>
+  <div id="examCountdownStrip" style="display:flex;gap:10px;flex-wrap:wrap;padding:10px 20px;font-size:13px;opacity:.95"></div>
   <div class="tab-nav">
     <div class="tab-nav-inner">
       <button class="tnbtn act" onclick="swTab('s1',this)"><span class="tnic">📐</span> Study Prompt</button>
@@ -525,11 +542,15 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <button class="tnbtn" onclick="swTab('s3',this)"><span class="tnic">🎯</span> Practice Set</button>
       <button class="tnbtn" onclick="swTab('s4',this)"><span class="tnic">🏅</span> ICAR JRF/AFO Prompt</button>
       <button class="tnb" onclick="swTab('s5',this)"><span class="tnic">📋</span> Syllabus Prompt</button>
+      <button class="tnb" onclick="swTab('s6',this)"><span class="tnic">🗂️</span> Flashcards</button>
     </div>
   </div>
 </header>
 
 <!-- ── AD SLOT TOP ── -->
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div class="wrap" style="padding-bottom:0">
   <div class="adslot"><div class="adslot-lbl">Advertisement</div>
     <!-- AdSense unit: replace XXXXXXXX with your publisher ID and slot ID
@@ -907,6 +928,35 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
   <div class="emp" id="s5-emp"><div style="font-size:46px;margin-bottom:12px">📋</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
 
+<!-- ════ TAB 6 — FLASHCARDS ════ -->
+<div class="tp" id="tp-s6">
+  <div class="intro-card">
+    <h2>🗂️ Flashcards</h2>
+    <p>Quick-fire revision cards for ICAR agronomy and soil science. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-agronomy" onclick="fcLoadDeck('agronomy')">&#x1F33E; Agronomy</button>
+        <button class="sp" id="fc-deck-soil" onclick="fcLoadDeck('soil')">&#x1FAA8; Soil Science</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- ── SOCIAL SECTION ── -->
@@ -1052,7 +1102,116 @@ function fmtDt(iso){try{const d=new Date(iso+'T00:00:00');return d.toLocaleDateS
 })();
 
 // ══ HELPERS ══════════════════════════════════════════
-function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});}
+function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});try{localStorage.setItem('agri_lasttab',id);}catch(e){}}
+
+/* ── Exam window widget ──
+   ICAR AIEEA runs annually (historically April-June for UG, June-July for
+   PG) but as of Sep 2026 NTA has not yet released exact 2027 dates.
+   Shown as a historical-pattern estimate, not a fabricated exact date.
+   Replace with a real countdown once NTA releases the official
+   notification. */
+(function examWindow(){
+  var WINDOWS = [
+    { name: "ICAR AIEEA 2027", window: "Historically held April\u2013June (exact dates awaited)" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  strip.innerHTML = WINDOWS.map(function(w){
+    return '<a href="https://icar.nta.nic.in" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:4px 10px;display:inline-flex;gap:6px;align-items:center">' +
+             '<strong>' + w.name + ':</strong> ' + w.window + ' &rarr;' +
+           '</a>';
+  }).join('');
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('agri_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnbtn[onclick*="\''+last+'\'"], .tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnbtn,.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('agri_lastvisit');
+    var streak = parseInt(localStorage.getItem('agri_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('agri_streak', String(streak));
+      localStorage.setItem('agri_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  agronomy: [
+    { f: "What is 'crop rotation'?", b: "Growing different crops in a planned sequence on the same land to maintain soil fertility and reduce pests" },
+    { f: "What does 'kharif' season refer to?", b: "The monsoon cropping season in India, roughly June to October (e.g. rice, maize, cotton)" },
+    { f: "What does 'rabi' season refer to?", b: "The winter cropping season in India, roughly October to March (e.g. wheat, mustard, gram)" },
+    { f: "What is 'intercropping'?", b: "Growing two or more crops simultaneously on the same field to maximize land use" },
+    { f: "What is the purpose of 'green manuring'?", b: "Growing and ploughing under a crop (like dhaincha or sunhemp) to improve soil fertility and organic matter" },
+    { f: "What does 'HYV' stand for in agriculture?", b: "High Yielding Variety (seeds developed for higher productivity)" },
+    { f: "What is 'mulching'?", b: "Covering the soil surface with organic or synthetic material to conserve moisture and suppress weeds" }
+  ],
+  soil: [
+    { f: "What is the ideal soil pH range for most crops?", b: "6.0 to 7.5 (slightly acidic to neutral)" },
+    { f: "What are the three primary macronutrients in fertilizers (NPK)?", b: "Nitrogen (N), Phosphorus (P), and Potassium (K)" },
+    { f: "What is 'soil erosion'?", b: "The removal of topsoil by wind or water, reducing fertility" },
+    { f: "What does 'CEC' stand for in soil science?", b: "Cation Exchange Capacity \u2014 a measure of a soil's ability to hold and exchange positively charged nutrient ions" },
+    { f: "What type of soil is best suited for cotton cultivation?", b: "Black soil (regur soil)" },
+    { f: "What is 'soil texture' determined by?", b: "The relative proportions of sand, silt, and clay particles in the soil" }
+  ]
+};
+var fcState = { deck: 'agronomy', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-agronomy').classList.toggle('on', name === 'agronomy');
+  document.getElementById('fc-deck-soil').classList.toggle('on', name === 'soil');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('agronomy'); });
 function tog2(el){el.classList.toggle('on-t')}
 function cpOut(pid,bid){
   const t=document.getElementById(pid).textContent;

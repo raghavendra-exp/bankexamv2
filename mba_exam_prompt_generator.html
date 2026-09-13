@@ -218,9 +218,24 @@ select:focus{outline:none;border-color:var(--amb);box-shadow:0 0 0 3px rgba(217,
 @media(max-width:768px){.sg3{grid-template-columns:1fr 1fr}.hdr-back span{display:none}.srch-form{width:150px}}
 @media(max-width:540px){.sg3,.sg2{grid-template-columns:1fr}.soc-fl{display:none}}
 @media(max-width:480px){.sov-grid{grid-template-columns:1fr}}
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What sections does CAT cover?","acceptedAnswer":{"@type":"Answer","text":"CAT has three sections: VARC (Verbal Ability and Reading Comprehension), DILR (Data Interpretation and Logical Reasoning), and Quantitative Ability (QA)."}},
+{"@type":"Question","name":"Is there negative marking in CAT?","acceptedAnswer":{"@type":"Answer","text":"Yes, for Multiple Choice Questions (MCQs): 1 mark is deducted for each wrong answer, with 3 marks awarded for a correct answer. Non-MCQ (TITA) questions have no negative marking."}},
+{"@type":"Question","name":"What is the difference between CAT and XAT?","acceptedAnswer":{"@type":"Answer","text":"CAT is conducted by the IIMs (rotating each year) for admission to the IIMs and other top B-schools. XAT (Xavier Aptitude Test) is conducted by XLRI for admission to XLRI and other XAMI-affiliated institutes, and additionally includes a Decision Making section not found in CAT."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
+<script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
 <!-- SOCIAL FLOAT -->
 <div class="soc-fl">
   <a class="sfl sfl-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener"><div class="sfl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg></div><span class="sfl-lb">Raghavbegins</span></a>
@@ -259,14 +274,22 @@ select:focus{outline:none;border-color:var(--amb);box-shadow:0 0 0 3px rgba(217,
     <div class="srch-form"><input class="srch-in" id="srch-in" placeholder="Search any topic..." onkeydown="if(event.key==='Enter')doSearch()" autocomplete="off"><button class="srch-go" onclick="doSearch()">Search</button></div>
     <a class="hdr-back" href="index.html">&#8592; <span>All Exams</span></a>
   </div>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 20px 8px">
+    <span id="streakBadge" style="display:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.25)">&#x1F525; streak</span>
+    <div id="examCountdownStrip" style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px"></div>
+  </div>
   <div class="tab-nav"><div class="tni">
     <button class="tnb act" onclick="swTab('t1',this)"><span>&#x1F4DA;</span> Study Prompt</button>
     <button class="tnb" onclick="swTab('t2',this)"><span>&#x1F9EA;</span> Practice Set</button>
     <button class="tnb" onclick="swTab('t3',this)"><span>&#x1F4DC;</span> PYQ Analysis</button>
     <button class="tnb" onclick="swTab('t4',this)"><span>&#x1F3A4;</span> GD / PI / WAT</button>
     <button class="tnb" onclick="swTab('t5',this)"><span>&#x1F4CB;</span> Syllabus Prompt</button>
+    <button class="tnb" onclick="swTab('t6',this)"><span>&#x1F5C2;&#xFE0F;</span> Flashcards</button>
   </div></div>
 </header>
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div style="background:var(--sf2)"><div class="wrap"><div class="adslot"><div class="adslot-lbl">Advertisement</div><span class="adslot-ph">Responsive banner ad</span></div></div></div>
 <main class="wrap">
 
@@ -410,6 +433,36 @@ select:focus{outline:none;border-color:var(--amb);box-shadow:0 0 0 3px rgba(217,
   <div class="ocard oc5" id="t5-oc"><div class="ohdr oh5"><div class="ohdr-m"><h3 id="t5-title">MBA Syllabus prompt</h3><p id="t5-sub">Current cycle analysis</p></div><div class="ohdr-acts"><button class="oab oab-cp" onclick="cpOut('t5-pa','t5-cb')" id="t5-cb">&#x1F4CB; Copy</button><button class="oab" style="background:var(--amb);color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;border:none" onclick="dlOut('t5-pa','mba_syllabus')">&#x2B07; .txt</button></div></div><div class="ai-row" id="t5-air"><span class="ai-lbl">Open in &rarr;</span></div><div class="ostats" id="t5-stats"></div><div class="parea" id="t5-pa"></div></div>
   <div class="emp" id="t5-emp"><div style="font-size:46px;margin-bottom:12px">&#x1F4CB;</div><h3>MBA syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
+
+<!-- TAB 6: FLASHCARDS -->
+<div class="tp" id="tp-t6">
+  <div class="intro-card">
+    <h2>&#x1F5C2;&#xFE0F; Flashcards</h2>
+    <p>Quick-fire revision cards for CAT quant shortcuts and business GK. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-quant" onclick="fcLoadDeck('quant')">&#x1F522; Quant Shortcuts</button>
+        <button class="sp" id="fc-deck-gk" onclick="fcLoadDeck('gk')">&#x1F4BC; Business GK</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2,#cbd5e1);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3,#64748b)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3,#64748b)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <div style="max-width:1080px;margin:0 auto;padding:0 20px">
@@ -611,7 +664,125 @@ let t4TypeV="gd",pqN=20;
   try{document.getElementById("ft-cr").textContent=atob("wqkgMjAyNeKAkzIwMjYgUmFnaGF2YmVnaW5zLiBBbGwgcmlnaHRzIHJlc2VydmVkLg==");}catch(e){}
   if(localStorage.getItem("rb_ck_mba"))document.getElementById("ckbar").classList.add("gone");
 })();
-function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});}
+function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});try{localStorage.setItem('mba_lasttab',id);}catch(e){}}
+
+/* ── Exam countdown widget ──
+   CAT 2026 date officially confirmed by IIM Indore's notification
+   (25 July 2026) as of Sep 2026. Update EXAM_DATES if IIM Indore issues
+   any revision. */
+(function examCountdown(){
+  var EXAM_DATES = [
+    { name: "CAT 2026", date: "2026-11-29", link: "https://iimcat.ac.in" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  var now = new Date();
+  var html = "";
+  EXAM_DATES.forEach(function(e){
+    var target = new Date(e.date + "T00:00:00");
+    var diffDays = Math.ceil((target - now) / 86400000);
+    if(diffDays < 0) return;
+    var label = diffDays === 0 ? "Today!" : diffDays + " day" + (diffDays === 1 ? "" : "s");
+    html += '<a href="' + e.link + '" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:5px 10px;display:inline-flex;gap:6px;align-items:center">' +
+              '<strong>' + label + '</strong> to ' + e.name +
+            '</a>';
+  });
+  if(!html){
+    html = '<span style="opacity:.8">Check iimcat.ac.in for the latest exam calendar &rarr;</span>';
+  }
+  strip.innerHTML = html;
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('mba_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('mba_lastvisit');
+    var streak = parseInt(localStorage.getItem('mba_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('mba_streak', String(streak));
+      localStorage.setItem('mba_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  quant: [
+    { f: "Shortcut: percentage to fraction \u2014 what fraction is 12.5%?", b: "1/8" },
+    { f: "Formula for average speed for equal distances at speeds a & b", b: "2ab / (a + b)" },
+    { f: "Shortcut: what fraction is 33.33%?", b: "1/3" },
+    { f: "Formula for compound interest (annual)", b: "CI = P(1 + R/100)^T \u2212 P" },
+    { f: "In Data Interpretation, what's the fastest way to compare ratios without a calculator?", b: "Cross-multiply the two ratios and compare the products directly" },
+    { f: "Formula relating Profit%, Cost Price, and Selling Price", b: "SP = CP \u00D7 (1 + Profit%/100)" },
+    { f: "Shortcut: what fraction is 16.66%?", b: "1/6" }
+  ],
+  gk: [
+    { f: "What does IPO stand for?", b: "Initial Public Offering" },
+    { f: "What is the full form of GDP?", b: "Gross Domestic Product" },
+    { f: "What does 'SWOT analysis' stand for?", b: "Strengths, Weaknesses, Opportunities, Threats" },
+    { f: "What is 'market capitalization'?", b: "The total market value of a company's outstanding shares (share price \u00D7 total shares)" },
+    { f: "What does B2B stand for in business?", b: "Business-to-Business" },
+    { f: "What is the 'break-even point' in business?", b: "The point where total revenue equals total costs, resulting in neither profit nor loss" },
+    { f: "What does CSR stand for?", b: "Corporate Social Responsibility" }
+  ]
+};
+var fcState = { deck: 'quant', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-quant').classList.toggle('on', name === 'quant');
+  document.getElementById('fc-deck-gk').classList.toggle('on', name === 'gk');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('quant'); });
 function buildAIRow(rid,pid){const r=document.getElementById(rid);if(!r)return;r.innerHTML='<span class="ai-lbl">Open in →</span>'+AI_PL.map(ai=>`<button class="ai-btn ${ai.cls}" onclick="launchAI('${ai.url}','${pid}')">${ai.ic} ${ai.nm}</button>`).join('');}
 function fallbackCopy(t){try{const ta=document.createElement("textarea");ta.value=t;ta.style.cssText="position:fixed;top:-9999px;opacity:0";document.body.appendChild(ta);ta.focus();ta.select();document.execCommand("copy");document.body.removeChild(ta);}catch(e){}}
 function launchAI(url,pid){const t=document.getElementById(pid).textContent;if(!t||!t.trim()){showToast("Generate a prompt first");return;}const open=()=>{const tip=document.getElementById("ai-tip");tip.classList.add("show");setTimeout(()=>tip.classList.remove("show"),3500);setTimeout(()=>window.open(url,"_blank"),400);};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(open).catch(()=>{fallbackCopy(t);open();});}else{fallbackCopy(t);open();}}

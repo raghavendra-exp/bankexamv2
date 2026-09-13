@@ -396,9 +396,24 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
 .exam-chk-lbl{font-size:12px;font-weight:600;color:var(--txt)}
 .exam-chk.on .exam-chk-lbl{color:#0C4A6E}
 
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the difference between CA, CS, and CMA?","acceptedAnswer":{"@type":"Answer","text":"CA (Chartered Accountancy, via ICAI) focuses on accounting, auditing, and taxation. CS (Company Secretary, via ICSI) focuses on corporate law, governance, and compliance. CMA (Cost and Management Accountancy, via ICMAI) focuses on cost accounting, financial management, and strategic management."}},
+{"@type":"Question","name":"How many levels does the CA course have?","acceptedAnswer":{"@type":"Answer","text":"Three levels: CA Foundation, CA Intermediate, and CA Final, along with mandatory Articleship training (practical training) before qualifying."}},
+{"@type":"Question","name":"Is there negative marking in CA/CS/CMA exams?","acceptedAnswer":{"@type":"Answer","text":"The subjective (descriptive) papers have no negative marking. However, certain objective-type papers (like CA Foundation's MCQ papers) do carry negative marking — always check the exact scheme in your current official notification."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
+<script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
 <!-- ── FLOATING SOCIAL ── -->
 <div class="soc-fl" role="complementary" aria-label="Social media">
   <a class="sfl-btn sfl-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener" aria-label="Facebook">
@@ -516,8 +531,10 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <span class="hbdg">CA</span>
       <span class="hbdg">CS</span>
       <span class="hbdg">CMA</span>
+      <span class="hbdg" id="streakBadge" style="display:none">&#x1F525; streak</span>
     </div>
   </div>
+  <div id="examCountdownStrip" style="display:flex;gap:10px;flex-wrap:wrap;padding:10px 20px;font-size:13px;opacity:.95"></div>
   <div class="tab-nav">
     <div class="tab-nav-inner">
       <button class="tnbtn act" onclick="swTab('s1',this)"><span class="tnic">📐</span> Study Prompt</button>
@@ -525,11 +542,15 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <button class="tnbtn" onclick="swTab('s3',this)"><span class="tnic">🎯</span> Practice Set</button>
       <button class="tnbtn" onclick="swTab('s4',this)"><span class="tnic">🏅</span> Final/Professional Prompt</button>
       <button class="tnb" onclick="swTab('s5',this)"><span class="tnic">📋</span> Syllabus Prompt</button>
+      <button class="tnb" onclick="swTab('s6',this)"><span class="tnic">🗂️</span> Flashcards</button>
     </div>
   </div>
 </header>
 
 <!-- ── AD SLOT TOP ── -->
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div class="wrap" style="padding-bottom:0">
   <div class="adslot"><div class="adslot-lbl">Advertisement</div>
     <!-- AdSense unit: replace XXXXXXXX with your publisher ID and slot ID
@@ -909,6 +930,35 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
   <div class="emp" id="s5-emp"><div style="font-size:46px;margin-bottom:12px">📋</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
 
+<!-- ════ TAB 6 — FLASHCARDS ════ -->
+<div class="tp" id="tp-s6">
+  <div class="intro-card">
+    <h2>🗂️ Flashcards</h2>
+    <p>Quick-fire revision cards for CA/CS/CMA accounting standards and company law. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-accounts" onclick="fcLoadDeck('accounts')">📊 Accounting Standards</button>
+        <button class="sp" id="fc-deck-law" onclick="fcLoadDeck('law')">⚖️ Company Law</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- ── SOCIAL SECTION ── -->
@@ -1053,7 +1103,125 @@ function fmtDt(iso){try{const d=new Date(iso+'T00:00:00');return d.toLocaleDateS
 })();
 
 // ══ HELPERS ══════════════════════════════════════════
-function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});}
+function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});try{localStorage.setItem('cacs_lasttab',id);}catch(e){}}
+
+/* ── Exam countdown widget ──
+   CA Final November 2026 dates confirmed by ICAI's official date sheet
+   as of Sep 2026. Update EXAM_DATES whenever a new official notification
+   comes out. */
+(function examCountdown(){
+  var EXAM_DATES = [
+    { name: "CA Final Nov 2026 (Group 1 starts)", date: "2026-11-02", link: "https://icai.org" },
+    { name: "CA Final Nov 2026 (Group 2 starts)", date: "2026-11-09", link: "https://icai.org" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  var now = new Date();
+  var html = "";
+  EXAM_DATES.forEach(function(e){
+    var target = new Date(e.date + "T00:00:00");
+    var diffDays = Math.ceil((target - now) / 86400000);
+    if(diffDays < 0) return;
+    var label = diffDays === 0 ? "Today!" : diffDays + " day" + (diffDays === 1 ? "" : "s");
+    html += '<a href="' + e.link + '" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:5px 10px;display:inline-flex;gap:6px;align-items:center">' +
+              '<strong>' + label + '</strong> to ' + e.name +
+            '</a>';
+  });
+  if(!html){
+    html = '<span style="opacity:.8">Check icai.org / icsi.edu / icmai.in for the latest exam calendar &rarr;</span>';
+  }
+  strip.innerHTML = html;
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('cacs_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnbtn[onclick*="\''+last+'\'"], .tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnbtn,.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('cacs_lastvisit');
+    var streak = parseInt(localStorage.getItem('cacs_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('cacs_streak', String(streak));
+      localStorage.setItem('cacs_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  accounts: [
+    { f: "What does AS 1 (Ind AS equivalent) deal with?", b: "Disclosure of Accounting Policies" },
+    { f: "What is the double entry principle?", b: "Every transaction affects at least two accounts, with equal and opposite debit and credit entries" },
+    { f: "What does 'goodwill' represent on a balance sheet?", b: "An intangible asset representing the excess of purchase consideration over the fair value of net identifiable assets acquired" },
+    { f: "What is depreciation?", b: "The systematic allocation of an asset's depreciable cost over its useful life" },
+    { f: "What is the accounting equation?", b: "Assets = Liabilities + Capital (Owner's Equity)" },
+    { f: "What does 'accrual basis of accounting' mean?", b: "Revenue and expenses are recognized when earned/incurred, not necessarily when cash is received or paid" },
+    { f: "What is a contingent liability?", b: "A potential obligation that depends on the outcome of a future uncertain event, disclosed but not recognized in accounts" }
+  ],
+  law: [
+    { f: "Under the Companies Act 2013, what is the minimum number of directors for a public company?", b: "3 directors" },
+    { f: "What is the minimum number of members required to form a private company?", b: "2 members" },
+    { f: "What is an 'AGM' and how often must it be held?", b: "Annual General Meeting — must be held once every calendar year, within 15 months of the previous AGM" },
+    { f: "What is a 'Memorandum of Association'?", b: "A document defining a company's constitution and scope of operations, including its objects and powers" },
+    { f: "What is meant by 'perpetual succession' of a company?", b: "A company continues to exist regardless of changes in its membership, until legally dissolved" },
+    { f: "What is the liability of a shareholder in a company limited by shares?", b: "Limited to the unpaid amount, if any, on the shares held by them" }
+  ]
+};
+var fcState = { deck: 'accounts', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-accounts').classList.toggle('on', name === 'accounts');
+  document.getElementById('fc-deck-law').classList.toggle('on', name === 'law');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('accounts'); });
 function tog2(el){el.classList.toggle('on-t')}
 function cpOut(pid,bid){
   const t=document.getElementById(pid).textContent;

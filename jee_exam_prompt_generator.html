@@ -262,9 +262,24 @@ input[type=range]{width:100%;accent-color:var(--ind)}
 @media(max-width:768px){.sg3{grid-template-columns:1fr 1fr}.hdr-back span{display:none}.srch-form{width:150px}}
 @media(max-width:540px){.sg3,.sg2{grid-template-columns:1fr}.soc-fl{display:none}}
 @media(max-width:480px){.sov-grid{grid-template-columns:1fr}}
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the difference between JEE Main and JEE Advanced?","acceptedAnswer":{"@type":"Answer","text":"JEE Main is the first-stage exam for admission to NITs, IIITs, and other CFTIs, and also qualifies top scorers to appear for JEE Advanced. JEE Advanced is the second-stage exam, required specifically for admission to the IITs, and only a limited number of top JEE Main rankers are eligible to attempt it."}},
+{"@type":"Question","name":"Is there negative marking in JEE Main?","acceptedAnswer":{"@type":"Answer","text":"Yes, for multiple choice questions: 1 mark is deducted for each wrong answer, with 4 marks awarded for a correct answer. Numerical value questions typically have no negative marking, though this can vary by year — check the current official notification."}},
+{"@type":"Question","name":"How many attempts can I take at JEE Main?","acceptedAnswer":{"@type":"Answer","text":"JEE Main is conducted in two sessions each year (typically January and April), and a candidate can appear in both, with the better of the two scores considered for the final ranking."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
+<script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
 
 <!-- FLOATING SOCIAL -->
 <div class="soc-fl">
@@ -305,14 +320,22 @@ input[type=range]{width:100%;accent-color:var(--ind)}
     <div class="srch-form"><input class="srch-in" id="srch-in" placeholder="Search any topic..." onkeydown="if(event.key==='Enter')doSearch()" autocomplete="off"><button class="srch-go" onclick="doSearch()">Search</button></div>
     <a class="hdr-back" href="index.html">&#8592; <span>All Exams</span></a>
   </div>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 20px 8px">
+    <span id="streakBadge" style="display:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.25)">&#x1F525; streak</span>
+    <div id="examCountdownStrip" style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px"></div>
+  </div>
   <div class="tab-nav"><div class="tni">
     <button class="tnb act" onclick="swTab('t1',this)"><span>&#x1F4D0;</span> Study Prompt</button>
     <button class="tnb" onclick="swTab('t2',this)"><span>&#x1F9EA;</span> Practice Set</button>
     <button class="tnb" onclick="swTab('t3',this)"><span>&#x1F4DC;</span> PYQ Analysis</button>
     <button class="tnb" onclick="swTab('t4',this)"><span>&#x1F4D0;</span> Formula Sheet</button>
     <button class="tnb" onclick="swTab('t5',this)"><span>&#x1F4CB;</span> Syllabus Prompt</button>
+    <button class="tnb" onclick="swTab('t6',this)"><span>&#x1F5C2;&#xFE0F;</span> Flashcards</button>
   </div></div>
 </header>
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <!-- AD TOP -->
 <div style="background:var(--sf2)"><div class="wrap"><div class="adslot"><div class="adslot-lbl">Advertisement</div><span class="adslot-ph">Responsive banner ad</span></div></div></div>
 <main class="wrap">
@@ -593,6 +616,35 @@ input[type=range]{width:100%;accent-color:var(--ind)}
   <div class="emp" id="t5-emp"><div style="font-size:46px;margin-bottom:12px">&#x1F4CB;</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
 
+<!-- TAB 6: FLASHCARDS -->
+<div class="tp" id="tp-t6">
+  <div class="intro-card">
+    <h2>&#x1F5C2;&#xFE0F; Flashcards</h2>
+    <p>Quick-fire revision cards for JEE Physics and Mathematics formulas. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-physics" onclick="fcLoadDeck('physics')">&#x269B;&#xFE0F; Physics</button>
+        <button class="sp" id="fc-deck-maths" onclick="fcLoadDeck('maths')">&#x1F522; Mathematics</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2,#cbd5e1);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3,#64748b)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3,#64748b)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 <!-- SOCIAL + FOOTER -->
 <div style="max-width:1080px;margin:0 auto;padding:0 20px">
@@ -797,7 +849,117 @@ let t5SubV="all",pqN=20;
   try{document.getElementById("ft-cr").textContent=atob("wqkgMjAyNeKAkzIwMjYgUmFnaGF2YmVnaW5zLiBBbGwgcmlnaHRzIHJlc2VydmVkLg==");}catch(e){}
   if(localStorage.getItem("rb_ck_jee"))document.getElementById("ckbar").classList.add("gone");
 })();
-function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});}
+function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});try{localStorage.setItem('jee_lasttab',id);}catch(e){}}
+
+/* ── Exam window widget ──
+   NTA has confirmed JEE Main 2027 will run Session 1 in January 2027 and
+   Session 2 in April 2027, but exact test dates were not yet published as
+   of Sep 2026. Shown as a month-level window, not a fabricated exact date.
+   Replace with a real countdown once NTA releases exact dates. */
+(function examWindow(){
+  var WINDOWS = [
+    { name: "JEE Main 2027 Session 1", window: "January 2027 (exact dates awaited)" },
+    { name: "JEE Main 2027 Session 2", window: "April 2027 (exact dates awaited)" }
+  ];
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  strip.innerHTML = WINDOWS.map(function(w){
+    return '<a href="https://jeemain.nta.nic.in" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.12);border-radius:8px;padding:4px 10px;display:inline-flex;gap:6px;align-items:center">' +
+             '<strong>' + w.name + ':</strong> ' + w.window + ' &rarr;' +
+           '</a>';
+  }).join('');
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('jee_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('jee_lastvisit');
+    var streak = parseInt(localStorage.getItem('jee_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('jee_streak', String(streak));
+      localStorage.setItem('jee_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  physics: [
+    { f: "Formula for escape velocity", b: "v_e = \u221A(2GM/R)" },
+    { f: "Coulomb's Law formula", b: "F = kq\u2081q\u2082/r\u00B2" },
+    { f: "Formula for time period of a simple pendulum", b: "T = 2\u03C0\u221A(L/g)" },
+    { f: "Formula for de Broglie wavelength", b: "\u03BB = h/p (Planck's constant / momentum)" },
+    { f: "Formula for capacitance of a parallel plate capacitor", b: "C = \u03B5\u2080A/d" },
+    { f: "Bernoulli's equation (conserved quantity per unit volume)", b: "P + \u00BD\u03C1v\u00B2 + \u03C1gh = constant" },
+    { f: "Formula for angular momentum", b: "L = I\u03C9 (moment of inertia \u00D7 angular velocity)" }
+  ],
+  maths: [
+    { f: "Formula for the derivative of sin(x)", b: "cos(x)" },
+    { f: "Formula for the integral of 1/x dx", b: "ln|x| + C" },
+    { f: "Quadratic formula for ax\u00B2 + bx + c = 0", b: "x = [\u2212b \u00B1 \u221A(b\u00B2\u22124ac)] / 2a" },
+    { f: "Formula for the sum of an infinite geometric series (|r|<1)", b: "S = a / (1 \u2212 r)" },
+    { f: "Formula for the distance of a point (x\u2081,y\u2081) from a line ax+by+c=0", b: "|ax\u2081+by\u2081+c| / \u221A(a\u00B2+b\u00B2)" },
+    { f: "Formula for nCr (combinations)", b: "n! / [r!(n\u2212r)!]" },
+    { f: "Formula relating sin\u00B2\u03B8 and cos\u00B2\u03B8", b: "sin\u00B2\u03B8 + cos\u00B2\u03B8 = 1" }
+  ]
+};
+var fcState = { deck: 'physics', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-physics').classList.toggle('on', name === 'physics');
+  document.getElementById('fc-deck-maths').classList.toggle('on', name === 'maths');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('physics'); });
 function buildAIRow(rid,pid){const r=document.getElementById(rid);if(!r)return;r.innerHTML='<span class="ai-lbl">Open in →</span>'+AI_PL.map(ai=>`<button class="ai-btn ${ai.cls}" onclick="launchAI('${ai.url}','${pid}')">${ai.ic} ${ai.nm}</button>`).join('');}
 function fallbackCopy(t){try{const ta=document.createElement("textarea");ta.value=t;ta.style.cssText="position:fixed;top:-9999px;opacity:0";document.body.appendChild(ta);ta.focus();ta.select();document.execCommand("copy");document.body.removeChild(ta);}catch(e){}}
 function launchAI(url,pid){const t=document.getElementById(pid).textContent;if(!t||!t.trim()){showToast("Generate a prompt first");return;}const open=()=>{const tip=document.getElementById("ai-tip");tip.classList.add("show");setTimeout(()=>tip.classList.remove("show"),3500);setTimeout(()=>window.open(url,"_blank"),400);};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(open).catch(()=>{fallbackCopy(t);open();});}else{fallbackCopy(t);open();}}

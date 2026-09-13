@@ -396,9 +396,24 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
 .exam-chk-lbl{font-size:12px;font-weight:600;color:var(--txt)}
 .exam-chk.on .exam-chk-lbl{color:#0C4A6E}
 
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Do all Indian states have the same judicial services exam?","acceptedAnswer":{"@type":"Answer","text":"No. Each state (or group of states under one High Court) conducts its own separate judicial service exam, such as UP PCS-J, Delhi Judicial Service, Rajasthan RJS, MP Judiciary, and Bihar Judicial Service — each with its own eligibility, syllabus emphasis, and exam calendar."}},
+{"@type":"Question","name":"What are the typical stages of a judicial service exam?","acceptedAnswer":{"@type":"Answer","text":"Most states follow a three-stage process: Preliminary Examination (objective), Main Examination (written, descriptive law papers), and a Viva Voce (interview)."}},
+{"@type":"Question","name":"What is the minimum eligibility to appear for judicial service exams?","acceptedAnswer":{"@type":"Answer","text":"Generally, candidates need an LLB degree and must be enrolled as an advocate under the Advocates Act, 1961. Some states also require a minimum period of practice as an advocate — this varies by state, so check your specific state's notification."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
+<script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
 <!-- ── FLOATING SOCIAL ── -->
 <div class="soc-fl" role="complementary" aria-label="Social media">
   <a class="sfl-btn sfl-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener" aria-label="Facebook">
@@ -516,8 +531,10 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <span class="hbdg">UP</span>
       <span class="hbdg">MP</span>
       <span class="hbdg">Bihar</span>
+      <span class="hbdg" id="streakBadge" style="display:none">&#x1F525; streak</span>
     </div>
   </div>
+  <div id="examCountdownStrip" style="display:flex;gap:10px;flex-wrap:wrap;padding:10px 20px;font-size:13px;opacity:.95"></div>
   <div class="tab-nav">
     <div class="tab-nav-inner">
       <button class="tnbtn act" onclick="swTab('s1',this)"><span class="tnic">📐</span> Study Prompt</button>
@@ -525,11 +542,15 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
       <button class="tnbtn" onclick="swTab('s3',this)"><span class="tnic">🎯</span> Practice Set</button>
       <button class="tnbtn" onclick="swTab('s4',this)"><span class="tnic">🏅</span> Mains &amp; Viva Prompt</button>
       <button class="tnb" onclick="swTab('s5',this)"><span class="tnic">📋</span> Syllabus Prompt</button>
+      <button class="tnb" onclick="swTab('s6',this)"><span class="tnic">🗂️</span> Flashcards</button>
     </div>
   </div>
 </header>
 
 <!-- ── AD SLOT TOP ── -->
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div class="wrap" style="padding-bottom:0">
   <div class="adslot"><div class="adslot-lbl">Advertisement</div>
     <!-- AdSense unit: replace XXXXXXXX with your publisher ID and slot ID
@@ -908,6 +929,35 @@ select[multiple]{height:auto;padding:8px 12px;background-image:none}
   <div class="emp" id="s5-emp"><div style="font-size:46px;margin-bottom:12px">📋</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
 
+<!-- ════ TAB 6 — FLASHCARDS ════ -->
+<div class="tp" id="tp-s6">
+  <div class="intro-card">
+    <h2>🗂️ Flashcards</h2>
+    <p>Quick-fire revision cards for judicial services law and procedure. Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-cpc" onclick="fcLoadDeck('cpc')">&#x2696;&#xFE0F; CPC &amp; CrPC</button>
+        <button class="sp" id="fc-deck-constitution" onclick="fcLoadDeck('constitution')">📜 Constitution</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- ── SOCIAL SECTION ── -->
@@ -1053,7 +1103,110 @@ function fmtDt(iso){try{const d=new Date(iso+'T00:00:00');return d.toLocaleDateS
 })();
 
 // ══ HELPERS ══════════════════════════════════════════
-function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});}
+function swTab(id,btn){document.querySelectorAll('.tp').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.tnbtn').forEach(b=>b.classList.remove('act'));document.getElementById('tp-'+id).classList.add('act');btn.classList.add('act');window.scrollTo({top:0,behavior:'smooth'});if(typeof gtag==='function')gtag('event','tab_switch',{event_category:'navigation',event_label:id});try{localStorage.setItem('jud_lasttab',id);}catch(e){}}
+
+/* ── Exam window widget ──
+   Judicial Service exams run separately per state (24+ High Courts/PSCs),
+   each on its own calendar. As of Sep 2026 most major states (UP, Punjab,
+   Delhi, Rajasthan, MP, Haryana, Jharkhand, Maharashtra) have notifications
+   "expected" but not yet released with confirmed dates, so no single
+   countdown is shown here to avoid implying a specific date that may not
+   apply to the visitor's state. */
+(function examWindow(){
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  strip.innerHTML = '<span style="opacity:.85">Judiciary exam dates vary by state \u2014 check your state High Court or PSC site for the current notification &rarr;</span>';
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('jud_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnbtn[onclick*="\''+last+'\'"], .tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnbtn,.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('jud_lastvisit');
+    var streak = parseInt(localStorage.getItem('jud_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('jud_streak', String(streak));
+      localStorage.setItem('jud_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  cpc: [
+    { f: "What does CPC stand for?", b: "Code of Civil Procedure, 1908" },
+    { f: "What does CrPC stand for?", b: "Code of Criminal Procedure, 1973 (now largely replaced by BNSS in India from 2024)" },
+    { f: "What is 'res sub judice' under CPC?", b: "A court shall not proceed with a suit if the same matter is already pending before another competent court (Section 10, CPC)" },
+    { f: "What is an 'FIR'?", b: "First Information Report \u2014 the initial report of a cognizable offence recorded by police, which sets criminal law in motion" },
+    { f: "What is 'bail' in criminal procedure?", b: "The conditional release of an accused person pending trial or investigation" },
+    { f: "What does 'ex parte' mean?", b: "A proceeding conducted for the benefit of one party only, in the absence of the other party" },
+    { f: "What is a 'plaint' in civil procedure?", b: "The formal written document by which a civil suit is instituted" }
+  ],
+  constitution: [
+    { f: "Which Article guarantees the Right to Equality before law?", b: "Article 14" },
+    { f: "Which Article deals with the Right to Constitutional Remedies?", b: "Article 32" },
+    { f: "What is 'judicial review'?", b: "The power of courts to examine the constitutionality of legislative and executive actions" },
+    { f: "Which Schedule of the Constitution deals with anti-defection?", b: "The Tenth Schedule" },
+    { f: "What is the 'basic structure doctrine'?", b: "A judicial principle (from Kesavananda Bharati v. State of Kerala) that Parliament cannot amend the Constitution in a way that destroys its basic structure" },
+    { f: "Who appoints judges of the High Courts?", b: "The President of India, based on the collegium system's recommendation" }
+  ]
+};
+var fcState = { deck: 'cpc', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-cpc').classList.toggle('on', name === 'cpc');
+  document.getElementById('fc-deck-constitution').classList.toggle('on', name === 'constitution');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('cpc'); });
 function tog2(el){el.classList.toggle('on-t')}
 function cpOut(pid,bid){
   const t=document.getElementById(pid).textContent;

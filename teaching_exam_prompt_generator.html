@@ -225,9 +225,24 @@ select:focus{outline:none;border-color:var(--eme2);box-shadow:0 0 0 3px rgba(4,1
 @media(max-width:768px){.sg3{grid-template-columns:1fr 1fr}.hdr-back span{display:none}.srch-form{width:150px}}
 @media(max-width:540px){.sg3,.sg2{grid-template-columns:1fr}.soc-fl{display:none}}
 @media(max-width:480px){.sov-grid{grid-template-columns:1fr}}
+@media print {
+  header, .tab-nav, .adslot, footer, #examCountdownStrip, .noprint { display: none !important; }
+  .tp { display: none !important; }
+  .tp.act { display: block !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the difference between CTET and UPTET/REET/state TETs?","acceptedAnswer":{"@type":"Answer","text":"CTET (Central Teacher Eligibility Test) is conducted by CBSE and qualifies candidates for teaching positions in central government schools (KVS, NVS) and is accepted by many states. UPTET, REET, and other state TETs are conducted by individual state governments and are typically required for teaching positions within that specific state's schools."}},
+{"@type":"Question","name":"What is the difference between CTET Paper I and Paper II?","acceptedAnswer":{"@type":"Answer","text":"Paper I qualifies candidates to teach Classes 1 to 5 (primary stage). Paper II qualifies candidates to teach Classes 6 to 8 (upper primary stage). Candidates can appear for both if they wish to be eligible for both levels."}},
+{"@type":"Question","name":"Is there negative marking in CTET?","acceptedAnswer":{"@type":"Answer","text":"No, CTET does not have negative marking for wrong answers."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
+]}
+</script>
 </head>
 <body>
+<script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
 <!-- SOCIAL FLOAT -->
 <div class="soc-fl">
   <a class="sfl sfl-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener"><div class="sfl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg></div><span class="sfl-lb">Raghavbegins</span></a>
@@ -265,14 +280,22 @@ select:focus{outline:none;border-color:var(--eme2);box-shadow:0 0 0 3px rgba(4,1
     <div class="srch-form"><input class="srch-in" id="srch-in" placeholder="Search any topic..." onkeydown="if(event.key==='Enter')doSearch()" autocomplete="off"><button class="srch-go" onclick="doSearch()">Search</button></div>
     <a class="hdr-back" href="index.html">&#8592; <span>All Exams</span></a>
   </div>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 20px 8px">
+    <span id="streakBadge" style="display:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.25)">&#x1F525; streak</span>
+    <div id="examCountdownStrip" style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px"></div>
+  </div>
   <div class="tab-nav"><div class="tni">
     <button class="tnb act" onclick="swTab('t1',this)"><span>&#x1F4DA;</span> Study Prompt</button>
     <button class="tnb" onclick="swTab('t2',this)"><span>&#x1F9EA;</span> Practice Set</button>
     <button class="tnb" onclick="swTab('t3',this)"><span>&#x1F4DC;</span> PYQ Analysis</button>
     <button class="tnb" onclick="swTab('t4',this)"><span>&#x1F9D1;&#x200D;&#x1F3EB;</span> Pedagogy Deep Dive</button>
     <button class="tnb" onclick="swTab('t5',this)"><span>&#x1F4CB;</span> Syllabus Prompt</button>
+    <button class="tnb" onclick="swTab('t6',this)"><span>&#x1F5C2;&#xFE0F;</span> Flashcards</button>
   </div></div>
 </header>
+<div class="wrap noprint" style="padding-bottom:0;display:flex;justify-content:flex-end">
+  <button onclick="window.print()" style="background:none;border:1px solid currentColor;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;opacity:.85">&#x1F5A8;&#xFE0F; Print this tab as a cheat sheet</button>
+</div>
 <div style="background:var(--sf2)"><div class="wrap"><div class="adslot"><div class="adslot-lbl">Advertisement</div><span class="adslot-ph">Responsive banner ad</span></div></div></div>
 <main class="wrap">
 <!-- TAB 1: STUDY PROMPT -->
@@ -427,6 +450,36 @@ select:focus{outline:none;border-color:var(--eme2);box-shadow:0 0 0 3px rgba(4,1
   <div class="ocard oc7" id="t5-oc"><div class="ohdr oh7"><div class="ohdr-m"><h3 id="t5-title">Teaching Exam syllabus prompt</h3><p id="t5-sub">Current cycle analysis</p></div><div class="ohdr-acts"><button class="oab oab-cp" onclick="cpOut('t5-pa','t5-cb')" id="t5-cb">&#x1F4CB; Copy</button><button class="oab" style="background:var(--eme2);color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;border:none" onclick="dlOut('t5-pa','teach_syllabus')">&#x2B07; .txt</button></div></div><div class="ai-row" id="t5-air"><span class="ai-lbl">Open in &rarr;</span></div><div class="ostats" id="t5-stats"></div><div class="parea" id="t5-pa"></div></div>
   <div class="emp" id="t5-emp"><div style="font-size:46px;margin-bottom:12px">&#x1F4CB;</div><h3>Syllabus prompt appears here</h3><p>Select exam(s) and sections then generate.</p></div>
 </div>
+
+<!-- TAB 6: FLASHCARDS -->
+<div class="tp" id="tp-t6">
+  <div class="intro-card">
+    <h2>&#x1F5C2;&#xFE0F; Flashcards</h2>
+    <p>Quick-fire revision cards for CTET/UPTET Child Development &amp; Pedagogy (CDP). Click a card to flip it, use Next/Prev to move through the deck, and Shuffle to re-order for spaced repetition.</p>
+  </div>
+  <div class="card">
+    <div class="cs">
+      <div class="sec-lbl">Deck</div>
+      <div class="spills">
+        <button class="sp on" id="fc-deck-cdp" onclick="fcLoadDeck('cdp')">&#x1F9D1;&#x200D;&#x1F3EB; Child Development</button>
+        <button class="sp" id="fc-deck-pedagogy" onclick="fcLoadDeck('pedagogy')">&#x1F4D6; Pedagogy</button>
+      </div>
+    </div>
+    <div class="cs" style="text-align:center">
+      <div id="fcCard" onclick="fcFlip()" style="cursor:pointer;min-height:160px;border:1.5px solid var(--bdr2,#cbd5e1);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:17px;font-weight:600;user-select:none">
+        Loading deck…
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:var(--txt3,#64748b)" id="fcHint">Click card to flip</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="sp" onclick="fcNav(-1)">&#8592; Prev</button>
+        <button class="sp" onclick="fcShuffle()">&#x1F500; Shuffle</button>
+        <button class="sp" onclick="fcNav(1)">Next &#8594;</button>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--txt3,#64748b)" id="fcProgress"></div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <div style="max-width:1080px;margin:0 auto;padding:0 20px">
@@ -633,7 +686,109 @@ let t4PedAreaV="cdp",t4Topic="",pqN=30;
   if(localStorage.getItem("rb_ck_teach"))document.getElementById("ckbar").classList.add("gone");
 })();
 
-function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});}
+function swTab(id,btn){document.querySelectorAll(".tp").forEach(p=>p.classList.remove("act"));document.querySelectorAll(".tnb").forEach(b=>b.classList.remove("act"));document.getElementById("tp-"+id).classList.add("act");btn.classList.add("act");window.scrollTo({top:0,behavior:"smooth"});try{localStorage.setItem('teach_lasttab',id);}catch(e){}}
+
+/* ── Exam window widget ──
+   CTET February 2026 (7-8 Feb) has already concluded. As of Sep 2026 CBSE
+   has not yet released the next CTET cycle's notification — CTET
+   historically runs about twice a year. State TET exams (UPTET, REET,
+   etc.) each run on their own separate calendars. Shown as a general
+   note rather than a fabricated date. */
+(function examWindow(){
+  var strip = document.getElementById('examCountdownStrip');
+  if(!strip) return;
+  strip.innerHTML = '<span style="opacity:.85">Next CTET cycle not yet notified \u2014 check ctet.nic.in; state TETs (UPTET, REET, etc.) run on separate calendars &rarr;</span>';
+})();
+
+/* ── Continue where you left off ── */
+(function restoreLastTab(){
+  try{
+    var last = localStorage.getItem('teach_lasttab');
+    if(!last) return;
+    var btn = document.querySelector('.tnb[onclick*="\''+last+'\'"]');
+    var panel = document.getElementById('tp-'+last);
+    if(btn && panel){
+      document.querySelectorAll('.tp').forEach(function(p){p.classList.remove('act');});
+      document.querySelectorAll('.tnb').forEach(function(b){b.classList.remove('act');});
+      panel.classList.add('act');
+      btn.classList.add('act');
+    }
+  }catch(e){}
+})();
+
+/* ── Study streak tracker ── */
+(function studyStreak(){
+  try{
+    var todayStr = new Date().toDateString();
+    var lastVisit = localStorage.getItem('teach_lastvisit');
+    var streak = parseInt(localStorage.getItem('teach_streak') || '0', 10);
+    if(lastVisit !== todayStr){
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+      localStorage.setItem('teach_streak', String(streak));
+      localStorage.setItem('teach_lastvisit', todayStr);
+    }
+    var el = document.getElementById('streakBadge');
+    if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+  }catch(e){}
+})();
+
+/* ── Flashcards ── */
+var FC_DECKS = {
+  cdp: [
+    { f: "Who proposed the theory of Cognitive Development in children?", b: "Jean Piaget" },
+    { f: "What are Piaget's four stages of cognitive development?", b: "Sensorimotor, Preoperational, Concrete Operational, and Formal Operational" },
+    { f: "Who proposed the theory of Multiple Intelligences?", b: "Howard Gardner" },
+    { f: "What does 'Zone of Proximal Development' (ZPD) refer to?", b: "The gap between what a learner can do independently and what they can do with guidance (Vygotsky's concept)" },
+    { f: "What is 'scaffolding' in teaching?", b: "Temporary support given to a learner to help them accomplish a task, gradually withdrawn as competence grows" },
+    { f: "Who developed the theory of Psychosocial Development?", b: "Erik Erikson" },
+    { f: "What does 'inclusive education' mean?", b: "An educational approach that accommodates all learners, including those with disabilities, in the same classroom setting" }
+  ],
+  pedagogy: [
+    { f: "What is 'formative assessment'?", b: "Ongoing assessment during the learning process, used to monitor progress and guide instruction" },
+    { f: "What is 'summative assessment'?", b: "Assessment conducted at the end of an instructional period to evaluate overall learning outcomes" },
+    { f: "What is the 'constructivist approach' to learning?", b: "An approach where learners actively construct their own understanding through experience, rather than passively receiving information" },
+    { f: "What does 'child-centered education' emphasize?", b: "Learning driven by the child's interests, needs, and pace, rather than a fixed, teacher-directed curriculum" },
+    { f: "What is 'differentiated instruction'?", b: "Tailoring teaching methods and content to accommodate different learning styles, abilities, and paces within the same class" },
+    { f: "What does RTE Act 2009 primarily guarantee?", b: "Free and compulsory education for children aged 6 to 14 years in India" }
+  ]
+};
+var fcState = { deck: 'cdp', idx: 0, flipped: false, order: [] };
+function fcLoadDeck(name){
+  fcState.deck = name;
+  fcState.order = FC_DECKS[name].map(function(_, i){ return i; });
+  fcState.idx = 0;
+  fcState.flipped = false;
+  document.getElementById('fc-deck-cdp').classList.toggle('on', name === 'cdp');
+  document.getElementById('fc-deck-pedagogy').classList.toggle('on', name === 'pedagogy');
+  fcRender();
+}
+function fcRender(){
+  var deck = FC_DECKS[fcState.deck];
+  var card = deck[fcState.order[fcState.idx]];
+  var el = document.getElementById('fcCard');
+  el.textContent = fcState.flipped ? card.b : card.f;
+  document.getElementById('fcHint').textContent = fcState.flipped ? 'Click to see question again' : 'Click card to flip';
+  document.getElementById('fcProgress').textContent = (fcState.idx + 1) + ' / ' + deck.length;
+}
+function fcFlip(){ fcState.flipped = !fcState.flipped; fcRender(); }
+function fcNav(dir){
+  var deck = FC_DECKS[fcState.deck];
+  fcState.idx = (fcState.idx + dir + deck.length) % deck.length;
+  fcState.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(var i = fcState.order.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = fcState.order[i]; fcState.order[i] = fcState.order[j]; fcState.order[j] = tmp;
+  }
+  fcState.idx = 0;
+  fcState.flipped = false;
+  fcRender();
+}
+document.addEventListener('DOMContentLoaded', function(){ fcLoadDeck('cdp'); });
 function buildAIRow(rid,pid){const r=document.getElementById(rid);if(!r)return;r.innerHTML='<span class="ai-lbl">Open in →</span>'+AI_PL.map(ai=>`<button class="ai-btn ${ai.cls}" onclick="launchAI('${ai.url}','${pid}')">${ai.ic} ${ai.nm}</button>`).join('');}
 function fallbackCopy(t){try{const ta=document.createElement("textarea");ta.value=t;ta.style.cssText="position:fixed;top:-9999px;opacity:0";document.body.appendChild(ta);ta.focus();ta.select();document.execCommand("copy");document.body.removeChild(ta);}catch(e){}}
 function launchAI(url,pid){const t=document.getElementById(pid).textContent;if(!t||!t.trim()){showToast("Generate a prompt first");return;}const open=()=>{const tip=document.getElementById("ai-tip");tip.classList.add("show");setTimeout(()=>tip.classList.remove("show"),3500);setTimeout(()=>window.open(url,"_blank"),400);};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(open).catch(()=>{fallbackCopy(t);open();});}else{fallbackCopy(t);open();}}

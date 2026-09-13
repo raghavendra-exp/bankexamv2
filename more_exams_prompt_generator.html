@@ -130,9 +130,20 @@ select:focus,input:focus{outline:none;border-color:var(--pr3)}
 
 @media(max-width:640px){.cat-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.row2,.chk-grid,.ai-grid{grid-template-columns:1fr}}
+@media print {
+  .hdr, .hero, .card:not(.output-wrap), .ft, .noprint { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What's the difference between this tool and the dedicated NET/JRF, CUET, Judiciary, Insurance, CA/CS/CMA, and Agriculture pages?","acceptedAnswer":{"@type":"Answer","text":"This page is a quick, single-form generator covering all six categories in one place. The dedicated pages for each of these exams offer more depth — including practice sets, PYQ analysis, flashcards, and exam-specific news — so they're generally the better starting point if you know which exam you're preparing for."}},
+{"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. This tool works without any sign-up."}}
+]}
+</script>
 </head>
 <body>
+<script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
 
 <header class="hdr">
   <div class="hdr-inner">
@@ -143,6 +154,10 @@ select:focus,input:focus{outline:none;border-color:var(--pr3)}
     <a class="hdr-back" href="index.html">&#8592; All Tools</a>
   </div>
 </header>
+<div style="background:rgba(5,9,18,.95);padding:8px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;max-width:1100px;margin:0 auto">
+  <span id="streakBadge" style="display:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.25);color:#fff">&#x1F525; streak</span>
+  <span style="font-size:12px;color:rgba(255,255,255,.6)">Each category now also has its own dedicated tool with flashcards &amp; more &rarr; <a href="net_jrf_exam_prompt_generator.html" style="color:#8fd7ff">NET/JRF</a>, <a href="cuet_exam_prompt_generator.html" style="color:#8fd7ff">CUET</a>, <a href="judiciary_exam_prompt_generator.html" style="color:#8fd7ff">Judiciary</a>, <a href="insurance_exam_prompt_generator.html" style="color:#8fd7ff">Insurance</a>, <a href="cacs_exam_prompt_generator.html" style="color:#8fd7ff">CA/CS/CMA</a>, <a href="agriculture_exam_prompt_generator.html" style="color:#8fd7ff">Agriculture</a></span>
+</div>
 
 <section class="hero">
   <div class="hero-in">
@@ -388,6 +403,7 @@ select:focus,input:focus{outline:none;border-color:var(--pr3)}
     <div class="output-box" id="outputBox"></div>
     <div class="output-actions">
       <button class="btn-copy" id="copyBtn">&#x1F4CB; Copy Prompt</button>
+      <button class="btn-copy noprint" onclick="window.print()">&#x1F5A8;&#xFE0F; Print</button>
     </div>
     <div class="ai-grid">
       <a href="#" class="ai-btn" data-ai="claude">&#x1F916; Claude</a>
@@ -437,8 +453,44 @@ select:focus,input:focus{outline:none;border-color:var(--pr3)}
   }
 
   catRadios.forEach(function(radio){
-    radio.addEventListener("change", function(){ if(this.checked) switchCategory(this.value); });
+    radio.addEventListener("change", function(){
+      if(this.checked){
+        switchCategory(this.value);
+        try{ localStorage.setItem('moreexams_lastcat', this.value); }catch(e){}
+      }
+    });
   });
+
+  /* ── Continue where you left off (remember last category) ── */
+  (function restoreLastCategory(){
+    try{
+      var last = localStorage.getItem('moreexams_lastcat');
+      if(!last || !CATEGORY_META[last]) return;
+      var radio = document.querySelector('input[name="cat"][value="' + last + '"]');
+      if(radio){
+        radio.checked = true;
+        switchCategory(last);
+      }
+    }catch(e){}
+  })();
+
+  /* ── Study streak tracker ── */
+  (function studyStreak(){
+    try{
+      var todayStr = new Date().toDateString();
+      var lastVisit = localStorage.getItem('moreexams_lastvisit');
+      var streak = parseInt(localStorage.getItem('moreexams_streak') || '0', 10);
+      if(lastVisit !== todayStr){
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
+        localStorage.setItem('moreexams_streak', String(streak));
+        localStorage.setItem('moreexams_lastvisit', todayStr);
+      }
+      var el = document.getElementById('streakBadge');
+      if(el){ el.textContent = '\uD83D\uDD25 ' + streak + '-day streak'; el.style.display = ''; }
+    }catch(e){}
+  })();
 
   var AI_URLS = {
     claude: "https://claude.ai/new",
