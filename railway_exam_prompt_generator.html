@@ -332,6 +332,7 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--rail);box-sh
 {"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
 ]}
 </script>
+  <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
 <script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
@@ -398,6 +399,13 @@ select:focus,input[type=date]:focus{outline:none;border-color:var(--rail);box-sh
       </div>
     </a>
     <a class="hdr-back" href="index.html">&#8592; All Exams</a>
+    <a class="hdr-back" href="quiz-simulator.html" style="margin-left:6px;color:#10B981;font-weight:700">&#x1F3AF; <span>Mock Lab</span></a>
+    <div class="hdr-tools" style="margin-left:auto;display:flex;gap:6px;align-items:center">
+      <button class="be-btn-tool" onclick="BE_NAV.openSpotlight()" title="Search tools (Ctrl+K)">&#x1F50D; <span class="be-kbd-badge">Ctrl K</span></button>
+      <button class="be-btn-tool" onclick="BE_NAV.openCalc()" title="Exam Calculator">&#x1F9EE;</button>
+      <button class="be-btn-tool" onclick="BE_NAV.toggleTheme()" id="themeToggleBtn" title="Toggle dark/light theme">&#x1F319;</button>
+      <button class="be-btn-tool be-hamburger" onclick="BE_NAV.toggleDrawer()" title="Menu">&#x2630;</button>
+    </div>
     <div class="srch-form">
       <input class="srch-in" id="srch-in" placeholder="Search any topic..." onkeydown="if(event.key==='Enter')doSearch()" autocomplete="off">
       <button class="srch-go" onclick="doSearch()">Search</button>
@@ -1786,5 +1794,6 @@ function rs5Gen(){
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
+<script src="js/nav.js"></script>
 </body>
 </html>

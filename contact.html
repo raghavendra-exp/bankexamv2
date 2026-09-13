@@ -55,6 +55,7 @@ a{color:var(--blu2);text-decoration:none}a:hover{text-decoration:underline}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none}.ft a:hover{color:rgba(255,255,255,.8)}
 @media(max-width:620px){.grid{grid-template-columns:1fr}.info-row{flex-direction:column;gap:4px}.info-label{min-width:unset}.wrap{padding:24px 16px 60px}}
 </style>
+  <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
 
@@ -64,6 +65,13 @@ a{color:var(--blu2);text-decoration:none}a:hover{text-decoration:underline}
     <div class="hdr-txt"><h1>Indian Exam AI Prompt Generator</h1><p>Raghavbegins &middot; Free tools for 80+ Indian exams</p></div>
   </a>
   <a class="hdr-back" href="index.html">&#8592; Home</a>
+    <a class="hdr-back" href="quiz-simulator.html" style="margin-left:6px;color:#10B981;font-weight:700">&#x1F3AF; <span>Mock Lab</span></a>
+    <div class="hdr-tools" style="margin-left:auto;display:flex;gap:6px;align-items:center">
+      <button class="be-btn-tool" onclick="BE_NAV.openSpotlight()" title="Search tools (Ctrl+K)">&#x1F50D; <span class="be-kbd-badge">Ctrl K</span></button>
+      <button class="be-btn-tool" onclick="BE_NAV.openCalc()" title="Exam Calculator">&#x1F9EE;</button>
+      <button class="be-btn-tool" onclick="BE_NAV.toggleTheme()" id="themeToggleBtn" title="Toggle dark/light theme">&#x1F319;</button>
+      <button class="be-btn-tool be-hamburger" onclick="BE_NAV.toggleDrawer()" title="Menu">&#x2630;</button>
+    </div>
 </header>
 
 <section class="hero">
@@ -201,5 +209,6 @@ a{color:var(--blu2);text-decoration:none}a:hover{text-decoration:underline}
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
+<script src="js/nav.js"></script>
 </body>
 </html>

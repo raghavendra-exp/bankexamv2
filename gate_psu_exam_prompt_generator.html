@@ -244,6 +244,7 @@ select:focus{outline:none;border-color:var(--ste2);box-shadow:0 0 0 3px rgba(37,
 {"@type":"Question","name":"Do I need to create an account to use this prompt generator?","acceptedAnswer":{"@type":"Answer","text":"No. The prompt generator, practice sets, and flashcards all work without any sign-up."}}
 ]}
 </script>
+  <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
 <script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
@@ -282,6 +283,13 @@ select:focus{outline:none;border-color:var(--ste2);box-shadow:0 0 0 3px rgba(37,
     </a>
     <div class="srch-form"><input class="srch-in" id="srch-in" placeholder="Search any topic..." onkeydown="if(event.key==='Enter')doSearch()" autocomplete="off"><button class="srch-go" onclick="doSearch()">Search</button></div>
     <a class="hdr-back" href="index.html">&#8592; <span>All Exams</span></a>
+    <a class="hdr-back" href="quiz-simulator.html" style="margin-left:6px;color:#10B981;font-weight:700">&#x1F3AF; <span>Mock Lab</span></a>
+    <div class="hdr-tools" style="margin-left:auto;display:flex;gap:6px;align-items:center">
+      <button class="be-btn-tool" onclick="BE_NAV.openSpotlight()" title="Search tools (Ctrl+K)">&#x1F50D; <span class="be-kbd-badge">Ctrl K</span></button>
+      <button class="be-btn-tool" onclick="BE_NAV.openCalc()" title="Exam Calculator">&#x1F9EE;</button>
+      <button class="be-btn-tool" onclick="BE_NAV.toggleTheme()" id="themeToggleBtn" title="Toggle dark/light theme">&#x1F319;</button>
+      <button class="be-btn-tool be-hamburger" onclick="BE_NAV.toggleDrawer()" title="Menu">&#x2630;</button>
+    </div>
   </div>
   <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 20px 8px">
     <span id="streakBadge" style="display:none;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.25)">&#x1F525; streak</span>
@@ -1248,5 +1256,6 @@ function t5Gen(){
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
+<script src="js/nav.js"></script>
 </body>
 </html>

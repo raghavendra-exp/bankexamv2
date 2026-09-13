@@ -4,40 +4,519 @@
    Live AI Prompt Studio, and Interactive Quiz Simulator
    ========================================================= */
 
-/* Dark Mode Theme Variables */
+/* =========================================================
+   HIGH-CONTRAST DARK MODE PALETTE & SYSTEM OVERRIDES
+   Guarantees WCAG AAA readability, vivid accents, crisp text
+   ========================================================= */
+
 [data-theme="dark"] {
   --d1: #030712;
   --d2: #0B0F19;
   --d3: #111827;
   --sf: #111827;
-  --sf2: #0B0F19;
+  --sf2: #162032;
   --sf3: #1F2937;
-  --txt: #F9FAFB;
-  --txt2: #E5E7EB;
-  --txt3: #9CA3AF;
-  --bdr: #1F2937;
+  --txt: #FFFFFF;
+  --txt2: #F1F5F9;
+  --txt3: #CBD5E1;
+  --bdr: #26334D;
   --bdr2: #374151;
+  --pr: #818CF8;
+  --pr2: #6366F1;
+  --pr3: #A5B4FC;
+  --cy: #22D3EE;
+  --cy2: #67E8F9;
+  --gr: #34D399;
+  --gr2: #6EE7B7;
+  --ac: #FBBF24;
+  --ac2: #FDE68A;
   background-color: #080C14 !important;
-  color: #E5E7EB !important;
+  color: #F1F5F9 !important;
 }
 
 [data-theme="dark"] body {
   background: #080C14 !important;
-  color: #E5E7EB !important;
+  color: #F1F5F9 !important;
 }
 
+/* ─── Typography & Headings ─── */
+[data-theme="dark"] a {
+  color: #818CF8;
+}
+[data-theme="dark"] a:hover {
+  color: #A5B4FC;
+}
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4 {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .sec-hd {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .sec-sub {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .sec-eyebrow {
+  color: #818CF8 !important;
+}
+
+/* ─── Hardcoded Light Sections & Cards Overrides ─── */
+[data-theme="dark"] .feat-item {
+  background: #111827 !important;
+  border-color: #26334D !important;
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .feat-txt strong {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .feat-txt span {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .how-strip {
+  background: #0B0F19 !important;
+  border-color: #1F2937 !important;
+}
+[data-theme="dark"] .how-step .how-txt strong {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .how-step .how-txt span {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .how-num {
+  background: #1F2937 !important;
+  color: #818CF8 !important;
+}
+[data-theme="dark"] .how-arr {
+  color: #64748B !important;
+}
+
+[data-theme="dark"] .cmp-wrap {
+  background: #111827 !important;
+  border-color: #26334D !important;
+}
+[data-theme="dark"] .cmp-tbl td {
+  background: #111827 !important;
+  border-color: #1F2937 !important;
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .cmp-tbl tbody tr:hover td {
+  background: #1A2436 !important;
+}
+
+[data-theme="dark"] .faq-item {
+  background: #111827 !important;
+  border-color: #26334D !important;
+}
+[data-theme="dark"] .faq-q {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .faq-a {
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .pmbox {
+  background: #111827 !important;
+  border-color: #26334D !important;
+  color: #F1F5F9 !important;
+}
+
+/* ─── Cards, Cat-Cards, and Tool Cards ─── */
+[data-theme="dark"] .card {
+  background: #111827 !important;
+  border-color: #26334D !important;
+  color: #F1F5F9 !important;
+}
 [data-theme="dark"] .cat-card,
 [data-theme="dark"] .tool-card,
 [data-theme="dark"] .tablet,
 [data-theme="dark"] .intro-card {
   background: #111827 !important;
   border-color: #1F2937 !important;
-  color: #F9FAFB !important;
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .cat-card:hover {
+  border-color: #6366F1 !important;
+  background: #162032 !important;
+}
+[data-theme="dark"] .card-title {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .card-meta {
+  color: #94A3B8 !important;
+}
+[data-theme="dark"] .card-desc {
+  color: #E2E8F0 !important;
+}
+[data-theme="dark"] .card-footer {
+  background: #0B0F19 !important;
+  border-color: #1F2937 !important;
+}
+[data-theme="dark"] .card-tabs {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .card-link {
+  color: #818CF8 !important;
+}
+[data-theme="dark"] .tag {
+  background: #1F2937 !important;
+  color: #E2E8F0 !important;
+  border-color: #374151 !important;
+}
+[data-theme="dark"] .card-ic-wrap {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
-[data-theme="dark"] .cat-card:hover {
-  border-color: var(--pr2) !important;
+/* ─── Study Timer & Hero Dashboard ─── */
+[data-theme="dark"] #timerDisplay {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] #timerMode {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] #quoteText {
+  color: #E2E8F0 !important;
+}
+[data-theme="dark"] #quoteAuthor {
+  color: #94A3B8 !important;
+}
+
+/* ─── Form Elements, Select & Option Accessibility ─── */
+[data-theme="dark"] select,
+[data-theme="dark"] option,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+  background-color: #162032 !important;
+  color: #FFFFFF !important;
+  border-color: #26334D !important;
+}
+
+/* ─── AI Platform Pills in Dark Mode ─── */
+[data-theme="dark"] .ap-cl { background: rgba(217, 119, 6, 0.18) !important; border-color: #D97706 !important; color: #FDE68A !important; }
+[data-theme="dark"] .ap-gp { background: rgba(16, 163, 127, 0.18) !important; border-color: #10A37F !important; color: #6EE7B7 !important; }
+[data-theme="dark"] .ap-gm { background: rgba(37, 99, 235, 0.18) !important; border-color: #3B82F6 !important; color: #93C5FD !important; }
+[data-theme="dark"] .ap-pp { background: rgba(99, 102, 241, 0.18) !important; border-color: #6366F1 !important; color: #C4B5FD !important; }
+[data-theme="dark"] .ap-cp { background: rgba(30, 58, 138, 0.3) !important; border-color: #3B82F6 !important; color: #93C5FD !important; }
+[data-theme="dark"] .ap-mt { background: rgba(8, 145, 178, 0.18) !important; border-color: #06B6D4 !important; color: #67E8F9 !important; }
+
+/* ─── Quiz Simulator High-Contrast Fixes ─── */
+[data-theme="dark"] .practice-q-card {
+  background: #111827 !important;
+  border-color: #26334D !important;
+}
+[data-theme="dark"] .q-prompt {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .q-year,
+[data-theme="dark"] .q-id {
+  color: #94A3B8 !important;
+}
+[data-theme="dark"] .opt-btn {
   background: #162032 !important;
+  border-color: #26334D !important;
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .opt-btn:hover:not(.opt-disabled) {
+  background: #1E293B !important;
+  border-color: #818CF8 !important;
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .opt-label {
+  color: #93C5FD !important;
+}
+[data-theme="dark"] .opt-correct,
+[data-theme="dark"] .opt-btn.opt-correct {
+  background: rgba(16, 185, 129, 0.22) !important;
+  border-color: #10B981 !important;
+  color: #6EE7B7 !important;
+}
+[data-theme="dark"] .opt-wrong,
+[data-theme="dark"] .opt-btn.opt-wrong {
+  background: rgba(239, 68, 68, 0.22) !important;
+  border-color: #EF4444 !important;
+  color: #FCA5A5 !important;
+}
+[data-theme="dark"] .badge-correct {
+  background: rgba(16, 185, 129, 0.3) !important;
+  color: #6EE7B7 !important;
+}
+[data-theme="dark"] .badge-wrong {
+  background: rgba(239, 68, 68, 0.3) !important;
+  color: #FCA5A5 !important;
+}
+[data-theme="dark"] .q-explanation {
+  background: #0B0F19 !important;
+  border-color: #26334D !important;
+}
+[data-theme="dark"] .exp-correct-tag {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .exp-text {
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .shortcut-box {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-left-color: #F59E0B !important;
+}
+[data-theme="dark"] .shortcut-box b {
+  color: #FCD34D !important;
+}
+[data-theme="dark"] .shortcut-box span {
+  color: #FEF3C7 !important;
+}
+[data-theme="dark"] .badge-quant { background: rgba(59, 130, 246, 0.2) !important; color: #93C5FD !important; }
+[data-theme="dark"] .badge-reasoning { background: rgba(139, 92, 246, 0.2) !important; color: #C4B5FD !important; }
+[data-theme="dark"] .badge-english { background: rgba(245, 158, 11, 0.2) !important; color: #FDE68A !important; }
+[data-theme="dark"] .badge-banking { background: rgba(16, 185, 129, 0.2) !important; color: #6EE7B7 !important; }
+[data-theme="dark"] .filter-chip {
+  background: #162032 !important;
+  border-color: #26334D !important;
+  color: #E2E8F0 !important;
+}
+[data-theme="dark"] .filter-chip.active {
+  background: linear-gradient(135deg, #4F46E5, #06B6D4) !important;
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .stat-box {
+  background: #111827 !important;
+  border-color: #26334D !important;
+}
+[data-theme="dark"] .stat-val {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .stat-lab {
+  color: #CBD5E1 !important;
+}
+
+/* ─── Bank Exam Prompt Generator & Specialized Tools ─── */
+[data-theme="dark"] .parea {
+  background: #0B0F19 !important;
+  color: #F1F5F9 !important;
+  border: 1px solid #1F2937 !important;
+}
+[data-theme="dark"] .emp {
+  background: #111827 !important;
+  border-color: #1F2937 !important;
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .emp h3 {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .emp p {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .ostats {
+  background: #0B0F19 !important;
+  border-color: #1F2937 !important;
+  color: #CBD5E1 !important;
+}
+
+/* Topic buttons in dark mode */
+[data-theme="dark"] .t-btn {
+  background: #162032 !important;
+  border-color: #26334D !important;
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .t-btn:hover {
+  background: #1F2937 !important;
+  border-color: #818CF8 !important;
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .t-btn.s1 { background: rgba(59, 130, 246, 0.2) !important; border-color: #3B82F6 !important; color: #93C5FD !important; }
+[data-theme="dark"] .t-btn.s2 { background: rgba(139, 92, 246, 0.2) !important; border-color: #8B5CF6 !important; color: #C4B5FD !important; }
+[data-theme="dark"] .t-btn.s3 { background: rgba(20, 184, 166, 0.2) !important; border-color: #14B8A6 !important; color: #5EEAD4 !important; }
+[data-theme="dark"] .t-btn.s4 { background: rgba(245, 158, 11, 0.2) !important; border-color: #F59E0B !important; color: #FDE68A !important; }
+[data-theme="dark"] .t-btn.s5 { background: rgba(100, 116, 139, 0.25) !important; border-color: #64748B !important; color: #E2E8F0 !important; }
+[data-theme="dark"] .t-btn.s6 { background: rgba(249, 115, 22, 0.2) !important; border-color: #F97316 !important; color: #FDBA74 !important; }
+[data-theme="dark"] .t-btn.sp { background: rgba(168, 85, 247, 0.2) !important; border-color: #A855F7 !important; color: #E9D5FF !important; }
+
+/* Toggles & Checkboxes in dark mode */
+[data-theme="dark"] .togi {
+  background: #162032 !important;
+  border-color: #26334D !important;
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .togi.on { background: rgba(59, 130, 246, 0.2) !important; border-color: #3B82F6 !important; color: #93C5FD !important; }
+[data-theme="dark"] .togi.on-t { background: rgba(20, 184, 166, 0.2) !important; border-color: #14B8A6 !important; color: #5EEAD4 !important; }
+[data-theme="dark"] .togi.on-p { background: rgba(139, 92, 246, 0.2) !important; border-color: #8B5CF6 !important; color: #C4B5FD !important; }
+
+[data-theme="dark"] .echk-box,
+[data-theme="dark"] .npchkbox {
+  background: #1F2937 !important;
+  border-color: #374151 !important;
+}
+
+/* Modals in dark mode */
+[data-theme="dark"] .mbox,
+[data-theme="dark"] .sov-box {
+  background: #111827 !important;
+  border-color: #26334D !important;
+  color: #F1F5F9 !important;
+}
+
+/* Flashcards tab in dark mode */
+[data-theme="dark"] .flashcard,
+[data-theme="dark"] .fc-card,
+[data-theme="dark"] .fc-front,
+[data-theme="dark"] .fc-back {
+  background: #111827 !important;
+  border-color: #26334D !important;
+  color: #FFFFFF !important;
+}
+
+/* Signal News strip in dark mode */
+[data-theme="dark"] .signal-section {
+  background: #070B14 !important;
+}
+[data-theme="dark"] .signal-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+[data-theme="dark"] .signal-card:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+[data-theme="dark"] .sig-desc {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .sig-foot span {
+  color: #94A3B8 !important;
+}
+
+
+/* ─── Spotlight Search in Dark Mode ─── */
+[data-theme="dark"] .spotlight-box {
+  background: #111827 !important;
+  border-color: #26334D !important;
+}
+[data-theme="dark"] .spotlight-input-wrap {
+  background: #0B0F19 !important;
+  border-color: #1F2937 !important;
+}
+[data-theme="dark"] .spotlight-input-wrap input {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .spotlight-input-wrap input::placeholder {
+  color: #94A3B8 !important;
+}
+[data-theme="dark"] .spotlight-item {
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .spotlight-item:hover,
+[data-theme="dark"] .spotlight-item.selected {
+  background: #1A2436 !important;
+}
+[data-theme="dark"] .sp-title {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .sp-sub {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .sp-badge.sp-bank { background: rgba(59, 130, 246, 0.2) !important; color: #93C5FD !important; }
+[data-theme="dark"] .sp-badge.sp-upsc { background: rgba(245, 158, 11, 0.2) !important; color: #FDE68A !important; }
+[data-theme="dark"] .sp-badge.sp-quiz { background: rgba(16, 185, 129, 0.2) !important; color: #6EE7B7 !important; }
+[data-theme="dark"] .sp-badge.sp-tool { background: rgba(236, 72, 153, 0.2) !important; color: #F9A8D4 !important; }
+
+/* ─── Mobile Drawer & Bottom Ribbon in Dark Mode ─── */
+[data-theme="dark"] .drawer-box {
+  background: #0B0F19 !important;
+  border-color: #1F2937 !important;
+}
+[data-theme="dark"] .drawer-link {
+  color: #E2E8F0 !important;
+}
+[data-theme="dark"] .drawer-link:hover {
+  background: #162032 !important;
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .drawer-tool-btn {
+  background: #162032 !important;
+  border-color: #26334D !important;
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .mobile-bottom-nav {
+  background: rgba(11, 15, 25, 0.96) !important;
+  border-color: #1F2937 !important;
+}
+
+/* ─── Animated Calculator in Dark Mode ─── */
+[data-theme="dark"] .calc-card {
+  background: #111827 !important;
+  border-color: #26334D !important;
+}
+[data-theme="dark"] .calc-title {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .calc-display {
+  background: #0B0F19 !important;
+  border-color: #1F2937 !important;
+}
+[data-theme="dark"] .calc-expr {
+  color: #94A3B8 !important;
+}
+[data-theme="dark"] .calc-val {
+  color: #67E8F9 !important;
+}
+[data-theme="dark"] .calc-btn {
+  background: #162032 !important;
+  border-color: #26334D !important;
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .calc-btn:hover {
+  background: #1E293B !important;
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .calc-btn.calc-op {
+  background: rgba(99, 102, 241, 0.22) !important;
+  color: #A5B4FC !important;
+  border-color: #6366F1 !important;
+}
+[data-theme="dark"] .calc-btn.calc-eq {
+  background: linear-gradient(135deg, #4F46E5, #06B6D4) !important;
+  color: #FFFFFF !important;
+}
+
+/* ─── Live AI Study Prompt Studio in Dark Mode ─── */
+[data-theme="dark"] .studio-card {
+  background: #111827 !important;
+  border-color: #26334D !important;
+}
+[data-theme="dark"] .studio-hd h3 {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .studio-hd p {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .studio-group label {
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .studio-select {
+  background: #162032 !important;
+  border-color: #26334D !important;
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .studio-select:focus {
+  border-color: #818CF8 !important;
+}
+[data-theme="dark"] .studio-prompt-box {
+  background: #0B0F19 !important;
+  border-color: #26334D !important;
+}
+[data-theme="dark"] .studio-textarea {
+  color: #F1F5F9 !important;
+}
+[data-theme="dark"] .launcher-btn {
+  background: #162032 !important;
+  border-color: #26334D !important;
+  color: #CBD5E1 !important;
+}
+[data-theme="dark"] .launcher-btn:hover {
+  background: #1E293B !important;
+  border-color: #818CF8 !important;
+  color: #FFFFFF !important;
 }
 
 /* ─── NAVBAR ENHANCEMENTS ─── */
