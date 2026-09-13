@@ -7,6 +7,26 @@ Banking, UPSC, SSC, Railway, GATE/PSU, NEET, JEE, CLAT/Law, MBA, Defence, CA/CS/
 CUET, Judiciary, NET/JRF, PSC, Teaching, Agriculture, and more — plus an AI exam
 mentor chatbot and a current-affairs / exam-news tracker.
 
+## Key Interactive Features & Upgrades
+
+- **🎯 Interactive Mock Test & Practice Simulator (`quiz-simulator.html`)**:
+  - High-yield banking & aptitude questions covering Quantitative Aptitude, Logical Reasoning, English Language, and Banking / Financial Awareness.
+  - Authentic 5-option Indian banking exam pattern ($A, B, C, D, E$).
+  - Sectional countdown timers (20 mins per section) simulating SBI PO, IBPS PO, and RRB Prelims.
+  - Step-by-step mathematical shortcut solutions, Vedic math tricks, and immediate score analytics.
+- **✨ Live AI Study Prompt Studio Playground (`js/studio.js`)**:
+  - Real-time interactive prompt builder embedded on the homepage.
+  - Select Exam, Target Subject, Study Goal, and Model Persona to generate production-ready prompts on the fly.
+  - 1-Click prompt copy and direct launch buttons for ChatGPT, Claude, and Gemini.
+- **🔍 Universal Spotlight Search Omnibox (`Ctrl+K` / `⌘K`)**:
+  - Instant fuzzy search across all 20+ prompt generator tools, 80+ exams, roadmaps, and mock practice tests.
+- **🧮 Built-in Exam Calculator Modal**:
+  - Animated on-screen calculator with keyboard input support, accessible from the top toolbar across pages.
+- **🌙 Adaptive Dark / Light Theme**:
+  - CSS custom properties with persistent `localStorage` (`be-theme`) remembering user preference.
+- **📱 Mobile-First Navigation**:
+  - Slide-out navigation drawer with $\ge 44	ext{px}$ touch targets and a persistent bottom navigation ribbon for mobile devices.
+
 ## What this actually is
 
 This is a **static, zero-build, zero-dependency site**. There is no `npm install`,
@@ -30,12 +50,17 @@ That constraint is deliberate:
 ## Repository layout
 
 ```
-index.html                              Homepage — tool directory, live stats, exam news
+index.html                              Homepage — tool directory, live stats, AI Prompt Studio
+quiz-simulator.html                     Interactive Mock Test & Practice Simulator (5-option, timer, shortcuts)
 <exam>_exam_prompt_generator.html       One file per exam category (20 of these)
 exam-mentor-chatbot.html                Local keyword-matching AI mentor chatbot (no API calls)
 trend-analysis-generator.html           Exam trend/pattern analysis tool
 IBPS_SBI_Clerk_Roadmap.html             Banking exam prep roadmap guide
 IBPS_SBI_Free_Library.html              Free banking study resource library
+js/nav.js                               Global nav: Spotlight search (Ctrl+K), Calculator modal, Dark mode, Drawer
+js/quiz.js                              Mock test engine: 5-option questions, timer, scoring, step-by-step explanations
+js/studio.js                            Live AI Prompt Studio playground with instant copy & AI platform launches
+css/modern.css                          Dark/Light theme variables, spotlight modal, bottom ribbon, quiz cards
 contact.html / privacy-policy.html      Support pages
 admin.html                              Private analytics dashboard (Firebase Auth gated, noindex)
 sitemap.xml / robots.txt                Search-engine discovery files

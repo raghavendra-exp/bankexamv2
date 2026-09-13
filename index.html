@@ -411,6 +411,7 @@ a{color:var(--pr);text-decoration:none}
   .reveal{opacity:1;transform:none}
 }
 </style>
+  <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
 <!-- Social float -->
@@ -445,10 +446,18 @@ a{color:var(--pr);text-decoration:none}
     </a>
     <nav class="hdr-links">
       <a href="#tools">Tools</a>
+      <a href="quiz-simulator.html" style="color:#10b981;font-weight:700">&#x1F3AF; Mock Lab</a>
+      <a href="#promptStudio">&#x2728; AI Studio</a>
       <a href="contact.html">Contact</a>
       <a href="privacy-policy.html">Privacy</a>
-      <a href="#tools" class="hdr-cta">Get Started &#x2192;</a>
+      <a href="quiz-simulator.html" class="hdr-cta" style="background:linear-gradient(135deg,#10B981,#059669)">Start Quiz &#x2192;</a>
     </nav>
+    <div class="hdr-tools">
+      <button class="be-btn-tool" onclick="BE_NAV.openSpotlight()" title="Search tools (Ctrl+K)">&#x1F50D; <span class="be-kbd-badge">Ctrl K</span></button>
+      <button class="be-btn-tool" onclick="BE_NAV.openCalc()" title="Exam Calculator">&#x1F9EE;</button>
+      <button class="be-btn-tool" onclick="BE_NAV.toggleTheme()" id="themeToggleBtn" title="Toggle dark/light theme">&#x1F319;</button>
+      <button class="be-btn-tool be-hamburger" onclick="BE_NAV.toggleDrawer()" title="Menu">&#x2630;</button>
+    </div>
     <div id="authWidget" class="auth-widget">
       <button id="signInBtn" class="hdr-signin">&#x1F511; Sign in</button>
       <div id="userChip" class="user-chip" style="display:none">
@@ -497,8 +506,10 @@ a{color:var(--pr);text-decoration:none}
       <div class="hs"><span class="hs-n">0&#x20B9;</span><div class="hs-l">Cost Forever</div></div>
     </div>
     <div class="hero-cta">
-      <a href="#tools" class="btn-hero btn-hero-p">&#x1F680; Start Preparing Now</a>
-      <a href="bank_exam_prompt_generator.html" class="btn-hero btn-hero-s">&#x1F3E6; Try Banking Tool</a>
+      <a href="quiz-simulator.html" class="btn-hero" style="background:linear-gradient(135deg,#10B981,#059669);color:#fff">&#x1F3AF; Take Mock Test</a>
+      <a href="#promptStudio" class="btn-hero" style="background:linear-gradient(135deg,#6366F1,#4F46E5);color:#fff">&#x2728; AI Prompt Studio</a>
+      <a href="#tools" class="btn-hero btn-hero-p">&#x1F680; All 20 Tools</a>
+      <a href="bank_exam_prompt_generator.html" class="btn-hero btn-hero-s">&#x1F3E6; Banking Tool</a>
     </div>
     <div class="exam-chips">
       <a href="upsc_prompt_generator.html" class="chip ch-y">&#x1F3DB;&#xFE0F; UPSC / IAS</a>
@@ -680,6 +691,11 @@ a{color:var(--pr);text-decoration:none}
     </div>
   </div>
 
+  <!-- AI STUDY PROMPT STUDIO -->
+  <section id="promptStudio" style="margin-bottom:40px">
+    <div id="promptStudioContainer"></div>
+  </section>
+
   <!-- TOOLS GRID -->
   <div id="tools" style="margin-bottom:8px">
     <div class="sec-eyebrow reveal">All exam tools</div>
@@ -692,6 +708,27 @@ a{color:var(--pr);text-decoration:none}
   </div>
   <div id="bookmarkStrip" style="display:none;flex-wrap:wrap;gap:8px;margin-bottom:20px"></div>
   <div class="cat-grid">
+
+    <!-- FEATURED MOCK SIMULATOR CARD -->
+    <a href="quiz-simulator.html" class="cat-card reveal tb-b" style="text-decoration:none;border:2px solid #10B981;background:linear-gradient(135deg,rgba(16,185,129,0.06),rgba(37,99,235,0.06));grid-column:1/-1">
+      <div class="card-top">
+        <span class="card-idtag" style="background:#10B981;color:#fff">NEW FEATURE</span>
+        <div class="card-ic-wrap" style="background:rgba(16,185,129,0.15);font-size:24px">&#x1F3AF;</div>
+        <div class="card-hd">
+          <div class="card-title" style="color:var(--txt)">Interactive Mock Test &amp; Practice Simulator <span class="live-dot" style="background:#10B981">Interactive</span></div>
+          <div class="card-meta">SBI PO &middot; IBPS PO &middot; RRB &middot; RBI Grade B &middot; Quantitative, Reasoning, English, General Awareness</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:13px;color:var(--txt2);line-height:1.5">
+        Real-time sectional countdown timers, authentic 5-option Indian banking exam pattern (A, B, C, D, E), step-by-step mathematical shortcut solutions, and instant performance analysis.
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <span style="background:rgba(37,99,235,0.1);color:#2563EB;font-size:11px;padding:3px 10px;border-radius:12px;font-weight:700">&#x23F1;&#xFE0F; Sectional Timers</span>
+        <span style="background:rgba(16,185,129,0.1);color:#10B981;font-size:11px;padding:3px 10px;border-radius:12px;font-weight:700">&#x26A1; Speed Math Tricks</span>
+        <span style="background:rgba(245,158,11,0.1);color:#d97706;font-size:11px;padding:3px 10px;border-radius:12px;font-weight:700">&#x1F4CA; Live Scoreboard</span>
+        <span style="background:rgba(139,92,246,0.1);color:#8b5cf6;font-size:11px;padding:3px 10px;border-radius:12px;font-weight:700">&#x1F4A1; 5-Option Standard</span>
+      </div>
+    </a>
 
     <a href="bank_exam_prompt_generator.html" class="cat-card reveal tb-b" style="text-decoration:none">
       <div class="card-top"><span class="card-idtag">BANK-01</span><div class="card-ic-wrap ci-b">&#x1F3E6;</div><div class="card-hd"><div class="card-title">Banking &amp; Finance <span class="live-dot">Live</span></div><div class="card-meta">SBI &middot; IBPS &middot; RRB &middot; RBI &middot; 15 exams</div></div></div>
@@ -1754,6 +1791,15 @@ var TOOL_META = {
     initReveal(); initCountUp();
   }
 })();
+</script>
+<script src="js/studio.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.PromptStudio) {
+      PromptStudio.render('promptStudioContainer');
+    }
+  });
 </script>
 </body>
 </html>
