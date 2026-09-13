@@ -1214,3 +1214,48 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+
+/* ── What Each Tool Covers Dark Mode Enhancements ── */
+[data-theme="dark"] .cov-card {
+  background: #111827 !important;
+  border-color: #1F2937 !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .cov-card:hover {
+  border-color: #6366F1 !important;
+  box-shadow: 0 8px 28px rgba(99, 102, 241, 0.2) !important;
+}
+
+[data-theme="dark"] .cov-title {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .cov-exams {
+  color: #818CF8 !important;
+}
+
+[data-theme="dark"] .cov-desc {
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .cov-list li {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .cov-list li strong {
+  color: #F1F5F9 !important;
+}
+
+[data-theme="dark"] .cov-foot {
+  border-top-color: #1F2937 !important;
+}
+
+[data-theme="dark"] .cov-link {
+  color: #67E8F9 !important;
+}
+
+[data-theme="dark"] .cov-link:hover {
+  color: #A5F3FC !important;
+}

@@ -460,6 +460,9 @@
             <a href="quiz-simulator.html" class="drawer-link" onclick="window.closeMobileDrawer()" style="color:var(--gr2); font-weight:700;">
               <span class="drawer-icon">🎯</span> <span>Mock Quiz Simulator (New)</span>
             </a>
+            <a href="index.html#coverage" class="drawer-link" onclick="window.closeMobileDrawer()">
+              <span class="drawer-icon">📑</span> <span>What Each Tool Covers</span>
+            </a>
             <a href="index.html#promptStudio" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">⚡</span> <span>Live AI Prompt Studio</span>
             </a>
