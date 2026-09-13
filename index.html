@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Free AI study prompt generators for 80+ Indian competitive exams — Banking, UPSC, SSC, Railway, GATE, NEET, JEE, CLAT, MBA/CAT, State PSC, Defence. Interactive mock simulator and real-time AI prompt studio. By Raghavbegins.">
   <meta name="keywords" content="UPSC AI tool, SBI PO mock test, GATE study prompts, CLAT JEE NEET banking SSC railway exam AI, Indian exam preparation free, Raghavbegins">
   <meta name="author" content="Raghavbegins">
@@ -265,6 +265,260 @@
     .ft-links a:hover{color:#fff}
 
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  
+    /* ══════════════════════════════════════════════════════════════
+       COMPREHENSIVE RESPONSIVE DESIGN SYSTEM (Breakpoints: 1024, 860, 768, 640, 480, 360)
+       ══════════════════════════════════════════════════════════════ */
+
+    /* Touch & Horizontal Scroll Utilities */
+    .tools-pills,
+    .sig-filter-bar,
+    #examCountdownStrip {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .tools-pills::-webkit-scrollbar,
+    .sig-filter-bar::-webkit-scrollbar,
+    #examCountdownStrip::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Comparison Table Scroll Cue */
+    .cmp-scroll-hint {
+      display: none;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--txt3);
+      text-align: center;
+      padding: 8px 12px;
+      background: var(--sf2);
+      border: 1.5px dashed var(--bdr);
+      border-bottom: none;
+      border-radius: var(--r) var(--r) 0 0;
+      margin-bottom: 0;
+      letter-spacing: .02em;
+    }
+    [data-theme="dark"] .cmp-scroll-hint {
+      background: #0B0F19 !important;
+      border-color: #1F2937 !important;
+      color: #94A3B8 !important;
+    }
+
+    /* ── LAPTOPS / TABLET LANDSCAPE (<= 1024px) ── */
+    @media (max-width: 1024px) {
+      .wrap { padding: 36px 18px; }
+      .cat-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+      .cov-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+      .feat-strip { grid-template-columns: repeat(2, 1fr); }
+      .hero h2 { font-size: clamp(28px, 4.5vw, 44px); }
+    }
+
+    /* ── TABLETS PORTRAIT (<= 860px) ── */
+    @media (max-width: 860px) {
+      .hdr-inner { padding: 0 16px; height: 60px; }
+      .hdr-links { display: none !important; }
+      .be-btn-tool.be-hamburger { display: inline-flex !important; }
+      .be-btn-tool .be-tool-text { display: none !important; }
+      .be-btn-tool .be-kbd-badge { display: none !important; }
+      .be-btn-tool { padding: 0 10px; }
+      .how-inner { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .how-arr { display: none !important; }
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 580px;
+      }
+      .hs:nth-child(3) { border-right: none; }
+      .hs:nth-child(4), .hs:nth-child(5) { border-top: 1px solid rgba(255,255,255,.08); }
+      .hs:last-child { border-right: none; }
+    }
+
+    /* ── MOBILE / LARGE PHONES (<= 768px) ── */
+    @media (max-width: 768px) {
+      body { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important; }
+      .mobile-bottom-nav {
+        display: flex !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: calc(58px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: rgba(5, 12, 26, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 800;
+      }
+      .bnav-item { min-height: 48px; }
+      .soc-fl { display: none !important; }
+      .wrap { padding: 28px 14px; }
+      .cmp-scroll-hint { display: block; }
+      .cmp-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 0 0 var(--r) var(--r);
+      }
+      .cmp-tbl { min-width: 680px; }
+      .cmp-tbl th:first-child,
+      .cmp-tbl td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background: var(--sf);
+        box-shadow: 2px 0 6px rgba(0,0,0,0.06);
+      }
+      .cmp-tbl thead th:first-child {
+        background: var(--d2);
+        z-index: 3;
+      }
+      [data-theme="dark"] .cmp-tbl td:first-child {
+        background: #111827 !important;
+        box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+      }
+      .ft { padding: 36px 16px calc(32px + env(safe-area-inset-bottom, 0px)); }
+      .ft-inner { flex-direction: column; text-align: center; gap: 14px; }
+      .ft-links { justify-content: center; gap: 14px; }
+    }
+
+    /* ── SMARTPHONES (<= 640px) ── */
+    @media (max-width: 640px) {
+      .hdr-inner { padding: 0 12px; height: 56px; }
+      .logo-txt p { display: none !important; }
+      .logo-txt h1 { font-size: 14px; }
+      .logo-badge { width: 36px; height: 36px; font-size: 18px; border-radius: 10px; }
+      .hdr-tools { gap: 5px; }
+      .be-btn-tool { height: 35px; padding: 0 9px; gap: 4px; }
+      .user-name { display: none !important; }
+      .user-chip { padding: 2px 6px 2px 2px; gap: 4px; }
+
+      /* Hero */
+      .hero { padding: 40px 14px 32px; }
+      .hero h2 { font-size: clamp(24px, 6.5vw, 36px); letter-spacing: -0.6px; }
+      .hero-sub { font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 380px;
+      }
+      .hs { padding: 10px 8px; }
+      .hs:nth-child(2) { border-right: none; }
+      .hs:nth-child(3) {
+        border-top: 1px solid rgba(255,255,255,.08);
+        border-right: 1px solid rgba(255,255,255,.08);
+      }
+      .hs:nth-child(4) {
+        border-top: 1px solid rgba(255,255,255,.08);
+        border-right: none;
+      }
+      .hs:nth-child(5) {
+        grid-column: span 2;
+        border-top: 1px solid rgba(255,255,255,.08);
+        border-right: none;
+      }
+      .hs-n { font-size: 20px; }
+      .hs-l { font-size: 10px; }
+      .hero-cta { flex-direction: column; gap: 10px; }
+      .btn-hero { width: 100%; justify-content: center; padding: 12px 18px; font-size: 13.5px; }
+
+      /* Timer */
+      .timer-card { margin: -16px 8px 28px; padding: 18px 14px; border-radius: 16px; }
+      .timer-digit { font-size: clamp(38px, 12vw, 48px); }
+      #timerControls { flex-wrap: wrap; gap: 8px; }
+      #timerControls button, #timerControls select { min-height: 42px; font-size: 13px; }
+
+      /* How it works */
+      .how-strip { padding: 20px 16px; margin-bottom: 32px; border-radius: 16px; }
+      .how-inner { grid-template-columns: 1fr; gap: 14px; }
+      .how-step { min-width: 100%; }
+
+      /* Live Signal */
+      .signal-section { padding: 22px 14px; border-radius: 16px; margin-bottom: 32px; }
+      .signal-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .signal-head h2 { font-size: 19px; }
+      .sig-actions-wrap { display: flex; width: 100%; gap: 8px; }
+      #caQuizBtn, #refreshNewsBtn { flex: 1; justify-content: center; padding: 8px 12px; font-size: 12px; margin-right: 0 !important; }
+      #examCountdownStrip {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+        margin: 12px 0 16px;
+      }
+      #examCountdownStrip a { flex-shrink: 0; }
+      .sig-filter-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+        margin-bottom: 14px;
+      }
+      .sig-pill { flex-shrink: 0; padding: 6px 12px; font-size: 11.5px; }
+      .signal-grid { grid-template-columns: 1fr; gap: 12px; }
+
+      /* Tools Directory */
+      .tools-filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 14px;
+        gap: 10px;
+      }
+      .tools-search-wrap { min-width: 100%; max-width: 100%; }
+      .tools-pills {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+      }
+      .tool-pill { flex-shrink: 0; padding: 6px 12px; font-size: 11.5px; }
+      .cat-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 32px; }
+      .feat-strip { grid-template-columns: 1fr; gap: 10px; margin-bottom: 32px; }
+
+      /* What Each Tool Covers */
+      .cov-grid { grid-template-columns: 1fr; gap: 14px; margin-bottom: 28px; }
+      .cov-card { padding: 18px 16px; border-radius: 16px; }
+      .cov-title { font-size: 16px; }
+
+      /* Prompt Studio */
+      .studio-card { padding: 18px 14px; border-radius: 16px; margin: 24px 0; }
+      .studio-hd h3 { font-size: 18px; }
+      .studio-controls { grid-template-columns: 1fr; gap: 10px; }
+      .studio-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+      .btn-copy-prompt { width: 100%; justify-content: center; padding: 12px; }
+      .studio-launchers { width: 100%; justify-content: space-between; gap: 6px; }
+      .launcher-btn { flex: 1; justify-content: center; padding: 8px 6px; font-size: 11px; }
+
+      /* FAQ */
+      .faq-list { gap: 8px; margin-bottom: 32px; }
+      .faq-q { padding: 14px 16px; font-size: 13.5px; }
+      .faq-a { padding: 0 16px 14px; font-size: 12.5px; }
+
+      /* Modals */
+      .ca-quiz-modal-box { padding: 20px 16px !important; border-radius: 16px !important; }
+      .spotlight-modal { padding: 40px 10px 14px; }
+      .spotlight-box { border-radius: 16px; }
+      .calc-card { max-width: 95vw; padding: 14px; border-radius: 16px; }
+    }
+
+    /* ── SMALL PHONES (<= 380px, e.g. iPhone SE / Galaxy Fold) ── */
+    @media (max-width: 380px) {
+      .hdr-inner { padding: 0 8px; }
+      .logo-txt h1 { font-size: 12.5px; }
+      .logo-badge { width: 32px; height: 32px; font-size: 16px; }
+      .be-btn-tool { height: 32px; padding: 0 7px; font-size: 12px; }
+      .hero-eyebrow { font-size: 11px; padding: 4px 12px; }
+      .hero h2 { font-size: 22px; }
+      .hero-stats { grid-template-columns: 1fr; max-width: 260px; }
+      .hs { border-right: none !important; border-top: 1px solid rgba(255,255,255,.08); }
+      .hs:first-child { border-top: none; }
+      .hs-n { font-size: 19px; }
+      .timer-card { margin: -12px 4px 20px; padding: 14px 10px; }
+      .timer-digit { font-size: 34px; }
+      .card-top { padding: 14px 12px 8px; }
+      .card-desc { padding: 0 12px 8px; }
+      .card-tags { padding: 0 12px 10px; }
+      .card-footer { padding: 8px 12px; }
+    }
+
   </style>
 
   <link rel="stylesheet" href="css/modern.css">
@@ -486,8 +740,8 @@
       </div>
 
       <!-- Live Current Affairs Quiz Modal -->
-      <div id="caQuizModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:20px">
-        <div style="background:var(--sf,#fff);color:var(--txt2,#334155);max-width:540px;width:100%;border-radius:20px;padding:28px;position:relative;max-height:85vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.4);border:1.5px solid var(--bdr)">
+      <div id="caQuizModal" class="ca-quiz-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:20px">
+        <div class="ca-quiz-modal-box" style="background:var(--sf,#fff);color:var(--txt2,#334155);max-width:540px;width:100%;border-radius:20px;padding:28px;position:relative;max-height:85vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.4);border:1.5px solid var(--bdr)">
           <button onclick="window.closeCAQuiz()" style="position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;color:var(--txt3);cursor:pointer;line-height:1" aria-label="Close Quiz">&times;</button>
           <div id="caQuizBody"></div>
         </div>
@@ -1087,6 +1341,7 @@
         <p class="sec-sub">Every tool is tailored to the specific assessment demands of the respective testing agency (NTA, IBPS, UPSC, SSC, RRB, IITs).</p>
       </div>
 
+      <div class="cmp-scroll-hint">👈 Swipe horizontally to view all 6 exam comparison columns 👉</div>
       <div class="cmp-wrap">
         <table class="cmp-tbl">
           <thead>

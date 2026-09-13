@@ -1351,3 +1351,53 @@
   background: #1E293B !important;
   border-color: #6366F1 !important;
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   GLOBAL RESPONSIVE & MOBILE-FIRST UTILITIES (modern.css)
+   ══════════════════════════════════════════════════════════════ */
+
+/* Safe area support for modern edge-to-edge mobile devices */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+/* Touch targets and smooth scrolling */
+@media (pointer: coarse) {
+  button, select, a, input {
+    min-height: 40px;
+  }
+}
+
+/* Global modal responsiveness */
+@media (max-width: 640px) {
+  .calc-modal {
+    padding: 12px;
+  }
+  .calc-card {
+    width: 100% !important;
+    max-width: 340px !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+  .spotlight-modal {
+    padding: 30px 12px 14px !important;
+  }
+  .spotlight-box {
+    max-width: 100% !important;
+    border-radius: 16px !important;
+  }
+  .drawer-panel {
+    width: min(320px, 85vw) !important;
+  }
+  .toast-msg {
+    bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 12px !important;
+    left: 12px !important;
+    max-width: calc(100% - 24px) !important;
+    text-align: center;
+  }
+}
