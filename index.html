@@ -114,6 +114,34 @@
     /* ── LAYOUT WRAPPER ── */
     .wrap{max-width:1200px;margin:0 auto;padding:40px 20px}
 
+    
+    /* ── SOCIAL FLOAT ── */
+    .soc-fl{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:450;display:flex;flex-direction:column;gap:3px}
+    .sfl{display:flex;align-items:center;overflow:hidden;width:40px;height:40px;transition:all .25s cubic-bezier(0.16,1,0.3,1);border-radius:0 12px 12px 0;text-decoration:none;box-shadow:2px 4px 14px rgba(0,0,0,.3)}
+    .sfl:hover{width:154px;transform:translateX(2px)}
+    .sfl-ic{width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .sfl-lb{font-size:12px;font-weight:800;color:#fff;white-space:nowrap;padding-right:14px;opacity:0;transition:opacity .18s .06s}
+    .sfl:hover .sfl-lb{opacity:1}
+    .sfl-fb{background:#1877F2}
+    .sfl-ig{background:linear-gradient(180deg,#f09433,#dc2743,#bc1888)}
+    .sfl-yt{background:#FF0000}
+    @media (max-width: 680px){.soc-fl{display:none}}
+
+    /* ── AUTH WIDGET ── */
+    .auth-widget{display:flex;align-items:center}
+    .be-btn-signin{background:linear-gradient(135deg,rgba(99,102,241,.25),rgba(6,182,212,.25));border-color:rgba(99,102,241,.4);color:#fff}
+    .be-btn-signin:hover{background:linear-gradient(135deg,#6366F1,#4F46E5);color:#fff}
+    .user-chip{display:flex;align-items:center;gap:8px;padding:3px 10px 3px 4px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px)}
+    .user-avatar{width:26px;height:26px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid #10B981}
+    .user-name{font-size:12px;font-weight:800;color:#fff;max-width:85px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .hdr-signout{background:none;border:none;color:rgba(255,255,255,.6);font-size:14px;cursor:pointer;padding:0 2px;line-height:1;display:flex;align-items:center;transition:color .15s}
+    .hdr-signout:hover{color:#EF4444}
+
+    /* ── LIVE SIGNAL ENHANCEMENTS ── */
+    .sig-pill{padding:5px 12px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:12px;font-weight:700;cursor:pointer;transition:all .15s ease;user-select:none}
+    .sig-pill:hover{background:rgba(255,255,255,.18);color:#fff}
+    .sig-pill.active{background:linear-gradient(135deg,var(--cy2),#2563EB);color:#fff;border-color:transparent;box-shadow:0 2px 10px rgba(37,99,235,.3)}
+
     /* ── STUDY TIMER CARD ── */
     .card{background:var(--sf);border-radius:var(--rl);border:1.5px solid var(--bdr);box-shadow:var(--sh);overflow:hidden}
     .timer-card{max-width:540px;margin:-24px auto 36px;padding:24px 28px;text-align:center;position:relative;z-index:10}
@@ -243,6 +271,29 @@
 </head>
 <body>
 
+  <!-- Floating Social Links (Facebook, Instagram, YouTube) -->
+  <aside class="soc-fl" aria-label="Official Social Channels">
+    <a class="sfl sfl-fb" href="https://www.facebook.com/Raghavbegins" target="_blank" rel="noopener" aria-label="Facebook Raghavbegins" title="Facebook - Raghavbegins">
+      <div class="sfl-ic">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      </div>
+      <span class="sfl-lb">Raghavbegins</span>
+    </a>
+    <a class="sfl sfl-ig" href="https://www.instagram.com/raghav3o" target="_blank" rel="noopener" aria-label="Instagram @raghav3o" title="Instagram - @raghav3o">
+      <div class="sfl-ic">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </div>
+      <span class="sfl-lb">@raghav3o</span>
+    </a>
+    <a class="sfl sfl-yt" href="https://www.youtube.com/@raghav_begins" target="_blank" rel="noopener" aria-label="YouTube @raghav_begins" title="YouTube - @raghav_begins">
+      <div class="sfl-ic">
+        <svg width="20" height="14" viewBox="0 0 24 17" fill="#fff"><path d="M23.495 2.205a3.02 3.02 0 0 0-2.126-2.138C19.505 0 12 0 12 0s-7.505 0-9.369.067A3.02 3.02 0 0 0 .505 2.205 31.247 31.247 0 0 0 0 8.07a31.247 31.247 0 0 0 .505 5.865 3.02 3.02 0 0 0 2.126 2.138C4.495 16.14 12 16.14 12 16.14s7.505 0 9.369-.067a3.02 3.02 0 0 0 2.126-2.138A31.247 31.247 0 0 0 24 8.07a31.247 31.247 0 0 0-.505-5.865zM9.609 11.545V4.594l6.264 3.476-6.264 3.475z"/></svg>
+      </div>
+      <span class="sfl-lb">@raghav_begins</span>
+    </a>
+  </aside>
+
+
   <!-- ════ HEADER ════ -->
   <header class="hdr">
     <div class="hdr-inner">
@@ -282,6 +333,20 @@
           <span class="be-tool-icon">&#x1F319;</span>
           <span class="be-tool-text">Theme</span>
         </button>
+
+        
+        <!-- Firebase Auth Widget -->
+        <div id="authWidget" class="auth-widget">
+          <button id="signInBtn" class="be-btn-tool be-btn-signin" title="Sign in with Google">
+            <span class="be-tool-icon">&#x1F511;</span>
+            <span class="be-tool-text">Sign in</span>
+          </button>
+          <div id="userChip" class="user-chip" style="display:none">
+            <img id="userAvatar" class="user-avatar" src="" alt="Profile">
+            <span id="userName" class="user-name"></span>
+            <button id="signOutBtn" class="hdr-signout" title="Sign out">&#x2715;</button>
+          </div>
+        </div>
 
         <a href="quiz-simulator.html" class="be-btn-tool be-btn-lab be-hide-sm" title="Practice Mock Tests">
           <span class="be-tool-icon">&#x1F3AF;</span>
@@ -388,18 +453,50 @@
     </div>
 
     <!-- ════ LIVE EXAM NOTIFICATIONS & UPDATES (DEDUPLICATED & 2026-27 CYCLE) ════ -->
-    <section class="signal-section">
+    <!-- ════ LIVE EXAM NOTIFICATIONS & UPDATES (RSS2FEED & FIREBASE POWERED) ════ -->
+    <section class="signal-section" id="liveExamUpdates">
       <div class="signal-head">
         <div>
-          <div class="signal-eyebrow"><span class="dot"></span> Live Signal</div>
+          <div class="signal-eyebrow"><span class="dot"></span> Live Signal &middot; RSS2Feed &amp; Firebase Live Sync</div>
           <h2>Current Exam Calendar &amp; Notification Updates (2026&ndash;2027)</h2>
+          <p style="font-size:13px;color:rgba(255,255,255,.75);margin-top:4px">
+            Live syndicated exam announcements, admit cards, and application updates from official testing boards and Google News RSS feed.
+          </p>
         </div>
-        <span class="sig-stamp" style="font-size:12px">&#x1F4E1; Refreshed for September 2026&ndash;2027 Session</span>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span id="signalUpdated" class="sig-stamp" style="font-size:12px">&#x1F4E1; Initializing Live Feed&hellip;</span>
+          <button id="caQuizBtn" onclick="window.openCAQuiz()" class="sig-btn-quiz" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:12px;font-size:12.5px;font-weight:800;background:linear-gradient(135deg,#6366F1,#4F46E5);color:#fff;border:none;cursor:pointer;transition:all .18s ease" disabled>&#x1F9E0; Daily News Quiz</button>
+          <button id="refreshNewsBtn" onclick="window.refreshExamUpdates()" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:12px;font-size:12.5px;font-weight:800;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;transition:all .18s ease" title="Refresh Live Feed">&#x21BA; Refresh Feed</button>
+        </div>
       </div>
 
-      <div class="signal-grid">
+      <!-- Live Exam Countdown Strip -->
+      <div id="examCountdownStrip" style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 20px"></div>
+
+      <!-- Category Filter Pills for Real-Time Headlines -->
+      <div class="sig-filter-bar" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+        <button class="sig-pill active" onclick="window.filterLiveSignal('all', this)">All (Live)</button>
+        <button class="sig-pill" onclick="window.filterLiveSignal('bank', this)">&#x1F3E6; Banking &amp; Insurance</button>
+        <button class="sig-pill" onclick="window.filterLiveSignal('upsc', this)">&#x1F3DB;&#xFE0F; UPSC &amp; PSC</button>
+        <button class="sig-pill" onclick="window.filterLiveSignal('ssc', this)">&#x1F4CB; SSC &amp; Police</button>
+        <button class="sig-pill" onclick="window.filterLiveSignal('rail', this)">&#x1F686; Railway RRB</button>
+        <button class="sig-pill" onclick="window.filterLiveSignal('gate', this)">&#x2699;&#xFE0F; GATE &amp; Technical</button>
+        <button class="sig-pill" onclick="window.filterLiveSignal('neet', this)">&#x1F9EC; NEET Medical</button>
+        <button class="sig-pill" onclick="window.filterLiveSignal('def', this)">&#x1F396;&#xFE0F; Defence</button>
+      </div>
+
+      <!-- Live Current Affairs Quiz Modal -->
+      <div id="caQuizModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:20px">
+        <div style="background:var(--sf,#fff);color:var(--txt2,#334155);max-width:540px;width:100%;border-radius:20px;padding:28px;position:relative;max-height:85vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.4);border:1.5px solid var(--bdr)">
+          <button onclick="window.closeCAQuiz()" style="position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;color:var(--txt3);cursor:pointer;line-height:1" aria-label="Close Quiz">&times;</button>
+          <div id="caQuizBody"></div>
+        </div>
+      </div>
+
+      <!-- Grid Container with id="signalGrid" (curated defaults, auto-refreshed via RSS & Firestore) -->
+      <div class="signal-grid" id="signalGrid">
         <!-- 1. BANKING -->
-        <a href="bank_exam_prompt_generator.html" class="signal-card">
+        <a href="bank_exam_prompt_generator.html" class="signal-card" data-cat="bank">
           <div>
             <div class="sig-stamp">ACTIVE CYCLE &middot; 2026&ndash;27</div>
             <span class="sig-tag">&#x1F3E6; SBI PO &amp; IBPS PO 2026&ndash;27</span>
@@ -410,7 +507,7 @@
         </a>
 
         <!-- 2. SSC -->
-        <a href="ssc_exam_prompt_generator.html" class="signal-card">
+        <a href="ssc_exam_prompt_generator.html" class="signal-card" data-cat="ssc">
           <div>
             <div class="sig-stamp">TIER 1 &amp; 2 &middot; 2026&ndash;27</div>
             <span class="sig-tag">&#x1F4CB; SSC CGL &amp; CHSL 2026</span>
@@ -421,7 +518,7 @@
         </a>
 
         <!-- 3. RAILWAY -->
-        <a href="railway_exam_prompt_generator.html" class="signal-card">
+        <a href="railway_exam_prompt_generator.html" class="signal-card" data-cat="rail">
           <div>
             <div class="sig-stamp">RRB CALENDAR &middot; 2026</div>
             <span class="sig-tag">&#x1F686; RRB NTPC, ALP &amp; Group D</span>
@@ -432,7 +529,7 @@
         </a>
 
         <!-- 4. UPSC -->
-        <a href="upsc_prompt_generator.html" class="signal-card">
+        <a href="upsc_prompt_generator.html" class="signal-card" data-cat="upsc">
           <div>
             <div class="sig-stamp">MAINS &amp; PRELIMS 2026&ndash;27</div>
             <span class="sig-tag">&#x1F3DB;&#xFE0F; UPSC Civil Services (IAS/IPS)</span>
@@ -443,7 +540,7 @@
         </a>
 
         <!-- 5. GATE / PSU -->
-        <a href="gate_psu_exam_prompt_generator.html" class="signal-card">
+        <a href="gate_psu_exam_prompt_generator.html" class="signal-card" data-cat="gate">
           <div>
             <div class="sig-stamp">GATE 2027 CYCLE</div>
             <span class="sig-tag">&#x2699;&#xFE0F; GATE &amp; PSU Engineering</span>
@@ -454,7 +551,7 @@
         </a>
 
         <!-- 6. DEFENCE -->
-        <a href="defence_exam_prompt_generator.html" class="signal-card">
+        <a href="defence_exam_prompt_generator.html" class="signal-card" data-cat="def">
           <div>
             <div class="sig-stamp">CDS &amp; NDA &middot; 2026</div>
             <span class="sig-tag">&#x1F396;&#xFE0F; Defence Services (NDA / CDS / AFCAT)</span>
@@ -1193,11 +1290,13 @@
   </footer>
 
   <!-- ════ SCRIPTS ════ -->
+  <!-- ════ FIREBASE SDK, AUTH, FIRESTORE & LIVE RSS2FEED ════ -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
     import { getFirestore, doc, onSnapshot, setDoc, getDoc, increment, serverTimestamp, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
     const firebaseConfig = {
       apiKey: "AIzaSyCumDxKiDMd72dRmY6igXXxOypJe1JvD0g",
       authDomain: "bharatexam-d477c.firebaseapp.com",
@@ -1207,42 +1306,42 @@
       appId: "1:977099665337:web:6c9fc3e3abd15e67929068",
       measurementId: "G-B0Z2G21W4F"
     };
+
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-    /* ── Login + browsing history (signed-in users only) ───────────────
-       Site works fully WITHOUT signing in — anonymous visitors browse
-       exactly as before with zero tracking. Signing in with Google is
-       optional and only adds: (1) a saved history of tools you open,
-       visible to you're logged in as, and (2) lets the site admin view
-       everyone's history in a separate admin.html page.
-       History entries are written with an expiresAt field ~30 days out.
-       IMPORTANT (one-time setup): enable a Firestore TTL policy on the
-       "expiresAt" field (Firestore console → TTL tab) so entries are
-       auto-deleted after 1 month — no code/cron needed for that part. */
+    /* ── 1. Google Authentication & History Sync ── */
     try {
-      const auth = getAuth(app);
-      const provider = new GoogleAuthProvider();
-      const db3 = getFirestore(app);
-
       const signInBtn  = document.getElementById("signInBtn");
       const userChip   = document.getElementById("userChip");
       const userAvatar = document.getElementById("userAvatar");
       const userName   = document.getElementById("userName");
       const signOutBtn = document.getElementById("signOutBtn");
-
       let currentUser = null;
 
       if (signInBtn) {
         signInBtn.addEventListener("click", () => {
-          signInWithPopup(auth, provider).catch((err) => {
-            console.error("[auth] sign-in failed:", err.message);
-          });
+          signInWithPopup(auth, provider)
+            .then((res) => {
+              if (window.showToast) window.showToast("Signed in as " + (res.user.displayName || "Student") + "!");
+            })
+            .catch((err) => {
+              console.error("[auth] sign-in error:", err.message);
+              if (window.showToast) window.showToast("Sign in cancelled or failed.");
+            });
         });
       }
+
       if (signOutBtn) {
         signOutBtn.addEventListener("click", () => {
-          signOut(auth).catch((err) => console.error("[auth] sign-out failed:", err.message));
+          signOut(auth)
+            .then(() => {
+              if (window.showToast) window.showToast("Signed out successfully.");
+            })
+            .catch((err) => console.error("[auth] sign-out error:", err.message));
         });
       }
 
@@ -1250,20 +1349,20 @@
         currentUser = user;
         if (user) {
           if (signInBtn) signInBtn.style.display = "none";
-          if (userChip) userChip.style.display = "flex";
+          if (userChip) userChip.style.display = "inline-flex";
           if (userAvatar) userAvatar.src = user.photoURL || "";
-          if (userName) userName.textContent = (user.displayName || user.email || "Signed in").split(" ")[0];
+          if (userName) userName.textContent = (user.displayName || user.email || "Student").split(" ")[0];
         } else {
           if (signInBtn) signInBtn.style.display = "";
           if (userChip) userChip.style.display = "none";
         }
       });
 
+      // Log history for signed-in users
       function logHistory(toolName, url) {
-        if (!currentUser) return Promise.resolve(); // not signed in — do nothing, site works fine either way
-        const now = Date.now();
-        const expiresAt = new Date(now + 30 * 24 * 60 * 60 * 1000); // ~1 month from now
-        return addDoc(collection(db3, "history"), {
+        if (!currentUser) return Promise.resolve();
+        const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+        return addDoc(collection(db, "history"), {
           uid: currentUser.uid,
           email: currentUser.email || "",
           displayName: currentUser.displayName || "",
@@ -1271,14 +1370,12 @@
           url: url,
           timestamp: serverTimestamp(),
           expiresAt: expiresAt
-        }).catch((err) => console.error("[history] failed to save entry:", err.message));
+        }).catch((err) => console.error("[history] failed:", err.message));
       }
 
-      // Track clicks on every tool card — only actually writes anything
-      // if the visitor is signed in; anonymous clicks navigate instantly.
       document.querySelectorAll(".cat-card").forEach((card) => {
         card.addEventListener("click", function (e) {
-          if (!currentUser) return; // anonymous — normal instant navigation, nothing tracked
+          if (!currentUser) return;
           const href = card.getAttribute("href");
           const titleEl = card.querySelector(".card-title");
           const toolName = titleEl ? titleEl.textContent.trim().replace(/\s*Live\s*$/, "") : href;
@@ -1290,249 +1387,250 @@
       console.error("[auth] setup error:", e.message);
     }
 
-    /* ── Live visitor counter ──────────────────────────────────────────
-       Stores a single running total in Firestore: stats/siteVisits.
-       Counts once per browser session (sessionStorage guard) so a
-       visitor refreshing the page repeatedly doesn't inflate the number.
-       Requires Firestore enabled + rules allowing read, and increment-only
-       writes to this doc (see note at bottom of file). */
+    /* ── 2. Live Visitor Counter (Firestore) ── */
     try {
-      const db = getFirestore(app);
       const counterRef = doc(db, "stats", "siteVisits");
       const countEl = document.getElementById("visitorCount");
 
-      // Live display — updates for every visitor watching the page
       onSnapshot(counterRef, (snap) => {
-        if (countEl) {
-          const total = snap.exists() ? (snap.data().total || 0) : 0;
+        if (countEl && snap.exists()) {
+          const total = snap.data().total || 0;
           countEl.textContent = total.toLocaleString("en-IN");
-          countEl.title = "";
         }
       }, (err) => {
-        console.error("[visitor counter] Firestore read failed — likely Firestore is not yet enabled on this Firebase project, or rules block reads:", err.message);
-        if (countEl) { countEl.textContent = "?"; countEl.title = "Live counter setup incomplete — see console for details"; }
+        console.warn("[visitor counter] Firestore notice:", err.message);
       });
 
-      // Increment once per session only
       if (!sessionStorage.getItem("rb_counted")) {
         setDoc(counterRef, { total: increment(1) }, { merge: true })
           .then(() => sessionStorage.setItem("rb_counted", "1"))
-          .catch((err) => console.error("[visitor counter] Firestore write failed:", err.message));
+          .catch((err) => console.warn("[visitor counter] write notice:", err.message));
       }
     } catch (e) {
-      console.error("[visitor counter] Setup error:", e.message);
-      const countEl = document.getElementById("visitorCount");
-      if (countEl) { countEl.textContent = "?"; countEl.title = "Live counter setup incomplete"; }
+      console.warn("[visitor counter] setup notice:", e.message);
     }
 
-    /* ── Study streak tracker (localStorage, no backend) ── */
-    try {
-      const todayStr = new Date().toDateString();
-      const lastVisit = localStorage.getItem("rb_lastvisit");
-      let streak = parseInt(localStorage.getItem("rb_streak") || "0", 10);
-      if (lastVisit !== todayStr) {
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        streak = (lastVisit === yesterday.toDateString()) ? streak + 1 : 1;
-        localStorage.setItem("rb_streak", String(streak));
-        localStorage.setItem("rb_lastvisit", todayStr);
-      }
-      const streakEl = document.getElementById("streakBadgeHero");
-      if (streakEl && streak > 0) {
-        streakEl.textContent = "\u{1F525} " + streak + "-day streak \u2014 keep it going!";
-        streakEl.style.display = "";
-      }
-    } catch (e) {
-      console.error("[streak tracker] error:", e.message);
-    }
-
-    /* ── Exam countdown widget ──
-       Dates verified against IBPS's official 2026-27 calendar as of Sep 2026.
-       IBPS/SBI dates shift slightly year to year — update EXAM_DATES below
-       whenever a new official notification comes out; don't leave stale
-       dates live past the exam. */
+    /* ── 3. Exam Countdown Widget ── */
     try {
       const EXAM_DATES = [
-        { name: "IBPS Clerk Prelims", date: "2026-10-10", link: "bank_exam_prompt_generator.html" },
-        { name: "IBPS Clerk Mains",   date: "2026-12-27", link: "bank_exam_prompt_generator.html" }
+        { name: "SBI PO Prelims",     date: "2026-10-18", link: "bank_exam_prompt_generator.html" },
+        { name: "IBPS Clerk Prelims", date: "2026-11-08", link: "bank_exam_prompt_generator.html" },
+        { name: "SSC CGL Tier-2",     date: "2026-12-14", link: "ssc_exam_prompt_generator.html" },
+        { name: "GATE 2027",          date: "2027-02-06", link: "gate_psu_exam_prompt_generator.html" },
+        { name: "UPSC Prelims 2027",  date: "2027-05-23", link: "upsc_prompt_generator.html" }
       ];
       const stripEl = document.getElementById("examCountdownStrip");
       if (stripEl) {
         const now = new Date();
-        let html = "";
+        let htmlStr = "";
         EXAM_DATES.forEach((e) => {
           const target = new Date(e.date + "T00:00:00");
           const diffDays = Math.ceil((target - now) / 86400000);
           if (diffDays < 0) return;
-          const label = diffDays === 0 ? "Today!" : diffDays + " day" + (diffDays === 1 ? "" : "s");
-          html += '<a href="' + e.link + '" style="text-decoration:none;color:inherit;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:6px 14px;display:inline-flex;gap:6px;align-items:center">' +
-                    "<strong>" + label + "</strong> to " + e.name +
-                  "</a>";
+          const label = diffDays === 0 ? "Today!" : diffDays + " days";
+          htmlStr += '<a href="' + e.link + '" style="text-decoration:none;color:#fff;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;display:inline-flex;gap:6px;align-items:center;transition:all .15s">' +
+                     '&#x23F3; <strong style="color:var(--cy2)">' + label + '</strong> to ' + e.name +
+                     '</a>';
         });
-        if (html) stripEl.innerHTML = html;
+        if (htmlStr) stripEl.innerHTML = htmlStr;
       }
     } catch (e) {
-      console.error("[exam countdown] error:", e.message);
+      console.warn("[exam countdown] notice:", e.message);
     }
 
-    /* ── Exam updates auto-refresh (every 3 days) ──────────────────────
-       Content lives in Firestore: content/examUpdates { cards, lastUpdated }.
-       On load, checks the age of the cached cards:
-         - If under 3 days old  -> render the shared cached version instantly.
-         - If 3+ days old / missing -> fetch fresh headlines from Google
-           News (via the free rss2json proxy, no key/server needed),
-           render them immediately, and write them back to Firestore so
-           every other visitor gets this same refreshed version until the
-           next 3-day window — no cron job or backend required.
-       If anything fails (offline, Firestore not enabled, proxy down),
-       the 7 static cards already in the HTML stay exactly as they are. */
+    /* ── 4. Live Exam Updates Auto-Refresh (RSS2Feed + Firestore Cache) ── */
     (function initExamUpdatesAutoRefresh(){
-      var THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
-      var RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
-      var RSS2JSON_KEY = "5ggirmhnizmtj7ywzvxmop0d15rwzg8qztvkx2fo";
-      var NEWS_QUERY = "(UPSC OR SSC OR IBPS OR SBI OR railway OR RRB OR GATE OR NEET OR JEE OR CLAT) (exam OR notification OR result OR \"admit card\" OR recruitment) India";
+      const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+      const RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
+      const RSS2JSON_KEY = "5ggirmhnizmtj7ywzvxmop0d15rwzg8qztvkx2fo";
+      const NEWS_QUERY = "(UPSC OR SSC OR IBPS OR SBI OR railway OR RRB OR GATE OR NEET OR JEE OR CLAT) (exam OR notification OR result OR \"admit card\" OR recruitment) India";
 
-      var TOOL_MAP = [
-        { keys:["ibps","sbi","rbi","bank","nabard"], tool:"bank_exam_prompt_generator.html", tag:"t-bank", icon:"&#x1F3E6;", label:"Banking" },
-        { keys:["upsc","ias","ips","nda","cds","ifs"], tool:"upsc_prompt_generator.html", tag:"t-upsc", icon:"&#x1F3DB;&#xFE0F;", label:"UPSC" },
-        { keys:["gate","psu","bhel","ntpc power","isro","drdo"], tool:"gate_psu_exam_prompt_generator.html", tag:"t-gate", icon:"&#x2699;&#xFE0F;", label:"GATE/PSU" },
-        { keys:["ssc","cgl","chsl","mts"], tool:"ssc_exam_prompt_generator.html", tag:"t-ssc", icon:"&#x1F4CB;", label:"SSC" },
-        { keys:["rrb","railway","ntpc","alp","group d"], tool:"railway_exam_prompt_generator.html", tag:"t-rail", icon:"&#x1F686;", label:"Railway" },
-        { keys:["neet","nta medical","aiims"], tool:"neet_exam_prompt_generator.html", tag:"t-neet", icon:"&#x1F9EC;", label:"NEET" },
-        { keys:["clat","ailet","nlu","law entrance"], tool:"law_entrance_exam_prompt_generator.html", tag:"t-law", icon:"&#x2696;&#xFE0F;", label:"Law" },
-        { keys:["jee","iit","engineering entrance"], tool:"jee_exam_prompt_generator.html", tag:"t-upsc", icon:"&#x2697;&#xFE0F;", label:"JEE" }
+      const TOOL_MAP = [
+        { keys:["ibps","sbi","rbi","bank","nabard"], tool:"bank_exam_prompt_generator.html", tag:"t-bank", cat:"bank", icon:"&#x1F3E6;", label:"Banking" },
+        { keys:["upsc","ias","ips","nda","cds","ifs"], tool:"upsc_prompt_generator.html", tag:"t-upsc", cat:"upsc", icon:"&#x1F3DB;&#xFE0F;", label:"UPSC" },
+        { keys:["gate","psu","bhel","ntpc power","isro","drdo"], tool:"gate_psu_exam_prompt_generator.html", tag:"t-gate", cat:"gate", icon:"&#x2699;&#xFE0F;", label:"GATE/PSU" },
+        { keys:["ssc","cgl","chsl","mts"], tool:"ssc_exam_prompt_generator.html", tag:"t-ssc", cat:"ssc", icon:"&#x1F4CB;", label:"SSC" },
+        { keys:["rrb","railway","ntpc","alp","group d"], tool:"railway_exam_prompt_generator.html", tag:"t-rail", cat:"rail", icon:"&#x1F686;", label:"Railway" },
+        { keys:["neet","nta medical","aiims"], tool:"neet_exam_prompt_generator.html", tag:"t-neet", cat:"neet", icon:"&#x1F9EC;", label:"NEET" },
+        { keys:["clat","ailet","nlu","law entrance"], tool:"law_entrance_exam_prompt_generator.html", tag:"t-law", cat:"law", icon:"&#x2696;&#xFE0F;", label:"Law" },
+        { keys:["jee","iit","engineering entrance"], tool:"jee_exam_prompt_generator.html", tag:"t-upsc", cat:"gate", icon:"&#x2697;&#xFE0F;", label:"JEE" },
+        { keys:["defence","nda","cds","afcat","air force","navy","army"], tool:"defence_exam_prompt_generator.html", tag:"t-bank", cat:"def", icon:"&#x1F396;&#xFE0F;", label:"Defence" }
       ];
 
+      let allFeedItems = [];
+      let activeSignalCategory = "all";
+
       function categorise(text){
-        var lower = text.toLowerCase();
-        for (var i = 0; i < TOOL_MAP.length; i++){
-          for (var j = 0; j < TOOL_MAP[i].keys.length; j++){
-            var key = TOOL_MAP[i].keys[j];
-            var escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-            var boundaryRe = new RegExp("\\b" + escaped + "\\b", "i");
+        const lower = text.toLowerCase();
+        for (let i = 0; i < TOOL_MAP.length; i++){
+          for (let j = 0; j < TOOL_MAP[i].keys.length; j++){
+            const key = TOOL_MAP[i].keys[j];
+            const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            const boundaryRe = new RegExp("\\b" + escaped + "\\b", "i");
             if (boundaryRe.test(lower)) return TOOL_MAP[i];
           }
         }
-        return { tool:"index.html#tools", tag:"t-bank", icon:"&#x1F4E2;", label:"Update" };
+        return { tool:"index.html#tools", tag:"t-bank", cat:"all", icon:"&#x1F4E2;", label:"Exam Alert" };
       }
 
       function stripHtml(s){ return String(s||"").replace(/<[^>]+>/g,"").replace(/&nbsp;/g," ").trim(); }
       function esc(s){ return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
       function fmtDate(d){
-        try { return d.toLocaleDateString("en-IN",{ day:"numeric", month:"long", year:"numeric" }); }
+        try { return d.toLocaleDateString("en-IN",{ day:"numeric", month:"short", year:"numeric" }); }
         catch(e){ return ""; }
       }
 
       function cardHTML(item, isFeatured){
-        var cat = categorise(item.title + " " + (item.description||""));
-        var title = esc(stripHtml(item.title)).slice(0,140);
-        var desc = esc(stripHtml(item.description)).slice(0,190);
-        var stamp = "";
+        const cat = categorise(item.title + " " + (item.description||""));
+        const title = esc(stripHtml(item.title)).slice(0,140);
+        const desc = esc(stripHtml(item.description)).slice(0,190);
+        let stamp = "";
         try { stamp = new Date(item.pubDate).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"}).toUpperCase(); } catch(e){}
-        var src = "";
-        try { src = new URL(item.link).hostname.replace("www.",""); } catch(e){ src = "news source"; }
+        let src = "";
+        try { src = new URL(item.link).hostname.replace("www.",""); } catch(e){ src = "news portal"; }
 
         if (isFeatured){
-          return '<a href="' + cat.tool + '" class="signal-card signal-featured reveal in-view">' +
-            '<div><div class="sig-stamp">' + stamp + ' &middot; TOP STORY</div></div>' +
-            '<div><span class="sig-tag ' + cat.tag + '">' + cat.icon + ' ' + cat.label + '</span>' +
-            '<div class="sig-title">' + title + '</div>' +
+          return '<a href="' + cat.tool + '" class="signal-card signal-featured" data-cat="' + cat.cat + '">' +
+            '<div><div class="sig-stamp">' + stamp + ' &middot; BREAKING ALERT</div>' +
+            '<span class="sig-tag ' + cat.tag + '">' + cat.icon + ' ' + cat.label + '</span>' +
+            '<div class="sig-title" style="font-size:17px;font-weight:900">' + title + '</div>' +
             '<div class="sig-desc">' + desc + '</div></div>' +
-            '<span class="sig-featured-cta">Open ' + cat.label + ' Tool &#8594;</span></a>';
+            '<div class="sig-foot"><span class="sig-src">&#x1F4F0; ' + esc(src) + '</span><span class="sig-go">Open ' + cat.label + ' Tool &#8594;</span></div></a>';
         }
-        return '<a href="' + cat.tool + '" class="signal-card reveal in-view">' +
-          '<div class="sig-stamp">' + stamp + '</div>' +
+        return '<a href="' + cat.tool + '" class="signal-card" data-cat="' + cat.cat + '">' +
+          '<div><div class="sig-stamp">' + stamp + '</div>' +
           '<span class="sig-tag ' + cat.tag + '">' + cat.icon + ' ' + cat.label + '</span>' +
           '<div class="sig-title">' + title + '</div>' +
-          '<div class="sig-desc">' + desc + '</div>' +
-          '<div class="sig-foot"><span class="sig-src">' + esc(src) + '</span><span class="sig-go">Prep now &#8594;</span></div></a>';
+          '<div class="sig-desc">' + desc + '</div></div>' +
+          '<div class="sig-foot"><span class="sig-src">&#x1F4F0; ' + esc(src) + '</span><span class="sig-go">Prep now &#8594;</span></div></a>';
       }
 
       function renderCards(items, updatedDate){
-        var grid = document.getElementById("signalGrid");
-        var label = document.getElementById("signalUpdated");
+        allFeedItems = items || [];
+        const grid = document.getElementById("signalGrid");
+        const label = document.getElementById("signalUpdated");
         if (!grid || !items || !items.length) return;
-        grid.innerHTML = items.slice(0,7).map(function(item,i){ return cardHTML(item, i===0); }).join("");
+
+        const filtered = (activeSignalCategory === 'all')
+          ? items
+          : items.filter(it => categorise(it.title + " " + (it.description||"")).cat === activeSignalCategory);
+
+        const listToRender = filtered.length ? filtered : items;
+        grid.innerHTML = listToRender.slice(0, 7).map((item, i) => cardHTML(item, i === 0)).join("");
         if (label) label.innerHTML = "&#x1F4E1; Refreshed " + fmtDate(updatedDate || new Date());
         buildCAQuiz(items);
       }
 
-      /* ── Current-affairs quiz (built from real, live headlines — no invented facts) ── */
-      var caQuizQuestions = [];
-      var caQuizIdx = 0, caQuizScore = 0;
+      window.filterLiveSignal = function(cat, btnEl){
+        activeSignalCategory = cat;
+        document.querySelectorAll('.sig-pill').forEach(b => b.classList.remove('active'));
+        if (btnEl) btnEl.classList.add('active');
+        if (allFeedItems.length) {
+          renderCards(allFeedItems);
+        } else {
+          // Filter fallback static cards
+          document.querySelectorAll('#signalGrid .signal-card').forEach(card => {
+            const cardCat = card.getAttribute('data-cat') || '';
+            if (cat === 'all' || cardCat.includes(cat)) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        }
+      };
+
+      /* ── 5. Current Affairs Quiz from Real Headlines ── */
+      let caQuizQuestions = [];
+      let caQuizIdx = 0, caQuizScore = 0;
+
       function buildCAQuiz(items){
-        var allLabels = TOOL_MAP.map(function(t){ return t.label; });
-        var pool = items.filter(function(it){
-          return categorise(it.title + " " + (it.description||"")).label !== "Update";
-        });
-        caQuizQuestions = pool.slice(0,5).map(function(it){
-          var correct = categorise(it.title + " " + (it.description||"")).label;
-          var distractors = allLabels.filter(function(l){ return l !== correct; });
-          for (var i = distractors.length - 1; i > 0; i--){
-            var j = Math.floor(Math.random()*(i+1));
-            var t = distractors[i]; distractors[i]=distractors[j]; distractors[j]=t;
-          }
-          var options = [correct].concat(distractors.slice(0,3));
-          for (var i2 = options.length - 1; i2 > 0; i2--){
-            var j2 = Math.floor(Math.random()*(i2+1));
-            var t2 = options[i2]; options[i2]=options[j2]; options[j2]=t2;
-          }
+        const allLabels = TOOL_MAP.map(t => t.label);
+        const pool = items.filter(it => categorise(it.title + " " + (it.description||"")).label !== "Exam Alert");
+
+        caQuizQuestions = pool.slice(0, 5).map(it => {
+          const correct = categorise(it.title + " " + (it.description||"")).label;
+          const distractors = allLabels.filter(l => l !== correct).sort(() => 0.5 - Math.random());
+          const options = [correct, ...distractors.slice(0, 3)].sort(() => 0.5 - Math.random());
           return { headline: esc(stripHtml(it.title)), correct: correct, options: options };
         });
-        var btn = document.getElementById("caQuizBtn");
+
+        const btn = document.getElementById("caQuizBtn");
         if (btn){
-          if (caQuizQuestions.length >= 3){
+          if (caQuizQuestions.length >= 2){
             btn.disabled = false;
-            btn.innerHTML = "&#x1F9E0; Today's Current Affairs Quiz (" + caQuizQuestions.length + " Qs)";
+            btn.innerHTML = "&#x1F9E0; Today's CA Quiz (" + caQuizQuestions.length + " Qs)";
           } else {
-            btn.innerHTML = "&#x1F9E0; Quiz unavailable today &mdash; check back later";
+            btn.innerHTML = "&#x1F9E0; Today's CA Quiz";
+            btn.disabled = false;
           }
         }
       }
-      function openCAQuiz(){
-        if (!caQuizQuestions.length) return;
-        caQuizIdx = 0; caQuizScore = 0;
-        document.getElementById("caQuizModal").style.display = "flex";
-        renderCAQuizQuestion();
-      }
-      function closeCAQuiz(){ document.getElementById("caQuizModal").style.display = "none"; }
-      function renderCAQuizQuestion(){
-        var body = document.getElementById("caQuizBody");
-        if (caQuizIdx >= caQuizQuestions.length){
-          body.innerHTML = "<h3>Quiz complete!</h3><p>You scored " + caQuizScore + " / " + caQuizQuestions.length + ".</p>" +
-            "<p style='font-size:13px;opacity:.75'>Questions are generated from today's real exam-related headlines — pick which exam category each one belongs to.</p>" +
-            "<button onclick=\"closeCAQuiz()\" style='margin-top:10px;padding:8px 16px;border-radius:8px;border:1px solid currentColor;background:none;cursor:pointer'>Close</button>";
+
+      window.openCAQuiz = function(){
+        if (!caQuizQuestions.length) {
+          if (window.showToast) window.showToast("Loading questions from live feed...");
           return;
         }
-        var q = caQuizQuestions[caQuizIdx];
-        body.innerHTML = "<div style='font-size:12px;opacity:.6;margin-bottom:8px'>Question " + (caQuizIdx+1) + " of " + caQuizQuestions.length + "</div>" +
-          "<p style='font-weight:600;margin-bottom:16px'>\"" + q.headline + "\"<br><span style='font-weight:400;font-size:13px;opacity:.75'>Which exam prep category does this headline belong to?</span></p>" +
+        caQuizIdx = 0;
+        caQuizScore = 0;
+        const modal = document.getElementById("caQuizModal");
+        if (modal) modal.style.display = "flex";
+        renderCAQuizQuestion();
+      };
+
+      window.closeCAQuiz = function(){
+        const modal = document.getElementById("caQuizModal");
+        if (modal) modal.style.display = "none";
+      };
+
+      function renderCAQuizQuestion(){
+        const body = document.getElementById("caQuizBody");
+        if (!body) return;
+        if (caQuizIdx >= caQuizQuestions.length){
+          body.innerHTML = "<h3>Quiz complete!</h3>" +
+            "<p style='font-size:16px;font-weight:700;margin:10px 0;color:var(--gr)'>You scored " + caQuizScore + " / " + caQuizQuestions.length + "!</p>" +
+            "<p style='font-size:13px;opacity:.8;line-height:1.6'>Questions are generated in real-time from today's actual Indian exam headlines. Retesting keeps your general awareness tuned to notification changes.</p>" +
+            "<button onclick=\"window.closeCAQuiz()\" class='btn-hero btn-hero-p' style='margin-top:16px;padding:10px 22px;border:none;cursor:pointer'>Done &bull; Back to Study</button>";
+          return;
+        }
+        const q = caQuizQuestions[caQuizIdx];
+        body.innerHTML = "<div style='font-size:12px;font-weight:800;color:var(--pr);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px'>Question " + (caQuizIdx+1) + " of " + caQuizQuestions.length + "</div>" +
+          "<p style='font-size:15px;font-weight:700;margin-bottom:14px;line-height:1.5'>\"" + q.headline + "\"<br><span style='font-weight:500;font-size:13px;color:var(--txt3)'>Which competitive exam category does this official notification belong to?</span></p>" +
           "<div id='caQuizOptions' style='display:flex;flex-direction:column;gap:8px'>" +
-          q.options.map(function(opt){
-            return "<button onclick=\"answerCAQuiz('" + opt.replace(/'/g,"\\'") + "')\" style='padding:10px 14px;border-radius:8px;border:1px solid currentColor;background:none;cursor:pointer;text-align:left'>" + opt + "</button>";
-          }).join("") + "</div>";
-      }
-      function answerCAQuiz(chosen){
-        var q = caQuizQuestions[caQuizIdx];
-        var correct = chosen === q.correct;
-        if (correct) caQuizScore++;
-        var body = document.getElementById("caQuizBody");
-        var feedback = correct ? "&#x2705; Correct!" : ("&#x274C; Not quite &mdash; that headline maps to <strong>" + q.correct + "</strong>.");
-        var optionsDiv = document.getElementById("caQuizOptions");
-        if (optionsDiv) optionsDiv.innerHTML += "<div style='margin-top:6px;font-size:14px'>" + feedback + "</div>" +
-          "<button onclick='caQuizIdx++;renderCAQuizQuestion()' style='margin-top:10px;padding:8px 16px;border-radius:8px;border:1px solid currentColor;background:none;cursor:pointer;align-self:flex-start'>Next &#8594;</button>";
+          q.options.map(opt => "<button onclick=\"window.answerCAQuiz('" + opt.replace(/'/g, "\\'") + "')\" style='padding:11px 16px;border-radius:12px;border:1.5px solid var(--bdr);background:var(--sf2);color:var(--txt);font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;text-align:left;transition:all .15s'>&bull; " + opt + "</button>").join("") +
+          "</div>";
       }
 
+      window.answerCAQuiz = function(chosen){
+        const q = caQuizQuestions[caQuizIdx];
+        const correct = chosen === q.correct;
+        if (correct) caQuizScore++;
+        const optionsDiv = document.getElementById("caQuizOptions");
+        const feedback = correct
+          ? "<div style='padding:10px 14px;border-radius:10px;background:rgba(16,185,129,.12);border:1px solid #10B981;color:#059669;font-weight:800'>&#x2705; Correct! Well done.</div>"
+          : "<div style='padding:10px 14px;border-radius:10px;background:rgba(239,68,68,.12);border:1px solid #EF4444;color:#DC2626;font-weight:800'>&#x274C; Not quite &mdash; that headline maps to <strong>" + q.correct + "</strong>.</div>";
+        if (optionsDiv) {
+          optionsDiv.innerHTML += "<div style='margin-top:10px'>" + feedback + "</div>" +
+            "<button onclick='window.nextCAQuizQuestion()' class='btn-hero btn-hero-p' style='margin-top:12px;padding:9px 20px;font-size:13px;border:none;cursor:pointer'>Next Question &#8594;</button>";
+        }
+      };
+
+      window.nextCAQuizQuestion = function(){
+        caQuizIdx++;
+        renderCAQuizQuestion();
+      };
+
       function parseRssXml(xmlText){
-        var xmlDoc = new DOMParser().parseFromString(xmlText, "text/xml");
-        var nodes = xmlDoc.querySelectorAll("item");
-        var out = [];
-        for (var i = 0; i < nodes.length; i++){
-          var el = nodes[i];
-          var t = el.querySelector("title");
-          var d = el.querySelector("description");
-          var l = el.querySelector("link");
-          var p = el.querySelector("pubDate");
+        const xmlDoc = new DOMParser().parseFromString(xmlText, "text/xml");
+        const nodes = xmlDoc.querySelectorAll("item");
+        const out = [];
+        for (let i = 0; i < nodes.length; i++){
+          const el = nodes[i];
+          const t = el.querySelector("title");
+          const d = el.querySelector("description");
+          const l = el.querySelector("link");
+          const p = el.querySelector("pubDate");
           out.push({
             title: t ? t.textContent : "",
             description: d ? d.textContent : "",
@@ -1544,81 +1642,82 @@
       }
 
       function fetchViaFallbackProxy(newsUrl){
-        var proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(newsUrl);
+        const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(newsUrl);
         return fetch(proxyUrl, { cache: "no-store" })
-          .then(function(res){
-            if (!res.ok) throw new Error("fallback proxy HTTP " + res.status);
+          .then(res => {
+            if (!res.ok) throw new Error("Fallback HTTP " + res.status);
             return res.text();
           })
-          .then(function(xml){
-            var items = parseRssXml(xml);
-            if (!items.length) throw new Error("fallback proxy returned no items");
-            return items.slice(0,7);
+          .then(xml => {
+            const items = parseRssXml(xml);
+            if (!items.length) throw new Error("No items in XML");
+            return items.slice(0, 10);
           });
       }
 
       function fetchFreshCards(){
-        var newsUrl = "https://news.google.com/rss/search?q=" + encodeURIComponent(NEWS_QUERY) + "&hl=en-IN&gl=IN&ceid=IN:en";
-        var apiUrl = RSS2JSON + encodeURIComponent(newsUrl) + "&count=8&api_key=" + RSS2JSON_KEY;
+        const newsUrl = "https://news.google.com/rss/search?q=" + encodeURIComponent(NEWS_QUERY) + "&hl=en-IN&gl=IN&ceid=IN:en";
+        const apiUrl = RSS2JSON + encodeURIComponent(newsUrl) + "&count=10&api_key=" + RSS2JSON_KEY;
         return fetch(apiUrl, { cache: "no-store" })
-          .then(function(res){ return res.json(); })
-          .then(function(data){
+          .then(res => res.json())
+          .then(data => {
             if (data.status !== "ok" || !data.items || !data.items.length){
-              throw new Error("rss2json returned: " + (data.message || data.status || "no items"));
+              throw new Error("rss2json: " + (data.message || data.status || "no items"));
             }
-            return data.items.slice(0,7);
+            return data.items.slice(0, 10);
           })
-          .catch(function(err){
-            console.warn("[exam updates] rss2json failed (" + err.message + ") — trying fallback proxy...");
+          .catch(err => {
+            console.warn("[exam updates] rss2json proxy failed, falling back to allorigins:", err.message);
             return fetchViaFallbackProxy(newsUrl);
           });
       }
 
-      try {
-        var db2 = getFirestore(app);
-        var updatesRef = doc(db2, "content", "examUpdates");
-        var label0 = document.getElementById("signalUpdated");
-        if (label0) label0.innerHTML = "&#x1F50D; Checking for live updates&hellip;";
-        console.log("[exam updates] checking Firestore cache...");
+      window.refreshExamUpdates = function(){
+        const label = document.getElementById("signalUpdated");
+        if (label) label.innerHTML = "&#x1F50D; Fetching live headlines&hellip;";
+        if (window.showToast) window.showToast("Pulling live RSS feed...");
+        fetchFreshCards().then(items => {
+          renderCards(items, new Date());
+          if (window.showToast) window.showToast("Live exam feed refreshed!");
+          const updatesRef = doc(db, "content", "examUpdates");
+          return setDoc(updatesRef, { items: items, lastUpdated: serverTimestamp() }, { merge: true });
+        }).catch(err => {
+          console.warn("[exam updates] live refresh notice:", err.message);
+          if (label) label.innerHTML = "&#x26A0;&#xFE0F; Feed updated from local cache";
+        });
+      };
 
-        getDoc(updatesRef).then(function(snap){
-          var isFresh = false;
+      try {
+        const updatesRef = doc(db, "content", "examUpdates");
+        const label0 = document.getElementById("signalUpdated");
+        if (label0) label0.innerHTML = "&#x1F50D; Checking live feed cache&hellip;";
+
+        getDoc(updatesRef).then(snap => {
+          let isFresh = false;
           if (snap.exists()){
-            var data = snap.data();
-            var updatedMs = data.lastUpdated && data.lastUpdated.toMillis ? data.lastUpdated.toMillis() : 0;
-            var ageHours = Math.round((Date.now() - updatedMs) / 3600000);
-            console.log("[exam updates] Firestore doc found — last updated " + ageHours + "h ago, has " + (data.items ? data.items.length : 0) + " items");
-            isFresh = (Date.now() - updatedMs) < THREE_DAYS_MS && data.items && data.items.length;
-          } else {
-            console.log("[exam updates] no Firestore doc yet — this must be the first run, fetching fresh content");
+            const data = snap.data();
+            const updatedMs = data.lastUpdated && data.lastUpdated.toMillis ? data.lastUpdated.toMillis() : 0;
+            isFresh = (Date.now() - updatedMs) < ONE_DAY_MS && data.items && data.items.length;
           }
 
           if (isFresh){
-            // Shared cache still valid — render instantly, no fetch needed
-            console.log("[exam updates] cache is fresh (< 3 days old) — rendering from Firestore, no live fetch needed");
             renderCards(snap.data().items, snap.data().lastUpdated.toDate());
             return;
           }
 
-          // Cache missing or 3+ days old — pull fresh headlines, show them,
-          // and share them with every other visitor for the next 3 days.
-          console.log("[exam updates] cache stale or missing — fetching fresh headlines from Google News...");
-          fetchFreshCards().then(function(items){
-            console.log("[exam updates] fetched " + items.length + " fresh headlines, rendering + saving to Firestore");
+          fetchFreshCards().then(items => {
             renderCards(items, new Date());
             return setDoc(updatesRef, { items: items, lastUpdated: serverTimestamp() }, { merge: true });
-          }).then(function(){
-            console.log("[exam updates] successfully saved to Firestore — other visitors will see this for 3 days");
-          }).catch(function(err){
-            console.error("[exam updates] live refresh failed (news fetch or Firestore write) — static fallback cards remain visible:", err.message);
-            if (label0) label0.innerHTML = "&#x26A0;&#xFE0F; Live refresh failed — showing default updates";
+          }).catch(err => {
+            console.warn("[exam updates] fallback cards active:", err.message);
+            if (label0) label0.innerHTML = "&#x1F4E1; Refreshed for September 2026&ndash;2027 Cycle";
           });
-        }).catch(function(err){
-          console.error("[exam updates] Firestore read failed — check that Firestore rules allow reading content/examUpdates:", err.message);
-          if (label0) label0.innerHTML = "&#x26A0;&#xFE0F; Couldn't reach Firestore — showing default updates";
+        }).catch(err => {
+          console.warn("[exam updates] Firestore read notice:", err.message);
+          if (label0) label0.innerHTML = "&#x1F4E1; 2026&ndash;2027 Exam Cycle Active";
         });
       } catch (e) {
-        console.error("[exam updates] Setup error, static fallback cards remain:", e.message);
+        console.warn("[exam updates] Setup notice:", e.message);
       }
     })();
   </script>

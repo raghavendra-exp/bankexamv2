@@ -1259,3 +1259,95 @@
 [data-theme="dark"] .cov-link:hover {
   color: #A5F3FC !important;
 }
+
+
+/* ── Auth, Social Float & Live Signal Enhancements ── */
+.auth-widget {
+  display: flex;
+  align-items: center;
+}
+
+.be-btn-signin {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(6, 182, 212, 0.25)) !important;
+  border-color: rgba(99, 102, 241, 0.45) !important;
+  color: #FFFFFF !important;
+}
+
+.be-btn-signin:hover {
+  background: linear-gradient(135deg, #6366F1, #4F46E5) !important;
+  border-color: #6366F1 !important;
+  color: #FFFFFF !important;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 10px 3px 4px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.user-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1.5px solid #10B981;
+}
+
+.user-name {
+  font-size: 12px;
+  font-weight: 800;
+  color: #FFFFFF;
+  max-width: 85px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hdr-signout {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.hdr-signout:hover {
+  color: #EF4444;
+}
+
+[data-theme="dark"] .user-chip {
+  background: rgba(17, 24, 39, 0.8) !important;
+  border-color: #374151 !important;
+}
+
+[data-theme="dark"] #caQuizModal > div {
+  background: #111827 !important;
+  border-color: #374151 !important;
+  color: #F1F5F9 !important;
+}
+
+[data-theme="dark"] #caQuizModal p {
+  color: #F1F5F9 !important;
+}
+
+[data-theme="dark"] #caQuizOptions button {
+  background: #162032 !important;
+  color: #F1F5F9 !important;
+  border-color: #2D3748 !important;
+}
+
+[data-theme="dark"] #caQuizOptions button:hover {
+  background: #1E293B !important;
+  border-color: #6366F1 !important;
+}
