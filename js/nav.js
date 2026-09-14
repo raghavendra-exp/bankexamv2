@@ -163,6 +163,13 @@
     "href": "trend-analysis-generator.html",
     "cat": "tool",
     "tags": "trend analysis cut off weightage analysis pyq shifts"
+  },
+  {
+    "title": "All-Exam Roadmaps, Strategy & Best Books Guide",
+    "sub": "4-Phase Roadmaps & Topper Strategies for All Exams",
+    "href": "all-exam-roadmaps.html",
+    "cat": "tool",
+    "tags": "roadmap roadmaps strategy books best book list schedule timetable guide upsc ssc bank gate railway defence neet jee"
   }
 ];
 
@@ -466,8 +473,11 @@
             <a href="index.html#promptStudio" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">⚡</span> <span>Live AI Prompt Studio</span>
             </a>
+            <a href="all-exam-roadmaps.html" class="drawer-link" onclick="window.closeMobileDrawer()" style="background:rgba(245,158,11,.1);color:#D97706;font-weight:800">
+              <span class="drawer-icon">🗺️</span> <span>All-Exam Roadmaps &amp; Books</span>
+            </a>
             <a href="IBPS_SBI_Clerk_Roadmap.html" class="drawer-link" onclick="window.closeMobileDrawer()">
-              <span class="drawer-icon">🗺️</span> <span>12-Week Banking Roadmap</span>
+              <span class="drawer-icon">🧭</span> <span>12-Week Banking Roadmap</span>
             </a>
             <a href="IBPS_SBI_Free_Library.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">📖</span> <span>Free Study Library</span>
@@ -491,6 +501,9 @@
           <div class="drawer-footer">
             <button class="drawer-tool-btn" id="drawerThemeToggle" onclick="window.toggleTheme()">
               <span>Toggle Theme</span>
+            </button>
+            <button class="drawer-tool-btn" onclick="window.closeMobileDrawer(); window.openFormulaVault();">
+              <span>⚡ Formula Vault</span>
             </button>
             <button class="drawer-tool-btn" onclick="window.closeMobileDrawer(); window.openCalculator();">
               <span>🧮 Calculator</span>

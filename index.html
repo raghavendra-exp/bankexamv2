@@ -565,7 +565,7 @@
         <a href="#coverage">Coverage</a>
         <a href="quiz-simulator.html" style="color:#34D399;font-weight:800">&#x1F3AF; Mock Lab</a>
         <a href="#promptStudio">&#x2728; AI Studio</a>
-        <a href="IBPS_SBI_Clerk_Roadmap.html">Roadmap</a>
+        <a href="all-exam-roadmaps.html" style="color:#FCD34D;font-weight:800">&#x1F5FA;&#xFE0F; Roadmaps &amp; Books</a>
         <a href="IBPS_SBI_Free_Library.html">Free Library</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -875,13 +875,13 @@
             </div>
           </a>
 
-          <!-- Tool 4: Preparation Roadmap -->
-          <a href="IBPS_SBI_Clerk_Roadmap.html" class="comp-card">
+          <!-- Tool 4: Preparation Roadmap & Best Books -->
+          <a href="all-exam-roadmaps.html" class="comp-card">
             <div class="comp-icon-box" style="background:rgba(245,158,11,.12);color:#D97706">&#x1F5FA;&#xFE0F;</div>
             <div class="comp-card-content">
-              <div class="comp-title">2026&ndash;2027 Mastery Roadmap</div>
-              <p class="comp-desc">12-week structured phase-by-phase blueprint from foundational basics through high-percentile mock test strategy.</p>
-              <div class="comp-link">View Roadmap &rarr;</div>
+              <div class="comp-title">All-Exam Roadmaps &amp; Best Books</div>
+              <p class="comp-desc">Step-by-step 4-phase timelines, day-wise topper routines, and standard reference booklists for all 10 exam streams.</p>
+              <div class="comp-link">Explore Master Roadmaps &rarr;</div>
             </div>
           </a>
 
@@ -1488,6 +1488,44 @@
 
     
     <!-- ════ WHAT EACH TOOL COVERS ════ -->
+    
+    <!-- ══════════════════════════════════════════════════════════
+         ALL-EXAM ROADMAPS, PREPARATION STRATEGY & BEST BOOKS
+         ══════════════════════════════════════════════════════════ -->
+    <section id="examRoadmaps" style="margin-bottom:48px;scroll-margin-top:120px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:20px">
+        <div>
+          <div class="sec-eyebrow">&#x1F5FA;&#xFE0F; Step-by-Step Guides &middot; 2026&ndash;2027 Cycle</div>
+          <h2 class="sec-hd">All-Exam Roadmaps, Strategy &amp; Best Books</h2>
+          <p class="sec-sub" style="margin-bottom:0">Select your target exam stream to view 4-phase preparation timelines, day-wise topper timetables, and authoritative textbook recommendations.</p>
+        </div>
+        <div>
+          <a href="all-exam-roadmaps.html" class="hub-pill-btn" style="background:linear-gradient(135deg,var(--pr),var(--cy));color:#fff;border:none">
+            &#x1F4D6; Full Master Guide (All Streams) &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Stream Selector Tab Pills -->
+      <div class="stream-jump-bar" style="border-radius:var(--r);margin-bottom:20px;border:1.5px solid var(--bdr);position:static">
+        <button class="s-jump-pill active" onclick="switchHomeRoadmap('bank', this)">&#x1F3E6; Banking &amp; Insurance</button>
+        <button class="s-jump-pill" onclick="switchHomeRoadmap('upsc', this)">&#x1F3DB;&#xFE0F; UPSC Civil Services</button>
+        <button class="s-jump-pill" onclick="switchHomeRoadmap('ssc', this)">&#x26A1; SSC Exams</button>
+        <button class="s-jump-pill" onclick="switchHomeRoadmap('rail', this)">&#x1F686; Railways RRB</button>
+        <button class="s-jump-pill" onclick="switchHomeRoadmap('gate', this)">&#x2699;&#xFE0F; GATE &amp; PSUs</button>
+        <button class="s-jump-pill" onclick="switchHomeRoadmap('def', this)">&#x2694;&#xFE0F; Defence (NDA/CDS)</button>
+        <button class="s-jump-pill" onclick="switchHomeRoadmap('law', this)">&#x2696;&#xFE0F; Law (CLAT/PCS-J)</button>
+        <button class="s-jump-pill" onclick="switchHomeRoadmap('mba', this)">&#x1F4C8; MBA / CAT</button>
+        <button class="s-jump-pill" onclick="switchHomeRoadmap('med_eng', this)">&#x1FA7A; NEET &amp; JEE</button>
+        <button class="s-jump-pill" onclick="switchHomeRoadmap('teach', this)">&#x1F393; State PSC &amp; Teaching</button>
+      </div>
+
+      <!-- Dynamic Roadmap Content Container -->
+      <div id="homeRoadmapContainer" class="stream-sec" style="margin-bottom:0">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
     <section id="coverage" style="margin:56px 0 40px">
       <div class="sec-eyebrow">Comprehensive Syllabus &amp; Feature Coverage</div>
       <h2 class="sec-hd">What Each Tool Covers (2026&ndash;2027 Exam Cycle)</h2>
@@ -1940,7 +1978,7 @@
       <div class="ft-links">
         <a href="index.html">Home</a>
         <a href="quiz-simulator.html">Mock Lab</a>
-        <a href="IBPS_SBI_Clerk_Roadmap.html">Roadmap</a>
+        <a href="all-exam-roadmaps.html" style="color:#FCD34D;font-weight:800">&#x1F5FA;&#xFE0F; Roadmaps &amp; Books</a>
         <a href="IBPS_SBI_Free_Library.html">Library</a>
         <a href="contact.html">Contact</a>
         <a href="privacy-policy.html">Privacy Policy</a>
@@ -2934,6 +2972,355 @@
         window.closeFormulaVault();
       }
     });
+  })();
+  </script>
+
+
+  <!-- ════ ROADMAPS SWITCHER SCRIPT ════ -->
+  <script>
+  (function() {
+    const ROADMAP_DATA = {
+      bank: {
+        title: "Banking & Insurance (SBI PO/Clerk, IBPS PO/Clerk, RBI Grade B)",
+        desc: "Speed-focused preparation combining 45-second calculation shortcuts, high-difficulty puzzle cases, and financial awareness.",
+        phases: [
+          { n: "1", t: "Speed Math & Grammar Core", dur: "Month 1 (Weeks 1-4)", pts: ["Tables up to 30, squares to 50, cubes to 30, fraction to %.", "Simplification, Approximation, Quadratic signs.", "Grammar rules: Subject-verb, prepositions, cloze test."] },
+          { n: "2", t: "Arithmetic & Puzzles", dur: "Months 2-3 (Weeks 5-10)", pts: ["Percent, Profit-Loss, Ratio, SI-CI, Time-Work, TSD.", "Circular, Linear, Floor, Box, Month-Day seating.", "Daily The Hindu editorial reading + vocabulary."] },
+          { n: "3", t: "Prelims Speed Mocks", dur: "Month 4 (Weeks 11-16)", pts: ["Full Prelims mock every alternate day (60 min).", "Categorize missed questions in Error-Log notebook.", "Target 65+ in PO Prelims, 78+ in Clerk Prelims."] },
+          { n: "4", t: "Mains High-DI & GA", dur: "Months 5-6 (Weeks 17-24)", pts: ["Mains DI (Radar, Funnel, Mixed, Arithmetic DI).", "Critical Reasoning (Assumptions, Arguments).", "6 months of Banking/Current Affairs capsules."] }
+        ],
+        routine: [
+          "06:30 - 08:30: Speed Math Drills & Quant (30 Simplifications + 20 Arithmetic)",
+          "09:30 - 11:30: Reasoning Section (5 Puzzles/Seating + 15 Miscellaneous)",
+          "12:30 - 02:00: English Language (1 Editorial reading + 1 RC passage + 10 Errors)",
+          "04:00 - 05:30: Current Affairs & Banking Static (Daily CA quiz + revision)",
+          "06:30 - 08:00: Full-Length Mock Test (Timed 60 min with real simulation)",
+          "08:30 - 09:30: In-Depth Mock Post-Mortem & Error Log Entry"
+        ],
+        books: [
+          { sub: "Quant", title: "Quantitative Aptitude for Competitive Exams", author: "Dr. R.S. Aggarwal (S. Chand)", role: "Foundational arithmetic concepts and formula familiarity." },
+          { sub: "Reasoning", title: "Modern Approach to Verbal & Non-Verbal Reasoning", author: "Dr. R.S. Aggarwal", role: "Master basic syllogisms, coded inequalities, and blood relations." },
+          { sub: "Puzzles", title: "Magical Book on Puzzle", author: "K. Kundan (BSC Publishing)", role: "Variable-matrix splitting techniques for 4-variable seating." },
+          { sub: "English", title: "Word Power Made Easy", author: "Norman Lewis", role: "Daily session to master root words, prefixes, and suffixes." },
+          { sub: "Banking/GK", title: "Banking Awareness", author: "Arihant / Monthly Capsules", role: "Covers RBI functions, Repo/SDF/CRR/SLR, NPA & PCA norms." }
+        ],
+        toolLink: "bank_exam_prompt_generator.html",
+        toolName: "Bank AI Engine"
+      },
+      upsc: {
+        title: "UPSC Civil Services Examination (IAS / IPS / IFS)",
+        desc: "Integrated 12-month preparation covering Prelims GS & CSAT, Mains GS 1-4, Essay, and Optional subject mastery.",
+        phases: [
+          { n: "1", t: "NCERT Base & Syllabus Mapping", dur: "Months 1-3 (Foundations)", pts: ["Read Class 6-12 NCERTs for History, Geography, Polity, Economy.", "Internalize the UPSC Mains syllabus line-by-line.", "Start daily reading of The Hindu / Indian Express."] },
+          { n: "2", t: "Standard Texts & Optional Ph-1", dur: "Months 4-7 (Core Build)", pts: ["Complete Laxmikanth (Polity), Spectrum (Modern History).", "Optional Subject: Finish 50-60% of Paper 1 and 2.", "Begin weekly Mains answer writing (2 questions daily)."] },
+          { n: "3", t: "Mains Focus & Ethics Dossier", dur: "Months 8-10 (Consolidation)", pts: ["Complete GS-4 Ethics case studies & thinker frameworks.", "Write 8 to 10 full-length Mains Essays.", "Complete Optional subject with 10 years solved papers."] },
+          { n: "4", t: "Exclusive Prelims Mode & CSAT", dur: "Months 11-12 (Last 90 Days)", pts: ["Solve 40+ Prelims GS Mock Tests; master option elimination.", "CSAT Daily Drill: Practice 20 RCs + 15 Quant items.", "Revise high-yield static areas: Modern History, Maps, Biospheres."] }
+        ],
+        routine: [
+          "07:00 - 09:00: Newspaper Analysis (The Hindu) & Issue-Based Notes",
+          "09:30 - 12:30: Core GS Subject (e.g. Laxmikanth Polity or Modern History)",
+          "02:00 - 04:30: Optional Subject Preparation & PYQ Answer Drafting",
+          "05:00 - 06:30: GS Mains Daily Answer Writing Practice (2 Questions)",
+          "07:00 - 08:00: CSAT Practice (Reading Comprehension + Reasoning)",
+          "08:30 - 09:30: Daily Revision & Current Affairs Consolidation"
+        ],
+        books: [
+          { sub: "Polity", title: "Indian Polity", author: "M. Laxmikanth (McGraw Hill)", role: "Bible for Prelims & Mains. Minimum 5 revisions required." },
+          { sub: "Modern History", title: "A Brief History of Modern India", author: "Rajiv Ahir (Spectrum)", role: "Covers British economic policies, freedom struggle, social reforms." },
+          { sub: "Geography", title: "Certificate Physical and Human Geography", author: "G.C. Leong + NCERT 11-12", role: "Climatic zones, geomorphology, ocean currents, monsoons." },
+          { sub: "Economy", title: "Indian Economy", author: "Nitin Singhania / Ramesh Singh", role: "Macroeconomic concepts + Economic Survey and Budget." },
+          { sub: "Ethics", title: "Lexicon for Ethics, Integrity & Aptitude", author: "Chronicle Publications", role: "Definitions, quotes, and structured dilemma frameworks." }
+        ],
+        toolLink: "upsc_prompt_generator.html",
+        toolName: "UPSC AI Engine"
+      },
+      ssc: {
+        title: "Staff Selection Commission (SSC CGL, CHSL, CPO)",
+        desc: "Master Tier-1 qualifying and Tier-2 merit: Advanced Maths, Logical Reasoning, High-Frequency Vocab, and Computer module.",
+        phases: [
+          { n: "1", t: "Geometry, Algebra & Grammar", dur: "Weeks 1-6 (Foundation)", pts: ["Advanced Maths: Geometry theorems, Trigonometry identities.", "Algebra: Polynomials, quadratic equations, factorization.", "Grammar: Active/Passive Voice, Narration, Idioms."] },
+          { n: "2", t: "TCS PYQ Solving Machine", dur: "Weeks 7-12 (Pattern Drills)", pts: ["Solve 5 years of TCS shift papers chapter by chapter.", "Identify repeated non-verbal reasoning and matrices.", "Black Book of English Vocabulary: Antonyms & Synonyms."] },
+          { n: "3", t: "Tier-1 Speed Sprints", dur: "Weeks 13-16 (Pre-Exam)", pts: ["Daily 1 mock test: 100 questions in 60 minutes.", "Target 145+ raw score in CGL Tier-1.", "Static GK: Folk dances, Census 2011, National Parks."] },
+          { n: "4", t: "Tier-2 Merit & Computer Module", dur: "Post Tier-1 (Weeks 17-24)", pts: ["Maths (30 Qs) + Reasoning (30 Qs) target 165+/180.", "English (45 Qs) + GK (25 Qs) target 170+/210.", "Computer Module & Typing practice (32+ WPM)."] }
+        ],
+        routine: [
+          "06:30 - 08:30: Advanced Maths (Geometry / Trigonometry derivations & 40 Qs)",
+          "09:30 - 11:30: English Vocab & Grammar (Black Book + 50 Error Spotting)",
+          "12:30 - 02:00: Reasoning TCS Shift Papers (Speed drill of 50 questions)",
+          "04:00 - 05:30: Lucent Static GK & Current Affairs revision",
+          "06:30 - 07:30: Full Length Tier-1/Tier-2 Mock Test (Online CBT mode)",
+          "08:00 - 09:00: Mock Analysis & 15-min Typing Practice session"
+        ],
+        books: [
+          { sub: "Advance Maths", title: "Advance Maths for SSC", author: "Rakesh Yadav / Abhinay Sharma", role: "Geometry, Trigonometry, Coordinate Geometry, Mensuration." },
+          { sub: "PYQ Maths", title: "Kiran SSC Mathematics Chapterwise", author: "Kiran Publications", role: "10,000+ TCS solved questions sorted by sub-topic." },
+          { sub: "English Vocab", title: "Black Book of English Vocabulary", author: "Nikhil Gupta", role: "All repeated TCS antonyms, synonyms, idioms, and OWS." },
+          { sub: "English Grammar", title: "From Plinth to Paramount", author: "Neetu Singh (KD Campus)", role: "Complete rules of grammar with bilingual practice drills." },
+          { sub: "General Studies", title: "Lucent's General Knowledge", author: "Dr. Binay Karna", role: "Essential static GK for Physics, Chem, Bio, History, Polity." }
+        ],
+        toolLink: "ssc_exam_prompt_generator.html",
+        toolName: "SSC AI Engine"
+      },
+      rail: {
+        title: "Railway Recruitment Board (RRB NTPC, Group D, ALP)",
+        desc: "Heavy emphasis on NCERT General Science (Physics, Chemistry, Biology), Basic Mathematics, and Logical Aptitude.",
+        phases: [
+          { n: "1", t: "Class 9-10 Science Core", dur: "Month 1", pts: ["Physics: Mechanics, Work-Power-Energy, Optics, Electricity.", "Chemistry: Periodic Table, Acids-Bases, Chemical Reactions.", "Biology: Human Body Systems, Diseases, Plant Physiology."] },
+          { n: "2", t: "Arithmetic & Reasoning", dur: "Month 2", pts: ["BODMAS, Fractions, LCM-HCF, Ratio, Percentages.", "Coding-Decoding, Mathematical Operations, Syllogisms."] },
+          { n: "3", t: "RRB PYQ Shift Practice", dur: "Month 3", pts: ["Solve 2018-2024 NTPC CBT-1/2 and Group D shift papers.", "Master Physics numericals (Ohm's Law, Kinetic Energy)."] },
+          { n: "4", t: "Final CBT Simulation", dur: "Month 4", pts: ["Full 90-minute CBT simulation for 100 questions.", "Review Indian Railways static facts and railway history."] }
+        ],
+        routine: [
+          "07:00 - 09:00: General Science (NCERT Class 9-10 Physics/Chemistry numericals)",
+          "10:00 - 12:00: Mathematics (Arithmetic, Percentages, Time & Distance)",
+          "02:00 - 03:30: General Intelligence & Reasoning practice",
+          "04:30 - 06:00: Speedy Railway GK & Current Affairs review",
+          "07:00 - 08:30: Full Length RRB CBT Mock Test & Analysis"
+        ],
+        books: [
+          { sub: "General Science", title: "Speedy Railway Samanya Vigyan", author: "Speedy Publications", role: "Direct one-liners asked in RRB NTPC and Group D shifts." },
+          { sub: "Concepts", title: "NCERT Science Class 9 & 10", author: "NCERT", role: "Conceptual clarity for physics numericals in ALP and JE." },
+          { sub: "Maths", title: "Fast Track Objective Arithmetic", author: "Rajesh Verma (Arihant)", role: "Speed shortcuts for arithmetic and calculation speed." }
+        ],
+        toolLink: "railway_exam_prompt_generator.html",
+        toolName: "Railway AI Engine"
+      },
+      gate: {
+        title: "GATE & PSU Recruitment (CS, ME, EE, EC, CE)",
+        desc: "Analytical preparation targeting Engineering Maths (13m), General Aptitude (15m), and Technical Core (72m).",
+        phases: [
+          { n: "1", t: "Maths & 2 Core Subjects", dur: "Months 1-3", pts: ["Linear Algebra, Calculus, Probability & Statistics.", "Complete 2 foundational core technical subjects.", "Maintain a 200-page formula notebook."] },
+          { n: "2", t: "Complete Core Technical", dur: "Months 4-6", pts: ["Complete remaining technical subjects.", "Solve 30 years of chapter-wise GATE PYQs.", "Practice MSQ & NAT (Numerical Answer Type) questions."] },
+          { n: "3", t: "Subject-Wise Test Series", dur: "Months 7-8", pts: ["National test series (Made Easy / ACE Academy).", "Master the virtual scientific calculator.", "Analyze test reports for negative marking slips."] },
+          { n: "4", t: "Full Length Mocks (15-20 Mocks)", dur: "Months 9-10", pts: ["Attempt 15 to 20 full-length 3-hour mock tests.", "Target 70+ marks for PSU calls (ONGC, IOCL, ISRO)."] }
+        ],
+        routine: [
+          "08:00 - 10:30: Core Technical Subject 1 (Theory & Standard Textbook Derivations)",
+          "11:30 - 01:30: Core Technical Subject 2 (Problem Solving & Gateway PYQs)",
+          "03:00 - 04:30: Engineering Mathematics / General Aptitude Practice",
+          "05:30 - 07:30: 30-Year Chapterwise GATE PYQ Numerical Solving",
+          "08:30 - 09:30: Formula Notebook Revision & Virtual Calculator Practice"
+        ],
+        books: [
+          { sub: "Engg Maths", title: "Higher Engineering Mathematics", author: "Dr. B.S. Grewal (Khanna)", role: "Clear derivations, vector calculus, eigen values, differential eq." },
+          { sub: "Aptitude", title: "Aptitude for GATE & ESE", author: "Made Easy Publications", role: "Numerical, spatial, and verbal aptitude (15 marks)." },
+          { sub: "PYQs", title: "GATE 30+ Years Chapterwise Solved Papers", author: "Made Easy / ACE Academy", role: "Essential for mastering recurring concepts and NAT traps." }
+        ],
+        toolLink: "gate_psu_exam_prompt_generator.html",
+        toolName: "GATE AI Engine"
+      },
+      def: {
+        title: "Defence Services (NDA, CDS, AFCAT, CAPF)",
+        desc: "Two-stage selection: Stage-1 Written Examination and Stage-2 5-Day SSB Psychological & GTO Interview.",
+        phases: [
+          { n: "1", t: "Written Subjects Core", dur: "Months 1-3", pts: ["NDA: Class 11-12 Maths. CDS: Elementary Maths + English.", "Daily physical fitness: 2.4 km running, pushups, pullups."] },
+          { n: "2", t: "Current Affairs & GAT", dur: "Months 4-5", pts: ["Defence tech, military drills, international security.", "Solve 10 years of official UPSC NDA/CDS papers."] },
+          { n: "3", t: "SSB Psychological Stage", dur: "Post Written", pts: ["TAT, WAT (60 words in 15s), SRT, Self-Description.", "Build positive, leadership-oriented response mindset."] },
+          { n: "4", t: "GTO & Personal Interview", dur: "Final Stage", pts: ["Group Discussion (GD), Lecturette, Command Task, Snake Race.", "Personal Information Questionnaire (PIQ) cross-examination."] }
+        ],
+        routine: [
+          "06:00 - 07:30: Physical Conditioning (Running 3km + Pushups + Pullups)",
+          "08:30 - 11:00: Mathematics (Class 11-12 for NDA / Arithmetic for CDS)",
+          "12:00 - 01:30: English Grammar, Vocab & Comprehension Drills",
+          "03:00 - 05:00: General Knowledge & Defence Current Affairs",
+          "06:00 - 07:30: SSB Psychology Writing Practice (TAT/WAT/SRT Sets)",
+          "08:30 - 09:30: Lecturette Speaking Practice & News Review"
+        ],
+        books: [
+          { sub: "NDA All", title: "Pathfinder for NDA/NA", author: "Arihant Publications", role: "Comprehensive coverage of Mathematics + GAT." },
+          { sub: "CDS Maths", title: "Quantitative Aptitude for CDS", author: "Dr. R.S. Aggarwal", role: "Elementary mathematics, geometry, trigonometry." },
+          { sub: "SSB", title: "SSB Interview: The Complete Guide", author: "Dr. (Cdr) N.K. Natarajan", role: "Detailed breakdown of Screening, Psychology, GTO, Interview." }
+        ],
+        toolLink: "defence_exam_prompt_generator.html",
+        toolName: "Defence AI Engine"
+      },
+      law: {
+        title: "Law Entrances & Judiciary (CLAT, AILET, PCS-J)",
+        desc: "Passage-based comprehension in Legal Reasoning, Constitutional Law, Current Affairs, and Procedural Codes.",
+        phases: [
+          { n: "1", t: "Legal Core Fundamentals", dur: "Months 1-2", pts: ["Law of Torts, Contract Act, Criminal Law (BNS), Constitution.", "Principle-Fact application drills and landmark SC verdicts."] },
+          { n: "2", t: "Reading Speed & Critical Logic", dur: "Months 3-5", pts: ["Diverse editorials (The Hindu, LiveLaw, Bar & Bench).", "Critical reasoning: Strengthen/Weaken arguments."] },
+          { n: "3", t: "CLAT 120-Q Mock Drills", dur: "Months 6-8", pts: ["Strict 120-minute timed mock tests on passage-based legal reasoning.", "Quantitative Techniques: 10th-grade arithmetic caselets."] },
+          { n: "4", t: "Judiciary Code Mastery", dur: "For PCS-J", pts: ["Bare Act reading of CrPC (BNSS), CPC, Evidence Act (BSA).", "Subjective judgment writing and legal drafting."] }
+        ],
+        routine: [
+          "07:00 - 09:00: Newspaper Analysis (The Hindu & LiveLaw Legal Updates)",
+          "10:00 - 12:30: Legal Reasoning Passage Practice & Constitutional Law",
+          "02:00 - 03:30: Critical Reasoning & Reading Comprehension Drills",
+          "04:30 - 06:00: Quantitative Techniques Caselets / Bare Act Study",
+          "07:00 - 09:00: Full Length 120-Minute CLAT / Judicial Mock Simulation"
+        ],
+        books: [
+          { sub: "CLAT Legal", title: "Legal Aptitude for the CLAT", author: "A.P. Bhardwaj (Pearson)", role: "Legal reasoning passage drills and constitutional maxims." },
+          { sub: "Judiciary CPC", title: "Code of Civil Procedure", author: "C.K. Takwani", role: "Sectional commentary and procedural precedents." },
+          { sub: "Judiciary IPC", title: "Indian Penal Code", author: "K.D. Gaur / Ratanlal & Dhirajlal", role: "Substantive criminal law and judicial precedents." }
+        ],
+        toolLink: "law_entrance_exam_prompt_generator.html",
+        toolName: "Law AI Engine"
+      },
+      mba: {
+        title: "Management & MBA (CAT, XAT, SNAP, NMAT)",
+        desc: "High-percentile strategy across VARC, DILR, and Quantitative Aptitude (QA).",
+        phases: [
+          { n: "1", t: "Concept Building (QA & VARC)", dur: "Months 1-3", pts: ["Arithmetic, Algebra, Geometry, Numbers.", "Read 3 diverse articles daily from Aeon Essays, Economist."] },
+          { n: "2", t: "DILR Puzzles & Speed", dur: "Months 4-6", pts: ["Solve 4 complex DILR sets daily (Games, Matrix, Venn).", "Critical Reasoning, Para Jumbles, Para Summary."] },
+          { n: "3", t: "National Mocks (AIMCAT/SIMCAT)", dur: "Months 7-9", pts: ["Attempt 30+ 2-hour sectional CAT mocks.", "Question selection: Leaving difficult sets early is key!"] },
+          { n: "4", t: "Final Sprint & WAT-GD-PI", dur: "Months 10-12", pts: ["Shift-wise CAT PYQs (2017-2025).", "Prepare for IIM Written Ability Test (WAT) and Interviews."] }
+        ],
+        routine: [
+          "06:30 - 08:30: Quantitative Aptitude (LOD-1 & LOD-2 Arithmetic/Algebra)",
+          "09:30 - 11:30: Reading Comprehension & Aeon Essays Analysis",
+          "12:30 - 02:30: DILR Problem Solving (4 Full Caselets with Timer)",
+          "04:30 - 06:30: Sectional 40-Minute Mock Test & Analysis",
+          "07:30 - 09:30: Full Length 2-Hour CAT Mock Simulation & Strategy Review"
+        ],
+        books: [
+          { sub: "Quant", title: "How to Prepare for QA for CAT", author: "Arun Sharma (McGraw Hill)", role: "Gold standard for LOD-1, LOD-2, LOD-3 arithmetic/algebra." },
+          { sub: "DILR", title: "How to Prepare for DILR for CAT", author: "Arun Sharma", role: "Advanced caselets, games & tournaments, matrix grids." },
+          { sub: "VARC", title: "How to Prepare for VARC for CAT", author: "Arun Sharma & Meenakshi", role: "Tackles tone of the passage, inference, and main idea." }
+        ],
+        toolLink: "mba_exam_prompt_generator.html",
+        toolName: "MBA / CAT Engine"
+      },
+      med_eng: {
+        title: "Medical & Engineering Admissions (NEET UG & JEE)",
+        desc: "Line-by-line NCERT mastery for Biology/Chemistry, problem solving in Physics, and advanced calculus for JEE.",
+        phases: [
+          { n: "1", t: "NCERT Thorough Mastery", dur: "Months 1-6", pts: ["NEET: Read NCERT Biology 10+ times. Memorize diagrams.", "Inorganic Chemistry: Memorize every reaction & exception."] },
+          { n: "2", t: "Physics & Physical Chem", dur: "Months 7-12", pts: ["Practice 50 numericals daily in Mechanics, Electrostatics.", "JEE: Advanced Calculus, Coordinate Geometry, Vectors."] },
+          { n: "3", t: "PYQ Decoupling & Chapter Tests", dur: "Months 13-18", pts: ["Solve 35 years of NEET and JEE previous question papers.", "Target 680+ marks in NEET UG for top government colleges."] },
+          { n: "4", t: "Simulated 3-Hour Exam Slots", dur: "Last 90 Days", pts: ["Daily mock from 02:00 PM to 05:20 PM to align biological clock.", "Practice OMR sheet bubbling speed without errors."] }
+        ],
+        routine: [
+          "07:00 - 09:30: Biology (Line-by-Line NCERT Reading & Flashcards)",
+          "10:30 - 01:00: Physics Numerical Problem Solving (50 Questions)",
+          "02:00 - 05:20: Full Length 3-Hour 20-Min Mock Exam (Simulated Slot)",
+          "06:30 - 08:30: Chemistry (Physical Numericals + Inorganic Revision)",
+          "09:00 - 10:00: Mock Analysis & Incorrect Question Notebook Entry"
+        ],
+        books: [
+          { sub: "NEET Biology", title: "NCERT Biology Class 11 & 12", author: "NCERT", role: "90%+ of NEET questions are asked directly from NCERT lines." },
+          { sub: "Physics", title: "Concepts of Physics (Vol 1 & 2)", author: "Dr. H.C. Verma", role: "Build fundamental mechanics, electrodynamics, optics." },
+          { sub: "JEE Maths", title: "Cengage Mathematics Series", author: "G. Tewani", role: "Calculus, Algebra, Coordinate Geometry for JEE Advanced." }
+        ],
+        toolLink: "neet_exam_prompt_generator.html",
+        toolName: "NEET AI Engine"
+      },
+      teach: {
+        title: "State PSC (BPSC/UPPSC) & Teaching (CTET/NET)",
+        desc: "Integrated State Special GK, Child Pedagogy, Research Aptitude, and Administrative answer writing.",
+        phases: [
+          { n: "1", t: "General Studies Core", dur: "Months 1-3", pts: ["Indian History, Geography, Polity, Science, Economics.", "State General Knowledge: State geography, history, rivers."] },
+          { n: "2", t: "Pedagogy & Paper 1", dur: "Months 4-6", pts: ["Child Development & Pedagogy (CDP): Piaget, Vygotsky.", "UGC NET Paper 1: Teaching Aptitude, Research Methodology."] },
+          { n: "3", t: "State PSC Mains Writing", dur: "Months 7-9", pts: ["State PSC Mains GS Papers 1 & 2 with local state issues.", "Hindi / Regional Language compulsory qualifying paper."] },
+          { n: "4", t: "PYQ Drills & Current Affairs", dur: "Last 60 Days", pts: ["Solve 10 years of State PSC Prelims shift papers.", "Revise 1 full year of State + National current affairs."] }
+        ],
+        routine: [
+          "07:00 - 09:00: State Special General Knowledge & Current Affairs",
+          "10:00 - 12:30: Core General Studies (Polity, History, Geography)",
+          "02:00 - 04:00: Child Development Pedagogy / NET Research Aptitude",
+          "05:00 - 06:30: State PSC Mains Answer Writing Practice",
+          "07:30 - 09:00: Previous Year Question Solving & Mock Test"
+        ],
+        books: [
+          { sub: "Teaching (CDP)", title: "Child Development and Pedagogy", author: "Himanshi Singh / Pearson", role: "Foundational for CTET Paper 1 & 2 and State TET exams." },
+          { sub: "UGC NET", title: "UGC NET/SET Paper 1", author: "KVS Madaan (Pearson)", role: "Gold standard for Paper 1 general research & teaching aptitude." },
+          { sub: "State Special", title: "State Specific Compendium", author: "Kiran / Arihant State Special", role: "Covers State culture, history, geography, and schemes." }
+        ],
+        toolLink: "psc_exam_prompt_generator.html",
+        toolName: "State PSC Engine"
+      }
+    };
+
+    window.switchHomeRoadmap = function(streamId, btn) {
+      const data = ROADMAP_DATA[streamId];
+      if (!data) return;
+
+      // Update button active state
+      const container = document.getElementById('examRoadmaps');
+      if (container) {
+        container.querySelectorAll('.s-jump-pill').forEach(b => b.classList.remove('active'));
+      }
+      if (btn) btn.classList.add('active');
+
+      const targetEl = document.getElementById('homeRoadmapContainer');
+      if (!targetEl) return;
+
+      let phasesHtml = '';
+      data.phases.forEach(p => {
+        let listItems = p.pts.map(pt => '<li>' + pt + '</li>').join('');
+        phasesHtml += `
+          <div class="phase-card">
+            <div class="phase-num">${p.n}</div>
+            <div class="phase-title">${p.t}</div>
+            <div class="phase-time">${p.dur}</div>
+            <ul class="phase-list">${listItems}</ul>
+          </div>
+        `;
+      });
+
+      let routineHtml = '';
+      data.routine.forEach(r => {
+        routineHtml += `<div class="routine-slot"><strong>${r.split(':')[0]}:</strong> ${r.substring(r.indexOf(':')+1)}</div>`;
+      });
+
+      let booksHtml = '';
+      data.books.forEach(b => {
+        booksHtml += `
+          <tr>
+            <td><strong>${b.sub}</strong></td>
+            <td><span class="book-name">${b.title}</span></td>
+            <td><span class="book-author">${b.author}</span></td>
+            <td><span class="book-purpose">${b.role}</span></td>
+          </tr>
+        `;
+      });
+
+      targetEl.innerHTML = `
+        <div class="stream-hd" style="border-bottom:none;padding-bottom:0">
+          <div>
+            <h3 style="font-size:20px;font-weight:900;color:var(--txt);margin-bottom:6px">${data.title}</h3>
+            <p style="font-size:13px;color:var(--txt3);margin-bottom:18px">${data.desc}</p>
+          </div>
+        </div>
+
+        <div style="font-size:13px;font-weight:800;color:var(--pr);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">&#x1F5FA;&#xFE0F; 4-Phase Step-by-Step Preparation Roadmap</div>
+        <div class="phase-grid">${phasesHtml}</div>
+
+        <div class="strat-box">
+          <div class="strat-hd">&#x1F4AA; Proven Topper Daily Timetable &amp; Study Routine</div>
+          <div class="strat-grid">
+            <div>${routineHtml.split('</div>').slice(0, 3).join('</div>') + (routineHtml.split('</div>').length > 3 ? '</div>' : '')}</div>
+            <div>${routineHtml.split('</div>').slice(3).join('</div>')}</div>
+          </div>
+        </div>
+
+        <div style="font-size:13px;font-weight:800;color:var(--pr);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">&#x1F4DA; Standard Recommended Best Books</div>
+        <div class="books-tbl-wrap">
+          <table class="books-tbl">
+            <thead>
+              <tr><th>Subject</th><th>Recommended Book</th><th>Author / Publisher</th><th>Topper Usage Guidance</th></tr>
+            </thead>
+            <tbody>${booksHtml}</tbody>
+          </table>
+        </div>
+
+        <div class="stream-actions">
+          <a href="${data.toolLink}" class="act-btn act-btn-p">&#x26A1; Launch ${data.toolName}</a>
+          <a href="all-exam-roadmaps.html#${streamId}" class="act-btn act-btn-s">&#x1F4D6; Full In-Depth Guide &rarr;</a>
+          <a href="quiz-simulator.html" class="act-btn act-btn-s">&#x1F3AF; Practice Mock Test</a>
+        </div>
+      `;
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'switch_home_roadmap', { stream_id: streamId });
+      }
+    };
+
+    // Initialize with Banking roadmap
+    if (document.getElementById('homeRoadmapContainer')) {
+      window.switchHomeRoadmap('bank');
+    }
   })();
   </script>
 
