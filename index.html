@@ -578,6 +578,11 @@
           <kbd class="be-kbd-badge">Ctrl K</kbd>
         </button>
 
+        <button class="be-btn-tool" onclick="window.openFormulaVault()" title="High-Yield Speed Math &amp; Exam Formula Vault">
+          <span class="be-tool-icon">&#x26A1;</span>
+          <span class="be-tool-text">Formulas</span>
+        </button>
+
         <button class="be-btn-tool" onclick="window.BE_NAV.openCalculator()" title="Speed-Math &amp; Score Calculator">
           <span class="be-tool-icon">&#x1F9EE;</span>
           <span class="be-tool-text">Calculator</span>
@@ -674,7 +679,7 @@
       <div class="timer-digit" id="timerDisplay">25:00</div>
       <div id="timerMode" style="font-size:13px;color:var(--txt3);margin-bottom:14px">Focus session &middot; <span id="timerSessionsCompleted">0</span> completed today</div>
 
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <div id="timerControls" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center">
         <button id="timerStartBtn" onclick="timerToggle()" class="btn-hero btn-hero-p" style="padding:10px 22px;font-size:14px">&#x25B6;&#xFE0F; Start Focus</button>
         <button onclick="timerReset()" class="btn-hero btn-hero-s" style="padding:10px 22px;font-size:14px;color:var(--txt2);background:var(--sf2);border:1px solid var(--bdr)">&#x21BA; Reset</button>
         <select id="timerLength" onchange="timerSetLength(this.value)" style="border-radius:12px;border:1px solid var(--bdr);padding:10px 14px;font-size:13px;font-family:inherit;background:var(--sf2);color:var(--txt)">
@@ -683,6 +688,9 @@
           <option value="50">50 min Mock Test</option>
           <option value="15">15 min Speed Drill</option>
         </select>
+        <button id="timerSoundBtn" onclick="toggleTimerSound()" title="Toggle Audio Chime on Completion" style="border-radius:12px;border:1px solid var(--bdr);padding:10px 14px;font-size:13px;font-weight:700;font-family:inherit;background:var(--sf2);color:var(--txt);cursor:pointer;display:inline-flex;align-items:center;gap:6px">
+          &#x1F514; <span id="timerSoundTxt">Sound ON</span>
+        </button>
       </div>
 
       <div id="quoteBox" style="margin-top:16px;padding-top:14px;border-top:1px solid var(--bdr);font-style:italic;font-size:13px;color:var(--txt2)">
@@ -690,6 +698,216 @@
         <span id="quoteAuthor" style="font-style:normal;font-size:11.5px;color:var(--txt3);display:block;margin-top:4px">&mdash; Robert Collier</span>
       </div>
     </div>
+
+    
+    <!-- ══════════════════════════════════════════════════════════
+         STUDENT DAILY SUCCESS HUB & HIGH-YIELD COMMAND CENTER
+         ══════════════════════════════════════════════════════════ -->
+    <section id="studentHub" class="student-hub-sec" style="margin-bottom:44px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:20px">
+        <div>
+          <div class="sec-eyebrow">&#x26A1; Student Command Center &middot; 2026&ndash;2027 Cycle</div>
+          <h2 class="sec-hd">Daily Study Routine, Speed Math &amp; Companion Tools</h2>
+          <p class="sec-sub" style="margin-bottom:0">Track your daily preparation streak, practice high-yield mental math shortcuts, and access companion preparation suites.</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onclick="window.openFormulaVault()" class="hub-pill-btn" style="background:linear-gradient(135deg,var(--pr),var(--cy));color:#fff;border:none">
+            &#x1F4D6; Full Formula Vault
+          </button>
+          <a href="quiz-simulator.html" class="hub-pill-btn" style="background:rgba(16,185,129,.12);color:#059669;border:1px solid rgba(16,185,129,.3)">
+            &#x1F3AF; Mock Simulator &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Two-Column Routine Dashboard: Daily Streak / Goals + Speed Math of the Day -->
+      <div class="hub-dashboard-grid">
+        
+        <!-- CARD A: Daily Study Streak & Target Tracker -->
+        <div class="hub-card streak-card">
+          <div class="hub-card-hd">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span class="hub-card-badge" style="background:rgba(234,88,12,.15);color:#EA580C;border:1px solid rgba(234,88,12,.3)">
+                &#x1F525; Streak
+              </span>
+              <h3 style="font-size:16px;font-weight:800;color:var(--txt);margin:0">Daily Target Tracker</h3>
+            </div>
+            <span id="streakCountBadge" style="font-size:12px;font-weight:800;color:#EA580C;background:rgba(234,88,12,.1);padding:3px 10px;border-radius:14px">
+              Day 1 Active
+            </span>
+          </div>
+
+          <p style="font-size:12.5px;color:var(--txt3);margin:8px 0 14px;line-height:1.5">
+            Consistency is the #1 predictor of selection. Complete today's 4 core targets:
+          </p>
+
+          <!-- Interactive Goals Checklist -->
+          <div class="goal-list">
+            <label class="goal-item" id="goalItem1">
+              <input type="checkbox" id="goalCheckSpeedMath" onchange="toggleStudentGoal('speedMath', this.checked)">
+              <span class="goal-custom-check"></span>
+              <div class="goal-txt">
+                <strong>&#x26A1; Speed Math &amp; Formula Drill</strong>
+                <span>Review squares up to 50 &amp; fractional percentages (15 min)</span>
+              </div>
+            </label>
+
+            <label class="goal-item" id="goalItem2">
+              <input type="checkbox" id="goalCheckAiPrompt" onchange="toggleStudentGoal('aiPrompt', this.checked)">
+              <span class="goal-custom-check"></span>
+              <div class="goal-txt">
+                <strong>&#x1F916; AI Study Session</strong>
+                <span>Generate 1 custom AI prompt for your weakest topic</span>
+              </div>
+            </label>
+
+            <label class="goal-item" id="goalItem3">
+              <input type="checkbox" id="goalCheckCaQuiz" onchange="toggleStudentGoal('caQuiz', this.checked)">
+              <span class="goal-custom-check"></span>
+              <div class="goal-txt">
+                <strong>&#x1F4F0; Daily Headline Drill</strong>
+                <span>Attempt today's 5-Q live current affairs notification quiz</span>
+              </div>
+            </label>
+
+            <label class="goal-item" id="goalItem4">
+              <input type="checkbox" id="goalCheckDeepStudy" onchange="toggleStudentGoal('deepStudy', this.checked)">
+              <span class="goal-custom-check"></span>
+              <div class="goal-txt">
+                <strong>&#x23F1;&#xFE0F; Focused Study Block</strong>
+                <span>Finish at least one 25-minute uninterrupted study timer cycle</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Progress Bar -->
+          <div style="margin-top:14px">
+            <div style="display:flex;justify-content:space-between;font-size:11.5px;font-weight:700;margin-bottom:6px">
+              <span id="goalProgressLabel" style="color:var(--txt3)">0 / 4 Targets Completed</span>
+              <span id="goalProgressPct" style="color:var(--pr)">0%</span>
+            </div>
+            <div class="hub-prog-track">
+              <div id="goalProgressBar" class="hub-prog-bar" style="width:0%"></div>
+            </div>
+            <div id="goalCheerMsg" style="font-size:11px;font-weight:700;color:var(--gr);margin-top:6px;min-height:16px"></div>
+          </div>
+        </div>
+
+        <!-- CARD B: Speed Math & Shortcut of the Day -->
+        <div class="hub-card formula-card">
+          <div class="hub-card-hd">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span class="hub-card-badge" style="background:rgba(99,102,241,.15);color:var(--pr2);border:1px solid rgba(99,102,241,.3)">
+                &#x26A1; Exam Shortcut
+              </span>
+              <h3 style="font-size:16px;font-weight:800;color:var(--txt);margin:0">Formula of the Day</h3>
+            </div>
+            <button onclick="nextFormulaTrick()" class="hub-icon-btn" title="Shuffle / Next High-Yield Shortcut">
+              &#x1F500; Next
+            </button>
+          </div>
+
+          <!-- Dynamic Rotating Content Box -->
+          <div id="trickContainer" class="trick-box">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <span id="trickSubject" class="trick-sub-tag">QUANTITATIVE APTITUDE</span>
+              <span id="trickIndex" style="font-size:11px;font-family:monospace;color:var(--txt3);font-weight:700">1 of 8</span>
+            </div>
+            <div id="trickTitle" class="trick-hd">Multiplication by 5, 25, 125 in Mental Math</div>
+            <div id="trickFormula" class="trick-formula">N &times; 25 = (N &times; 100) &divide; 4</div>
+            <p id="trickExample" class="trick-desc">
+              <strong>Example:</strong> 48 &times; 25 &rarr; 4800 &divide; 4 = <strong>1,200</strong> in under 2 seconds! For &times;125, divide by 8 and add 000.
+            </p>
+            <div id="trickExamNote" class="trick-exam-note">
+              &#x1F4A1; Saves 35+ seconds per calculation in SBI PO &amp; SSC CGL Simplification/DI.
+            </div>
+          </div>
+
+          <!-- Action Buttons for Shortcut Card -->
+          <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+            <button onclick="copyCurrentTrick()" class="btn-hero btn-hero-s" style="flex:1;padding:8px 14px;font-size:12px;color:var(--txt);background:var(--sf);border:1px solid var(--bdr);justify-content:center">
+              &#x1F4CB; Copy Shortcut
+            </button>
+            <button onclick="window.openFormulaVault()" class="btn-hero btn-hero-p" style="flex:1;padding:8px 14px;font-size:12px;justify-content:center">
+              &#x26A1; Open Formula Vault
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 6 Essential Student Companion Tools Cards Grid -->
+      <div style="margin-top:28px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+          <span style="font-size:13px;font-weight:800;color:var(--txt);text-transform:uppercase;letter-spacing:.04em">6 Companion Student Success Suites</span>
+          <span style="font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(79,70,229,.1);color:var(--pr);font-weight:700">100% Free Forever</span>
+        </div>
+
+        <div class="comp-tools-grid">
+          
+          <!-- Tool 1: Mock Simulator -->
+          <a href="quiz-simulator.html" class="comp-card">
+            <div class="comp-icon-box" style="background:rgba(59,130,246,.12);color:#2563EB">&#x1F3AF;</div>
+            <div class="comp-card-content">
+              <div class="comp-title">Interactive Mock Simulator</div>
+              <p class="comp-desc">5-option question simulator with sectional timer, negative marking, instant topper elimination shortcuts &amp; accuracy tracker.</p>
+              <div class="comp-link">Launch Simulator &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Tool 2: AI Mentor Chatbot -->
+          <a href="exam-mentor-chatbot.html" class="comp-card">
+            <div class="comp-icon-box" style="background:rgba(124,58,237,.12);color:#7C3AED">&#x1F916;</div>
+            <div class="comp-card-content">
+              <div class="comp-title">AI Exam Prep Mentor</div>
+              <p class="comp-desc">24/7 dedicated AI study tutor to resolve syllabus doubts, recommend standard booklists, and generate hour-by-hour timetables.</p>
+              <div class="comp-link">Talk to Mentor &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Tool 3: Free Digital Library -->
+          <a href="IBPS_SBI_Free_Library.html" class="comp-card">
+            <div class="comp-icon-box" style="background:rgba(16,185,129,.12);color:#059669">&#x1F4DA;</div>
+            <div class="comp-card-content">
+              <div class="comp-title">Free Digital Library &amp; PDFs</div>
+              <p class="comp-desc">Curated collection of standard reference PDFs, handwritten topper notes, previous year solved papers, and formula books.</p>
+              <div class="comp-link">Browse Library &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Tool 4: Preparation Roadmap -->
+          <a href="IBPS_SBI_Clerk_Roadmap.html" class="comp-card">
+            <div class="comp-icon-box" style="background:rgba(245,158,11,.12);color:#D97706">&#x1F5FA;&#xFE0F;</div>
+            <div class="comp-card-content">
+              <div class="comp-title">2026&ndash;2027 Mastery Roadmap</div>
+              <p class="comp-desc">12-week structured phase-by-phase blueprint from foundational basics through high-percentile mock test strategy.</p>
+              <div class="comp-link">View Roadmap &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Tool 5: Trend & Cutoff Analysis -->
+          <a href="trend-analysis-generator.html" class="comp-card">
+            <div class="comp-icon-box" style="background:rgba(6,182,212,.12);color:#0891B2">&#x1F4CA;</div>
+            <div class="comp-card-content">
+              <div class="comp-title">Cutoff &amp; Weightage Trend Engine</div>
+              <p class="comp-desc">Historical shift analysis, safe attempt targets, recurring question clusters, and difficulty calibration across 5 years.</p>
+              <div class="comp-link">Explore Trends &rarr;</div>
+            </div>
+          </a>
+
+          <!-- Tool 6: Formula Vault -->
+          <div onclick="window.openFormulaVault()" class="comp-card" style="cursor:pointer">
+            <div class="comp-icon-box" style="background:rgba(236,72,153,.12);color:#DB2777">&#x26A1;</div>
+            <div class="comp-card-content">
+              <div class="comp-title">Speed Math Formula Vault</div>
+              <p class="comp-desc">Quick-access tables of squares (1&ndash;50), cubes (1&ndash;30), fraction-to-percentage rules, and quadratic sign shortcuts.</p>
+              <div class="comp-link">Open Vault (Modal) &rarr;</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- HOW IT WORKS STRIP -->
     <div class="how-strip">
@@ -738,6 +956,187 @@
         <button class="sig-pill" onclick="window.filterLiveSignal('neet', this)">&#x1F9EC; NEET Medical</button>
         <button class="sig-pill" onclick="window.filterLiveSignal('def', this)">&#x1F396;&#xFE0F; Defence</button>
       </div>
+
+      
+  <!-- ══════════════════════════════════════════════════════════
+       HIGH-YIELD SPEED MATH & EXAM FORMULA VAULT MODAL
+       ══════════════════════════════════════════════════════════ -->
+  <div id="formulaModal" class="formula-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:16px">
+    <div class="formula-box">
+      <div class="formula-hd">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:22px">&#x26A1;</span>
+          <div>
+            <h3 style="font-size:18px;font-weight:900;color:var(--txt);margin:0">High-Yield Exam Formula Vault</h3>
+            <p style="font-size:12px;color:var(--txt3);margin:0">Instant speed-math tables, conversion rules &amp; banking formulas for 2026&ndash;2027</p>
+          </div>
+        </div>
+        <button onclick="window.closeFormulaVault()" class="formula-close-btn" aria-label="Close">&times;</button>
+      </div>
+
+      <!-- Quick Search & Tabs inside modal -->
+      <div style="padding:14px 20px 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;border-bottom:1px solid var(--bdr)">
+        <div class="formula-tabs">
+          <button class="ftab-btn active" onclick="switchFormulaTab('sq_cubes', this)">Squares &amp; Cubes</button>
+          <button class="ftab-btn" onclick="switchFormulaTab('frac_pct', this)">Fractions &rarr; %</button>
+          <button class="ftab-btn" onclick="switchFormulaTab('math_tricks', this)">Speed Tricks</button>
+          <button class="ftab-btn" onclick="switchFormulaTab('reason_bank', this)">Reasoning &amp; Banking</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;background:var(--sf2);padding:4px 10px;border-radius:18px;border:1px solid var(--bdr);font-size:12px">
+          <span>&#x1F50D;</span>
+          <input type="text" id="formulaSearchInput" placeholder="Filter formula..." oninput="filterFormulaTable(this.value)" style="border:none;background:transparent;outline:none;font-size:12px;color:var(--txt);width:110px">
+        </div>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div id="formulaTabContent" class="formula-body">
+        
+        <!-- TAB 1: Squares (1-50) & Cubes (1-30) -->
+        <div id="ftab-sq_cubes" class="ftab-pane active">
+          <div style="margin-bottom:16px">
+            <div style="font-size:13px;font-weight:800;color:var(--pr);margin-bottom:8px">&#x1F4CA; Squares of Numbers (1 &ndash; 50)</div>
+            <div class="formula-table-grid" id="squaresGrid">
+              <!-- Dynamically populated or rendered -->
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:13px;font-weight:800;color:#0891B2;margin-bottom:8px">&#x1F9CA; Cubes of Numbers (1 &ndash; 30)</div>
+            <div class="formula-table-grid" id="cubesGrid"></div>
+          </div>
+        </div>
+
+        <!-- TAB 2: Fraction to Percentage -->
+        <div id="ftab-frac_pct" class="ftab-pane">
+          <div style="font-size:13px;font-weight:800;color:var(--pr);margin-bottom:8px">&#x1F522; High-Yield Fraction to Percentage Cheat Sheet (1/1 to 1/25)</div>
+          <p style="font-size:12px;color:var(--txt3);margin-bottom:12px">Memorizing these saves ~40 seconds per Data Interpretation (DI) question in SBI PO, IBPS PO, and CAT.</p>
+          <div class="formula-table-grid" id="fracPctGrid"></div>
+        </div>
+
+        <!-- TAB 3: Speed Tricks -->
+        <div id="ftab-math_tricks" class="ftab-pane">
+          <div class="formula-trick-cards">
+            
+            <div class="ft-item">
+              <div class="ft-hd">&#x2705; Quadratic Equation Sign Shortcut</div>
+              <div class="ft-body">
+                <table style="width:100%;font-size:12px;border-collapse:collapse;margin:6px 0">
+                  <thead><tr style="background:var(--sf3)"><th>Equation Signs</th><th>Roots Signs</th><th>Memory Rule</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>+ bx + c = 0</code></td><td><strong>(&minus;, &minus;)</strong></td><td>Both negative</td></tr>
+                    <tr><td><code>&minus; bx + c = 0</code></td><td><strong>(+, +)</strong></td><td>Both positive</td></tr>
+                    <tr><td><code>+ bx &minus; c = 0</code></td><td><strong>(&minus;, +)</strong></td><td>Larger root is negative</td></tr>
+                    <tr><td><code>&minus; bx &minus; c = 0</code></td><td><strong>(+, &minus;)</strong></td><td>Larger root is positive</td></tr>
+                  </tbody>
+                </table>
+                <div style="font-size:11px;color:var(--gr);font-weight:700">&#x1F4A1; Shortcut: If both constant terms are negative (&minus;c), answer is ALWAYS "Cannot be Determined" (CND)!</div>
+              </div>
+            </div>
+
+            <div class="ft-item">
+              <div class="ft-hd">&#x2705; Fast Square of Numbers Ending in 5</div>
+              <div class="ft-body">
+                <p style="font-size:12px;color:var(--txt2);margin:0">
+                  Formula: For <code>(N5)&sup2;</code>, calculate <code>N &times; (N + 1)</code> and append <code>25</code> at the end.
+                </p>
+                <div style="background:var(--sf2);padding:8px 12px;border-radius:8px;margin-top:6px;font-family:monospace;font-size:11.5px">
+                  35&sup2; = (3 &times; 4) | 25 = <strong>1225</strong><br>
+                  65&sup2; = (6 &times; 7) | 25 = <strong>4225</strong><br>
+                  95&sup2; = (9 &times; 10) | 25 = <strong>9025</strong><br>
+                  115&sup2; = (11 &times; 12) | 25 = <strong>13225</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="ft-item">
+              <div class="ft-hd">&#x2705; Base 100 Fast Multiplication</div>
+              <div class="ft-body">
+                <p style="font-size:12px;color:var(--txt2);margin:0">
+                  For numbers near 100: <code>(100 + a) &times; (100 + b) = (100 + a + b) | (a &times; b)</code>
+                </p>
+                <div style="background:var(--sf2);padding:8px 12px;border-radius:8px;margin-top:6px;font-family:monospace;font-size:11.5px">
+                  104 &times; 107 &rarr; (100 + 4 + 7) | (4 &times; 7) = <strong>11128</strong><br>
+                  106 &times; 109 &rarr; (100 + 6 + 9) | (6 &times; 9) = <strong>11554</strong><br>
+                  96 &times; 94 &rarr; (-4 &times; -6 = 24), 96 - 6 = 90 &rarr; <strong>9024</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="ft-item">
+              <div class="ft-hd">&#x2705; Successive Percentage Change (Net Effect)</div>
+              <div class="ft-body">
+                <p style="font-size:12px;color:var(--txt2);margin:0">
+                  Net % Change = <code>A + B + (A &times; B &divide; 100)</code>
+                </p>
+                <div style="background:var(--sf2);padding:8px 12px;border-radius:8px;margin-top:6px;font-family:monospace;font-size:11.5px">
+                  Successive discounts of 20% and 10%: (-20) + (-10) + (200/100) = -30 + 2 = <strong>-28%</strong><br>
+                  Price increased by 25% then decreased by 20%: (+25) + (-20) - (500/100) = 5 - 5 = <strong>0% (No change)</strong>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAB 4: Reasoning & Banking -->
+        <div id="ftab-reason_bank" class="ftab-pane">
+          <div class="formula-trick-cards">
+            
+            <div class="ft-item">
+              <div class="ft-hd">&#x1F9E0; English Alphabet Forward &amp; Reverse Positions (EJOTY + 27 Rule)</div>
+              <div class="ft-body">
+                <p style="font-size:12px;color:var(--txt2);margin:0">
+                  <strong>Forward anchors:</strong> E(5), J(10), O(15), T(20), Y(25).<br>
+                  <strong>Reverse position rule:</strong> <code>Reverse Rank = 27 &minus; Forward Rank</code>.
+                </p>
+                <div style="background:var(--sf2);padding:8px 12px;border-radius:8px;margin-top:6px;font-family:monospace;font-size:11.5px">
+                  Opposite Pairs: A-Z, B-Y, C-X, D-W, E-V, F-U, G-T, H-S, I-R, J-Q, K-P, L-O, M-N (Sum is always 27!)
+                </div>
+              </div>
+            </div>
+
+            <div class="ft-item">
+              <div class="ft-hd">&#x1F4CA; Syllogisms Definitive Conclusion Rules</div>
+              <div class="ft-body">
+                <div style="background:var(--sf2);padding:8px 12px;border-radius:8px;font-family:monospace;font-size:11.5px;line-height:1.6">
+                  &bull; <strong>All A are B + All B are C</strong> &rArr; All A are C, Some A are C.<br>
+                  &bull; <strong>Some A are B + All B are C</strong> &rArr; Some A are C.<br>
+                  &bull; <strong>No A is B + All B are C</strong> &rArr; Some C are not A.<br>
+                  &bull; <strong>Only a few A are B</strong> &rArr; Both "Some A are B" AND "Some A are NOT B" are 100% TRUE!
+                </div>
+              </div>
+            </div>
+
+            <div class="ft-item">
+              <div class="ft-hd">&#x1F3E6; Banking Statutory Ratios &amp; RBI Prudential Framework</div>
+              <div class="ft-body">
+                <div style="background:var(--sf2);padding:8px 12px;border-radius:8px;font-size:12px;line-height:1.6">
+                  &bull; <strong>CRR (Cash Reserve Ratio):</strong> Percentage of NDTL banks must hold with RBI in cash. No interest earned.<br>
+                  &bull; <strong>SLR (Statutory Liquidity Ratio):</strong> Percentage of NDTL held in approved gold, cash, or G-Secs.<br>
+                  &bull; <strong>Repo Rate:</strong> Rate at which RBI lends short-term funds to banks against collateral.<br>
+                  &bull; <strong>SDF (Standing Deposit Facility):</strong> RBI absorbs liquidity without giving government collateral (placed 25 bps below Repo).<br>
+                  &bull; <strong>MSF (Marginal Standing Facility):</strong> Overnight lending for penal emergency liquidity (25 bps above Repo).
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="formula-ft">
+        <button onclick="copyAllFormulas()" class="btn-hero btn-hero-s" style="font-size:12px;padding:8px 16px;color:var(--txt);background:var(--sf);border:1px solid var(--bdr)">
+          &#x1F4CB; Copy Current Table
+        </button>
+        <button onclick="window.closeFormulaVault()" class="btn-hero btn-hero-p" style="font-size:12px;padding:8px 18px">
+          Done (Close)
+        </button>
+      </div>
+    </div>
+  </div>
+
 
       <!-- Live Current Affairs Quiz Modal -->
       <div id="caQuizModal" class="ca-quiz-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:20px">
@@ -829,10 +1228,19 @@
       <p class="sec-sub">Each tool provides 6 specialized tabs: Study Prompts &middot; Practice Sets &middot; PYQ Analysis &middot; Specialist Deep-Dive &middot; Syllabus &amp; Strategy &middot; Flashcards.</p>
 
       <!-- Real-Time Interactive Filter & Search Bar -->
+      <div id="toolsResultBanner" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding:0 4px">
+        <div id="toolsCountBadge" style="font-size:13px;font-weight:800;color:var(--txt2);display:flex;align-items:center;gap:6px">
+          <span>&#x2705;</span> Showing all <strong>22</strong> Exam Intelligence Engines
+        </div>
+        <div style="font-size:12px;color:var(--txt3)">
+          Click any card to launch full 6-tab preparation suite
+        </div>
+      </div>
       <div class="tools-filter-bar">
-        <div class="tools-search-wrap">
+        <div class="tools-search-wrap" style="position:relative">
           <span>&#x1F50D;</span>
           <input type="text" id="toolsSearchInput" placeholder="Filter tools (e.g. SBI, UPSC, SSC, GATE, Math, Mock)..." oninput="filterToolsGrid()" autocomplete="off">
+          <button id="clearSearchBtn" onclick="clearToolsSearch()" style="display:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--txt3);cursor:pointer;font-size:14px;font-weight:700" title="Clear Search">&times;</button>
         </div>
 
         <div class="tools-pills">
@@ -2088,5 +2496,446 @@
       }
     });
   </script>
+
+  <!-- ════ STUDENT SUCCESS HUB, FORMULA VAULT & AUDIO CHIME SCRIPTS ════ -->
+  <script>
+  (function() {
+    /* --- 1. Audio Synthesizer Chime (Web Audio API) --- */
+    window.playTimerChime = function() {
+      if (localStorage.getItem('be_sound_muted') === 'true') return;
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        
+        // First tone (587.33 Hz - D5)
+        const osc1 = ctx.createOscillator();
+        const g1 = ctx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(587.33, ctx.currentTime);
+        g1.gain.setValueAtTime(0.18, ctx.currentTime);
+        g1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+        osc1.connect(g1);
+        g1.connect(ctx.destination);
+        osc1.start();
+        osc1.stop(ctx.currentTime + 0.45);
+
+        // Second tone (880 Hz - A5) chime chord
+        setTimeout(() => {
+          const osc2 = ctx.createOscillator();
+          const g2 = ctx.createGain();
+          osc2.type = 'sine';
+          osc2.frequency.setValueAtTime(880, ctx.currentTime);
+          g2.gain.setValueAtTime(0.22, ctx.currentTime);
+          g2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.7);
+          osc2.connect(g2);
+          g2.connect(ctx.destination);
+          osc2.start();
+          osc2.stop(ctx.currentTime + 0.7);
+        }, 160);
+      } catch (e) {
+        console.log('Audio chime error:', e);
+      }
+    };
+
+    window.toggleTimerSound = function() {
+      const isMuted = localStorage.getItem('be_sound_muted') === 'true';
+      const newMuted = !isMuted;
+      localStorage.setItem('be_sound_muted', newMuted);
+      updateTimerSoundBtn();
+      if (!newMuted) window.playTimerChime();
+    };
+
+    function updateTimerSoundBtn() {
+      const isMuted = localStorage.getItem('be_sound_muted') === 'true';
+      const btn = document.getElementById('timerSoundBtn');
+      const txt = document.getElementById('timerSoundTxt');
+      if (btn && txt) {
+        if (isMuted) {
+          btn.innerHTML = '&#x1F515; <span id="timerSoundTxt">Sound OFF</span>';
+          btn.style.opacity = '0.7';
+        } else {
+          btn.innerHTML = '&#x1F514; <span id="timerSoundTxt">Sound ON</span>';
+          btn.style.opacity = '1';
+        }
+      }
+    }
+    updateTimerSoundBtn();
+
+    /* --- 2. Daily Streak & Goal Tracker --- */
+    const GOAL_KEYS = ['speedMath', 'aiPrompt', 'caQuiz', 'deepStudy'];
+    function getTodayKey() {
+      const now = new Date();
+      return now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+    }
+
+    function initStudentGoals() {
+      const today = getTodayKey();
+      const lastDate = localStorage.getItem('be_last_active_date');
+      let streak = parseInt(localStorage.getItem('be_study_streak') || '1', 10);
+
+      if (lastDate) {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yKey = yesterday.getFullYear() + '-' + String(yesterday.getMonth()+1).padStart(2,'0') + '-' + String(yesterday.getDate()).padStart(2,'0');
+
+        if (lastDate === yKey) {
+          // Continuous streak
+        } else if (lastDate !== today) {
+          streak = 1; // reset streak if gap > 1 day
+        }
+      }
+      localStorage.setItem('be_last_active_date', today);
+      localStorage.setItem('be_study_streak', streak);
+
+      const streakBadge = document.getElementById('streakCountBadge');
+      if (streakBadge) {
+        streakBadge.innerHTML = '&#x1F525; Day ' + streak + ' Active';
+      }
+
+      // Load today's checkbox states
+      let savedGoals = {};
+      try {
+        savedGoals = JSON.parse(localStorage.getItem('be_goals_' + today) || '{}');
+      } catch(e) {}
+
+      GOAL_KEYS.forEach(k => {
+        const cb = document.getElementById('goalCheck' + k.charAt(0).toUpperCase() + k.slice(1));
+        if (cb) {
+          cb.checked = !!savedGoals[k];
+        }
+      });
+
+      updateGoalProgress();
+    }
+
+    window.toggleStudentGoal = function(key, isChecked) {
+      const today = getTodayKey();
+      let savedGoals = {};
+      try {
+        savedGoals = JSON.parse(localStorage.getItem('be_goals_' + today) || '{}');
+      } catch(e) {}
+      savedGoals[key] = isChecked;
+      localStorage.setItem('be_goals_' + today, JSON.stringify(savedGoals));
+      updateGoalProgress();
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'student_goal_toggle', {
+          event_category: 'study_routine',
+          goal_id: key,
+          completed: isChecked
+        });
+      }
+    };
+
+    window.markDeepWorkGoal = function() {
+      window.toggleStudentGoal('deepStudy', true);
+      const cb = document.getElementById('goalCheckDeepStudy');
+      if (cb) cb.checked = true;
+    };
+
+    function updateGoalProgress() {
+      const today = getTodayKey();
+      let savedGoals = {};
+      try {
+        savedGoals = JSON.parse(localStorage.getItem('be_goals_' + today) || '{}');
+      } catch(e) {}
+
+      let done = 0;
+      GOAL_KEYS.forEach(k => { if (savedGoals[k]) done++; });
+      const pct = Math.round((done / GOAL_KEYS.length) * 100);
+
+      const lbl = document.getElementById('goalProgressLabel');
+      const pctEl = document.getElementById('goalProgressPct');
+      const bar = document.getElementById('goalProgressBar');
+      const cheer = document.getElementById('goalCheerMsg');
+
+      if (lbl) lbl.textContent = done + ' / ' + GOAL_KEYS.length + ' Targets Completed';
+      if (pctEl) pctEl.textContent = pct + '%';
+      if (bar) bar.style.width = pct + '%';
+
+      if (cheer) {
+        if (done === 4) {
+          cheer.innerHTML = '&#x1F3C6; <strong>Mission Accomplished!</strong> 100% daily target crushed. Keep this momentum!';
+          cheer.style.color = '#10B981';
+        } else if (done >= 2) {
+          cheer.innerHTML = '&#x26A1; Great progress! ' + (4 - done) + ' more target' + (4-done > 1 ? 's' : '') + ' to hit today's goal.';
+          cheer.style.color = 'var(--pr)';
+        } else {
+          cheer.innerHTML = '&#x1F4AA; Complete your daily tasks to protect your study streak.';
+          cheer.style.color = 'var(--txt3)';
+        }
+      }
+    }
+
+    /* --- 3. Rotating Formula / Speed Math of the Day --- */
+    const FORMULA_TRICKS = [
+      {
+        subject: 'QUANTITATIVE APTITUDE',
+        title: 'Multiplication by 5, 25, 125 in Mental Math',
+        formula: 'N &times; 25 = (N &times; 100) &divide; 4  |  N &times; 125 = (N &times; 1000) &divide; 8',
+        example: '<strong>Example:</strong> 48 &times; 25 &rarr; 4800 &divide; 4 = <strong>1,200</strong> in under 2 seconds! 72 &times; 125 &rarr; 72000 &divide; 8 = <strong>9,000</strong>.',
+        note: '&#x1F4A1; Saves 35+ seconds in SBI PO, IBPS &amp; SSC CGL Simplification/DI.'
+      },
+      {
+        subject: 'QUANTITATIVE APTITUDE',
+        title: 'Fast Square of Any Number Ending in 5',
+        formula: '(N5)&sup2; = [N &times; (N + 1)] appended with 25',
+        example: '<strong>Example:</strong> 65&sup2; &rarr; (6 &times; 7) | 25 = <strong>4225</strong>. 85&sup2; &rarr; (8 &times; 9) | 25 = <strong>7225</strong>.',
+        note: '&#x1F4A1; Essential for Compound Interest and Mensuration area calculations.'
+      },
+      {
+        subject: 'QUANTITATIVE APTITUDE',
+        title: 'Quadratic Equation Signs & Instant Root Table',
+        formula: 'ax&sup2; &minus; bx + c = 0 &rArr; (+, +)  |  ax&sup2; + bx + c = 0 &rArr; (&minus;, &minus;)',
+        example: '<strong>Instant Trap Rule:</strong> If constant signs of BOTH equations are negative (&minus;c), answer is ALWAYS <strong>Relationship Cannot Be Established (CND)</strong>!',
+        note: '&#x1F4A1; Solve 5 Quadratic comparison questions in IBPS PO Prelims in under 90 seconds.'
+      },
+      {
+        subject: 'QUANTITATIVE APTITUDE',
+        title: 'Base 100 Fast Multiplication Shortcut',
+        formula: '(100 + a)(100 + b) = (100 + a + b) | (a &times; b)',
+        example: '<strong>Example:</strong> 104 &times; 107 &rarr; (100 + 4 + 7) | (4 &times; 7) = <strong>11,128</strong>. 96 &times; 93 &rarr; (96 - 7) | (-4 &times; -7) = <strong>8,928</strong>.',
+        note: '&#x1F4A1; Direct application in Bank PO Profit &amp; Loss markups.'
+      },
+      {
+        subject: 'REASONING ABILITY',
+        title: 'Syllogism: &ldquo;Only A Few&rdquo; Universal Truth Table',
+        formula: '&ldquo;Only a few A are B&rdquo; = (Some A are B) + (Some A are NOT B)',
+        example: '<strong>Key Deduction:</strong> &ldquo;All A can NEVER be B&rdquo; is 100% Definite True. However, &ldquo;All B can be A&rdquo; is a valid possibility!',
+        note: '&#x1F4A1; Guaranteed 3 to 5 questions in IBPS PO, Clerk &amp; SBI PO Prelims.'
+      },
+      {
+        subject: 'QUANTITATIVE APTITUDE',
+        title: 'Successive Percentage / Effective Rate Formula',
+        formula: 'Net Change = A + B + (A &times; B &divide; 100)',
+        example: '<strong>Example:</strong> Discounts of 20% &amp; 10% &rarr; (-20) + (-10) + (200/100) = <strong>-28% single equivalent discount</strong>.',
+        note: '&#x1F4A1; Standard technique for Compound Interest 2-year difference and successive discounts.'
+      },
+      {
+        subject: 'BANKING &amp; FINANCIAL AWARENESS',
+        title: 'RBI Policy Rates Hierarchy & Statutory Reserves',
+        formula: 'MSF (Repo + 25 bps) &ge; Repo Rate &ge; SDF (Repo &minus; 25 bps)',
+        example: '<strong>Key Fact:</strong> CRR is held strictly in CASH with RBI (no interest paid). SLR is held in Gold/G-Secs/Cash by banks themselves.',
+        note: '&#x1F4A1; High-yield topic for RBI Grade B, IBPS PO Mains &amp; Bank Interview panel.'
+      },
+      {
+        subject: 'REASONING ABILITY',
+        title: 'Alphabet Reverse Pairs & Sum of 27 Rule',
+        formula: 'Forward Rank + Reverse Rank = 27 (A&harr;Z, B&harr;Y, C&harr;X, D&harr;W...)',
+        example: '<strong>Example:</strong> To find reverse of P (16th): 27 - 16 = 11th letter = <strong>K</strong> (PK pair).',
+        note: '&#x1F4A1; Crack letter-coding and alphanumeric series in under 20 seconds.'
+      }
+    ];
+
+    let currentTrickIdx = 0;
+
+    function renderCurrentTrick() {
+      const t = FORMULA_TRICKS[currentTrickIdx];
+      const sub = document.getElementById('trickSubject');
+      const idx = document.getElementById('trickIndex');
+      const title = document.getElementById('trickTitle');
+      const formula = document.getElementById('trickFormula');
+      const ex = document.getElementById('trickExample');
+      const note = document.getElementById('trickExamNote');
+
+      if (sub) sub.textContent = t.subject;
+      if (idx) idx.textContent = (currentTrickIdx + 1) + ' of ' + FORMULA_TRICKS.length;
+      if (title) title.textContent = t.title;
+      if (formula) formula.innerHTML = t.formula;
+      if (ex) ex.innerHTML = t.example;
+      if (note) note.innerHTML = t.note;
+    }
+
+    window.nextFormulaTrick = function() {
+      currentTrickIdx = (currentTrickIdx + 1) % FORMULA_TRICKS.length;
+      renderCurrentTrick();
+      if (typeof gtag === 'function') {
+        gtag('event', 'next_formula_trick', { trick_index: currentTrickIdx });
+      }
+    };
+
+    window.copyCurrentTrick = function() {
+      const t = FORMULA_TRICKS[currentTrickIdx];
+      const textToCopy = t.title + '\nFormula: ' + t.formula.replace(/&times;/g, '*').replace(/&divide;/g, '/').replace(/&sup2;/g, '^2').replace(/&minus;/g, '-').replace(/&rArr;/g, '=>') + '\n' + t.example.replace(/<[^>]+>/g, '') + '\n' + t.note.replace(/<[^>]+>/g, '');
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        if (window.showToast) window.showToast('Formula shortcut copied to clipboard!');
+        else alert('Formula copied!');
+      });
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'copy_formula_shortcut', { trick_title: t.title });
+      }
+    };
+
+    /* --- 4. Interactive Formula Vault Modal Logic --- */
+    window.openFormulaVault = function() {
+      const modal = document.getElementById('formulaModal');
+      if (modal) {
+        modal.style.display = 'flex';
+        populateSquaresAndCubes();
+        populateFracPct();
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'open_formula_vault');
+      }
+    };
+
+    window.closeFormulaVault = function() {
+      const modal = document.getElementById('formulaModal');
+      if (modal) modal.style.display = 'none';
+    };
+
+    window.switchFormulaTab = function(tabId, btn) {
+      document.querySelectorAll('.ftab-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.ftab-btn').forEach(b => b.classList.remove('active'));
+      const target = document.getElementById('ftab-' + tabId);
+      if (target) target.classList.add('active');
+      if (btn) btn.classList.add('active');
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'switch_formula_tab', { tab_id: tabId });
+      }
+    };
+
+    function populateSquaresAndCubes() {
+      const sqGrid = document.getElementById('squaresGrid');
+      const cbGrid = document.getElementById('cubesGrid');
+      if (!sqGrid || sqGrid.children.length > 0) return;
+
+      let sqHtml = '';
+      for (let i = 1; i <= 50; i++) {
+        sqHtml += '<div class="formula-cell" onclick="copyValue(this, \'' + i + '&sup2; = ' + (i*i) + '\')"><span>' + i + '&sup2;</span><strong>' + (i * i) + '</strong></div>';
+      }
+      sqGrid.innerHTML = sqHtml;
+
+      let cbHtml = '';
+      for (let i = 1; i <= 30; i++) {
+        cbHtml += '<div class="formula-cell cb-cell" onclick="copyValue(this, \'' + i + '&sup3; = ' + (i*i*i) + '\')"><span>' + i + '&sup3;</span><strong>' + (i * i * i) + '</strong></div>';
+      }
+      cbGrid.innerHTML = cbHtml;
+    }
+
+    function populateFracPct() {
+      const fGrid = document.getElementById('fracPctGrid');
+      if (!fGrid || fGrid.children.length > 0) return;
+
+      const FRACS = [
+        { f: '1/2', p: '50%', d: '0.5' },
+        { f: '1/3', p: '33.33%', d: '33 1/3%' },
+        { f: '1/4', p: '25%', d: '0.25' },
+        { f: '1/5', p: '20%', d: '0.2' },
+        { f: '1/6', p: '16.66%', d: '16 2/3%' },
+        { f: '1/7', p: '14.28%', d: '14 2/7%' },
+        { f: '1/8', p: '12.5%', d: '12 1/2%' },
+        { f: '1/9', p: '11.11%', d: '11 1/9%' },
+        { f: '1/10', p: '10%', d: '0.1' },
+        { f: '1/11', p: '9.09%', d: '9 1/11%' },
+        { f: '1/12', p: '8.33%', d: '8 1/3%' },
+        { f: '1/13', p: '7.69%', d: '7 9/13%' },
+        { f: '1/14', p: '7.14%', d: '7 1/7%' },
+        { f: '1/15', p: '6.66%', d: '6 2/3%' },
+        { f: '1/16', p: '6.25%', d: '6 1/4%' },
+        { f: '1/17', p: '5.88%', d: '5 15/17%' },
+        { f: '1/18', p: '5.55%', d: '5 5/9%' },
+        { f: '1/19', p: '5.26%', d: '5 5/19%' },
+        { f: '1/20', p: '5.00%', d: '0.05' },
+        { f: '1/24', p: '4.16%', d: '4 1/6%' },
+        { f: '1/25', p: '4.00%', d: '0.04' },
+        { f: '3/8', p: '37.5%', d: '37 1/2%' },
+        { f: '5/8', p: '62.5%', d: '62 1/2%' },
+        { f: '7/8', p: '87.5%', d: '87 1/2%' }
+      ];
+
+      let html = '';
+      FRACS.forEach(item => {
+        html += '<div class="formula-cell frac-cell" onclick="copyValue(this, \'' + item.f + ' = ' + item.p + '\')"><span>' + item.f + '</span><strong>' + item.p + '</strong><small>' + item.d + '</small></div>';
+      });
+      fGrid.innerHTML = html;
+    }
+
+    window.copyValue = function(el, val) {
+      navigator.clipboard.writeText(val.replace(/&sup2;/g, '^2').replace(/&sup3;/g, '^3')).then(() => {
+        if (window.showToast) window.showToast('Copied: ' + val.replace(/&sup2;/g, '²').replace(/&sup3;/g, '³'));
+      });
+    };
+
+    window.copyAllFormulas = function() {
+      const activePane = document.querySelector('.ftab-pane.active');
+      if (!activePane) return;
+      const text = activePane.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        if (window.showToast) window.showToast('Copied table data to clipboard!');
+      });
+    };
+
+    window.filterFormulaTable = function(q) {
+      q = (q || '').toLowerCase().trim();
+      const activePane = document.querySelector('.ftab-pane.active');
+      if (!activePane) return;
+      const cells = activePane.querySelectorAll('.formula-cell, .ft-item');
+      cells.forEach(c => {
+        if (!q || c.textContent.toLowerCase().includes(q)) {
+          c.style.display = '';
+        } else {
+          c.style.display = 'none';
+        }
+      });
+    };
+
+    /* --- 5. Enhanced Search with Match Counter & Clear Button --- */
+    const origFilterToolsGrid = window.filterToolsGrid;
+    window.filterToolsGrid = function() {
+      if (typeof origFilterToolsGrid === 'function') origFilterToolsGrid();
+
+      const input = document.getElementById('toolsSearchInput');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      const badge = document.getElementById('toolsCountBadge');
+      const q = (input && input.value || '').trim();
+
+      if (clearBtn) {
+        clearBtn.style.display = q ? 'block' : 'none';
+      }
+
+      // Count visible cards
+      const visibleCards = document.querySelectorAll('#toolsCardGrid .cat-card:not([style*="display: none"])');
+      const count = visibleCards.length;
+
+      if (badge) {
+        if (q) {
+          badge.innerHTML = '&#x1F50D; Found <strong>' + count + '</strong> engine' + (count === 1 ? '' : 's') + ' matching &ldquo;' + q + '&rdquo;';
+        } else {
+          badge.innerHTML = '&#x2705; Showing <strong>' + count + '</strong> of 22 Exam Intelligence Engines';
+        }
+      }
+
+      if (typeof gtag === 'function' && q.length >= 3) {
+        gtag('event', 'search_tools', { search_term: q, results_count: count });
+      }
+    };
+
+    window.clearToolsSearch = function() {
+      const input = document.getElementById('toolsSearchInput');
+      if (input) {
+        input.value = '';
+        window.filterToolsGrid();
+        input.focus();
+      }
+    };
+
+    // Initialize Routine & Goals on Load
+    initStudentGoals();
+    renderCurrentTrick();
+
+    // Close modal on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        window.closeFormulaVault();
+      }
+    });
+  })();
+  </script>
+
 </body>
 </html>
