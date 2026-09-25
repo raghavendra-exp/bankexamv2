@@ -609,19 +609,56 @@
   font-size: 18px;
 }
 
-@media (max-width: 860px) {
-  .hdr-links { display: none; }
-  .be-btn-tool.be-hamburger { display: inline-flex; }
-  .be-btn-tool.be-hide-sm { display: none; }
-  .be-btn-tool .be-tool-text { display: none; }
-  .be-btn-tool .be-kbd-badge { display: none; }
-  .be-btn-tool { padding: 0 10px; }
+/* Medium Desktop / Laptops (<= 1400px): Collapse tool text to circular icon buttons to avoid 1700px blowout */
+@media (max-width: 1400px) {
+  .be-btn-tool .be-tool-text,
+  .be-btn-tool .be-kbd-badge {
+    display: none !important;
+  }
+  .be-btn-tool {
+    padding: 0 10px;
+    height: 38px;
+    justify-content: center;
+    border-radius: 20px;
+  }
+  .be-btn-tool.be-btn-signin {
+    width: auto;
+    border-radius: 20px;
+    padding: 0 10px;
+  }
+  .hdr-links {
+    gap: 10px;
+  }
+  .hdr-links a {
+    font-size: 12.5px;
+  }
 }
 
+/* Tablets / Small Laptops (<= 1080px): Collapse desktop links into drawer */
+@media (max-width: 1080px) {
+  .hdr-links {
+    display: none !important;
+  }
+  .be-btn-tool.be-hamburger {
+    display: inline-flex !important;
+  }
+  .be-btn-tool.be-hide-sm {
+    display: none !important;
+  }
+}
+
+/* Compact Smartphones (<= 480px): Streamline toolbar */
 @media (max-width: 480px) {
+  .be-btn-tool.be-hide-xs {
+    display: none !important;
+  }
   .be-btn-tool {
-    height: 36px;
+    height: 34px;
     padding: 0 8px;
+    gap: 3px;
+    font-size: 13px;
+  }
+  .hdr-tools {
     gap: 4px;
   }
 }
