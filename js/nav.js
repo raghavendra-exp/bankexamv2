@@ -4,6 +4,104 @@
 (function(){
   const EXAM_DATABASE = [
   {
+    "title": "Ready-Made Study Modules Hub",
+    "sub": "13 Interactive Digital Textbooks & Labs (Banking & UPSC)",
+    "href": "study-modules.html",
+    "cat": "module",
+    "tags": "study modules textbooks quant reasoning ethics geography history editorial"
+  },
+  {
+    "title": "Bank Quant Master (Ready-Made Module)",
+    "sub": "32 Topics, Speed Math Visualizers, Arithmetic & DI",
+    "href": "study-modules.html?module=bank-quant",
+    "cat": "bank",
+    "tags": "bank quant quantitative aptitude arithmetic speed math di sbi ibps"
+  },
+  {
+    "title": "Bank Reasoning Master (Ready-Made Module)",
+    "sub": "Floor & Box Puzzles, Seating Arrangement & Syllogism",
+    "href": "study-modules.html?module=bank-reasoning",
+    "cat": "bank",
+    "tags": "reasoning puzzles seating arrangement syllogism bank sbi ibps"
+  },
+  {
+    "title": "Banking English Language Master (Ready-Made Module)",
+    "sub": "24 Grammar Chapters, Error Scanner & RC Speed Reader",
+    "href": "study-modules.html?module=bank-english",
+    "cat": "bank",
+    "tags": "english grammar error detection cloze reading comprehension vocab"
+  },
+  {
+    "title": "Banking & Financial Awareness Master (Ready-Made Module)",
+    "sub": "18 Interactive Modules, RBI Policy & Banking Systems",
+    "href": "study-modules.html?module=banking-awareness",
+    "cat": "bank",
+    "tags": "banking awareness financial awareness rbi monetary policy npa upi"
+  },
+  {
+    "title": "General Awareness & Current Affairs (Ready-Made Module)",
+    "sub": "Monthly Current Affairs, Static GK & Schemes",
+    "href": "study-modules.html?module=general-awareness",
+    "cat": "bank",
+    "tags": "general awareness current affairs static gk polity history economy schemes"
+  },
+  {
+    "title": "Daily Editorial Hub & Vocab Builder (Ready-Made Module)",
+    "sub": "The Hindu & Indian Express Editorials with Audio Reader",
+    "href": "study-modules.html?module=editorial-hub",
+    "cat": "bank",
+    "tags": "daily editorial the hindu indian express vocabulary newspaper reader"
+  },
+  {
+    "title": "Computer Awareness Master (Ready-Made Module)",
+    "sub": "Architecture Visualizer, Cyber Security & 600+ MCQs",
+    "href": "study-modules.html?module=computer-awareness",
+    "cat": "bank",
+    "tags": "computer awareness keyboard shortcuts networking cyber security rrb rbi"
+  },
+  {
+    "title": "UPSC GS-IV Ethics Master (Ready-Made Module)",
+    "sub": "Ethical Reasoning Lab, 50+ Dilemma Case Studies & Probity",
+    "href": "study-modules.html?module=gs4",
+    "cat": "upsc",
+    "tags": "upsc ethics gs4 integrity aptitude case studies probity governance"
+  },
+  {
+    "title": "UPSC GS-III Master (Ready-Made Module)",
+    "sub": "Technology, Economy, Agriculture, Environment & Security",
+    "href": "study-modules.html?module=gs3",
+    "cat": "upsc",
+    "tags": "upsc gs3 economy agriculture science tech disaster internal security"
+  },
+  {
+    "title": "UPSC GS-II Master (Ready-Made Module)",
+    "sub": "Governance, Constitution, Polity & Social Justice",
+    "href": "study-modules.html?module=gs2",
+    "cat": "upsc",
+    "tags": "upsc gs2 polity constitution governance social justice international relations"
+  },
+  {
+    "title": "Complete History of India Atlas (Ready-Made Module)",
+    "sub": "Prehistory to Modern India, Art & Culture, Knowledge Graph",
+    "href": "study-modules.html?module=history",
+    "cat": "upsc",
+    "tags": "history of india ancient medieval modern art culture atlas upsc uppsc"
+  },
+  {
+    "title": "Geography of India & Bharat Atlas (Ready-Made Module)",
+    "sub": "River Basins, Monsoon Simulator, Soils & Map Drills",
+    "href": "study-modules.html?module=geography",
+    "cat": "upsc",
+    "tags": "geography of india bharat atlas rivers climate monsoon minerals map drills"
+  },
+  {
+    "title": "India & World: IR & Schemes (Ready-Made Module)",
+    "sub": "Bilateral Relations, Global Groupings & Govt Schemes",
+    "href": "study-modules.html?module=india-world",
+    "cat": "upsc",
+    "tags": "international relations bilateral schemes foreign policy upsc gs2"
+  },
+  {
     "title": "Bank Exam Master Prompt Generator",
     "sub": "SBI, IBPS, RRB Clerk & PO, RBI Grade B",
     "href": "bank_exam_prompt_generator.html",
@@ -460,6 +558,9 @@
           <div class="drawer-links">
             <a href="index.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">🏠</span> <span>Home Portal</span>
+            </a>
+            <a href="study-modules.html" class="drawer-link" onclick="window.closeMobileDrawer()" style="background:rgba(96,165,250,0.12);color:#60A5FA;font-weight:800">
+              <span class="drawer-icon">📚</span> <span>Ready-Made Study Modules (13)</span>
             </a>
             <a href="bank_exam_prompt_generator.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">🏦</span> <span>Banking Hub (SBI/IBPS)</span>

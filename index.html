@@ -77,6 +77,28 @@
         }
       },
       {
+        "@type": "ItemList",
+        "name": "Ready-Made Interactive Study Modules",
+        "description": "Specialized digital study modules, topic laboratories, and interactive textbooks for Banking and UPSC exams.",
+        "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html",
+        "numberOfItems": 13,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Bank Quantitative Aptitude Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=bank-quant" },
+          { "@type": "ListItem", "position": 2, "name": "Bank Reasoning Ability Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=bank-reasoning" },
+          { "@type": "ListItem", "position": 3, "name": "Banking English Language Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=bank-english" },
+          { "@type": "ListItem", "position": 4, "name": "Banking & Financial Awareness Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=banking-awareness" },
+          { "@type": "ListItem", "position": 5, "name": "General Awareness & Current Affairs Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=general-awareness" },
+          { "@type": "ListItem", "position": 6, "name": "Daily Editorial Hub & Vocabulary Builder", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=editorial-hub" },
+          { "@type": "ListItem", "position": 7, "name": "Computer Awareness Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=computer-awareness" },
+          { "@type": "ListItem", "position": 8, "name": "UPSC GS-IV Ethics, Integrity & Aptitude Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=gs4" },
+          { "@type": "ListItem", "position": 9, "name": "UPSC GS-III Economy, Agriculture & Tech Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=gs3" },
+          { "@type": "ListItem", "position": 10, "name": "UPSC GS-II Governance, Constitution & Polity Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=gs2" },
+          { "@type": "ListItem", "position": 11, "name": "Complete History of India & Indian Culture Atlas", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=history" },
+          { "@type": "ListItem", "position": 12, "name": "Geography of India & Bharat Map Atlas", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=geography" },
+          { "@type": "ListItem", "position": 13, "name": "India & World: International Relations & Schemes", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=india-world" }
+        ]
+      },
+      {
         "@type": "FAQPage",
         "mainEntity": [
           {
@@ -644,6 +666,7 @@
 
       <!-- Primary Nav Links -->
       <nav class="hdr-links">
+        <a href="study-modules.html" style="color:#60A5FA;font-weight:800">&#x1F4DA; Study Modules</a>
         <a href="#tools">Tools</a>
         <a href="#coverage">Coverage</a>
         <a href="quiz-simulator.html" style="color:#34D399;font-weight:800">&#x1F3AF; Mock Lab</a>
@@ -1974,6 +1997,270 @@
       <!-- Dynamic Roadmap Content Container -->
       <div id="homeRoadmapContainer" class="stream-sec" style="margin-bottom:0">
         <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         READY-MADE INTERACTIVE STUDY MODULES (13 MASTER SUITES)
+         ══════════════════════════════════════════════════════════ -->
+    <section id="studyModules" style="margin-bottom:56px;scroll-margin-top:120px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:20px">
+        <div>
+          <div class="sec-eyebrow">&#x26A1; Dedicated Topic Laboratories &middot; 100% Free</div>
+          <h2 class="sec-hd">Ready-Made Interactive Study Modules</h2>
+          <p class="sec-sub" style="margin-bottom:0">Deep-dive digital textbooks, speed math visualizers, dilemma reasoning labs, and daily editorial portals for Banking and UPSC Civil Services. Embedded seamlessly inside BankExamV2.</p>
+        </div>
+        <div>
+          <a href="study-modules.html" class="hub-pill-btn" style="background:linear-gradient(135deg,var(--pr),#1D4ED8);color:#fff;border:none">
+            &#x1F4DA; Browse All 13 Modules &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Filter Toggle Tabs -->
+      <div class="stream-jump-bar" style="border-radius:var(--r);margin-bottom:20px;border:1.5px solid var(--bdr);position:static">
+        <button class="s-jump-pill active" id="tabModBank" onclick="filterHomeModules('bank')">&#x1F3E6; Banking &amp; Insurance Prep (7 Modules)</button>
+        <button class="s-jump-pill" id="tabModUpsc" onclick="filterHomeModules('upsc')">&#x1F3DB;&#xFE0F; UPSC Civil Services &amp; Major Indian Exams (6 Modules)</button>
+      </div>
+
+      <!-- Banking Modules Grid -->
+      <div id="gridModBank" class="cov-grid" style="grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px">
+        <!-- 1. Bank Quant -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F4D0;</span>
+              <span style="font-size:11px;font-weight:800;color:var(--cy2);background:rgba(13,148,136,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(13,148,136,.25)">QUANT MASTER</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">Bank Quantitative Aptitude Master</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">32 topics, speed math visualizers, topper dual solutions, and full exam mocks for SBI Clerk, IBPS Clerk/CSA &amp; RRB OA.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">Speed Math Lab</span>
+              <span class="badge b-ess">DI Visualizer</span>
+              <span class="badge b-ess">500+ PYQs</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=bank-quant" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch Quant Module &rarr;</a>
+        </div>
+
+        <!-- 2. Bank Reasoning -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F9E9;</span>
+              <span style="font-size:11px;font-weight:800;color:var(--pr-light);background:rgba(37,99,235,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(37,99,235,.25)">REASONING MASTER</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">Bank Reasoning Ability Master</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Floor, box, circular puzzle visualizers, syllogism Venn diagram engines, coded inequalities &amp; speed drills.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">Puzzle Visualizer</span>
+              <span class="badge b-ess">Syllogism Engine</span>
+              <span class="badge b-ess">Timed Drills</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=bank-reasoning" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch Reasoning Module &rarr;</a>
+        </div>
+
+        <!-- 3. English Master -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F4D6;</span>
+              <span style="font-size:11px;font-weight:800;color:#10B981;background:rgba(16,185,129,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(16,185,129,.25)">ENGLISH MASTER</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">Banking English Language Master</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">24 Grammar chapters, interactive Error Scanner, Cloze Test Lab, and RC Speed Reader with 500+ authentic PYQs.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">24 Grammar Chapters</span>
+              <span class="badge b-ess">Error Scanner</span>
+              <span class="badge b-ess">RC Speed Trainer</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=bank-english" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch English Module &rarr;</a>
+        </div>
+
+        <!-- 4. Banking Awareness -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F3E6;</span>
+              <span style="font-size:11px;font-weight:800;color:#F59E0B;background:rgba(245,158,11,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(245,158,11,.25)">BANKING GK</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">Banking &amp; Financial Awareness Master</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">18 interactive modules: RBI monetary policy simulator, NPA lifecycle, UPI flows, monetary instruments &amp; mocks.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">RBI Policy Simulator</span>
+              <span class="badge b-ess">NPA Lifecycle</span>
+              <span class="badge b-ess">Financial Terms</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=banking-awareness" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch Banking GK &rarr;</a>
+        </div>
+
+        <!-- 5. General Awareness -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F30D;</span>
+              <span style="font-size:11px;font-weight:800;color:#8B5CF6;background:rgba(139,92,246,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(139,92,246,.25)">GA &amp; CURRENT AFFAIRS</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">General Awareness &amp; Current Affairs Master</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Monthly current affairs, Static GK, Indian Polity, Economy, Government Schemes tracker, flashcards &amp; mocks.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">Current Affairs Engine</span>
+              <span class="badge b-ess">Static GK Vault</span>
+              <span class="badge b-ess">Schemes Tracker</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=general-awareness" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch GA Master &rarr;</a>
+        </div>
+
+        <!-- 6. Daily Editorial Hub -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F4F0;</span>
+              <span style="font-size:11px;font-weight:800;color:#0D9488;background:rgba(13,148,136,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(13,148,136,.25)">DAILY EDITORIAL</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">Daily Editorial Hub &amp; Vocabulary Builder</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Daily editorials from The Hindu, Indian Express, and The Guardian with takeaways, vocab builder &amp; audio reader.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">The Hindu &amp; Express</span>
+              <span class="badge b-ess">Vocab Flashcards</span>
+              <span class="badge b-ess">Audio Reader</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=editorial-hub" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch Editorial Hub &rarr;</a>
+        </div>
+
+        <!-- 7. Computer Awareness -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F4BB;</span>
+              <span style="font-size:11px;font-weight:800;color:#3B82F6;background:rgba(59,130,246,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(59,130,246,.25)">COMPUTER GK</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">Computer Awareness Master</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Hardware visualizer, networking, cyber security, keyboard shortcuts, and 600+ verified exam practice MCQs.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">Hardware Sim</span>
+              <span class="badge b-ess">Cyber Security</span>
+              <span class="badge b-ess">600+ MCQs</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=computer-awareness" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch Computer Module &rarr;</a>
+        </div>
+      </div>
+
+      <!-- UPSC & Indian Exams Modules Grid -->
+      <div id="gridModUpsc" class="cov-grid" style="display:none;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px">
+        <!-- 1. GS-IV Ethics -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x2696;&#xFE0F;</span>
+              <span style="font-size:11px;font-weight:800;color:#F59E0B;background:rgba(245,158,11,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(245,158,11,.25)">UPSC GS-IV</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">UPSC GS-IV Ethics, Integrity &amp; Aptitude</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Interactive ethical reasoning lab, 50+ case study simulator, probity matrix &amp; PYQ answer-writing workbench.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">Case Study Simulator</span>
+              <span class="badge b-ess">Dilemma Lab</span>
+              <span class="badge b-ess">Probity Matrix</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=gs4" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch Ethics Module &rarr;</a>
+        </div>
+
+        <!-- 2. GS-III Master -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F1EE;&#x1F1F3;</span>
+              <span style="font-size:11px;font-weight:800;color:#10B981;background:rgba(16,185,129,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(16,185,129,.25)">UPSC GS-III</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">UPSC GS-III Economy, Agriculture &amp; Tech</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Economic survey breakdown, agriculture reforms, science &amp; tech trends, disaster management and security matrix.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">Economic Analysis</span>
+              <span class="badge b-ess">Agri Reforms</span>
+              <span class="badge b-ess">Internal Security</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=gs3" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch GS-III Module &rarr;</a>
+        </div>
+
+        <!-- 3. GS-II Master -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F3DB;&#xFE0F;</span>
+              <span style="font-size:11px;font-weight:800;color:#3B82F6;background:rgba(59,130,246,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(59,130,246,.25)">UPSC GS-II</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">UPSC GS-II Governance, Constitution &amp; Polity</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Constitutional articles explorer, landmark judicial doctrines, governance, social justice schemes &amp; IR tracker.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">Articles Explorer</span>
+              <span class="badge b-ess">Judicial Doctrines</span>
+              <span class="badge b-ess">Statutory Bodies</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=gs2" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch GS-II Module &rarr;</a>
+        </div>
+
+        <!-- 4. History of India -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F4DC;</span>
+              <span style="font-size:11px;font-weight:800;color:#EC4899;background:rgba(236,72,153,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(236,72,153,.25)">HISTORY ATLAS</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">Complete History of India &amp; Culture Atlas</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Interactive historical atlas from Prehistory to Modern India. Master timeline, Art &amp; Culture museum, and knowledge graph.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">Interactive Atlas</span>
+              <span class="badge b-ess">Art &amp; Culture</span>
+              <span class="badge b-ess">Knowledge Graph</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=history" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch History Atlas &rarr;</a>
+        </div>
+
+        <!-- 5. Geography of India -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F5FA;&#xFE0F;</span>
+              <span style="font-size:11px;font-weight:800;color:#14B8A6;background:rgba(20,184,166,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(20,184,166,.25)">GEOGRAPHY ATLAS</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">Geography of India &amp; Bharat Map Atlas</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Interactive river basins, monsoon &amp; climate simulator, soils, mineral belts, disaster zones, and map drills.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">River Basins</span>
+              <span class="badge b-ess">Monsoon Simulator</span>
+              <span class="badge b-ess">Prelims Map Drills</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=geography" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch Geography Atlas &rarr;</a>
+        </div>
+
+        <!-- 6. India and World -->
+        <div class="cov-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:28px">&#x1F310;</span>
+              <span style="font-size:11px;font-weight:800;color:#6366F1;background:rgba(99,102,241,.12);padding:3px 9px;border-radius:6px;border:1px solid rgba(99,102,241,.25)">IR &amp; SCHEMES</span>
+            </div>
+            <h3 style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--txt)">India &amp; World: International Relations &amp; Schemes</h3>
+            <p style="font-size:13px;color:var(--txt2);line-height:1.55;margin-bottom:12px">Bilateral &amp; multilateral foreign relations, strategic maritime choke points, groupings (G20, Quad) &amp; schemes.</p>
+            <div style="font-size:11.5px;color:var(--txt3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:5px">
+              <span class="badge b-ess">Bilateral Matrix</span>
+              <span class="badge b-ess">Maritime Choke Points</span>
+              <span class="badge b-ess">Central Schemes</span>
+            </div>
+          </div>
+          <a href="study-modules.html?module=india-world" class="act-btn act-btn-p" style="text-align:center;padding:10px">&#x26A1; Launch IR Module &rarr;</a>
+        </div>
       </div>
     </section>
 
@@ -3773,6 +4060,28 @@
     if (document.getElementById('homeRoadmapContainer')) {
       window.switchHomeRoadmap('bank');
     }
+
+    window.filterHomeModules = function(stream) {
+      const bankGrid = document.getElementById('gridModBank');
+      const upscGrid = document.getElementById('gridModUpsc');
+      const btnBank = document.getElementById('tabModBank');
+      const btnUpsc = document.getElementById('tabModUpsc');
+      if (!bankGrid || !upscGrid) return;
+      if (stream === 'bank') {
+        bankGrid.style.display = 'grid';
+        upscGrid.style.display = 'none';
+        btnBank.classList.add('active');
+        btnUpsc.classList.remove('active');
+      } else {
+        bankGrid.style.display = 'none';
+        upscGrid.style.display = 'grid';
+        btnBank.classList.remove('active');
+        btnUpsc.classList.add('active');
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'filter_study_modules', { stream: stream });
+      }
+    };
   })();
   </script>
 
