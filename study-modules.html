@@ -88,29 +88,50 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--txt);
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
     }
 
+    /* Viewer Mode: Full Viewport, zero cutoff, hide mobile bottom nav */
+    body.viewer-mode {
+      height: 100vh !important;
+      height: 100dvh !important;
+      max-height: 100vh !important;
+      max-height: 100dvh !important;
+      overflow: hidden !important;
+      padding-bottom: 0 !important;
+    }
+    body.viewer-mode .mobile-bottom-nav {
+      display: none !important;
+    }
+
     /* Top Bar */
     .mod-nav {
+      flex-shrink: 0;
       background: rgba(15, 23, 42, 0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 10px 20px;
+      padding: 8px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
+      min-height: 52px;
     }
     [data-theme="light"] .mod-nav {
       background: rgba(255, 255, 255, 0.95);
@@ -222,25 +243,30 @@
 
     /* Viewer Container */
     #viewerSection {
-      flex: 1;
+      flex: 1 1 0%;
+      min-height: 0;
+      width: 100%;
+      height: 100%;
       display: none;
       flex-direction: column;
-      height: calc(100vh - 61px);
       position: relative;
+      overflow: hidden;
     }
     #viewerSection.active {
       display: flex;
     }
 
     .viewer-subbar {
+      flex-shrink: 0;
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
-      padding: 8px 20px;
+      padding: 6px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       font-size: 13px;
+      min-height: 42px;
     }
     .viewer-title-box {
       display: flex;
@@ -249,6 +275,17 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .viewer-title-box strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .viewer-title-box span#activeModuleSubtitle {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .viewer-badge {
       padding: 3px 8px;
@@ -257,21 +294,27 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .04em;
+      flex-shrink: 0;
     }
     .badge-bank { background: rgba(37,99,235,0.15); color: #60A5FA; border: 1px solid rgba(37,99,235,0.3); }
     .badge-upsc { background: rgba(245,158,11,0.15); color: #FBBF24; border: 1px solid rgba(245,158,11,0.3); }
 
     .iframe-wrapper {
-      flex: 1;
+      flex: 1 1 0%;
+      min-height: 0;
+      width: 100%;
+      height: 100%;
       position: relative;
       background: #0B0F19;
-      width: 100%;
-      height: 100%;
+      overflow: hidden;
     }
     .module-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      border: none;
+      border: 0;
       display: block;
     }
     .frame-loader {
@@ -287,6 +330,7 @@
       font-size: 14px;
       font-weight: 600;
       z-index: 5;
+      pointer-events: none;
       transition: opacity .25s ease;
     }
     .spinner {
@@ -527,36 +571,92 @@
 
     /* Fullscreen focus mode */
     body.focus-mode .mod-nav {
-      display: none;
+      display: none !important;
+    }
+    body.focus-mode .viewer-subbar {
+      display: none !important;
     }
     body.focus-mode #viewerSection {
-      height: 100vh;
+      height: 100vh !important;
+      height: 100dvh !important;
     }
     .exit-focus-btn {
       display: none;
-      position: absolute;
-      top: 10px;
+      position: fixed;
+      top: 12px;
       right: 14px;
-      z-index: 50;
-      background: rgba(15,23,42,0.85);
-      backdrop-filter: blur(8px);
+      z-index: 9999;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border);
       color: #fff;
-      padding: 6px 12px;
+      padding: 7px 14px;
       border-radius: 8px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .exit-focus-btn:hover {
+      background: #1E293B;
+      transform: scale(1.04);
     }
     body.focus-mode .exit-focus-btn {
-      display: block;
+      display: flex !important;
+      align-items: center;
+      gap: 6px;
     }
 
     @media (max-width: 768px) {
-      .mod-nav-center { max-width: 100%; order: 3; width: 100%; }
-      .mod-nav { flex-wrap: wrap; padding: 10px 14px; }
-      .modules-grid { grid-template-columns: 1fr; }
-      .catalog-hero h1 { font-size: 24px; }
+      .mod-nav {
+        padding: 6px 10px;
+        gap: 8px;
+        min-height: 48px;
+      }
+      .mod-nav-left {
+        gap: 6px;
+      }
+      .mod-logo span:nth-child(2) {
+        font-size: 14px;
+      }
+      .mod-logo-badge {
+        display: none;
+      }
+      .mod-back-link span:nth-child(2) {
+        display: none;
+      }
+      .mod-back-link {
+        padding: 5px 8px;
+      }
+      .mod-nav-center {
+        flex: 1;
+        min-width: 0;
+      }
+      .mod-select {
+        font-size: 12px;
+        padding: 6px 8px;
+      }
+      .mod-btn {
+        padding: 5px 8px;
+        font-size: 12px;
+      }
+      .mod-btn span.btn-label {
+        display: none;
+      }
+      .viewer-subbar {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+      #activeModuleSubtitle {
+        display: none;
+      }
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+      .catalog-hero h1 {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
@@ -602,11 +702,11 @@
     <div class="mod-nav-right">
       <button class="mod-btn" id="catalogToggleBtn" onclick="toggleCatalogView()">
         <span id="catalogBtnIcon">📋</span>
-        <span id="catalogBtnText">All Modules</span>
+        <span id="catalogBtnText" class="btn-label">All Modules</span>
       </button>
       <button class="mod-btn" onclick="toggleFocusMode()" title="Toggle Fullscreen Focus Mode">
         <span>⛶</span>
-        <span>Focus</span>
+        <span class="btn-label">Focus</span>
       </button>
       <button class="mod-btn" onclick="window.BE_NAV ? window.BE_NAV.toggleTheme() : toggleLocalTheme()" title="Toggle Dark/Light Theme">
         <span>🌓</span>
@@ -626,8 +726,8 @@
         <span id="activeModuleSubtitle" style="font-size:12px;color:var(--txt2);margin-left:6px">— Subtitle</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <button class="mod-btn" onclick="reloadFrame()" title="Refresh interactive module">🔄 Reload</button>
-        <button class="mod-btn" onclick="copyCurrentShareLink()" title="Copy clean internal module link">🔗 Share</button>
+        <button class="mod-btn" onclick="reloadFrame()" title="Refresh interactive module">🔄 <span class="btn-label">Reload</span></button>
+        <button class="mod-btn" onclick="copyCurrentShareLink()" title="Copy clean internal module link">🔗 <span class="btn-label">Share</span></button>
       </div>
     </div>
 
@@ -636,7 +736,7 @@
         <div class="spinner"></div>
         <p id="loaderText">Loading interactive study module...</p>
       </div>
-      <iframe id="moduleFrame" class="module-frame" src="about:blank" title="Study Module Frame" allow="fullscreen; clipboard-write; encrypted-media"></iframe>
+      <iframe id="moduleFrame" class="module-frame" src="about:blank" title="Study Module Frame" allow="fullscreen; clipboard-write; encrypted-media" scrolling="yes"></iframe>
     </div>
   </section>
 
@@ -937,6 +1037,7 @@
       document.getElementById('activeModuleSubtitle').textContent = `— Target: ${mod.exams}`;
 
       // Show Viewer, Hide Catalog
+      document.body.classList.add('viewer-mode');
       document.getElementById('catalogSection').style.display = 'none';
       const viewer = document.getElementById('viewerSection');
       viewer.classList.add('active');
@@ -987,6 +1088,8 @@
     }
 
     function showCatalogView() {
+      document.body.classList.remove('viewer-mode');
+      document.body.classList.remove('focus-mode');
       document.getElementById('viewerSection').classList.remove('active');
       document.getElementById('catalogSection').style.display = 'block';
       document.getElementById('moduleSelect').value = '';
