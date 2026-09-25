@@ -53,6 +53,20 @@
       { "@type": "ListItem", "position": 13, "name": "India & World: International Relations & Schemes", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=india-world" }
     ]
   }
+  <!-- Instant Pre-paint Script: prevents flash of catalog or partial layout -->
+  <script>
+    (function() {
+      try {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        var p = new URLSearchParams(window.location.search);
+        var m = p.get('module') || (window.location.hash ? window.location.hash.substring(1) : '');
+        if (m) {
+          document.documentElement.classList.add('viewer-mode');
+        }
+      } catch(e) {}
+    })();
   </script>
 
   <link rel="stylesheet" href="css/modern.css">
@@ -105,14 +119,35 @@
     }
 
     /* Viewer Mode: Full Viewport, zero cutoff, hide mobile bottom nav */
+    html.viewer-mode,
+    html.viewer-mode body,
     body.viewer-mode {
+      height: 100% !important;
       height: 100vh !important;
       height: 100dvh !important;
       max-height: 100vh !important;
       max-height: 100dvh !important;
       overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
       padding-bottom: 0 !important;
     }
+
+    html.viewer-mode #catalogSection,
+    body.viewer-mode #catalogSection {
+      display: none !important;
+    }
+
+    html.viewer-mode #viewerSection,
+    body.viewer-mode #viewerSection {
+      display: flex !important;
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      height: 100% !important;
+      width: 100% !important;
+    }
+
+    html.viewer-mode .mobile-bottom-nav,
     body.viewer-mode .mobile-bottom-nav {
       display: none !important;
     }
@@ -736,7 +771,7 @@
         <div class="spinner"></div>
         <p id="loaderText">Loading interactive study module...</p>
       </div>
-      <iframe id="moduleFrame" class="module-frame" src="about:blank" title="Study Module Frame" allow="fullscreen; clipboard-write; encrypted-media" scrolling="yes"></iframe>
+      <iframe id="moduleFrame" class="module-frame" src="about:blank" title="Study Module Frame" allow="fullscreen; clipboard-write; encrypted-media" scrolling="yes" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
     </div>
   </section>
 
@@ -1003,8 +1038,23 @@
       });
     }
 
+    function resizeViewer() {
+      const viewer = document.getElementById('viewerSection');
+      const nav = document.getElementById('mainNav');
+      const isViewer = document.body.classList.contains('viewer-mode') || document.documentElement.classList.contains('viewer-mode');
+      if (viewer && isViewer) {
+        const isFocus = document.body.classList.contains('focus-mode') || document.documentElement.classList.contains('focus-mode');
+        const navH = (isFocus || !nav) ? 0 : (nav.offsetHeight || 48);
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const targetH = Math.max(0, vh - navH);
+        viewer.style.height = targetH + 'px';
+      }
+    }
+    window.addEventListener('resize', resizeViewer);
+    window.addEventListener('orientationchange', () => setTimeout(resizeViewer, 150));
+
     // Switch active module & show in-app viewer
-    function switchModule(id) {
+    function switchModule(id, isInitial = false) {
       if (!id) {
         showCatalogView();
         return;
@@ -1020,10 +1070,19 @@
 
       currentModuleId = resolvedId;
 
-      // Update URL silently without reload, keeping user on bankexamv2
+      // Reset scroll position instantly to prevent frozen scroll offset
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+      // Update URL silently without reload
       const newUrl = new URL(window.location);
       newUrl.searchParams.set('module', resolvedId);
-      window.history.pushState({ module: resolvedId }, '', newUrl.toString());
+      if (isInitial) {
+        window.history.replaceState({ module: resolvedId }, '', newUrl.toString());
+      } else {
+        window.history.pushState({ module: resolvedId }, '', newUrl.toString());
+      }
 
       // Update selector
       document.getElementById('moduleSelect').value = resolvedId;
@@ -1036,11 +1095,14 @@
       document.getElementById('activeModuleTitle').textContent = mod.title;
       document.getElementById('activeModuleSubtitle').textContent = `— Target: ${mod.exams}`;
 
-      // Show Viewer, Hide Catalog
+      // Show Viewer, Hide Catalog immediately on both html and body
+      document.documentElement.classList.add('viewer-mode');
       document.body.classList.add('viewer-mode');
       document.getElementById('catalogSection').style.display = 'none';
       const viewer = document.getElementById('viewerSection');
       viewer.classList.add('active');
+      resizeViewer();
+      requestAnimationFrame(resizeViewer);
 
       // Update Catalog Toggle Button
       document.getElementById('catalogBtnText').textContent = 'Directory';
@@ -1055,6 +1117,7 @@
       frame.onload = () => {
         loader.style.opacity = '0';
         setTimeout(() => { loader.style.display = 'none'; }, 250);
+        resizeViewer();
       };
 
       // Set relative path to child website
@@ -1071,8 +1134,6 @@
           module_id: resolvedId
         });
       }
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Toggle Catalog vs Viewer
@@ -1088,9 +1149,13 @@
     }
 
     function showCatalogView() {
+      document.documentElement.classList.remove('viewer-mode');
+      document.documentElement.classList.remove('focus-mode');
       document.body.classList.remove('viewer-mode');
       document.body.classList.remove('focus-mode');
-      document.getElementById('viewerSection').classList.remove('active');
+      const viewer = document.getElementById('viewerSection');
+      viewer.classList.remove('active');
+      viewer.style.height = '';
       document.getElementById('catalogSection').style.display = 'block';
       document.getElementById('moduleSelect').value = '';
       document.getElementById('catalogBtnText').textContent = currentModuleId ? 'Resume' : 'All Modules';
@@ -1138,7 +1203,9 @@
     }
 
     function toggleFocusMode() {
+      document.documentElement.classList.toggle('focus-mode');
       document.body.classList.toggle('focus-mode');
+      resizeViewer();
     }
 
     function toggleLocalTheme() {
@@ -1157,7 +1224,7 @@
       renderCatalog();
 
       if (modParam && (MODULES[modParam] || ALIASES[modParam])) {
-        switchModule(modParam);
+        switchModule(modParam, true);
       } else {
         showCatalogView();
       }
@@ -1168,7 +1235,7 @@
       const params = new URLSearchParams(window.location.search);
       const modParam = params.get('module');
       if (modParam && (MODULES[modParam] || ALIASES[modParam])) {
-        switchModule(modParam);
+        switchModule(modParam, true);
       } else {
         showCatalogView();
       }
