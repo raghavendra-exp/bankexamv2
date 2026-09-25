@@ -961,6 +961,363 @@
   <!-- ══════════════════════════════════════════════════════════
        HIGH-YIELD SPEED MATH & EXAM FORMULA VAULT MODAL
        ══════════════════════════════════════════════════════════ -->
+  
+  <!-- ══════════════════════════════════════════════════════════
+       🔴 ON-VISIT YOUTUBE SUBSCRIPTION PLEA & MENTORSHIP BANNER
+       ══════════════════════════════════════════════════════════ -->
+  <style>
+    #ytSubscribePlea {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: calc(100% - 36px);
+      max-width: 440px;
+      background: var(--sf, #ffffff);
+      border: 1.5px solid rgba(239, 68, 68, 0.45);
+      border-radius: 18px;
+      box-shadow: 0 16px 48px rgba(15, 23, 42, 0.22);
+      z-index: 9995;
+      padding: 18px 20px;
+      transform: translateY(140%);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    #ytSubscribePlea.be-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .yt-plea-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .yt-plea-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      background: rgba(239, 68, 68, 0.12);
+      color: #DC2626;
+    }
+    .yt-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #EF4444;
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+      animation: ytPulse 1.8s infinite;
+    }
+    @keyframes ytPulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+    .yt-plea-close {
+      background: none;
+      border: none;
+      font-size: 18px;
+      line-height: 1;
+      color: var(--txt3, #64748B);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 6px;
+      transition: color .15s;
+    }
+    .yt-plea-close:hover {
+      color: var(--txt, #0F172A);
+    }
+    .yt-plea-body {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .yt-plea-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #EF4444, #B91C1C);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+    }
+    .yt-plea-info h4 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--txt, #0F172A);
+      margin-bottom: 2px;
+      line-height: 1.25;
+    }
+    .yt-plea-info p {
+      font-size: 11.5px;
+      color: var(--txt3, #64748B);
+      line-height: 1.35;
+    }
+    .yt-plea-msg {
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--txt2, #334155);
+      background: var(--sf2, #F8FAFC);
+      border: 1px solid var(--bdr, #E2E8F0);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+    .yt-plea-msg strong {
+      color: var(--txt, #0F172A);
+    }
+    .yt-plea-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .yt-chip {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(79, 70, 229, 0.08);
+      color: var(--pr, #4F46E5);
+    }
+    .yt-plea-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .yt-sub-btn {
+      flex: 1;
+      height: 38px;
+      padding: 0 16px;
+      border-radius: 19px;
+      background: linear-gradient(135deg, #EF4444, #DC2626);
+      color: #FFFFFF !important;
+      font-size: 12.5px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+      transition: all .15s;
+    }
+    .yt-sub-btn:hover {
+      background: linear-gradient(135deg, #DC2626, #B91C1C);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(239, 68, 68, 0.45);
+    }
+    .yt-dismiss-btn {
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 19px;
+      background: transparent;
+      border: 1px solid var(--bdr, #CBD5E1);
+      color: var(--txt3, #64748B);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .yt-dismiss-btn:hover {
+      background: var(--sf2, #F1F5F9);
+      color: var(--txt, #0F172A);
+      border-color: var(--txt3, #64748B);
+    }
+    /* Floating Mini Pill when minimized */
+    #ytFloatingPill {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9994;
+      background: #EF4444;
+      color: #fff;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+      border: none;
+      transition: transform .15s;
+    }
+    #ytFloatingPill:hover {
+      transform: scale(1.05);
+    }
+    /* Dark Mode Overrides */
+    [data-theme="dark"] #ytSubscribePlea {
+      background: #111827;
+      border-color: rgba(239, 68, 68, 0.45);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
+    }
+    [data-theme="dark"] .yt-plea-info h4 { color: #FFFFFF; }
+    [data-theme="dark"] .yt-plea-info p { color: #94A3B8; }
+    [data-theme="dark"] .yt-plea-msg {
+      background: #162032;
+      border-color: #26334D;
+      color: #CBD5E1;
+    }
+    [data-theme="dark"] .yt-plea-msg strong { color: #FFFFFF; }
+    [data-theme="dark"] .yt-chip {
+      background: rgba(99, 102, 241, 0.18);
+      color: #A5B4FC;
+    }
+    [data-theme="dark"] .yt-dismiss-btn {
+      border-color: #374151;
+      color: #94A3B8;
+    }
+    [data-theme="dark"] .yt-dismiss-btn:hover {
+      background: #1F2937;
+      color: #F9FAFB;
+      border-color: #4B5563;
+    }
+    @media (max-width: 640px) {
+      #ytSubscribePlea {
+        bottom: 80px; /* Stay clear of mobile bottom bar */
+        right: 16px;
+        left: 16px;
+        width: auto;
+        padding: 15px 16px;
+      }
+      #ytFloatingPill {
+        bottom: 80px;
+        right: 16px;
+      }
+    }
+  </style>
+
+  <div id="ytSubscribePlea" role="dialog" aria-labelledby="ytPleaTitle" aria-describedby="ytPleaDesc">
+    <div class="yt-plea-header">
+      <span class="yt-plea-badge">
+        <span class="yt-live-dot"></span> Free YouTube Mentorship
+      </span>
+      <button type="button" class="yt-plea-close" onclick="beDismissYtPlea(true)" aria-label="Close YouTube Subscription Plea">&times;</button>
+    </div>
+
+    <div class="yt-plea-body">
+      <div class="yt-plea-avatar">&#x25B6;&#xFE0F;</div>
+      <div class="yt-plea-info">
+        <h4 id="ytPleaTitle">Raghavendra &bull; @raghav_begins</h4>
+        <p id="ytPleaDesc">Free Video Solutions &bull; Speed Math &bull; Exam Alerts</p>
+      </div>
+    </div>
+
+    <div class="yt-plea-msg">
+      <strong>Dear Aspirants &amp; Parents:</strong> I created <em>BankExamV2</em> completely free to help every student in India crack Banking, UPSC, SSC, Railways &amp; State PSCs without spending lakhs on coaching. On YouTube at <strong>@raghav_begins</strong>, I break down daily shortcuts and question traps. If our free tools help you, please take <strong>3 seconds to subscribe</strong>&mdash;it costs nothing and keeps our tools free for everyone!
+    </div>
+
+    <div class="yt-plea-chips">
+      <span class="yt-chip">&#x26A1; Daily 60s Speed Math</span>
+      <span class="yt-chip">&#x1F3AF; PYQ Trap Elimination</span>
+      <span class="yt-chip">&#x1F514; Live Vacancy Alerts</span>
+    </div>
+
+    <div class="yt-plea-actions">
+      <a href="https://www.youtube.com/@raghav_begins?sub_confirmation=1" target="_blank" rel="noopener" class="yt-sub-btn" onclick="beTrackYtSub('on_visit_plea')">
+        &#x25B6;&#xFE0F; Subscribe on YouTube
+      </a>
+      <button type="button" class="yt-dismiss-btn" onclick="beDismissYtPlea(true)">
+        Maybe Later
+      </button>
+    </div>
+  </div>
+
+  <button type="button" id="ytFloatingPill" onclick="beOpenYtPlea()" aria-label="Open YouTube Mentorship Info">
+    <span class="yt-live-dot"></span> &#x25B6;&#xFE0F; YouTube @raghav_begins
+  </button>
+
+  <script>
+  (function() {
+    const pleaEl = document.getElementById('ytSubscribePlea');
+    const pillEl = document.getElementById('ytFloatingPill');
+    if (!pleaEl) return;
+
+    window.beTrackYtSub = function(source) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'youtube_subscribe_click', {
+          event_category: 'engagement',
+          event_label: '@raghav_begins',
+          source: source || 'unknown'
+        });
+      }
+      localStorage.setItem('be_yt_subscribed', 'true');
+      beDismissYtPlea(false);
+    };
+
+    window.beDismissYtPlea = function(recordDelay) {
+      pleaEl.classList.remove('be-visible');
+      if (recordDelay) {
+        // Remind again after 4 days
+        localStorage.setItem('be_yt_plea_dismissed_until', Date.now() + 4 * 24 * 60 * 60 * 1000);
+      }
+      setTimeout(() => {
+        if (pillEl && !localStorage.getItem('be_yt_subscribed')) {
+          pillEl.style.display = 'inline-flex';
+        }
+      }, 500);
+    };
+
+    window.beOpenYtPlea = function() {
+      if (pillEl) pillEl.style.display = 'none';
+      pleaEl.classList.add('be-visible');
+    };
+
+    // Auto-trigger logic
+    function checkAndShowPlea() {
+      if (localStorage.getItem('be_yt_subscribed') === 'true') {
+        return; // Already subscribed
+      }
+      const dismissedUntil = parseInt(localStorage.getItem('be_yt_plea_dismissed_until') || '0', 10);
+      if (Date.now() < dismissedUntil) {
+        // Show only the small pill
+        if (pillEl) pillEl.style.display = 'inline-flex';
+        return;
+      }
+
+      // Display after 8 seconds of engagement or on 30% scroll
+      let triggered = false;
+      function show() {
+        if (triggered) return;
+        triggered = true;
+        pleaEl.classList.add('be-visible');
+        if (pillEl) pillEl.style.display = 'none';
+        window.removeEventListener('scroll', onScroll);
+      }
+
+      const timer = setTimeout(show, 8500);
+
+      function onScroll() {
+        const scrollPct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        if (scrollPct > 0.35) {
+          clearTimeout(timer);
+          show();
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkAndShowPlea);
+    } else {
+      checkAndShowPlea();
+    }
+  })();
+  </script>
+
   <div id="formulaModal" class="formula-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:16px">
     <div class="formula-box">
       <div class="formula-hd">
