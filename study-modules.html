@@ -777,7 +777,9 @@
     html.viewer-mode #catalogBackLink,
     body.viewer-mode #catalogBackLink,
     html.viewer-mode .desktop-only-select,
-    body.viewer-mode .desktop-only-select {
+    body.viewer-mode .desktop-only-select,
+    html.viewer-mode #catalogToggleBtn,
+    body.viewer-mode #catalogToggleBtn {
       display: none !important;
     }
 
@@ -791,16 +793,21 @@
       .mod-nav-left {
         gap: 6px;
       }
-      .mod-active-indicator {
-        max-width: 175px;
-        padding: 2px 6px;
-      }
-      .active-mod-title {
-        font-size: 12.5px !important;
+      #viewerShareBtn {
+        display: none !important;
       }
       .active-mod-tag {
-        font-size: 9px !important;
-        padding: 1px 4px !important;
+        display: none !important;
+      }
+      .mod-active-indicator {
+        max-width: 220px;
+        padding: 2px 4px;
+        background: transparent;
+        border: none;
+      }
+      .active-mod-title {
+        font-size: 13px !important;
+        font-weight: 700 !important;
       }
       .mod-icon-btn, .mod-nav-back-btn {
         padding: 5px 8px;
@@ -884,7 +891,7 @@
     <!-- Left: Brand (Catalog Mode) or Dynamic Back Button (Viewer Mode) -->
     <div class="mod-nav-left">
       <!-- Visible in Catalog Mode -->
-      <a href="index.html" class="mod-logo" id="catalogLogo">
+      <a href="index.html" class="mod-logo" id="catalogLogo" onclick="if(document.documentElement.classList.contains('is-android-app') || document.body.classList.contains('is-android-app')){event.preventDefault();showCatalogView();}">
         <span>📚</span>
         <span>BankExamV2</span>
         <span class="mod-logo-badge">Modules</span>
