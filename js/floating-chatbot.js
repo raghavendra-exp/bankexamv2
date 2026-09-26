@@ -552,6 +552,16 @@ Visit the creator's portfolio at [raghavfolio-8op53xas.manus.space](https://ragh
       .bec-send-btn:hover { transform: scale(1.08); }
       .bec-send-btn:active { transform: scale(0.94); }
 
+      @media(max-width: 768px){
+        .bec-launcher {
+          bottom: 74px !important;
+          right: 16px !important;
+          width: 54px !important;
+          height: 54px !important;
+          font-size: 24px !important;
+        }
+        .bec-tooltip { display: none !important; }
+      }
       @media(max-width: 480px){
         .bec-panel {
           bottom: 0 !important;
@@ -559,10 +569,10 @@ Visit the creator's portfolio at [raghavfolio-8op53xas.manus.space](https://ragh
           width: 100% !important;
           max-width: 100% !important;
           height: 100vh !important;
+          height: 100dvh !important;
           border-radius: 0 !important;
+          z-index: 999999 !important;
         }
-        .bec-launcher { bottom: 16px; right: 16px; }
-        .bec-tooltip { display: none !important; }
       }
     `;
     document.head.appendChild(style);

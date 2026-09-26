@@ -760,6 +760,16 @@
     }
   }
 
+  // Universal Floating Chatbot Injector
+  function ensureFloatingChatbot(){
+    if (window.BankExamChatbotLoaded) return;
+    if (document.querySelector('script[src*="floating-chatbot.js"]')) return;
+    const script = document.createElement('script');
+    script.src = 'js/floating-chatbot.js';
+    script.defer = true;
+    (document.body || document.head).appendChild(script);
+  }
+
   // Initialize on DOMContentLoaded
   function initAll(){
     checkAndroidApp();
@@ -767,6 +777,7 @@
     initSpotlight();
     initCalculator();
     initMobileNav();
+    ensureFloatingChatbot();
   }
 
   if (document.readyState === 'loading') {
