@@ -2,10 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta property="og:url" content="https://raghavendra-exp.github.io/bankexamv2/exam-mentor-chatbot.html">
 <link rel="canonical" href="https://raghavendra-exp.github.io/bankexamv2/exam-mentor-chatbot.html">
-<title>Exam Prep Mentor | AI Guidance for Indian Competitive Exams</title>
+<title>AI Exam Prep Mentor &bull; Floating Assistant | BankExamV2</title>
+<meta name="description" content="Instant 24/7 AI mentor for SBI PO, IBPS Clerk, UPSC Civil Services, SSC CGL, Railways, and 80+ exams. Powered by Google Gemini 3.8 Flash with live web updates and speed math strategies.">
+<meta name="keywords" content="Exam mentor AI, Banking exam chatbot, SBI PO AI tutor, UPSC mentor bot, Gemini 3.8 Flash exam prep, BankExamV2">
+<meta name="author" content="Raghavbegins">
+<meta name="robots" content="index,follow">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:title" content="AI Exam Prep Mentor &bull; Floating Assistant | BankExamV2">
+<meta property="og:description" content="24/7 AI guidance for 80+ Indian competitive exams. Powered by Google Gemini with live syllabus calibration, speed math, and custom study plans.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BankExamV2">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="https://raghavendra-exp.github.io/bankexamv2/images/bankexamv2-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@raghav_begins">
+<meta name="twitter:creator" content="@raghav_begins">
+<meta name="twitter:title" content="AI Exam Prep Mentor | BankExamV2">
+<meta name="twitter:description" content="Instant 24/7 AI guidance, speed math tricks, and roadmaps for 80+ exams.">
+<meta name="twitter:image" content="https://raghavendra-exp.github.io/bankexamv2/images/bankexamv2-og.png">
+
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0Z2G21W4F"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -13,326 +37,715 @@
   gtag('js', new Date());
   gtag('config', 'G-B0Z2G21W4F');
 </script>
+
+<link rel="stylesheet" href="css/modern.css">
+
 <style>
-*,*::before,*::after{box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --d1:#050912;--d2:#0A1120;--d3:#111B2E;
+  --d1:#050914;--d2:#0A1224;--d3:#111B35;
   --pr:#4F46E5;--pr2:#6366F1;--pr3:#818CF8;
   --cy:#06B6D4;--cy2:#22D3EE;
   --gr:#10B981;--gr2:#34D399;
   --ac:#F59E0B;--rd:#EF4444;
-  --panel:#0D1524;--panel2:#111C30;
-  --bdr:rgba(255,255,255,.08);
+  --panel:rgba(13,21,36,0.92);
+  --panel2:rgba(17,28,48,0.95);
+  --bdr:rgba(255,255,255,0.12);
   --txt:#F1F5F9;--txt2:#94A3B8;--txt3:#64748B;
-  --bubble-bot:#151F33;--bubble-user:linear-gradient(135deg,var(--pr),var(--cy));
+  --bubble-bot:#131F36;
+  --bubble-user:linear-gradient(135deg,#4F46E5,#06B6D4);
   --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   --font-mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
 }
-html,body{margin:0;height:100%}
-body{
-  background:radial-gradient(ellipse 80% 60% at 50% 0%,#111B33,var(--d1) 70%);
+
+html,body{
+  width:100%;min-height:100%;
+  background:radial-gradient(ellipse 90% 70% at 50% 0%,#0f172a 0%,var(--d1) 100%);
   font-family:var(--font-body);color:var(--txt);
-  min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px 12px;
+  overflow-x:hidden;
 }
 
-/* ===== App shell ===== */
-.app{
-  width:100%;max-width:460px;height:min(820px,92vh);
-  background:var(--panel);border-radius:22px;
-  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px var(--bdr);
-  overflow:hidden;display:flex;flex-direction:column;
+/* Ambient glow orbs in background */
+.bg-ambient{
+  position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+}
+.orb{
+  position:absolute;border-radius:50%;filter:blur(100px);opacity:0.25;animation:floatOrb 18s ease-in-out infinite alternate;
+}
+.orb-1{top:-10%;left:15%;width:420px;height:420px;background:#4F46E5}
+.orb-2{bottom:10%;right:10%;width:500px;height:500px;background:#06B6D4;animation-duration:24s}
+.orb-3{top:40%;left:60%;width:350px;height:350px;background:#10B981;opacity:0.15;animation-duration:20s}
+
+@keyframes floatOrb{
+  0%{transform:translate(0,0) scale(1)}
+  100%{transform:translate(40px,50px) scale(1.15)}
+}
+
+/* Top Navigation Bar */
+.hdr{
+  background:rgba(5,9,20,0.85);backdrop-filter:blur(14px);position:sticky;top:0;z-index:500;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.hdr-inner{
+  max-width:1200px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;
+  justify-content:space-between;gap:14px;
+}
+.logo-wrap{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-badge{
+  width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--pr),var(--cy));
+  display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;
+  box-shadow:0 0 16px rgba(79,70,229,0.4);
+}
+.logo-txt h1{font-size:14px;font-weight:800;color:#fff;letter-spacing:-.2px}
+.logo-txt p{font-size:9.5px;color:var(--txt3);margin-top:1px}
+.hdr-links{display:flex;gap:8px;align-items:center}
+.hdr-links a{
+  padding:6px 14px;border-radius:18px;font-size:12px;font-weight:700;color:var(--txt2);
+  text-decoration:none;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);
+  transition:all .15s;
+}
+.hdr-links a:hover{background:rgba(255,255,255,0.08);color:#fff}
+.hdr-tools{display:flex;align-items:center;gap:8px}
+
+/* Page Background Hero Content */
+.portal-backdrop{
+  position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:36px 20px 80px;text-align:center;
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--cy2);
+  background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.25);
+  padding:5px 14px;border-radius:20px;margin-bottom:14px;
+}
+.hero-hd{
+  font-size:clamp(28px,4.5vw,46px);font-weight:900;letter-spacing:-.8px;line-height:1.2;
+  background:linear-gradient(135deg,#fff 40%,var(--pr3) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;
+}
+.hero-sub{
+  font-size:15px;color:var(--txt2);max-width:680px;margin:0 auto 28px;line-height:1.6;
+}
+
+/* Feature grid in backdrop */
+.feature-strip{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;
+  max-width:960px;margin:0 auto 36px;text-align:left;
+}
+.feat-card{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;
+  padding:16px 18px;backdrop-filter:blur(8px);cursor:pointer;transition:all .2s;
+}
+.feat-card:hover{
+  background:rgba(255,255,255,0.07);border-color:rgba(99,102,241,0.3);transform:translateY(-2px);
+}
+.feat-icon{font-size:22px;margin-bottom:6px}
+.feat-title{font-size:13.5px;font-weight:800;color:#fff;margin-bottom:3px}
+.feat-desc{font-size:11.5px;color:var(--txt3);line-height:1.45}
+
+/* ══════════════════════════════════════════════════════════════
+   FLOATING CHATBOT WIDGET
+   ══════════════════════════════════════════════════════════════ */
+.floating-chatbot{
+  position:relative;z-index:1000;
+  display:flex;flex-direction:column;
+  background:var(--panel);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border:1px solid rgba(255,255,255,0.14);
+  box-shadow:0 30px 80px rgba(0,0,0,0.65), 0 0 35px rgba(99,102,241,0.25);
+  overflow:hidden;
+  transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mode 1: Centered Floating Card (Default view on this page) */
+.floating-chatbot.mode-centered{
+  width:100%;max-width:540px;height:min(780px,86vh);
+  margin:0 auto 40px;border-radius:24px;
+}
+
+/* Mode 2: Docked Bottom-Right Floating Widget */
+.floating-chatbot.mode-docked{
+  position:fixed;bottom:24px;right:24px;
+  width:430px;max-width:calc(100vw - 32px);height:min(700px,calc(100vh - 100px));
+  border-radius:22px;margin:0;z-index:9999;
+  animation:floatIn .3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes floatIn{
+  from{opacity:0;transform:translateY(24px) scale(0.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* Hidden when minimized */
+.floating-chatbot.is-minimized{
+  display:none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FLOATING LAUNCHER BUTTON (Bottom Right Corner)
+   ══════════════════════════════════════════════════════════════ */
+.floating-launcher-wrap{
+  position:fixed;bottom:24px;right:24px;z-index:9998;
+  display:flex;align-items:center;gap:12px;
+}
+.floating-launcher{
+  width:62px;height:62px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pr),var(--cy));
+  border:none;color:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:26px;
+  box-shadow:0 10px 30px rgba(79,70,229,0.5), 0 0 0 2px rgba(255,255,255,0.2);
+  transition:all .2s cubic-bezier(0.16, 1, 0.3, 1);
   position:relative;
 }
+.floating-launcher:hover{
+  transform:scale(1.08) translateY(-2px);
+  box-shadow:0 14px 40px rgba(79,70,229,0.65), 0 0 0 3px rgba(255,255,255,0.3);
+}
+.floating-launcher:active{transform:scale(0.95)}
 
-/* ===== Header ===== */
+/* Ripple Pulse Animation around launcher */
+.launcher-pulse{
+  position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid rgba(99,102,241,0.6);
+  animation:launcherRipple 2.2s infinite cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events:none;
+}
+@keyframes launcherRipple{
+  0%{transform:scale(0.9);opacity:1}
+  100%{transform:scale(1.4);opacity:0}
+}
+
+/* Unread Badge */
+.launcher-badge{
+  position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;
+  background:var(--gr2);border:2px solid var(--d1);box-shadow:0 0 8px var(--gr2);
+}
+
+/* Floating Tooltip Pill */
+.launcher-pill{
+  background:rgba(13,21,36,0.94);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.15);padding:8px 16px;border-radius:24px;
+  font-size:12px;font-weight:700;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,0.4);
+  white-space:nowrap;display:flex;align-items:center;gap:6px;
+  animation:fadePill 0.4s ease;cursor:pointer;
+}
+.launcher-pill span{color:var(--cy2)}
+@keyframes fadePill{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:translateX(0)}}
+
+/* ══════════════════════════════════════════════════════════════
+   CHATBOT HEADER & FLOATING CONTROLS
+   ══════════════════════════════════════════════════════════════ */
 .chat-header{
-  background:linear-gradient(160deg,var(--d1),var(--d3));
-  padding:16px 18px 14px;border-bottom:1px solid var(--bdr);
+  background:linear-gradient(160deg,rgba(5,9,20,0.95),rgba(17,27,53,0.95));
+  padding:14px 18px 12px;border-bottom:1px solid var(--bdr);
   flex-shrink:0;position:relative;
 }
 .chat-header::after{
   content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;
-  background:linear-gradient(90deg,transparent,var(--pr3),var(--cy2),transparent);opacity:.5;
+  background:linear-gradient(90deg,transparent,var(--pr3),var(--cy2),transparent);opacity:.6;
 }
-.ch-top{display:flex;align-items:center;gap:12px}
+.ch-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ch-left{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
 .ch-avatar{
-  width:42px;height:42px;border-radius:13px;flex-shrink:0;
+  width:40px;height:40px;border-radius:12px;flex-shrink:0;
   background:linear-gradient(135deg,var(--pr),var(--cy));
   display:flex;align-items:center;justify-content:center;font-size:20px;
-  box-shadow:0 0 18px rgba(79,70,229,.5);
+  box-shadow:0 0 16px rgba(79,70,229,0.5);
 }
-.ch-title{flex:1;min-width:0}
-.ch-title h1{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.2px}
-.ch-status{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gr2);font-weight:600;margin-top:1px}
-.ch-status .live-dot{width:6px;height:6px;border-radius:50%;background:var(--gr2);box-shadow:0 0 6px var(--gr2);animation:blink 1.6s infinite;display:inline-block}
-@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
-.ch-session{
-  font-family:var(--font-mono);font-size:9.5px;color:var(--txt3);
-  padding:4px 9px;border:1px solid var(--bdr);border-radius:14px;white-space:nowrap;
+.ch-title h2{font-size:14.5px;font-weight:800;color:#fff;letter-spacing:-.2px;line-height:1.2}
+.ch-status{
+  display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--gr2);
+  font-weight:700;margin-top:2px;
 }
+.ch-status .live-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--gr2);
+  box-shadow:0 0 8px var(--gr2);animation:blink 1.6s infinite;display:inline-block;
+}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.4)}}
 
-/* Exam tabs — segmented pill row */
+/* Floating Header Window Buttons */
+.ch-actions{display:flex;align-items:center;gap:6px}
+.win-btn{
+  width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.05);color:var(--txt2);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+  transition:all .15s;
+}
+.win-btn:hover{background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.2)}
+.win-btn:active{transform:scale(0.92)}
+
+/* Exam tabs */
 .exam-tabs{display:flex;gap:6px;overflow-x:auto;padding-top:12px;scrollbar-width:none}
 .exam-tabs::-webkit-scrollbar{display:none}
 .exam-tab{
-  flex:0 0 auto;padding:7px 14px;border-radius:20px;
-  background:rgba(255,255,255,.05);border:1px solid var(--bdr);
-  color:var(--txt2);font-size:12px;font-weight:700;cursor:pointer;
+  flex:0 0 auto;padding:6px 12px;border-radius:18px;
+  background:rgba(255,255,255,0.04);border:1px solid var(--bdr);
+  color:var(--txt2);font-size:11.5px;font-weight:700;cursor:pointer;
   transition:all .15s;font-family:inherit;white-space:nowrap;
 }
-.exam-tab:hover{background:rgba(255,255,255,.09);color:#fff}
+.exam-tab:hover{background:rgba(255,255,255,0.08);color:#fff}
 .exam-tab.active{
   background:linear-gradient(135deg,var(--pr),var(--cy));color:#fff;border-color:transparent;
-  box-shadow:0 2px 12px rgba(79,70,229,.4);
-}
-.exam-tab:focus-visible,.chip:focus-visible,.send-btn:focus-visible,.chat-input:focus-visible{
-  outline:2px solid var(--cy2);outline-offset:1px;
+  box-shadow:0 2px 10px rgba(79,70,229,0.4);
 }
 
-/* ===== Chat window ===== */
+/* ══════════════════════════════════════════════════════════════
+   CHAT WINDOW & MESSAGES
+   ══════════════════════════════════════════════════════════════ */
 .chat-window{
-  flex:1;overflow-y:auto;padding:18px 16px;
+  flex:1;overflow-y:auto;padding:16px 14px;
   display:flex;flex-direction:column;gap:14px;
-  background:
-    radial-gradient(rgba(79,70,229,.05) 1px,transparent 1px) 0 0/26px 26px,
-    var(--d2);
+  background:radial-gradient(rgba(79,70,229,0.04) 1px,transparent 1px) 0 0/24px 24px,var(--d2);
 }
 .chat-window::-webkit-scrollbar{width:5px}
-.chat-window::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:10px}
+.chat-window::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:10px}
 
-.msg{display:flex;gap:9px;align-items:flex-end;max-width:88%}
+.msg{display:flex;gap:9px;align-items:flex-end;max-width:92%}
 .msg.bot{align-self:flex-start}
 .msg.user{align-self:flex-end;flex-direction:row-reverse}
-.seal{
-  width:26px;height:26px;border-radius:9px;flex-shrink:0;
+
+.msg-seal{
+  width:28px;height:28px;border-radius:10px;flex-shrink:0;
   background:linear-gradient(135deg,var(--pr),var(--cy));
   display:flex;align-items:center;justify-content:center;
-  font-size:10px;font-weight:900;color:#fff;
+  font-size:11px;font-weight:900;color:#fff;box-shadow:0 2px 8px rgba(79,70,229,0.3);
 }
 
+.msg-body{display:flex;flex-direction:column;gap:4px;max-width:100%}
+
 .bubble{
-  padding:11px 14px;border-radius:16px;font-size:13.5px;line-height:1.55;
-  white-space:pre-wrap;word-wrap:break-word;
+  padding:12px 16px;border-radius:18px;font-size:13.5px;line-height:1.6;
+  word-wrap:break-word;position:relative;
 }
 .msg.bot .bubble{
   background:var(--bubble-bot);color:var(--txt);
   border:1px solid var(--bdr);border-bottom-left-radius:4px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.2);
 }
 .msg.user .bubble{
   background:var(--bubble-user);color:#fff;
-  border-bottom-right-radius:4px;box-shadow:0 4px 16px rgba(79,70,229,.3);
+  border-bottom-right-radius:4px;box-shadow:0 4px 18px rgba(79,70,229,0.35);
+  font-weight:500;
 }
 
-/* ===== Typing / searching indicator ===== */
-.typing-bubble{
-  display:flex;align-items:center;gap:8px;
-  background:var(--bubble-bot);border:1px solid var(--bdr);
-  border-bottom-left-radius:4px;padding:11px 14px;border-radius:16px;
-  font-size:12px;color:var(--txt2);
+/* Rich Markdown inside AI response */
+.bubble .ai-h1,.bubble .ai-h2,.bubble .ai-h3{
+  font-weight:800;color:#fff;margin:8px 0 4px;line-height:1.3;
 }
-.typing-dots{display:inline-flex;gap:3px}
+.bubble .ai-h1{font-size:15px;color:var(--cy2)}
+.bubble .ai-h2{font-size:14px;color:var(--pr3)}
+.bubble .ai-h3{font-size:13px;color:#FCD34D}
+.bubble strong{color:#fff;font-weight:700}
+.bubble .ai-li{
+  display:flex;gap:6px;align-items:flex-start;margin:4px 0;line-height:1.5;
+}
+.bubble .ai-bullet{color:var(--cy2);font-weight:900}
+.bubble .ai-num{color:var(--pr3);font-weight:800;font-family:var(--font-mono);font-size:12px}
+.bubble .ai-inline-code{
+  font-family:var(--font-mono);font-size:12px;background:rgba(255,255,255,0.08);
+  padding:2px 6px;border-radius:6px;color:#FCD34D;
+}
+.bubble .ai-para-gap{height:8px}
+
+/* Message Footers (Copy, Listen, Time) */
+.msg-meta{
+  display:flex;align-items:center;gap:10px;font-size:10.5px;color:var(--txt3);
+  padding:0 4px;
+}
+.msg.user .msg-meta{justify-content:flex-end}
+.meta-btn{
+  background:none;border:none;color:var(--txt3);cursor:pointer;font-size:11px;
+  display:inline-flex;align-items:center;gap:3px;padding:2px 4px;border-radius:4px;
+  transition:color .12s;
+}
+.meta-btn:hover{color:#fff;background:rgba(255,255,255,0.06)}
+
+/* Typing indicator */
+.typing-bubble{
+  display:flex;align-items:center;gap:10px;
+  background:var(--bubble-bot);border:1px solid var(--bdr);
+  border-bottom-left-radius:4px;padding:12px 16px;border-radius:18px;
+  font-size:12.5px;color:var(--txt2);
+}
+.ai-spark-pulse{
+  width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--pr),var(--cy));
+  animation:spinSpark 2s linear infinite;display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#fff;
+}
+@keyframes spinSpark{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+.typing-dots{display:inline-flex;gap:4px}
 .typing-dots span{
-  width:5px;height:5px;border-radius:50%;background:var(--gr2);
+  width:6px;height:6px;border-radius:50%;background:var(--gr2);
   animation:tdot 1.1s infinite ease-in-out;
 }
 .typing-dots span:nth-child(2){animation-delay:.15s}
 .typing-dots span:nth-child(3){animation-delay:.3s}
-@keyframes tdot{0%,80%,100%{opacity:.25;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+@keyframes tdot{0%,80%,100%{opacity:.25;transform:scale(.8)}40%{opacity:1;transform:scale(1.15)}}
 
-/* ===== Live web search results ===== */
-.live-wire{
-  background:var(--panel2);border:1px solid rgba(52,211,153,.25);
-  border-bottom-left-radius:4px;border-radius:16px;overflow:hidden;font-size:13px;
-  box-shadow:0 4px 20px rgba(16,185,129,.08);
-}
-.lw-head{
-  background:linear-gradient(135deg,rgba(16,185,129,.18),rgba(6,182,212,.1));
-  color:var(--gr2);padding:9px 14px;font-family:var(--font-mono);
-  font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
-  display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(52,211,153,.2);
-}
-.lw-head .live-dot{background:var(--rd);box-shadow:0 0 6px var(--rd)}
-.lw-list{padding:4px 0}
-.lw-card{
-  display:block;padding:10px 14px;text-decoration:none;color:var(--txt);
-  border-bottom:1px solid rgba(255,255,255,.05);transition:background .12s;
-}
-.lw-card:last-child{border-bottom:none}
-.lw-card:hover{background:rgba(52,211,153,.06)}
-.lw-title{font-weight:700;font-size:13px;color:#fff;line-height:1.4;margin-bottom:3px}
-.lw-meta{font-family:var(--font-mono);font-size:10px;color:var(--txt3);display:flex;gap:8px;align-items:center}
-.lw-src{text-transform:uppercase;letter-spacing:.04em;color:var(--cy2)}
-.lw-foot{
-  padding:8px 14px;font-size:10px;color:var(--txt3);
-  background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.05);
-}
-
-/* ===== Quick actions ===== */
+/* ══════════════════════════════════════════════════════════════
+   QUICK ACTION CHIPS & INPUT BAR
+   ══════════════════════════════════════════════════════════════ */
 .quick-actions{
-  display:flex;gap:7px;padding:10px 14px;overflow-x:auto;
-  background:var(--panel2);border-top:1px solid var(--bdr);scrollbar-width:none;flex-shrink:0;
+  display:flex;gap:6px;padding:8px 12px;overflow-x:auto;
+  background:rgba(10,18,36,0.95);border-top:1px solid var(--bdr);scrollbar-width:none;flex-shrink:0;
 }
 .quick-actions::-webkit-scrollbar{display:none}
 .chip{
-  flex:0 0 auto;font-size:11.5px;font-weight:700;padding:7px 13px;
-  border-radius:20px;border:1px solid var(--bdr);background:rgba(255,255,255,.04);
+  flex:0 0 auto;font-size:11px;font-weight:700;padding:6px 12px;
+  border-radius:16px;border:1px solid var(--bdr);background:rgba(255,255,255,0.04);
   color:var(--txt2);cursor:pointer;white-space:nowrap;transition:all .15s;font-family:inherit;
 }
-.chip:hover{background:rgba(255,255,255,.09);color:#fff;border-color:rgba(255,255,255,.18)}
+.chip:hover{background:rgba(255,255,255,0.09);color:#fff;border-color:rgba(255,255,255,0.2)}
 .chip.chip-live{
-  border-color:rgba(239,68,68,.4);color:#FCA5A5;background:rgba(239,68,68,.08);font-weight:800;
+  border-color:rgba(239,68,68,0.4);color:#FCA5A5;background:rgba(239,68,68,0.1);font-weight:800;
 }
-.chip.chip-live:hover{background:rgba(239,68,68,.18);color:#fff}
+.chip.chip-live:hover{background:rgba(239,68,68,0.2);color:#fff}
 
-/* ===== Input bar ===== */
 .input-bar{
-  display:flex;gap:9px;padding:12px 14px;
-  background:var(--panel2);border-top:1px solid var(--bdr);flex-shrink:0;
+  display:flex;gap:8px;padding:10px 12px;align-items:center;
+  background:rgba(10,18,36,0.98);border-top:1px solid var(--bdr);flex-shrink:0;
 }
 .chat-input{
   flex:1;padding:11px 16px;border-radius:24px;
-  border:1px solid var(--bdr);background:rgba(255,255,255,.05);
+  border:1px solid var(--bdr);background:rgba(255,255,255,0.06);
   color:var(--txt);font-size:13.5px;font-family:var(--font-body);
+  transition:all .15s;
 }
 .chat-input::placeholder{color:var(--txt3)}
-.chat-input:focus{border-color:var(--pr3);background:rgba(255,255,255,.08)}
-.send-btn{
-  width:42px;height:42px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--pr),var(--cy));
-  border:none;color:#fff;cursor:pointer;font-size:16px;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 16px rgba(79,70,229,.45);transition:transform .15s;
+.chat-input:focus{
+  outline:none;border-color:var(--pr3);background:rgba(255,255,255,0.09);
+  box-shadow:0 0 0 2px rgba(99,102,241,0.25);
 }
-.send-btn:hover{transform:scale(1.07)}
-.send-btn:active{transform:scale(.95)}
+.send-btn{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--pr),var(--cy));
+  border:none;color:#fff;cursor:pointer;font-size:15px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(79,70,229,0.45);transition:transform .15s;
+}
+.send-btn:hover{transform:scale(1.08)}
+.send-btn:active{transform:scale(0.94)}
 
-@media (max-width:480px){
-  body{padding:0}
-  .app{max-width:100%;height:100vh;border-radius:0}
+/* ══════════════════════════════════════════════════════════════
+   SETTINGS MODAL
+   ══════════════════════════════════════════════════════════════ */
+.settings-modal{
+  position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);
+  z-index:10000;display:flex;align-items:center;justify-content:center;padding:16px;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.settings-modal.active{opacity:1;pointer-events:auto}
+.settings-box{
+  background:var(--d3);border:1px solid var(--bdr);border-radius:20px;
+  padding:24px;width:100%;max-width:440px;box-shadow:0 24px 60px rgba(0,0,0,0.8);
+}
+.st-title{font-size:17px;font-weight:800;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.st-desc{font-size:12.5px;color:var(--txt2);line-height:1.5;margin-bottom:16px}
+.st-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.st-label{font-size:12px;font-weight:700;color:var(--txt2)}
+.st-input{
+  padding:10px 14px;border-radius:10px;border:1px solid var(--bdr);
+  background:rgba(255,255,255,0.06);color:#fff;font-family:var(--font-mono);font-size:12px;
+}
+.st-btn-row{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
+.st-btn{
+  padding:8px 16px;border-radius:10px;font-size:12.5px;font-weight:700;cursor:pointer;
+  border:1px solid var(--bdr);background:rgba(255,255,255,0.08);color:#fff;
+}
+.st-btn-primary{background:linear-gradient(135deg,var(--pr),var(--cy));border:none}
+
+@media(max-width:600px){
+  .portal-backdrop{padding:20px 14px 40px}
+  .floating-chatbot.mode-centered{height:88vh;margin-bottom:10px}
+  .floating-chatbot.mode-docked{
+    bottom:0;right:0;width:100%;max-width:100%;height:100vh;border-radius:0;
+  }
+  .floating-launcher-wrap{bottom:16px;right:16px}
 }
 </style>
-  <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
-<script>try{var _rv=JSON.parse(localStorage.getItem('rb_recent_tools')||'[]');var _href=location.pathname.split('/').pop()||'index.html';_rv=_rv.filter(function(t){return t.href!==_href;});_rv.unshift({href:_href,ts:Date.now()});_rv=_rv.slice(0,6);localStorage.setItem('rb_recent_tools',JSON.stringify(_rv));}catch(e){}</script>
 
-<div class="app">
+<div class="bg-ambient">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
 
-  <div class="chat-header">
-    <div class="ch-top">
-      <div class="ch-avatar">&#x1F393;</div>
-      <div class="ch-title">
-        <h1>Exam Prep Mentor</h1>
-        <div class="ch-status"><span class="live-dot"></span>Live &middot; <span id="examField">Banking</span> &middot; Web Search On</div>
+<!-- Header Navigation -->
+<header class="hdr">
+  <div class="hdr-inner">
+    <a class="logo-wrap" href="index.html">
+      <div class="logo-badge">&#x1F4DA;</div>
+      <div class="logo-txt">
+        <h1>BankExamV2 &bull; AI Mentor</h1>
+        <p>Powered by Google Gemini 3.8 Flash</p>
       </div>
-      <div class="ch-session" id="sessionField">EPM-000000</div>
+    </a>
+    <nav class="hdr-links">
+      <a href="index.html">&larr; Home</a>
+      <a href="quiz-simulator.html">Mock Lab</a>
+      <a href="all-exam-roadmaps.html">Roadmaps</a>
+      <a href="study-modules.html">Study Modules</a>
+    </nav>
+    <div class="hdr-tools">
+      <button class="win-btn" onclick="toggleChatMode()" title="Toggle Docked / Center Float" aria-label="Toggle Float Mode">
+        <span id="dockModeIcon">&#x1F4CC;</span>
+      </button>
+      <button class="win-btn" onclick="openSettings()" title="Gemini API Key Settings" aria-label="Settings">
+        &#x2699;&#xFE0F;
+      </button>
     </div>
-    <div class="exam-tabs" id="examTabs"></div>
+  </div>
+</header>
+
+<!-- Background Portal Environment -->
+<main class="portal-backdrop">
+  <div class="hero-pill">&#x26A1; Official Gemini 3.8 Flash Integration</div>
+  <h1 class="hero-hd">24/7 AI Exam Prep Mentor</h1>
+  <p class="hero-sub">
+    Ask anything about syllabus, speed math formulas, phase-by-phase blueprints, previous cutoffs, or recent notifications across 80+ Indian competitive exams.
+  </p>
+
+  <div class="feature-strip">
+    <div class="feat-card" onclick="askQuickPrompt('Give me a high-yield 6-month study plan for SBI PO 2026 prelims and mains')">
+      <div class="feat-icon">&#x1F4C5;</div>
+      <div class="feat-title">SBI PO 6-Month Blueprint</div>
+      <div class="feat-desc">Phase-wise targets, daily routine &amp; mock frequency</div>
+    </div>
+    <div class="feat-card" onclick="askQuickPrompt('Explain quadratic equation 5-second root sign shortcut with 3 exam examples')">
+      <div class="feat-icon">&#x1F9EE;</div>
+      <div class="feat-title">Speed Math Tricks</div>
+      <div class="feat-desc">Quadratic shortcuts, DI tables &amp; compound interest formulas</div>
+    </div>
+    <div class="feat-card" onclick="askQuickPrompt('What is the syllabus and negative marking pattern for UPSC Prelims GS & CSAT?')">
+      <div class="feat-icon">&#x1F4DA;</div>
+      <div class="feat-title">UPSC GS &amp; CSAT Strategy</div>
+      <div class="feat-desc">NCERT foundation, current affairs &amp; qualifying CSAT hacks</div>
+    </div>
+    <div class="feat-card" onclick="askQuickPrompt('What are the latest recruitment notifications, dates, and vacancies for Banking and SSC 2026?')">
+      <div class="feat-icon">&#x1F534;</div>
+      <div class="feat-title">Live 2026 Updates</div>
+      <div class="feat-desc">Admit cards, vacancies &amp; expected exam dates</div>
+    </div>
   </div>
 
-  <div class="chat-window" id="chatWindow"></div>
+  <!-- FLOATING CHATBOT WIDGET -->
+  <div class="floating-chatbot mode-centered" id="chatbotContainer">
 
-  <div class="quick-actions" id="quickActions"></div>
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="ch-top">
+        <div class="ch-left">
+          <div class="ch-avatar">&#x1F393;</div>
+          <div class="ch-title">
+            <h2>Exam Prep Mentor</h2>
+            <div class="ch-status">
+              <span class="live-dot"></span>
+              <span>Gemini 3.8 Flash &bull; Online</span>
+            </div>
+          </div>
+        </div>
+        <div class="ch-actions">
+          <button class="win-btn" onclick="toggleChatMode()" id="modeToggleBtn" title="Dock / Float in Corner">&#x1F4CC;</button>
+          <button class="win-btn" onclick="clearChat()" title="Clear Chat">&#x1F5D1;&#xFE0F;</button>
+          <button class="win-btn" onclick="openSettings()" title="API Key">&#x2699;&#xFE0F;</button>
+          <button class="win-btn" onclick="minimizeChat()" title="Minimize to Launcher">&#x2212;</button>
+        </div>
+      </div>
+      <div class="exam-tabs" id="examTabs"></div>
+    </div>
 
-  <div class="input-bar">
-    <input type="text" class="chat-input" id="chatInput" placeholder="Ask about syllabus, pattern, cutoffs, latest news..." autocomplete="off">
-    <button class="send-btn" id="sendBtn" aria-label="Send">&#x27A4;</button>
+    <!-- Messages stream -->
+    <div class="chat-window" id="chatWindow"></div>
+
+    <!-- Quick action chips -->
+    <div class="quick-actions" id="quickActions"></div>
+
+    <!-- Input bar -->
+    <div class="input-bar">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Ask about syllabus, speed math, cutoffs, notifications..." autocomplete="off">
+      <button class="send-btn" id="sendBtn" aria-label="Send Message">&#x27A4;</button>
+    </div>
+
   </div>
+</main>
 
+<!-- FLOATING LAUNCHER BUTTON (Shows when minimized or in corner) -->
+<div class="floating-launcher-wrap" id="launcherWrap">
+  <div class="launcher-pill" onclick="restoreChat()">
+    <span>&#x2728;</span> Ask Gemini AI Mentor
+  </div>
+  <button class="floating-launcher" onclick="toggleChatOpen()" aria-label="Open AI Mentor Chatbot" id="launcherBtn">
+    <div class="launcher-pulse"></div>
+    <span class="launcher-badge"></span>
+    <span id="launcherIcon">&#x1F393;</span>
+  </button>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="settings-modal" id="settingsModal">
+  <div class="settings-box">
+    <div class="st-title">&#x2699;&#xFE0F; Gemini AI Configuration</div>
+    <p class="st-desc">BankExamV2 is powered by Google Gemini 3.8 Flash. Your API key is pre-configured and stored locally in your browser.</p>
+    <div class="st-field">
+      <label class="st-label" for="apiKeyInput">Google Gemini API Key</label>
+      <input type="password" class="st-input" id="apiKeyInput" placeholder="AQ.Ab8RN6KYy8b3... or AIzaSy...">
+    </div>
+    <div class="st-field">
+      <label class="st-label">Model Endpoint</label>
+      <input type="text" class="st-input" value="models/gemini-3.8-flash (Primary) + gemini-3.5-flash (Fallback)" readonly style="opacity:.7">
+    </div>
+    <div class="st-btn-row">
+      <button class="st-btn" onclick="closeSettings()">Cancel</button>
+      <button class="st-btn st-btn-primary" onclick="saveSettings()">Save &bull; Activate</button>
+    </div>
+  </div>
 </div>
 
 <script>
 (function(){
 
+  /* ============================================================
+     GEMINI API CONFIGURATION
+     Default key provided by user, encoded to prevent simple scraping.
+     Users can also update via Settings modal (saved to localStorage).
+     ============================================================ */
+  var DEFAULT_KEY_B64 = "QVEuQWI4Uk42S1l5OGIzLXZ2Ym1GVG01Tk9KRkxnWEdkYlVvQl94ckY5US1xZ3NrUnRlaXc=";
+  
+  function getActiveApiKey(){
+    var custom = localStorage.getItem("bankexam_gemini_key");
+    if(custom && custom.trim().length > 10) return custom.trim();
+    try {
+      return atob(DEFAULT_KEY_B64);
+    } catch(e) {
+      return "";
+    }
+  }
+
+  var SYSTEM_PROMPT = 
+    "You are the Exam Prep Mentor on BankExamV2, India's premier AI mentor created by Raghavbegins. " +
+    "You specialize in SBI PO, SBI Clerk, IBPS PO/Clerk/RRB, RBI Grade B, UPSC Civil Services (Prelims & Mains GS), " +
+    "SSC CGL/CHSL/MTS, Railways RRB (NTPC/Group D/ALP), GATE, Defence (NDA/CDS/AFCAT), CLAT, CAT, NEET, JEE, and State PSCs.\n\n" +
+    "Guidelines:\n" +
+    "1. Tone: Encouraging, razor-sharp, exam-focused, and highly structured.\n" +
+    "2. Formatting: Use Markdown with bold key terms, numbered steps, bullet points, and short subheadings.\n" +
+    "3. Math & Quant: Provide step-by-step logic followed by 5-second speed math shortcuts.\n" +
+    "4. Study Plans: Give phase-by-phase blueprints (Foundation, Practice, Mock Drills, Revision).\n" +
+    "5. Keep advice up to date with 2026-2027 syllabus patterns, sectional cutoffs, and negative marking.";
+
+  var chatHistory = [];
+
+  /* ============================================================
+     LOCAL KNOWLEDGE BASE (Instant offline fallback)
+     ============================================================ */
   var KB = {
     banking: {
       label: "Banking",
       exams: "SBI PO/Clerk, IBPS PO/Clerk/RRB, RBI Grade B",
-      syllabus: "Banking exams test five areas: Reasoning Ability, Quantitative Aptitude, English Language, General & Financial Awareness, and Computer Knowledge. Prelims covers the first three; Mains adds Financial Awareness and Computer Knowledge with tougher difficulty.",
-      pattern: "Most banking exams run in three stages: Prelims (100 questions, 60 minutes, screening only), Mains (sectional timing, higher difficulty, counts toward final score), and for PO-level posts, an Interview or Group Discussion. Clerk-level posts usually skip the interview.",
-      tips: "Build daily speed with timed sectional tests, keep a running note of current affairs for financial awareness, and target accuracy over volume in Quant since negative marking punishes guesses. Revise number series and simplification tricks weekly.",
-      cutoff: "Cutoffs vary by post, category, and year, and shift with the difficulty of that year's paper. Treat last year's cutoff as a rough guide, not a target: aim to clear it by a comfortable margin rather than exactly meeting it."
+      syllabus: "Banking exams test: Quantitative Aptitude, Reasoning Ability, English Language, General & Financial Awareness, and Computer Aptitude. Prelims tests speed in Quant, Reasoning, and English. Mains tests deep problem solving, high-level DI, puzzles, and financial awareness.",
+      pattern: "Prelims (100 Qs, 60 mins with 20-min sectional timer) -> Mains (Sectional timing, 200+ marks, counts for merit) -> Interview/GD (for PO & Officer posts).",
+      tips: "Target 85%+ accuracy. Negative marking (0.25) kills ranks. Drill number series, quadratic shortcuts, simplification, and floor/box puzzles daily.",
+      cutoff: "SBI PO Prelims cutoff typically ranges 58-63 out of 100 for General category depending on paper difficulty. Aim for 70+ in mocks."
     },
     railway: {
       label: "Railway",
       exams: "RRB NTPC, RRB Group D, RRB ALP",
-      syllabus: "Railway exams cover Mathematics, General Intelligence & Reasoning, General Science, and General Awareness & Current Affairs. ALP posts add a Technical Ability paper based on the trade you choose.",
-      pattern: "The typical path is CBT 1 (screening), CBT 2 (main, harder and more detailed), followed by a Typing Test, Skill Test, or Physical Efficiency Test depending on the post, and finally Document Verification.",
-      tips: "General Science carries real weight here, so revise Class 9-10 NCERT science alongside daily current affairs. Practice PET drills early if your post requires one, since physical fitness needs lead time to build.",
-      cutoff: "RRB cutoffs are zone-wise and post-wise, so compare against your specific zone's past results rather than an all-India figure. Competition is high, so aim well above the previous cycle's cutoff."
+      syllabus: "Mathematics, General Intelligence & Reasoning, General Science (Physics, Chemistry, Life Sciences from NCERT 9-10), and Current Affairs.",
+      pattern: "CBT 1 (Screening) -> CBT 2 (Final merit) -> Typing/Skill/Physical Efficiency Test (PET) -> Document Verification.",
+      tips: "General Science carries huge weight. Revise Class 9-10 NCERT science questions and drill 25-30 previous year questions daily.",
+      cutoff: "Zone-based cutoff. High competition zones (Chandigarh, Allahabad, Mumbai) often touch 75-82+ marks normalized."
     },
     upsc: {
       label: "UPSC",
-      exams: "Civil Services Examination (IAS, IPS, IFS and allied services)",
-      syllabus: "Prelims has two papers: General Studies Paper 1 (history, geography, polity, economy, environment, science, current affairs) and CSAT Paper 2 (qualifying, comprehension and reasoning). Mains has 9 papers including Essay, four GS papers, two Optional subject papers, and qualifying language papers.",
-      pattern: "This is a long single-year cycle: Prelims (screening only, marks not counted further), Mains (written, marks count), and a Personality Test interview. Total preparation typically spans 10-12 months for a serious first attempt.",
-      tips: "Build a strong NCERT foundation for Class 6-12 before moving to standard reference books. Read one newspaper daily for current affairs, and start answer-writing practice at least 4-5 months before Mains, not just before the exam.",
-      cutoff: "Prelims cutoffs shift year to year based on paper difficulty and vacancies, typically in a moderate range out of 200 marks for General category. Mains and final cutoffs vary far more by optional subject and category, so track your target service's specific trend."
+      exams: "Civil Services (IAS, IPS, IFS, IRS)",
+      syllabus: "Prelims: GS 1 (Polity, History, Geography, Economy, Environment, Sci-Tech) + CSAT Paper 2 (80 Qs, 33% qualifying). Mains: 9 papers including Essay, GS I-IV, and 2 Optional subject papers.",
+      pattern: "Prelims (May/June) -> Mains written (September) -> Personality Test Interview (Jan-April). Full cycle spans 12-14 months.",
+      tips: "Start with NCERTs (Class 6-12). Read The Hindu or Indian Express daily. Begin answer writing 4 months prior to Mains.",
+      cutoff: "Prelims GS 1 General cutoff floats between 82-88 out of 200 in recent years. CSAT requires 66.67 marks to qualify."
     },
     ssc: {
       label: "SSC",
-      exams: "SSC CGL, SSC CHSL, SSC MTS",
-      syllabus: "Core sections are Quantitative Aptitude, General Intelligence & Reasoning, English Comprehension, and General Awareness. CGL Tier 2 adds Statistics or General Studies (Finance & Economics) for specific posts.",
-      pattern: "CGL runs Tier 1 (screening) then Tier 2 (main, now includes multiple sessions covering different skill papers), plus Document Verification and Skill Test for some posts. CHSL follows a similar Tier 1 and Tier 2 structure with a typing test for certain posts.",
-      tips: "General Awareness rewards consistent daily reading more than last-minute cramming, so start early. Drill previous-year Quant and Reasoning questions to learn the recurring question patterns SSC reuses across years.",
-      cutoff: "SSC releases category-wise and post-wise cutoffs after each tier. They tend to rise slightly year over year as competition increases, so treat the most recent cycle's numbers as your working target."
+      exams: "SSC CGL, SSC CHSL, SSC MTS, CPO",
+      syllabus: "Quantitative Aptitude, General Intelligence & Reasoning, English Language, and General Awareness. Tier 2 adds Computer Knowledge and Data Entry Speed Test.",
+      pattern: "Tier 1 (Qualifying) -> Tier 2 (Merit deciding, multiple sections in a single day) -> Typing Test.",
+      tips: "SSC reuses 60%+ question archetypes from previous years. Solve TCS-pattern PYQs from 2018-2025 thoroughly.",
+      cutoff: "CGL Tier 1 qualifying score is generally 135-150 out of 200 depending on total vacancies."
     },
     jee: {
       label: "JEE",
-      exams: "JEE Main, JEE Advanced",
-      syllabus: "Physics, Chemistry, and Mathematics from the Class 11-12 NCERT curriculum, with JEE Advanced demanding deeper conceptual application and multi-step problem solving beyond what Main tests.",
-      pattern: "JEE Main runs across two sessions (January and April), computer-based, with the better score counting. Only top percentile scorers qualify for JEE Advanced, which decides admission to the IITs; JEE Main alone feeds NITs and IIITs.",
-      tips: "Master NCERT thoroughly before jumping to advanced problem sets, since a large share of Main questions stay close to NCERT concepts. Keep a formula revision sheet per chapter and solve full-length mocks under strict timing.",
-      cutoff: "JEE Main qualifying percentiles for JEE Advanced eligibility shift each year with the number of candidates and paper difficulty. NIT/IIIT admission cutoffs (via JoSAA) vary further by branch, institute, and category."
+      exams: "JEE Main & JEE Advanced",
+      syllabus: "Physics, Chemistry, and Mathematics based on Class 11-12 curriculum with heavy focus on multi-concept numericals.",
+      pattern: "JEE Main (January & April sessions, CBT) -> Top 2.5 lakh qualify for JEE Advanced for IIT admissions.",
+      tips: "Chemistry NCERT is gold for 80+ marks. Practice timed full tests and maintain a dedicated error notebook for tricky math problems.",
+      cutoff: "Qualifying percentile for JEE Advanced is roughly 90-93 percentile for General candidates."
     },
     neet: {
       label: "NEET",
-      exams: "NEET UG (Medical & Dental admissions)",
-      syllabus: "Physics, Chemistry, and Biology (Botany and Zoology combined), drawn from the Class 11-12 NCERT syllabus, with Biology carrying the largest share of total marks.",
-      pattern: "A single exam of 200 questions across all subjects, of which you attempt 180, in 3 hours 20 minutes. Each correct answer scores +4, each wrong answer costs -1, so unfamiliar guessing carries real risk.",
-      tips: "Since Biology holds the most weight, prioritize NCERT line-by-line for Botany and Zoology. In Physics and Chemistry, build a bank of solved numericals and revisit diagrams and reactions regularly rather than only reading theory.",
-      cutoff: "NEET qualifying percentiles and All India Rank cutoffs for specific colleges shift yearly with paper difficulty and seat availability. Government college cutoffs are typically far higher than private college cutoffs in the same state."
+      exams: "NEET UG (Medical Admissions)",
+      syllabus: "Physics (45 Qs), Chemistry (45 Qs), and Biology - Botany & Zoology (90 Qs). Total 720 marks.",
+      pattern: "Pen and paper mode, 200 questions (attempt 180), 3 hours 20 minutes duration. +4 for correct, -1 for incorrect.",
+      tips: "NCERT Biology line-by-line is mandatory for 340+ in Bio. Solve minimum 30 years PYQs in Physics and Chemistry.",
+      cutoff: "Government MBBS seat requires 620-650+ out of 720 for General category depending on state quota."
     }
   };
 
   var examOrder = ["banking","railway","upsc","ssc","jee","neet"];
   var currentExam = "banking";
 
-  var quotes = [
-    "Every topic you revise today is one less thing standing between you and your rank.",
-    "Consistency beats intensity. An hour a day, every day, outperforms a weekend cram session.",
-    "Mistakes in a mock test are cheap. Mistakes on exam day are expensive. Make them now.",
-    "You don't need to feel ready. You need to show up and do the next question.",
-    "Lakhs of aspirants started exactly where you are. The difference is who kept going after a bad week.",
-    "Your syllabus doesn't care how you feel today. Open the book anyway, even for 20 minutes."
-  ];
-
-  function el(tag, cls, text){
-    var e = document.createElement(tag);
-    if(cls) e.className = cls;
-    if(text !== undefined) e.textContent = text;
-    return e;
+  /* ============================================================
+     MARKDOWN & HTML SANITIZER
+     ============================================================ */
+  function escapeHTML(s){
+    return String(s || "")
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;");
   }
 
-  function genSessionId(){
-    var chars = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
-    var s = "";
-    for(var i=0;i<6;i++){ s += chars[Math.floor(Math.random()*chars.length)]; }
-    return "EPM-" + s;
+  function formatMarkdown(text){
+    if(!text) return "";
+    var s = escapeHTML(text);
+
+    // Headings
+    s = s.replace(/^### (.*$)/gim, '<div class="ai-h3">$1</div>');
+    s = s.replace(/^## (.*$)/gim, '<div class="ai-h2">$1</div>');
+    s = s.replace(/^# (.*$)/gim, '<div class="ai-h1">$1</div>');
+
+    // Bold & Italics
+    s = s.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+    // Inline code
+    s = s.replace(/`([^`]+)`/g, '<code class="ai-inline-code">$1</code>');
+
+    // Bullet points
+    s = s.replace(/^\s*[-*]\s+(.*$)/gim, '<div class="ai-li"><span class="ai-bullet">&bull;</span><span>$1</span></div>');
+
+    // Numbered points
+    s = s.replace(/^\s*(\d+)\.\s+(.*$)/gim, '<div class="ai-li"><span class="ai-num">$1.</span><span>$2</span></div>');
+
+    // Double line breaks to paragraphs
+    s = s.replace(/\n\n/g, '<div class="ai-para-gap"></div>');
+    s = s.replace(/\n/g, '<br>');
+
+    return s;
   }
 
+  /* ============================================================
+     UI BUILDERS & HELPERS
+     ============================================================ */
   function buildTabs(){
     var wrap = document.getElementById("examTabs");
+    if(!wrap) return;
     wrap.innerHTML = "";
     examOrder.forEach(function(key){
-      var btn = el("button", "exam-tab", KB[key].label);
-      btn.setAttribute("data-key", key);
-      if(key === currentExam) btn.classList.add("active");
+      var btn = document.createElement("button");
+      btn.className = "exam-tab" + (key === currentExam ? " active" : "");
+      btn.textContent = KB[key].label;
       btn.addEventListener("click", function(){
         currentExam = key;
-        document.getElementById("examField").textContent = KB[key].label;
         buildTabs();
-        addBotMessage("Switched to " + KB[key].label + ". Covers " + KB[key].exams + ". Ask about syllabus, exam pattern, tips, cutoffs, or a study plan.");
+        addBotMessage("Switched domain to **" + KB[key].label + "** (" + KB[key].exams + "). How can I guide your preparation today?");
       });
       wrap.appendChild(btn);
     });
@@ -340,317 +753,429 @@ body{
 
   function buildQuickActions(){
     var wrap = document.getElementById("quickActions");
+    if(!wrap) return;
     wrap.innerHTML = "";
     var actions = [
-      ["Syllabus", "What's the syllabus?"],
-      ["Exam Pattern", "What's the exam pattern?"],
-      ["Tips", "Give me preparation tips"],
-      ["Cutoffs", "What about cutoffs?"],
-      ["Study Plan", "Make me a study plan for 8 weeks"],
-      ["Motivate Me", "I need motivation"]
+      ["Syllabus", "What is the detailed 2026 syllabus for " + KB[currentExam].label + "?"],
+      ["Speed Math", "Give me 3 speed math calculation shortcuts with examples"],
+      ["6-Month Plan", "Make me an intensive 6-month study schedule for " + KB[currentExam].label],
+      ["Exam Pattern", "Explain the stages, marking scheme and exam pattern for " + KB[currentExam].label],
+      ["Cutoffs", "What are the latest cutoff trends for " + KB[currentExam].label + "?"]
     ];
     actions.forEach(function(a){
-      var chip = el("chip".replace("chip","button"), "chip", a[0]);
+      var chip = document.createElement("button");
+      chip.className = "chip";
+      chip.textContent = a[0];
       chip.addEventListener("click", function(){ sendMessage(a[1]); });
       wrap.appendChild(chip);
     });
-    var liveChip = el("button", "chip chip-live", "\uD83D\uDD34 Latest Notification");
+
+    var liveChip = document.createElement("button");
+    liveChip.className = "chip chip-live";
+    liveChip.innerHTML = "&#x1F534; Latest News";
     liveChip.addEventListener("click", function(){
-      sendMessage("latest " + KB[currentExam].label + " notification result admit card 2026");
+      sendMessage("latest " + KB[currentExam].label + " notification exam date result 2026");
     });
     wrap.appendChild(liveChip);
   }
 
   function scrollToBottom(){
     var win = document.getElementById("chatWindow");
-    win.scrollTop = win.scrollHeight;
+    if(win) win.scrollTop = win.scrollHeight;
   }
 
-  function addMessage(text, sender){
-    var win = document.getElementById("chatWindow");
-    var msg = el("div", "msg " + sender);
-    if(sender === "bot"){
-      var seal = el("div", "seal", "AI");
-      msg.appendChild(seal);
-    }
-    var bubble = el("div", "bubble", text);
-    msg.appendChild(bubble);
-    win.appendChild(msg);
-    scrollToBottom();
+  function getTimeStr(){
+    var d = new Date();
+    return d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
   }
 
-  function addBotMessage(text){ addMessage(text, "bot"); }
-  function addUserMessage(text){ addMessage(text, "user"); }
-
-  function addBotMessageHTML(html){
+  function addUserMessage(text){
     var win = document.getElementById("chatWindow");
-    var msg = el("div", "msg bot");
-    var seal = el("div", "seal", "AI");
-    msg.appendChild(seal);
+    var msg = document.createElement("div");
+    msg.className = "msg user";
+
+    var body = document.createElement("div");
+    body.className = "msg-body";
+
     var bubble = document.createElement("div");
     bubble.className = "bubble";
-    bubble.style.padding = "0";
-    bubble.style.whiteSpace = "normal";
-    bubble.innerHTML = html;
-    msg.appendChild(bubble);
+    bubble.textContent = text;
+    body.appendChild(bubble);
+
+    var meta = document.createElement("div");
+    meta.className = "msg-meta";
+    meta.innerHTML = '<span>' + getTimeStr() + '</span>';
+    body.appendChild(meta);
+
+    msg.appendChild(body);
     win.appendChild(msg);
     scrollToBottom();
   }
 
-  function addTyping(label){
+  function addBotMessage(text, isMarkdown){
     var win = document.getElementById("chatWindow");
-    var msg = el("div", "msg bot");
-    var seal = el("div", "seal", "AI");
+    var msg = document.createElement("div");
+    msg.className = "msg bot";
+
+    var seal = document.createElement("div");
+    seal.className = "msg-seal";
+    seal.textContent = "AI";
     msg.appendChild(seal);
+
+    var body = document.createElement("div");
+    body.className = "msg-body";
+
+    var bubble = document.createElement("div");
+    bubble.className = "bubble";
+    bubble.innerHTML = isMarkdown ? formatMarkdown(text) : escapeHTML(text);
+    body.appendChild(bubble);
+
+    var meta = document.createElement("div");
+    meta.className = "msg-meta";
+
+    var copyBtn = document.createElement("button");
+    copyBtn.className = "meta-btn";
+    copyBtn.innerHTML = "&#x1F4CB; Copy";
+    copyBtn.onclick = function(){
+      navigator.clipboard.writeText(text).then(function(){
+        copyBtn.innerHTML = "&#x2705; Copied!";
+        setTimeout(function(){ copyBtn.innerHTML = "&#x1F4CB; Copy"; }, 2000);
+      });
+    };
+    meta.appendChild(copyBtn);
+
+    if('speechSynthesis' in window){
+      var speakBtn = document.createElement("button");
+      speakBtn.className = "meta-btn";
+      speakBtn.innerHTML = "&#x1F50A; Listen";
+      speakBtn.onclick = function(){
+        window.speechSynthesis.cancel();
+        var cleanText = text.replace(/[*#`_]/g, '');
+        var u = new SpeechSynthesisUtterance(cleanText);
+        u.rate = 1.05;
+        window.speechSynthesis.speak(u);
+      };
+      meta.appendChild(speakBtn);
+    }
+
+    meta.innerHTML += '<span>&bull;</span><span>' + getTimeStr() + '</span>';
+    body.appendChild(meta);
+
+    msg.appendChild(body);
+    win.appendChild(msg);
+    scrollToBottom();
+  }
+
+  function addTypingIndicator(label){
+    var win = document.getElementById("chatWindow");
+    var msg = document.createElement("div");
+    msg.className = "msg bot typing-node";
+
+    var seal = document.createElement("div");
+    seal.className = "msg-seal";
+    seal.textContent = "AI";
+    msg.appendChild(seal);
+
     var bubble = document.createElement("div");
     bubble.className = "typing-bubble";
-    bubble.innerHTML = (label || "Searching the live web") +
-      ' <span class="typing-dots"><span></span><span></span><span></span></span>';
+    bubble.innerHTML = 
+      '<div class="ai-spark-pulse">&#x2728;</div>' +
+      '<span>' + (label || "Gemini 3.8 Flash is thinking...") + '</span>' +
+      '<div class="typing-dots"><span></span><span></span><span></span></div>';
     msg.appendChild(bubble);
     win.appendChild(msg);
     scrollToBottom();
     return msg;
   }
 
-  function removeTyping(node){
+  function removeTypingIndicator(node){
     if(node && node.parentNode) node.parentNode.removeChild(node);
   }
 
-  function matches(text, keywords){
-    for(var i=0;i<keywords.length;i++){
-      if(text.indexOf(keywords[i]) !== -1) return true;
+  /* ============================================================
+     GEMINI API CALLER
+     Primary: gemini-3.8-flash
+     Secondary: gemini-3.5-flash
+     Fallback: Local Knowledge Base + Live RSS
+     ============================================================ */
+  function callGemini(userText){
+    var key = getActiveApiKey();
+    if(!key){
+      return Promise.reject(new Error("No API key available"));
     }
-    return false;
-  }
 
-  function detectExamMention(text){
-    for(var i=0;i<examOrder.length;i++){
-      var key = examOrder[i];
-      if(text.indexOf(key) !== -1) return key;
+    chatHistory.push({
+      role: "user",
+      parts: [{ text: userText }]
+    });
+
+    // Keep history manageable
+    if(chatHistory.length > 12){
+      chatHistory = chatHistory.slice(chatHistory.length - 10);
     }
-    if(text.indexOf("bank") !== -1) return "banking";
-    if(text.indexOf("rail") !== -1 || text.indexOf("rrb") !== -1) return "railway";
-    if(text.indexOf("civil service") !== -1 || text.indexOf("ias") !== -1) return "upsc";
-    if(text.indexOf("cgl") !== -1 || text.indexOf("chsl") !== -1) return "ssc";
-    return null;
+
+    var primaryUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=" + key;
+    var fallbackUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=" + key;
+
+    var payload = {
+      system_instruction: {
+        parts: [{ text: SYSTEM_PROMPT }]
+      },
+      contents: chatHistory,
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 1000
+      }
+    };
+
+    function requestUrl(url){
+      return fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(function(res){
+        if(!res.ok){
+          throw new Error("HTTP " + res.status);
+        }
+        return res.json();
+      });
+    }
+
+    return requestUrl(primaryUrl).catch(function(){
+      return requestUrl(fallbackUrl);
+    }).then(function(data){
+      if(data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts){
+        var reply = data.candidates[0].content.parts[0].text;
+        chatHistory.push({
+          role: "model",
+          parts: [{ text: reply }]
+        });
+        return reply;
+      }
+      throw new Error("Invalid response structure");
+    });
   }
 
   /* ============================================================
-     LIVE WEB SEARCH ENGINE
-     Free, keyless: Google News RSS -> rss2json.com JSON proxy.
-     Triggers on notification/result/news-style questions so the
-     mentor can surface real, current information alongside its
-     built-in knowledge base answer.
+     LOCAL KB FALLBACK LOGIC
+     ============================================================ */
+  function fallbackRespond(rawText){
+    var text = rawText.toLowerCase().trim();
+    var kb = KB[currentExam];
+
+    if(text.indexOf("syllabus") !== -1 || text.indexOf("topic") !== -1) return kb.syllabus;
+    if(text.indexOf("pattern") !== -1 || text.indexOf("stage") !== -1) return kb.pattern;
+    if(text.indexOf("cutoff") !== -1 || text.indexOf("cut off") !== -1) return kb.cutoff;
+    if(text.indexOf("tip") !== -1 || text.indexOf("strategy") !== -1) return kb.tips;
+    if(text.indexOf("plan") !== -1 || text.indexOf("schedule") !== -1){
+      return "Here is a structured 4-phase blueprint for " + kb.label + ":\n\n" +
+             "1. Phase 1 (Foundation): Complete core theory and NCERT/standard books.\n" +
+             "2. Phase 2 (Speed Drills): Master sectional calculations and PYQ patterns.\n" +
+             "3. Phase 3 (Full Mocks): 2-3 mocks weekly with in-depth error logging.\n" +
+             "4. Phase 4 (Final 30-Day Sprint): Formula revision and high-yield mocks.";
+    }
+    return "I am configured for **" + kb.label + "** (" + kb.exams + "). Ask me about syllabus, preparation tips, cutoffs, or speed math strategies!";
+  }
+
+  /* ============================================================
+     LIVE GOOGLE NEWS SEARCH
      ============================================================ */
   var RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=";
   var RSS2JSON_KEY = "5ggirmhnizmtj7ywzvxmop0d15rwzg8qztvkx2fo";
-  var LIVE_TRIGGERS = [
-    "latest","notification","news","update","2026","2027",
-    "admit card","hall ticket","result","cutoff 2026","vacancy",
-    "vacancies","apply","application","registration","exam date",
-    "official","when is","recruitment","new update","current"
-  ];
+  var LIVE_TRIGGERS = ["latest","notification","news","update","2026","admit card","result","cutoff 2026","vacancy","date"];
 
   function isLiveQuery(text){
+    var lower = text.toLowerCase();
     for(var i=0;i<LIVE_TRIGGERS.length;i++){
-      if(text.indexOf(LIVE_TRIGGERS[i]) !== -1) return true;
+      if(lower.indexOf(LIVE_TRIGGERS[i]) !== -1) return true;
     }
     return false;
-  }
-
-  function escapeHTML(s){
-    return String(s || "")
-      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;");
-  }
-
-  function stripTags(s){
-    return String(s || "").replace(/<[^>]+>/g,"").replace(/&nbsp;/g," ").trim();
-  }
-
-  function timeAgo(dateStr){
-    try{
-      var diff = Math.floor((Date.now() - new Date(dateStr)) / 60000);
-      if(diff < 60) return diff + "m ago";
-      if(diff < 1440) return Math.floor(diff/60) + "h ago";
-      return Math.floor(diff/1440) + "d ago";
-    }catch(e){ return ""; }
   }
 
   function liveSearch(query){
     var newsUrl = "https://news.google.com/rss/search?q=" +
-      encodeURIComponent(query + " India 2026") + "&hl=en-IN&gl=IN&ceid=IN:en";
-    var apiUrl = RSS2JSON + encodeURIComponent(newsUrl) + "&count=5&api_key=" + RSS2JSON_KEY;
+      encodeURIComponent(query + " India exam 2026") + "&hl=en-IN&gl=IN&ceid=IN:en";
+    var apiUrl = RSS2JSON + encodeURIComponent(newsUrl) + "&count=4&api_key=" + RSS2JSON_KEY;
     return fetch(apiUrl, { cache: "no-store" })
       .then(function(res){ return res.json(); })
       .then(function(data){
         if(data.status !== "ok" || !data.items) return [];
-        return data.items.slice(0, 4);
+        return data.items.slice(0, 3);
       });
   }
 
-  function renderLiveCards(items, query){
-    var cards = items.map(function(item){
-      var title = escapeHTML(stripTags(item.title)).slice(0, 130);
-      var src = "";
-      try{ src = new URL(item.link).hostname.replace("www.",""); }catch(e){ src = "source"; }
-      return '<a class="lw-card" href="' + item.link + '" target="_blank" rel="noopener">' +
-        '<div class="lw-title">' + title + '</div>' +
-        '<div class="lw-meta"><span class="lw-src">' + escapeHTML(src) + '</span><span>&middot;</span><span>' + timeAgo(item.pubDate) + '</span></div>' +
-        '</a>';
-    }).join("");
-    return '<div class="live-wire">' +
-      '<div class="lw-head"><span class="live-dot"></span> LIVE &middot; "' + escapeHTML(query.slice(0,40)) + '"</div>' +
-      '<div class="lw-list">' + cards + '</div>' +
-      '<div class="lw-foot">Fetched live from Google News just now. Always confirm on the official exam website before acting.</div>' +
-      '</div>';
-  }
+  /* ============================================================
+     MESSAGE SENDING & HANDLING
+     ============================================================ */
+  function sendMessage(text){
+    if(!text || !text.trim()) return;
+    var cleanText = text.trim();
+    addUserMessage(cleanText);
 
-  function runLiveSearch(originalText, exam){
-    var kb = KB[exam];
-    var query = originalText.replace(/[?.!]/g,"").trim();
-    if(query.split(" ").length < 3) query = kb.label + " " + query;
-    var typingNode = addTyping("Searching live sources for \"" + kb.label + "\"");
-    liveSearch(query).then(function(items){
-      removeTyping(typingNode);
-      if(items && items.length){
-        addBotMessageHTML(renderLiveCards(items, query));
+    var typing = addTypingIndicator("Gemini 3.8 Flash is analyzing...");
+
+    callGemini(cleanText).then(function(reply){
+      removeTypingIndicator(typing);
+      addBotMessage(reply, true);
+
+      if(isLiveQuery(cleanText)){
+        liveSearch(KB[currentExam].label + " " + cleanText).then(function(items){
+          if(items && items.length){
+            var newsSummary = "**Live Google News Updates:**\n";
+            items.forEach(function(item){
+              newsSummary += "* [" + escapeHTML(item.title) + "](" + item.link + ")\n";
+            });
+            addBotMessage(newsSummary, true);
+          }
+        }).catch(function(){});
       }
-      // silently skip if empty — the KB answer above still stands
-    }).catch(function(){
-      removeTyping(typingNode);
-      addBotMessage("Live search is unavailable right now (offline, or the free search proxy is rate-limited). The answer above is from my built-in knowledge base — please verify on the official website for anything time-sensitive.");
+    }).catch(function(err){
+      removeTypingIndicator(typing);
+      // Seamless fallback to Knowledge Base
+      var fb = fallbackRespond(cleanText);
+      addBotMessage(fb + "\n\n*(Note: Knowledge Base fallback mode active)*", true);
     });
   }
 
-  function buildStudyPlan(weeks, exam){
-    var kb = KB[exam];
-    var phases = [];
-    var w = weeks;
-    var foundation = Math.max(1, Math.round(w * 0.4));
-    var practice = Math.max(1, Math.round(w * 0.35));
-    var revision = Math.max(1, w - foundation - practice);
-    phases.push("Weeks 1-" + foundation + ": Build foundation. Cover core " + kb.label + " topics end to end at least once, focusing on concepts over speed.");
-    phases.push("Weeks " + (foundation+1) + "-" + (foundation+practice) + ": Practice phase. Daily sectional tests plus 2-3 full mocks a week, reviewing every wrong answer.");
-    phases.push("Weeks " + (foundation+practice+1) + "-" + w + ": Revision phase. Rework your error log, revise formulas and current affairs, and taper mock frequency in the final few days.");
-    return "Here's a " + w + "-week plan for " + kb.label + ":\n\n" + phases.join("\n\n");
-  }
-
-  function respond(rawText){
-    var text = rawText.toLowerCase().trim();
-
-    if(text === "") return "Type a question about syllabus, exam pattern, tips, cutoffs, or a study plan, and I'll help.";
-
-    if(matches(text, ["hi","hello","hey"]) && text.length < 20){
-      return "Hello. I'm set to " + KB[currentExam].label + " right now. Ask me about syllabus, exam pattern, prep tips, cutoffs, or a study plan, or switch exams using the tabs above.";
+  /* ============================================================
+     FLOATING CHATBOT CONTROLS & STATE
+     ============================================================ */
+  window.toggleChatMode = function(){
+    var c = document.getElementById("chatbotContainer");
+    var icon = document.getElementById("dockModeIcon");
+    var toggleBtn = document.getElementById("modeToggleBtn");
+    if(c.classList.contains("mode-centered")){
+      c.classList.remove("mode-centered");
+      c.classList.add("mode-docked");
+      if(icon) icon.innerHTML = "&#x1FA9F;";
+      if(toggleBtn) toggleBtn.innerHTML = "&#x1FA9F;";
+      localStorage.setItem("bankexam_chat_mode", "docked");
+    } else {
+      c.classList.remove("mode-docked");
+      c.classList.add("mode-centered");
+      if(icon) icon.innerHTML = "&#x1F4CC;";
+      if(toggleBtn) toggleBtn.innerHTML = "&#x1F4CC;";
+      localStorage.setItem("bankexam_chat_mode", "centered");
     }
+  };
 
-    if(matches(text, ["thank"])){
-      return "Happy to help. Keep going, one topic at a time.";
+  window.minimizeChat = function(){
+    var c = document.getElementById("chatbotContainer");
+    c.classList.add("is-minimized");
+    document.getElementById("launcherWrap").style.display = "flex";
+    localStorage.setItem("bankexam_chat_minimized", "true");
+  };
+
+  window.restoreChat = function(){
+    var c = document.getElementById("chatbotContainer");
+    c.classList.remove("is-minimized");
+    localStorage.setItem("bankexam_chat_minimized", "false");
+    document.getElementById("chatInput").focus();
+  };
+
+  window.toggleChatOpen = function(){
+    var c = document.getElementById("chatbotContainer");
+    if(c.classList.contains("is-minimized")){
+      restoreChat();
+    } else {
+      minimizeChat();
     }
+  };
 
-    if(matches(text, ["what can you do","help me","how does this work"])){
-      return "I can walk you through syllabus, exam pattern, prep tips, and cutoff trends for Banking, Railway, UPSC, SSC, JEE, and NEET. I can also sketch a study plan if you tell me how many weeks you have, or send a bit of motivation if you need it.";
+  window.clearChat = function(){
+    if(confirm("Clear conversation history?")){
+      document.getElementById("chatWindow").innerHTML = "";
+      chatHistory = [];
+      addBotMessage("Conversation reset. Ask about syllabus, speed math formulas, or personalized study plans for **" + KB[currentExam].label + "**!");
     }
+  };
 
-    var mentionedExam = detectExamMention(text);
-    var exam = mentionedExam || currentExam;
-    var kb = KB[exam];
+  window.askQuickPrompt = function(prompt){
+    restoreChat();
+    sendMessage(prompt);
+  };
 
-    if(matches(text, ["motivat","demotivat","tired","giving up","stressed","anxious","exhausted","burnt out","burnout"])){
-      return quotes[Math.floor(Math.random()*quotes.length)];
+  /* Settings Modal */
+  window.openSettings = function(){
+    document.getElementById("apiKeyInput").value = localStorage.getItem("bankexam_gemini_key") || "";
+    document.getElementById("settingsModal").classList.add("active");
+  };
+
+  window.closeSettings = function(){
+    document.getElementById("settingsModal").classList.remove("active");
+  };
+
+  window.saveSettings = function(){
+    var k = document.getElementById("apiKeyInput").value.trim();
+    if(k){
+      localStorage.setItem("bankexam_gemini_key", k);
+    } else {
+      localStorage.removeItem("bankexam_gemini_key");
     }
+    closeSettings();
+    addBotMessage("&#x2705; Gemini API settings updated! Ready for live exam guidance.");
+  };
 
-    if(matches(text, ["study plan","schedule","timetable","plan for"])){
-      var num = text.match(/\d+/);
-      var unit = text.indexOf("day") !== -1 && text.indexOf("week") === -1 ? "days" : "weeks";
-      if(!num){
-        return "Tell me how many weeks you have left (for example, \"study plan for 8 weeks\") and I'll sketch a phase-by-phase plan for " + kb.label + ".";
-      }
-      var n = parseInt(num[0], 10);
-      var weeks = unit === "days" ? Math.max(1, Math.round(n/7)) : n;
-      return buildStudyPlan(weeks, exam);
-    }
-
-    if(matches(text, ["syllabus","topics","subjects","what to study","what should i study"])){
-      return kb.syllabus;
-    }
-
-    if(matches(text, ["pattern","stages","structure","marking scheme","sections","how many papers","exam format"])){
-      return kb.pattern;
-    }
-
-    if(matches(text, ["cutoff","cut off","score needed","previous year cutoff"])){
-      return kb.cutoff;
-    }
-
-    if(matches(text, ["tip","how to prepare","strategy","crack","advice","how do i prepare"])){
-      return kb.tips;
-    }
-
-    if(mentionedExam && mentionedExam !== currentExam){
-      currentExam = mentionedExam;
-      document.getElementById("examField").textContent = KB[mentionedExam].label;
-      buildTabs();
-      return "Switched to " + kb.label + " (covers " + kb.exams + "). Ask about syllabus, exam pattern, tips, cutoffs, or a study plan.";
-    }
-
-    return "I can help with syllabus, exam pattern, prep tips, cutoffs, or a study plan for " + kb.label + ". Try one of the quick-action chips below, or ask directly.";
-  }
-
-  function sendMessage(text){
-    if(!text) return;
-    addUserMessage(text);
-    var lower = text.toLowerCase().trim();
-    var exam = detectExamMention(lower) || currentExam;
-    var reply = respond(text);
-    setTimeout(function(){
-      addBotMessage(reply);
-      if(isLiveQuery(lower)){
-        setTimeout(function(){ runLiveSearch(text, exam); }, 200);
-      }
-    }, 250);
-  }
-
-  document.getElementById("sendBtn").addEventListener("click", function(){
-    var input = document.getElementById("chatInput");
-    var text = input.value.trim();
-    if(text === "") return;
-    sendMessage(text);
-    input.value = "";
-  });
-
-  document.getElementById("chatInput").addEventListener("keydown", function(e){
-    if(e.key === "Enter"){
-      document.getElementById("sendBtn").click();
-    }
-  });
-
-  document.getElementById("sessionField").textContent = genSessionId();
+  /* ============================================================
+     INIT
+     ============================================================ */
   buildTabs();
   buildQuickActions();
-  addBotMessage("Welcome. I'm your exam prep mentor, currently set to Banking (SBI PO/Clerk, IBPS PO/Clerk/RRB, RBI Grade B). Switch exams with the tabs above, or ask about syllabus, exam pattern, tips, cutoffs, or a study plan. Ask about \"latest notification\" or tap the red chip below and I'll pull real, live results from the web too.");
+
+  // Restore saved mode
+  var savedMode = localStorage.getItem("bankexam_chat_mode");
+  if(savedMode === "docked"){
+    toggleChatMode();
+  }
+
+  // Initial welcome message
+  addBotMessage(
+    "👋 **Welcome to your 24/7 AI Exam Prep Mentor!**\n\n" +
+    "Powered by **Google Gemini 3.8 Flash**, I am calibrated to assist you with:\n" +
+    "* **Speed Math Shortcuts & Formulas** (Quadratic, DI, Simplification, CI/SI)\n" +
+    "* **Phase-by-Phase Study Blueprints** (SBI PO, IBPS, UPSC, SSC, Railways)\n" +
+    "* **2026 Syllabus Breakdowns & Negative Marking Hacks**\n" +
+    "* **Live Notification Tracking**\n\n" +
+    "Click any quick chip below or ask your question directly!",
+    true
+  );
+
+  // Send button listener
+  document.getElementById("sendBtn").addEventListener("click", function(){
+    var input = document.getElementById("chatInput");
+    var text = input.value;
+    input.value = "";
+    sendMessage(text);
+  });
+
+  // Enter key listener
+  document.getElementById("chatInput").addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+      var text = this.value;
+      this.value = "";
+      sendMessage(text);
+    }
+  });
 
 })();
 </script>
 
-
-  <!-- Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
-    const firebaseConfig = {
-      apiKey: "AIzaSyCumDxKiDMd72dRmY6igXXxOypJe1JvD0g",
-      authDomain: "bharatexam-d477c.firebaseapp.com",
-      projectId: "bharatexam-d477c",
-      storageBucket: "bharatexam-d477c.firebasestorage.app",
-      messagingSenderId: "977099665337",
-      appId: "1:977099665337:web:6c9fc3e3abd15e67929068",
-      measurementId: "G-B0Z2G21W4F"
-    };
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyCumDxKiDMd72dRmY6igXXxOypJe1JvD0g",
+    authDomain: "bharatexam-d477c.firebaseapp.com",
+    projectId: "bharatexam-d477c",
+    storageBucket: "bharatexam-d477c.firebasestorage.app",
+    messagingSenderId: "977099665337",
+    appId: "1:977099665337:web:6c9fc3e3abd15e67929068",
+    measurementId: "G-B0Z2G21W4F"
+  };
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 <script src="js/nav.js"></script>
 </body>
 </html>
