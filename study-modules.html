@@ -452,6 +452,8 @@
       position: relative;
       background: #0B0F19;
       overflow: hidden;
+      overscroll-behavior: contain;
+      touch-action: pan-x pan-y;
     }
     .module-frame {
       position: absolute;
@@ -461,6 +463,9 @@
       height: 100%;
       border: 0;
       display: block;
+      overscroll-behavior: contain;
+      touch-action: pan-x pan-y;
+      -webkit-overflow-scrolling: touch;
     }
     .frame-loader {
       position: absolute;
@@ -1360,6 +1365,9 @@
       // Show Viewer, Hide Catalog immediately on both html and body
       document.documentElement.classList.add('viewer-mode');
       document.body.classList.add('viewer-mode');
+      if (window.AndroidApp && typeof window.AndroidApp.setSwipeRefreshEnabled === 'function') {
+        try { window.AndroidApp.setSwipeRefreshEnabled(false); } catch(e) {}
+      }
       const catalog = document.getElementById('catalogSection');
       if (catalog) catalog.style.display = 'none';
 
@@ -1504,6 +1512,11 @@
 
     // Init Page on Load
     window.addEventListener('DOMContentLoaded', () => {
+      // Disable Android SwipeRefreshLayout to ensure smooth bidirectional scrolling
+      if (window.AndroidApp && typeof window.AndroidApp.setSwipeRefreshEnabled === 'function') {
+        try { window.AndroidApp.setSwipeRefreshEnabled(false); } catch(e) {}
+      }
+
       // Check query params
       const params = new URLSearchParams(window.location.search);
       const modParam = params.get('module') || window.location.hash.replace('#', '');
