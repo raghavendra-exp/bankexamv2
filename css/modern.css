@@ -419,6 +419,7 @@
 [data-theme="dark"] .sp-badge.sp-upsc { background: rgba(245, 158, 11, 0.2) !important; color: #FDE68A !important; }
 [data-theme="dark"] .sp-badge.sp-quiz { background: rgba(16, 185, 129, 0.2) !important; color: #6EE7B7 !important; }
 [data-theme="dark"] .sp-badge.sp-tool { background: rgba(236, 72, 153, 0.2) !important; color: #F9A8D4 !important; }
+[data-theme="dark"] .sp-badge.sp-creator { background: rgba(139, 92, 246, 0.25) !important; color: #C084FC !important; }
 
 /* ─── Mobile Drawer & Bottom Ribbon in Dark Mode ─── */
 [data-theme="dark"] .drawer-box {
@@ -778,6 +779,7 @@
 .sp-badge.sp-upsc { background: rgba(245, 158, 11, 0.12); color: #D97706; }
 .sp-badge.sp-quiz { background: rgba(16, 185, 129, 0.12); color: #059669; }
 .sp-badge.sp-tool { background: rgba(236, 72, 153, 0.12); color: #DB2777; }
+.sp-badge.sp-creator { background: rgba(139, 92, 246, 0.15); color: #8B5CF6; }
 .sp-text {
   flex: 1;
   min-width: 0;

@@ -160,12 +160,25 @@ Look at the signs of (b, c) in ax² + bx + c = 0:
 
 #### 🗓️ Month 6: Final Revision & Mains Sprint
 * 10 days before exam: Stop new topics. Revise formulas and error diary.
-* Practice descriptive essay and letter templates.`
+* Practice descriptive essay and letter templates.`,
+
+    creator_info: `### 👨‍💻 Creator Profile & Portfolio: Raghavendra (Raghavbegins)
+
+* **Founder & Developer:** Raghavendra
+* **Educational Initiative:** Indian Exam AI Prompt Generator & Practice Hub (BankExamV2)
+* **Official Portfolio:** [raghavfolio-8op53xas.manus.space](https://raghavfolio-8op53xas.manus.space/)
+* **Platform Vision:** 100% Free AI preparation tools, 13 interactive study modules, formula vaults, and exam calendars for 80+ Indian competitive examinations.
+* **YouTube:** [@raghav_begins](https://www.youtube.com/@raghav_begins)
+* **Instagram:** [@raghav3o](https://www.instagram.com/raghav3o)
+* **Facebook:** [Raghavbegins](https://www.facebook.com/Raghavbegins)
+
+Visit the creator's portfolio at [raghavfolio-8op53xas.manus.space](https://raghavfolio-8op53xas.manus.space/) to explore full tech background, project showcases, and design philosophies!`
   };
 
   // Helper: Match local KB response
   function getLocalResponse(text){
     const q = text.toLowerCase();
+    if(q.includes("creator") || q.includes("developer") || q.includes("who made") || q.includes("who built") || q.includes("portfolio") || q.includes("raghav")) return LOCAL_KB.creator_info;
     if(q.includes("bank") && q.includes("syllab")) return LOCAL_KB.banking_syllabus;
     if(q.includes("upsc") && (q.includes("syllab") || q.includes("pattern") || q.includes("stage"))) return LOCAL_KB.upsc_syllabus;
     if(q.includes("ssc") && (q.includes("syllab") || q.includes("pattern") || q.includes("cgl"))) return LOCAL_KB.ssc_syllabus;
@@ -611,6 +624,7 @@ Look at the signs of (b, c) in ax² + bx + c = 0:
           </div>
         </div>
         <div class="bec-hd-actions">
+          <a href="https://raghavfolio-8op53xas.manus.space/" target="_blank" rel="noopener" class="bec-icon-btn" title="Creator Profile &amp; Portfolio (Raghavendra)" style="text-decoration:none">👨‍💻</a>
           <button class="bec-icon-btn" id="becMaxBtn" title="Expand / Shrink">⛶</button>
           <button class="bec-icon-btn" id="becClearBtn" title="Clear Chat">🗑️</button>
           <button class="bec-icon-btn" id="becCloseBtn" title="Close Chat">✕</button>
@@ -618,6 +632,7 @@ Look at the signs of (b, c) in ax² + bx + c = 0:
       </div>
 
       <div class="bec-chips">
+        <button class="bec-chip" data-q="Who created BankExamV2 and where can I view the creator portfolio?">👨‍💻 Creator Profile</button>
         <button class="bec-chip" data-q="What is the detailed 2026 syllabus for Banking?">📚 Banking Syllabus</button>
         <button class="bec-chip" data-q="Give me high-yield speed math calculation shortcuts with examples">⚡ Speed Math</button>
         <button class="bec-chip" data-q="Give me a 6-month study schedule for SBI PO prelims and mains">📅 6-Month Plan</button>

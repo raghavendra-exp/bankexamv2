@@ -4,6 +4,13 @@
 (function(){
   const EXAM_DATABASE = [
   {
+    "title": "Creator Profile & Portfolio (Raghavendra)",
+    "sub": "Official developer portfolio, projects, tech background & contact",
+    "href": "https://raghavfolio-8op53xas.manus.space/",
+    "cat": "creator",
+    "tags": "creator profile portfolio raghavendra raghavbegins about developer founder contact author"
+  },
+  {
     "title": "Ready-Made Study Modules Hub",
     "sub": "13 Interactive Digital Textbooks & Labs (Banking & UPSC)",
     "href": "study-modules.html",
@@ -368,7 +375,7 @@
         }
 
         results.innerHTML = hits.map((h, i) => `
-          <a class="spotlight-item ${i===0?'selected':''}" href="${h.href}" onclick="window.closeSpotlight()">
+          <a class="spotlight-item ${i===0?'selected':''}" href="${h.href}" ${h.href.startsWith('http')?'target="_blank" rel="noopener"':''} onclick="window.closeSpotlight()">
             <span class="sp-badge sp-${h.cat}">${h.cat.toUpperCase()}</span>
             <div class="sp-text">
               <span class="sp-title">${h.title}</span>
@@ -564,6 +571,9 @@
             </button>
             <a href="index.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">🏠</span> <span>Home Portal</span>
+            </a>
+            <a href="https://raghavfolio-8op53xas.manus.space/" target="_blank" rel="noopener" class="drawer-link" onclick="window.closeMobileDrawer()" style="background:linear-gradient(135deg,rgba(99,102,241,0.18),rgba(168,85,247,0.18));color:#C084FC;font-weight:800;border:1px solid rgba(168,85,247,0.35)">
+              <span class="drawer-icon">👨‍💻</span> <span>Creator Profile &amp; Portfolio</span>
             </a>
             <a href="study-modules.html" class="drawer-link" onclick="window.closeMobileDrawer()" style="background:rgba(96,165,250,0.12);color:#60A5FA;font-weight:800">
               <span class="drawer-icon">📚</span> <span>Ready-Made Study Modules (13)</span>
