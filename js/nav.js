@@ -556,6 +556,12 @@
             <button class="drawer-close" onclick="window.closeMobileDrawer()">&times;</button>
           </div>
           <div class="drawer-links">
+            <a href="apk/BankExamV2.apk" download="BankExamV2.apk" class="drawer-link app-install-ui drawer-app-install" style="background:rgba(99,102,241,0.18);color:#818CF8;font-weight:800;border:1px solid rgba(99,102,241,0.3)">
+              <span class="drawer-icon">📱</span> <span>Download Android App (APK)</span>
+            </a>
+            <button class="drawer-link app-install-ui drawer-app-install" id="drawerChromeInstall" onclick="window.triggerChromeInstall(); window.closeMobileDrawer();" style="background:rgba(6,182,212,0.12);color:#38BDF8;font-weight:800;border:1px solid rgba(6,182,212,0.25);width:100%;text-align:left;display:flex;align-items:center;cursor:pointer">
+              <span class="drawer-icon">⚡</span> <span>Install in Chrome (PWA)</span>
+            </button>
             <a href="index.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">🏠</span> <span>Home Portal</span>
             </a>
@@ -697,8 +703,56 @@
     setTimeout(() => t.classList.remove('show'), 2600);
   };
 
+  /* ---------- PWA SERVICE WORKER & CHROME INSTALL ---------- */
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const chromeBtn = document.getElementById('chromeInstallBtn');
+    if (chromeBtn) chromeBtn.style.display = 'inline-flex';
+    const drawerBtn = document.getElementById('drawerChromeInstall');
+    if (drawerBtn) drawerBtn.style.display = 'flex';
+  });
+
+  window.triggerChromeInstall = function(){
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          if (window.showToast) window.showToast('BankExamV2 App installed successfully!');
+        }
+        deferredPrompt = null;
+      });
+    } else {
+      if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) {
+        if (window.showToast) window.showToast('BankExamV2 is already installed!');
+      } else {
+        if (window.showToast) window.showToast('In Chrome: Tap ⋮ Menu > "Install app" or "Add to Home screen"');
+      }
+    }
+  };
+
+  // Register PWA Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch((err) => {
+        console.warn('[PWA] Service Worker non-critical error:', err);
+      });
+    });
+  }
+
+  // Detect Android Native App to hide all app install prompts
+  function checkAndroidApp(){
+    const isAndroid = navigator.userAgent.indexOf('BankExamV2-AndroidApp') !== -1;
+    if (isAndroid) {
+      document.documentElement.classList.add('is-android-app');
+      if (document.body) document.body.classList.add('is-android-app');
+    }
+  }
+
   // Initialize on DOMContentLoaded
   function initAll(){
+    checkAndroidApp();
     initTheme();
     initSpotlight();
     initCalculator();

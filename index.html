@@ -19,7 +19,14 @@
   <meta property="og:image" content="https://raghavendra-exp.github.io/bankexamv2/images/bankexamv2-og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BankExamV2: #1 Free AI Exam Preparation &amp; Mock Test Simulator">
-  <meta name="twitter:description" content="Crack SBI PO, IBPS, UPSC, SSC, Railways &amp; 80+ exams with 4-phase roadmaps, speed-math formula vault, and interactive mock simulator. 100% Free.">
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#050C1A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BankExamV2">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
 
   <!-- Google Analytics Tracking (G-B0Z2G21W4F) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0Z2G21W4F"></script>
@@ -754,6 +761,158 @@
       .card-footer { padding: 8px 12px; }
     }
 
+    /* ── APP INSTALLATION UI & ANDROID APP ISOLATION ── */
+    html.is-android-app .app-install-ui,
+    body.is-android-app .app-install-ui,
+    .is-android-app #appInstallBanner,
+    .is-android-app #headerAppInstall,
+    .is-android-app .drawer-app-install {
+      display: none !important;
+    }
+
+    .app-install-card {
+      margin: 0 0 28px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: 18px;
+      padding: 20px 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+    .app-install-card::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .app-install-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .app-install-icon {
+      flex-shrink: 0;
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: #050C1A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .app-install-icon img {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+    }
+    .app-install-info {
+      flex: 1;
+      min-width: 240px;
+    }
+    .app-install-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      color: #38BDF8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .app-install-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      margin: 0 0 4px;
+      letter-spacing: -0.3px;
+    }
+    .app-install-desc {
+      font-size: 13px;
+      color: #94A3B8;
+      margin: 0;
+      line-height: 1.45;
+    }
+    .app-install-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-app-download, .btn-pwa-install {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+      min-width: 175px;
+    }
+    .btn-app-download {
+      background: linear-gradient(135deg, #4F46E5, #3730A3);
+      color: #FFFFFF !important;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.4);
+    }
+    .btn-app-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(79, 70, 229, 0.6);
+      background: linear-gradient(135deg, #6366F1, #4338CA);
+    }
+    .btn-pwa-install {
+      background: rgba(15, 23, 42, 0.85);
+      color: #F8FAFC;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .btn-pwa-install:hover {
+      background: rgba(30, 41, 59, 0.95);
+      border-color: #38BDF8;
+      transform: translateY(-2px);
+    }
+    .btn-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .btn-text-wrap {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .btn-subtext {
+      font-size: 9.5px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .btn-maintext {
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .be-btn-apk {
+      background: linear-gradient(135deg, #4F46E5, #06B6D4) !important;
+      color: #fff !important;
+      border-color: rgba(255,255,255,0.2) !important;
+    }
+    @media (max-width: 640px) {
+      .app-install-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .app-install-actions { width: 100%; flex-direction: column; }
+      .btn-app-download, .btn-pwa-install { width: 100%; justify-content: center; }
+    }
   </style>
 
   <link rel="stylesheet" href="css/modern.css">
@@ -845,6 +1004,12 @@
           </div>
         </div>
 
+        <!-- App Install / APK Download Link (Hidden inside Android App) -->
+        <a href="apk/BankExamV2.apk" download="BankExamV2.apk" class="be-btn-tool app-install-ui be-btn-apk" id="headerAppInstall" title="Download Android App (APK)">
+          <span class="be-tool-icon">&#x1F4F1;</span>
+          <span class="be-tool-text">Get App</span>
+        </a>
+
         <a href="quiz-simulator.html" class="be-btn-tool be-btn-lab be-hide-sm" title="Practice Mock Tests">
           <span class="be-tool-icon">&#x1F3AF;</span>
           <span class="be-tool-text">Mock Lab</span>
@@ -917,6 +1082,36 @@
 
   <!-- ════ MAIN CONTENT WRAPPER ════ -->
   <main class="wrap">
+
+    <!-- ════ APP INSTALL BANNER (ANDROID APK & CHROME PWA) ════ -->
+    <div class="app-install-ui app-install-card" id="appInstallBanner">
+      <div class="app-install-inner">
+        <div class="app-install-icon">
+          <img src="icons/icon.svg" alt="BankExamV2 App" width="48" height="48">
+        </div>
+        <div class="app-install-info">
+          <div class="app-install-badge">&#x1F4F1; Official Android App &amp; Chrome PWA</div>
+          <h2 class="app-install-title">Get BankExamV2 on Your Phone or Desktop</h2>
+          <p class="app-install-desc">Fast, offline-ready preparation companion with instant access to 13 interactive study modules, speed math calculators, and timed quiz simulators.</p>
+        </div>
+        <div class="app-install-actions">
+          <a href="apk/BankExamV2.apk" download="BankExamV2.apk" class="btn-app-download" id="apkDownloadBtn" title="Download APK directly from repository">
+            <span class="btn-icon">&#x1F4E5;</span>
+            <div class="btn-text-wrap">
+              <span class="btn-subtext">Direct Download &bull; 6.5 MB</span>
+              <span class="btn-maintext">Download Android APK</span>
+            </div>
+          </a>
+          <button class="btn-pwa-install" id="chromeInstallBtn" onclick="window.triggerChromeInstall()" title="Install directly in Google Chrome">
+            <span class="btn-icon">&#x26A1;</span>
+            <div class="btn-text-wrap">
+              <span class="btn-subtext">No Store Required</span>
+              <span class="btn-maintext">Install in Chrome</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- STUDY FOCUS TIMER (POMODORO) -->
     <div class="card timer-card">
