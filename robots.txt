@@ -1,5 +1,39 @@
 User-agent: *
 Allow: /
+Allow: /icons/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /*.html
+Allow: /*.xml
+Allow: /*.webmanifest
+Disallow: /admin.html
+Disallow: /configure_repo.py
+Disallow: /replace_ga_id.py
+Disallow: /deploy_to_github.sh
+Disallow: /setup_repository.sh
+Disallow: /*.md
+Disallow: /LICENSE
+Disallow: /COPYRIGHT
+
+User-agent: Googlebot
+Allow: /
+Allow: /icons/
+Allow: /images/
+Disallow: /admin.html
+
+User-agent: Googlebot-Image
+Allow: /icons/
+Allow: /images/
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.svg
+
+User-agent: Bingbot
+Allow: /
+Allow: /icons/
+Allow: /images/
 Disallow: /admin.html
 
 Sitemap: https://raghavendra-exp.github.io/bankexamv2/sitemap.xml
+Host: https://raghavendra-exp.github.io/bankexamv2/
