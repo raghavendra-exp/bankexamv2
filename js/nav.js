@@ -615,6 +615,12 @@
     }
 
     // 2. Mobile Bottom Ribbon
+    if (navigator.userAgent.indexOf('BankExamV2-AndroidApp') !== -1) {
+      // Running inside native Android app - skip duplicate bottom nav and zero out body padding
+      document.body.style.setProperty('padding-bottom', '0px', 'important');
+      return;
+    }
+
     let bnav = document.getElementById('mobileBottomNav');
     if (!bnav) {
       bnav = document.createElement('nav');
