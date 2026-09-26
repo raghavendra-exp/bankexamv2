@@ -53,6 +53,8 @@
       { "@type": "ListItem", "position": 13, "name": "India & World: International Relations & Schemes", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=india-world" }
     ]
   }
+  </script>
+
   <!-- Instant Pre-paint Script: prevents flash of catalog or partial layout -->
   <script>
     (function() {
@@ -118,7 +120,7 @@
       overflow-x: hidden;
     }
 
-    /* Viewer Mode: Full Viewport, zero cutoff, hide mobile bottom nav */
+    /* Viewer Mode: Strict 100% Full Viewport, zero cutoffs, zero extra scroll */
     html.viewer-mode,
     html.viewer-mode body,
     body.viewer-mode {
@@ -131,6 +133,8 @@
       margin: 0 !important;
       padding: 0 !important;
       padding-bottom: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
     }
 
     html.viewer-mode #catalogSection,
@@ -145,6 +149,8 @@
       min-height: 0 !important;
       height: 100% !important;
       width: 100% !important;
+      position: relative !important;
+      overflow: hidden !important;
     }
 
     html.viewer-mode .mobile-bottom-nav,
@@ -152,36 +158,37 @@
       display: none !important;
     }
 
-    /* Top Bar */
+    /* Top App Bar */
     .mod-nav {
       flex-shrink: 0;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 8px 16px;
+      padding: 6px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      min-height: 52px;
+      gap: 10px;
+      min-height: 48px;
     }
     [data-theme="light"] .mod-nav {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.96);
     }
 
     .mod-nav-left {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       flex-shrink: 0;
     }
+
     .mod-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
       color: var(--txt);
       font-weight: 800;
@@ -190,7 +197,7 @@
     .mod-logo-badge {
       background: linear-gradient(135deg, #2563EB, #0D9488);
       color: #fff;
-      padding: 4px 8px;
+      padding: 3px 8px;
       border-radius: 8px;
       font-size: 11px;
       font-weight: 700;
@@ -202,12 +209,13 @@
       gap: 6px;
       color: var(--txt2);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: 8px;
       border: 1px solid var(--border);
       transition: all .15s ease;
+      background: rgba(255,255,255,0.03);
     }
     .mod-back-link:hover {
       background: var(--bg-card);
@@ -215,22 +223,96 @@
       border-color: var(--pr-light);
     }
 
+    /* Dynamic Back Button for Viewer Mode */
+    .mod-nav-back-btn {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      color: var(--txt);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .15s ease;
+    }
+    .mod-nav-back-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--pr-light);
+    }
+    .back-arrow {
+      font-size: 14px;
+      color: var(--pr-light);
+      font-weight: 900;
+    }
+
+    /* Active Subject Indicator in App Bar (Viewer Mode) */
     .mod-nav-center {
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
       flex: 1;
-      max-width: 540px;
+      min-width: 0;
+      max-width: 620px;
     }
 
+    .mod-active-indicator {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      min-width: 0;
+      padding: 3px 8px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .active-mod-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .active-mod-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .active-mod-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--txt);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .active-mod-tag {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      flex-shrink: 0;
+    }
+    .tag-bank { background: rgba(37,99,235,0.18); color: #60A5FA; border: 1px solid rgba(37,99,235,0.3); }
+    .tag-upsc { background: rgba(245,158,11,0.18); color: #FBBF24; border: 1px solid rgba(245,158,11,0.3); }
+
+    /* Desktop Select (Catalog mode or wide screens) */
     .mod-select {
       width: 100%;
       background: var(--bg-card);
       color: var(--txt);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 8px 14px;
-      font-size: 13.5px;
+      padding: 6px 12px;
+      font-size: 13px;
       font-weight: 600;
       outline: none;
       cursor: pointer;
@@ -244,39 +326,110 @@
     .mod-nav-right {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       flex-shrink: 0;
     }
 
-    .mod-btn {
+    .mod-icon-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 7px 12px;
+      justify-content: center;
+      gap: 5px;
+      padding: 6px 10px;
       border-radius: 8px;
       border: 1px solid var(--border);
       background: var(--bg-card);
       color: var(--txt);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
       transition: all .15s ease;
+      min-height: 32px;
     }
-    .mod-btn:hover {
+    .mod-icon-btn:hover {
       background: var(--bg-card-hover);
       border-color: var(--pr-light);
     }
-    .mod-btn.primary {
-      background: linear-gradient(135deg, var(--pr), #1D4ED8);
-      color: #fff;
-      border-color: transparent;
+    .mod-icon-btn:active {
+      transform: scale(0.96);
     }
-    .mod-btn.primary:hover {
-      opacity: .92;
+    .viewer-only-btn {
+      display: none;
     }
 
-    /* Viewer Container */
+    /* Horizontal Quick-Switch Module Strip (Touch Ribbon) */
+    .mod-quick-strip {
+      flex-shrink: 0;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 4px 8px;
+      height: 38px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      z-index: 90;
+    }
+    .mod-quick-strip::-webkit-scrollbar {
+      display: none;
+    }
+    [data-theme="light"] .mod-quick-strip {
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .quick-strip-scroll {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 4px;
+    }
+
+    .quick-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 18px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      color: var(--txt2);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all .15s ease;
+      flex-shrink: 0;
+      outline: none;
+    }
+    [data-theme="light"] .quick-chip {
+      background: rgba(0, 0, 0, 0.04);
+      color: #475569;
+    }
+    .quick-chip:hover {
+      color: var(--txt);
+      background: rgba(255,255,255,0.08);
+      border-color: var(--pr-light);
+    }
+    .quick-chip:active {
+      transform: scale(0.95);
+    }
+    .quick-chip.active {
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      color: #fff !important;
+      border-color: transparent;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.4);
+      font-weight: 700;
+    }
+    .quick-chip.active.cat-upsc {
+      background: linear-gradient(135deg, #D97706, #B45309);
+      box-shadow: 0 2px 8px rgba(217,119,6,0.4);
+    }
+
+    /* Viewer Container (100% Flex) */
     #viewerSection {
       flex: 1 1 0%;
       min-height: 0;
@@ -290,49 +443,6 @@
     #viewerSection.active {
       display: flex;
     }
-
-    .viewer-subbar {
-      flex-shrink: 0;
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-      padding: 6px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 13px;
-      min-height: 42px;
-    }
-    .viewer-title-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      min-width: 0;
-    }
-    .viewer-title-box strong {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .viewer-title-box span#activeModuleSubtitle {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .viewer-badge {
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      flex-shrink: 0;
-    }
-    .badge-bank { background: rgba(37,99,235,0.15); color: #60A5FA; border: 1px solid rgba(37,99,235,0.3); }
-    .badge-upsc { background: rgba(245,158,11,0.15); color: #FBBF24; border: 1px solid rgba(245,158,11,0.3); }
 
     .iframe-wrapper {
       flex: 1 1 0%;
@@ -359,18 +469,18 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 14px;
+      gap: 12px;
       background: var(--bg);
       color: var(--txt2);
       font-size: 14px;
       font-weight: 600;
       z-index: 5;
       pointer-events: none;
-      transition: opacity .25s ease;
+      transition: opacity .2s ease;
     }
     .spinner {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border: 3px solid rgba(255,255,255,0.1);
       border-top-color: var(--pr-light);
       border-radius: 50%;
@@ -382,12 +492,12 @@
     #catalogSection {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 36px 20px 80px;
+      padding: 32px 18px 80px;
       width: 100%;
     }
     .catalog-hero {
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
     .cat-badge {
       display: inline-block;
@@ -398,21 +508,21 @@
       color: var(--pr-light);
       font-size: 12px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       letter-spacing: .04em;
     }
     .catalog-hero h1 {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
       letter-spacing: -0.02em;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .catalog-hero p {
-      font-size: 15px;
+      font-size: 14.5px;
       color: var(--txt2);
       max-width: 680px;
       margin: 0 auto;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     /* Filter Tabs */
@@ -420,8 +530,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 28px;
+      gap: 12px;
+      margin-bottom: 24px;
       flex-wrap: wrap;
     }
     .filter-pills {
@@ -431,12 +541,12 @@
       flex-wrap: wrap;
     }
     .filter-pill {
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: 20px;
       background: var(--bg-card);
       border: 1px solid var(--border);
       color: var(--txt2);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
       transition: all .15s ease;
@@ -453,7 +563,9 @@
     }
     .search-input-box {
       position: relative;
-      min-width: 260px;
+      min-width: 250px;
+      flex: 1;
+      max-width: 380px;
     }
     .search-input-box input {
       width: 100%;
@@ -461,7 +573,7 @@
       color: var(--txt);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 8px 16px 8px 36px;
+      padding: 7px 14px 7px 34px;
       font-size: 13px;
       outline: none;
       transition: border-color .15s;
@@ -474,7 +586,7 @@
       left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 14px;
+      font-size: 13px;
       color: var(--txt3);
       pointer-events: none;
     }
@@ -483,14 +595,14 @@
     .modules-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-      gap: 22px;
+      gap: 20px;
     }
 
     .module-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -508,17 +620,17 @@
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .mod-card-ic {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       background: rgba(255,255,255,0.06);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 22px;
       flex-shrink: 0;
       border: 1px solid var(--border);
     }
@@ -526,7 +638,7 @@
       flex: 1;
     }
     .mod-card-tag {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .05em;
@@ -537,28 +649,28 @@
     .mod-card-tag.upsc { color: var(--amber); }
 
     .mod-card-title {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 800;
       color: var(--txt);
       line-height: 1.3;
     }
     .mod-card-desc {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--txt2);
-      line-height: 1.6;
-      margin-bottom: 16px;
+      line-height: 1.55;
+      margin-bottom: 14px;
       flex: 1;
     }
     .mod-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 18px;
+      gap: 5px;
+      margin-bottom: 16px;
     }
     .mod-pill {
       font-size: 11px;
       font-weight: 600;
-      padding: 3px 8px;
+      padding: 3px 7px;
       border-radius: 6px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
@@ -575,18 +687,18 @@
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid var(--border);
-      padding-top: 14px;
+      padding-top: 12px;
       margin-top: auto;
     }
     .mod-launch-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
+      gap: 5px;
+      padding: 7px 14px;
       border-radius: 8px;
       background: linear-gradient(135deg, var(--pr), #1D4ED8);
       color: #fff;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       border: none;
       cursor: pointer;
@@ -596,7 +708,7 @@
       opacity: .92;
     }
     .mod-free-tag {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--green);
       font-weight: 700;
       display: flex;
@@ -605,13 +717,16 @@
     }
 
     /* Fullscreen focus mode */
-    body.focus-mode .mod-nav {
+    body.focus-mode .mod-nav,
+    html.focus-mode .mod-nav {
       display: none !important;
     }
-    body.focus-mode .viewer-subbar {
+    body.focus-mode .mod-quick-strip,
+    html.focus-mode .mod-quick-strip {
       display: none !important;
     }
-    body.focus-mode #viewerSection {
+    body.focus-mode #viewerSection,
+    html.focus-mode #viewerSection {
       height: 100vh !important;
       height: 100dvh !important;
     }
@@ -637,89 +752,81 @@
       background: #1E293B;
       transform: scale(1.04);
     }
-    body.focus-mode .exit-focus-btn {
+    body.focus-mode .exit-focus-btn,
+    html.focus-mode .exit-focus-btn {
       display: flex !important;
       align-items: center;
       gap: 6px;
     }
 
+    /* Viewer vs Catalog visibility rules */
+    html.viewer-mode #viewerBackBtn,
+    body.viewer-mode #viewerBackBtn {
+      display: inline-flex !important;
+    }
+    html.viewer-mode #activeIndicator,
+    body.viewer-mode #activeIndicator {
+      display: flex !important;
+    }
+    html.viewer-mode .viewer-only-btn,
+    body.viewer-mode .viewer-only-btn {
+      display: inline-flex !important;
+    }
+    html.viewer-mode #catalogLogo,
+    body.viewer-mode #catalogLogo,
+    html.viewer-mode #catalogBackLink,
+    body.viewer-mode #catalogBackLink,
+    html.viewer-mode .desktop-only-select,
+    body.viewer-mode .desktop-only-select {
+      display: none !important;
+    }
+
+    /* Mobile Refinements */
     @media (max-width: 680px) {
       .mod-nav {
-        flex-wrap: wrap;
-        padding: 8px 12px;
-        gap: 8px 10px;
-        min-height: auto;
+        padding: 6px 10px;
+        min-height: 44px;
+        gap: 8px;
       }
       .mod-nav-left {
-        order: 1;
-        gap: 8px;
-        flex: 1 1 auto;
-      }
-      .mod-logo span:nth-child(2) {
-        font-size: 14.5px;
-      }
-      .mod-logo-badge {
-        display: none;
-      }
-      .mod-back-link {
-        padding: 4px 8px;
-        font-size: 12px;
-      }
-      .mod-back-link span:nth-child(2) {
-        display: none;
-      }
-      .mod-nav-right {
-        order: 2;
-        margin-left: auto;
         gap: 6px;
       }
-      .mod-btn {
-        padding: 6px 10px;
-        font-size: 12px;
-        border-radius: 8px;
+      .mod-active-indicator {
+        max-width: 175px;
+        padding: 2px 6px;
       }
-      .mod-btn span.btn-label {
-        display: none;
+      .active-mod-title {
+        font-size: 12.5px !important;
       }
-      .mod-nav-center {
-        order: 3;
-        width: 100%;
-        max-width: 100%;
-        flex: 1 1 100%;
-        margin-top: 2px;
+      .active-mod-tag {
+        font-size: 9px !important;
+        padding: 1px 4px !important;
       }
-      .mod-select {
-        width: 100%;
-        font-size: 13px;
-        padding: 8px 12px;
-        border-radius: 8px;
+      .mod-icon-btn, .mod-nav-back-btn {
+        padding: 5px 8px;
+        font-size: 11.5px;
+        min-height: 30px;
       }
-      .viewer-subbar {
-        padding: 6px 12px;
-        font-size: 12px;
-        min-height: 40px;
+      .btn-label {
+        display: none !important;
       }
-      .viewer-title-box {
-        gap: 6px;
-        min-width: 0;
-        flex: 1;
+      .desktop-only-select {
+        display: none !important;
       }
-      #activeModuleTitle {
-        font-size: 13px !important;
-      }
-      #activeModuleSubtitle {
-        display: none;
+      .quick-chip {
+        padding: 3px 9px;
+        font-size: 11.5px;
       }
       .filter-bar {
-        gap: 12px;
-        margin-bottom: 20px;
+        gap: 10px;
+        margin-bottom: 18px;
       }
       .filter-pills {
         width: 100%;
         overflow-x: auto;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
-        padding-bottom: 4px;
+        padding-bottom: 2px;
         scrollbar-width: none;
       }
       .filter-pills::-webkit-scrollbar {
@@ -728,21 +835,22 @@
       .filter-pill {
         white-space: nowrap;
         flex-shrink: 0;
-        font-size: 12.5px;
-        padding: 6px 14px;
+        font-size: 12px;
+        padding: 5px 12px;
       }
       .search-input-box {
         width: 100%;
         min-width: 100%;
+        max-width: 100%;
       }
       #catalogSection {
-        padding: 20px 14px 90px;
+        padding: 16px 12px 80px;
       }
       .catalog-hero {
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
       .catalog-hero h1 {
-        font-size: 22px;
+        font-size: 20px;
         line-height: 1.3;
       }
       .catalog-hero p {
@@ -750,32 +858,62 @@
       }
       .modules-grid {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 12px;
       }
       .module-card {
         padding: 16px;
       }
     }
+
+    /* Inside Android Native App */
+    .is-android-app .mod-back-link {
+      display: none !important;
+    }
+    .is-android-app .btn-label {
+      display: none !important;
+    }
+    .is-android-app #catalogSection {
+      padding-bottom: 30px !important;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- Top App Bar -->
   <header class="mod-nav" id="mainNav">
+    <!-- Left: Brand (Catalog Mode) or Dynamic Back Button (Viewer Mode) -->
     <div class="mod-nav-left">
-      <a href="index.html" class="mod-logo">
+      <!-- Visible in Catalog Mode -->
+      <a href="index.html" class="mod-logo" id="catalogLogo">
         <span>📚</span>
         <span>BankExamV2</span>
         <span class="mod-logo-badge">Modules</span>
       </a>
-      <a href="index.html" class="mod-back-link">
+      <a href="index.html" class="mod-back-link" id="catalogBackLink">
         <span>←</span>
         <span>Hub Home</span>
       </a>
+
+      <!-- Visible in Viewer Mode: Dynamic back to catalog -->
+      <button class="mod-nav-back-btn" id="viewerBackBtn" onclick="showCatalogView()" title="Back to Modules Catalog">
+        <span class="back-arrow">←</span>
+        <span>Modules</span>
+      </button>
     </div>
 
+    <!-- Center: Active Module Title & Badge (Viewer Mode) or Dropdown (Desktop/Catalog) -->
     <div class="mod-nav-center">
-      <select class="mod-select" id="moduleSelect" onchange="switchModule(this.value)">
+      <!-- Active viewer title banner (visible in viewer mode) -->
+      <div class="mod-active-indicator" id="activeIndicator">
+        <span class="active-mod-icon" id="activeModIcon">📐</span>
+        <div class="active-mod-info">
+          <span class="active-mod-title" id="activeModuleTitle">Bank Quant Master</span>
+          <span class="active-mod-tag tag-bank" id="activeModuleBadge">QUANT</span>
+        </div>
+      </div>
+
+      <!-- Desktop Dropdown (hidden in viewer mode and on mobile screens) -->
+      <select class="mod-select desktop-only-select" id="moduleSelect" onchange="switchModule(this.value)">
         <option value="">-- Browse All Ready-Made Modules (13) --</option>
         <optgroup label="🏦 Major Bank Exams">
           <option value="bank-quant">📐 Bank Quant Master (Arithmetic &amp; DI)</option>
@@ -797,44 +935,96 @@
       </select>
     </div>
 
+    <!-- Right: Quick Actions -->
     <div class="mod-nav-right">
-      <button class="mod-btn" id="catalogToggleBtn" onclick="toggleCatalogView()">
-        <span id="catalogBtnIcon">📋</span>
-        <span id="catalogBtnText" class="btn-label">All Modules</span>
+      <!-- Reload current interactive module -->
+      <button class="mod-icon-btn viewer-only-btn" id="viewerReloadBtn" onclick="reloadFrame()" title="Refresh interactive module">
+        <span>🔄</span>
+        <span class="btn-label">Reload</span>
       </button>
-      <button class="mod-btn" onclick="toggleFocusMode()" title="Toggle Fullscreen Focus Mode">
+
+      <!-- Share Module Link -->
+      <button class="mod-icon-btn viewer-only-btn" id="viewerShareBtn" onclick="copyCurrentShareLink()" title="Copy module link">
+        <span>🔗</span>
+        <span class="btn-label">Share</span>
+      </button>
+
+      <!-- Catalog Directory Toggle -->
+      <button class="mod-icon-btn" id="catalogToggleBtn" onclick="toggleCatalogView()" title="Browse all modules catalog">
+        <span id="catalogBtnIcon">📋</span>
+        <span class="btn-label" id="catalogBtnText">Catalog</span>
+      </button>
+
+      <!-- Fullscreen Focus Mode -->
+      <button class="mod-icon-btn" onclick="toggleFocusMode()" title="Toggle Fullscreen Focus Mode">
         <span>⛶</span>
         <span class="btn-label">Focus</span>
       </button>
-      <button class="mod-btn" onclick="window.BE_NAV ? window.BE_NAV.toggleTheme() : toggleLocalTheme()" title="Toggle Dark/Light Theme">
+
+      <!-- Theme Toggle -->
+      <button class="mod-icon-btn" onclick="window.BE_NAV ? window.BE_NAV.toggleTheme() : toggleLocalTheme()" title="Toggle Dark/Light Theme">
         <span>🌓</span>
       </button>
     </div>
   </header>
 
+  <!-- Horizontal Quick-Switch Module Ribbon (Touch-Optimized Carousel) -->
+  <nav class="mod-quick-strip" id="moduleQuickStrip" aria-label="Quick Switch Modules">
+    <div class="quick-strip-scroll" id="quickStripScroll">
+      <button class="quick-chip" data-id="bank-quant" onclick="switchModule('bank-quant')">
+        <span>📐</span> <span>Quant</span>
+      </button>
+      <button class="quick-chip" data-id="bank-reasoning" onclick="switchModule('bank-reasoning')">
+        <span>🧩</span> <span>Reasoning</span>
+      </button>
+      <button class="quick-chip" data-id="bank-english" onclick="switchModule('bank-english')">
+        <span>📖</span> <span>English</span>
+      </button>
+      <button class="quick-chip" data-id="banking-awareness" onclick="switchModule('banking-awareness')">
+        <span>🏦</span> <span>Banking GK</span>
+      </button>
+      <button class="quick-chip" data-id="general-awareness" onclick="switchModule('general-awareness')">
+        <span>🌍</span> <span>GA &amp; CA</span>
+      </button>
+      <button class="quick-chip" data-id="editorial-hub" onclick="switchModule('editorial-hub')">
+        <span>📰</span> <span>Editorials</span>
+      </button>
+      <button class="quick-chip" data-id="computer-awareness" onclick="switchModule('computer-awareness')">
+        <span>💻</span> <span>Computer</span>
+      </button>
+      <button class="quick-chip cat-upsc" data-id="gs4" onclick="switchModule('gs4')">
+        <span>⚖️</span> <span>Ethics GS4</span>
+      </button>
+      <button class="quick-chip cat-upsc" data-id="gs3" onclick="switchModule('gs3')">
+        <span>🇮🇳</span> <span>GS3 Economy</span>
+      </button>
+      <button class="quick-chip cat-upsc" data-id="gs2" onclick="switchModule('gs2')">
+        <span>🏛️</span> <span>GS2 Polity</span>
+      </button>
+      <button class="quick-chip cat-upsc" data-id="history" onclick="switchModule('history')">
+        <span>📜</span> <span>History Atlas</span>
+      </button>
+      <button class="quick-chip cat-upsc" data-id="geography" onclick="switchModule('geography')">
+        <span>🗺️</span> <span>Geography Atlas</span>
+      </button>
+      <button class="quick-chip cat-upsc" data-id="india-world" onclick="switchModule('india-world')">
+        <span>🌐</span> <span>India &amp; World</span>
+      </button>
+    </div>
+  </nav>
+
   <!-- Focus Mode Exit Button -->
   <button class="exit-focus-btn" onclick="toggleFocusMode()">✕ Exit Focus Mode</button>
 
-  <!-- Active Module Embedded Reader View -->
+  <!-- Active Module Embedded Reader View (100% Flex Screen-Fit) -->
   <section id="viewerSection">
-    <div class="viewer-subbar">
-      <div class="viewer-title-box">
-        <span class="viewer-badge" id="activeModuleBadge">STREAM</span>
-        <strong id="activeModuleTitle" style="font-size:14px;color:var(--txt)">Module Title</strong>
-        <span id="activeModuleSubtitle" style="font-size:12px;color:var(--txt2);margin-left:6px">— Subtitle</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <button class="mod-btn" onclick="reloadFrame()" title="Refresh interactive module">🔄 <span class="btn-label">Reload</span></button>
-        <button class="mod-btn" onclick="copyCurrentShareLink()" title="Copy clean internal module link">🔗 <span class="btn-label">Share</span></button>
-      </div>
-    </div>
-
     <div class="iframe-wrapper">
       <div class="frame-loader" id="frameLoader">
         <div class="spinner"></div>
-        <p id="loaderText">Loading interactive study module...</p>
+        <p id="loaderTitle" style="font-weight: 700; color: var(--txt); font-size: 14px;">Loading interactive study module...</p>
+        <p style="font-size: 12px; color: var(--txt3);">Fast digital textbook &amp; laboratory</p>
       </div>
-      <iframe id="moduleFrame" class="module-frame" src="about:blank" title="Study Module Frame" allow="fullscreen; clipboard-write; encrypted-media" scrolling="yes" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+      <iframe id="moduleFrame" class="module-frame" src="about:blank" title="Study Module Frame" allow="fullscreen; clipboard-write; encrypted-media" scrolling="yes"></iframe>
     </div>
   </section>
 
@@ -873,7 +1063,7 @@
         repo: 'bank-quant',
         path: '../bank-quant/',
         title: 'Bank Quantitative Aptitude Master',
-        tag: 'BANKING QUANT',
+        tag: 'BANK QUANT',
         cat: 'bank',
         icon: '📐',
         desc: 'Comprehensive interactive Quant platform for SBI Clerk, IBPS Clerk/CSA & RRB OA. 32 topics, speed math visualizers, topper dual solutions, and full exam mocks.',
@@ -885,7 +1075,7 @@
         repo: 'bank-reasoning-master',
         path: '../bank-reasoning-master/',
         title: 'Bank Reasoning Ability Master',
-        tag: 'BANKING REASONING',
+        tag: 'REASONING',
         cat: 'bank',
         icon: '🧩',
         desc: 'Complete interactive reasoning lab for Banking exams. Floor, box, circular puzzle visualizers, syllogism Venn diagrams, coded inequalities & timed speed drills.',
@@ -897,7 +1087,7 @@
         repo: 'english-master',
         path: '../english-master/',
         title: 'Banking English Language Master',
-        tag: 'BANKING ENGLISH',
+        tag: 'ENGLISH',
         cat: 'bank',
         icon: '📖',
         desc: 'Master Banking English with 24 Grammar chapters, 500+ authentic PYQs, interactive Error Scanner, Cloze Test Lab, and RC Speed Reader.',
@@ -909,7 +1099,7 @@
         repo: 'banking-awareness-master',
         path: '../banking-awareness-master/',
         title: 'Banking & Financial Awareness Master',
-        tag: 'BANKING & FINANCE',
+        tag: 'BANKING GK',
         cat: 'bank',
         icon: '🏦',
         desc: '18 data-driven interactive modules covering RBI monetary policy simulator, NPA lifecycle, UPI flows, monetary instruments, and verified banking questions.',
@@ -921,7 +1111,7 @@
         repo: 'general-awareness-master',
         path: '../general-awareness-master/',
         title: 'General Awareness & Current Affairs Master',
-        tag: 'GENERAL AWARENESS',
+        tag: 'GA & CA',
         cat: 'bank',
         icon: '🌍',
         desc: '12 decoupled modules covering monthly Current Affairs, Static GK, Indian Polity, Economy, Government Schemes, flashcards, and full exam mocks.',
@@ -933,7 +1123,7 @@
         repo: 'daily-editorial-hub',
         path: '../daily-editorial-hub/',
         title: 'Daily Editorial Hub & Vocabulary Builder',
-        tag: 'EDITORIAL & VOCAB',
+        tag: 'EDITORIAL',
         cat: 'bank',
         icon: '📰',
         desc: 'Curated daily editorials from The Hindu, Indian Express, The Guardian with auto-generated key takeaways, high-frequency vocabulary builder, and audio reader.',
@@ -945,7 +1135,7 @@
         repo: 'computer-awareness-master',
         path: '../computer-awareness-master/',
         title: 'Computer Awareness Master',
-        tag: 'COMPUTER GK',
+        tag: 'COMPUTER',
         cat: 'bank',
         icon: '💻',
         desc: 'Visual computer architecture simulators, networking, DBMS, cyber security, shortcut vault, and 600+ verified exam practice questions.',
@@ -959,7 +1149,7 @@
         repo: 'gs4-master',
         path: '../gs4-master/',
         title: 'UPSC GS-IV Ethics, Integrity & Aptitude Master',
-        tag: 'UPSC GS-IV',
+        tag: 'ETHICS GS4',
         cat: 'upsc',
         icon: '⚖️',
         desc: 'Comprehensive digital textbook, ethical reasoning lab, 50+ dilemma case-study simulator, probity in governance, and answer-writing workbench for UPSC & UPPSC.',
@@ -971,7 +1161,7 @@
         repo: 'gs3-master',
         path: '../gs3-master/',
         title: 'UPSC GS-III Economy, Agriculture, S&T & Environment',
-        tag: 'UPSC GS-III',
+        tag: 'GS3 ECONOMY',
         cat: 'upsc',
         icon: '🇮🇳',
         desc: 'Interactive digital textbook, economic survey breakdown, agricultural reforms, climate & biodiversity tracker, and disaster management laboratory.',
@@ -983,7 +1173,7 @@
         repo: 'gs2-master',
         path: '../gs2-master/',
         title: 'UPSC GS-II Governance, Constitution & Polity Master',
-        tag: 'UPSC GS-II',
+        tag: 'GS2 POLITY',
         cat: 'upsc',
         icon: '🏛️',
         desc: 'Complete Constitutional articles explorer, judicial doctrines simulator, statutory & regulatory bodies matrix, social justice schemes, and IR tracker.',
@@ -995,7 +1185,7 @@
         repo: 'history-of-india',
         path: '../history-of-india/',
         title: 'Complete History of India & Indian Culture Atlas',
-        tag: 'HISTORY & CULTURE',
+        tag: 'HISTORY',
         cat: 'upsc',
         icon: '📜',
         desc: 'Interactive historical atlas from Palaeolithic India to the modern era. Master timeline, Art & Architecture lab, Women in history, UPPSC track, and knowledge graph.',
@@ -1007,7 +1197,7 @@
         repo: 'geography-of-india',
         path: '../geography-of-india/',
         title: 'Geography of India & Bharat Map Atlas',
-        tag: 'GEOGRAPHY ATLAS',
+        tag: 'GEOGRAPHY',
         cat: 'upsc',
         icon: '🗺️',
         desc: 'Interactive Bharat atlas, complete river basin systems, monsoon & climate simulator, soils, mineral belts, disaster zones, and Prelims map drills.',
@@ -1061,6 +1251,7 @@
     // Render Catalog Cards
     function renderCatalog(filter = 'all', searchQuery = '') {
       const container = document.getElementById('modulesGrid');
+      if (!container) return;
       container.innerHTML = '';
       const q = searchQuery.toLowerCase().trim();
 
@@ -1101,21 +1292,6 @@
       });
     }
 
-    function resizeViewer() {
-      const viewer = document.getElementById('viewerSection');
-      const nav = document.getElementById('mainNav');
-      const isViewer = document.body.classList.contains('viewer-mode') || document.documentElement.classList.contains('viewer-mode');
-      if (viewer && isViewer) {
-        const isFocus = document.body.classList.contains('focus-mode') || document.documentElement.classList.contains('focus-mode');
-        const navH = (isFocus || !nav) ? 0 : (nav.offsetHeight || 48);
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        const targetH = Math.max(0, vh - navH);
-        viewer.style.height = targetH + 'px';
-      }
-    }
-    window.addEventListener('resize', resizeViewer);
-    window.addEventListener('orientationchange', () => setTimeout(resizeViewer, 150));
-
     // Switch active module & show in-app viewer
     function switchModule(id, isInitial = false) {
       if (!id) {
@@ -1123,7 +1299,7 @@
         return;
       }
 
-      // Check alias
+      // Resolve alias
       const resolvedId = ALIASES[id] || id;
       const mod = MODULES[resolvedId];
       if (!mod) {
@@ -1138,7 +1314,7 @@
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
 
-      // Update URL silently without reload
+      // Update URL silently without full reload
       const newUrl = new URL(window.location);
       newUrl.searchParams.set('module', resolvedId);
       if (isInitial) {
@@ -1147,44 +1323,68 @@
         window.history.pushState({ module: resolvedId }, '', newUrl.toString());
       }
 
-      // Update selector
-      document.getElementById('moduleSelect').value = resolvedId;
+      // Update dropdown if present
+      const select = document.getElementById('moduleSelect');
+      if (select) select.value = resolvedId;
 
-      // Update Subbar
-      const badge = document.getElementById('activeModuleBadge');
-      badge.textContent = mod.tag;
-      badge.className = `viewer-badge badge-${mod.cat}`;
+      // Update Active Indicator in Top App Bar
+      const titleEl = document.getElementById('activeModuleTitle');
+      if (titleEl) titleEl.textContent = mod.title;
+      const iconEl = document.getElementById('activeModIcon');
+      if (iconEl) iconEl.textContent = mod.icon;
+      const badgeEl = document.getElementById('activeModuleBadge');
+      if (badgeEl) {
+        badgeEl.textContent = mod.tag;
+        badgeEl.className = `active-mod-tag tag-${mod.cat}`;
+      }
 
-      document.getElementById('activeModuleTitle').textContent = mod.title;
-      document.getElementById('activeModuleSubtitle').textContent = `— Target: ${mod.exams}`;
+      // Highlight and scroll the active chip in the Quick Strip
+      document.querySelectorAll('.quick-chip').forEach(chip => {
+        if (chip.getAttribute('data-id') === resolvedId) {
+          chip.classList.add('active');
+          try {
+            chip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          } catch(e) {}
+        } else {
+          chip.classList.remove('active');
+        }
+      });
 
       // Show Viewer, Hide Catalog immediately on both html and body
       document.documentElement.classList.add('viewer-mode');
       document.body.classList.add('viewer-mode');
-      document.getElementById('catalogSection').style.display = 'none';
+      const catalog = document.getElementById('catalogSection');
+      if (catalog) catalog.style.display = 'none';
+
       const viewer = document.getElementById('viewerSection');
-      viewer.classList.add('active');
-      resizeViewer();
-      requestAnimationFrame(resizeViewer);
+      if (viewer) viewer.classList.add('active');
 
       // Update Catalog Toggle Button
-      document.getElementById('catalogBtnText').textContent = 'Directory';
-      document.getElementById('catalogBtnIcon').textContent = '📋';
+      const btnText = document.getElementById('catalogBtnText');
+      if (btnText) btnText.textContent = 'Catalog';
+      const btnIcon = document.getElementById('catalogBtnIcon');
+      if (btnIcon) btnIcon.textContent = '📋';
 
       // Load Iframe
       const frame = document.getElementById('moduleFrame');
       const loader = document.getElementById('frameLoader');
-      loader.style.display = 'flex';
-      loader.style.opacity = '1';
+      const loaderTitle = document.getElementById('loaderTitle');
+      if (loaderTitle) loaderTitle.textContent = `Loading ${mod.title}...`;
+      if (loader) {
+        loader.style.display = 'flex';
+        loader.style.opacity = '1';
+      }
 
-      frame.onload = () => {
-        loader.style.opacity = '0';
-        setTimeout(() => { loader.style.display = 'none'; }, 250);
-        resizeViewer();
-      };
-
-      // Set relative path to child website
-      frame.src = mod.path;
+      if (frame) {
+        frame.onload = () => {
+          if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 200);
+          }
+        };
+        // Set relative path to child website
+        frame.src = mod.path;
+      }
 
       // Document Title
       document.title = `${mod.title} | BankExamV2 Study Modules`;
@@ -1202,7 +1402,7 @@
     // Toggle Catalog vs Viewer
     function toggleCatalogView() {
       const viewer = document.getElementById('viewerSection');
-      if (viewer.classList.contains('active')) {
+      if (viewer && viewer.classList.contains('active')) {
         showCatalogView();
       } else if (currentModuleId) {
         switchModule(currentModuleId);
@@ -1216,13 +1416,24 @@
       document.documentElement.classList.remove('focus-mode');
       document.body.classList.remove('viewer-mode');
       document.body.classList.remove('focus-mode');
+
       const viewer = document.getElementById('viewerSection');
-      viewer.classList.remove('active');
-      viewer.style.height = '';
-      document.getElementById('catalogSection').style.display = 'block';
-      document.getElementById('moduleSelect').value = '';
-      document.getElementById('catalogBtnText').textContent = currentModuleId ? 'Resume' : 'All Modules';
-      document.getElementById('catalogBtnIcon').textContent = currentModuleId ? '▶️' : '📋';
+      if (viewer) viewer.classList.remove('active');
+
+      const catalog = document.getElementById('catalogSection');
+      if (catalog) catalog.style.display = 'block';
+
+      const select = document.getElementById('moduleSelect');
+      if (select) select.value = '';
+
+      const btnText = document.getElementById('catalogBtnText');
+      if (btnText) btnText.textContent = currentModuleId ? 'Resume' : 'Catalog';
+
+      const btnIcon = document.getElementById('catalogBtnIcon');
+      if (btnIcon) btnIcon.textContent = currentModuleId ? '▶️' : '📋';
+
+      // Remove active pill glow in catalog mode
+      document.querySelectorAll('.quick-chip').forEach(c => c.classList.remove('active'));
 
       const newUrl = new URL(window.location);
       newUrl.searchParams.delete('module');
@@ -1232,8 +1443,8 @@
 
     function filterCatalog(category, btn) {
       document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      const searchVal = document.getElementById('catalogSearch').value;
+      if (btn) btn.classList.add('active');
+      const searchVal = document.getElementById('catalogSearch') ? document.getElementById('catalogSearch').value : '';
       renderCatalog(category, searchVal);
     }
 
@@ -1250,25 +1461,31 @@
       const frame = document.getElementById('moduleFrame');
       if (frame && frame.src) {
         const loader = document.getElementById('frameLoader');
-        loader.style.display = 'flex';
-        loader.style.opacity = '1';
+        if (loader) {
+          loader.style.display = 'flex';
+          loader.style.opacity = '1';
+        }
         frame.src = frame.src;
       }
     }
 
     function copyCurrentShareLink() {
       const url = window.location.href;
-      navigator.clipboard.writeText(url).then(() => {
-        alert('Clean BankExamV2 module link copied to clipboard!');
-      }).catch(() => {
-        prompt('Copy link:', url);
-      });
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          if (window.showToast) window.showToast('Module link copied to clipboard!');
+          else alert('Module link copied to clipboard!');
+        }).catch(() => {
+          prompt('Copy module link:', url);
+        });
+      } else {
+        prompt('Copy module link:', url);
+      }
     }
 
     function toggleFocusMode() {
       document.documentElement.classList.toggle('focus-mode');
       document.body.classList.toggle('focus-mode');
-      resizeViewer();
     }
 
     function toggleLocalTheme() {
