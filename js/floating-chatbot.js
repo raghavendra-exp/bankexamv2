@@ -172,13 +172,45 @@ Look at the signs of (b, c) in ax² + bx + c = 0:
 * **Instagram:** [@raghav3o](https://www.instagram.com/raghav3o)
 * **Facebook:** [Raghavbegins](https://www.facebook.com/Raghavbegins)
 
-Visit the creator's portfolio at [raghavfolio-8op53xas.manus.space](https://raghavfolio-8op53xas.manus.space/) to explore full tech background, project showcases, and design philosophies!`
+Visit the creator's portfolio at [raghavfolio-8op53xas.manus.space](https://raghavfolio-8op53xas.manus.space/) to explore full tech background, project showcases, and design philosophies!`,
+
+    ncert_books: `### 📚 Free Official PDF Books & NCERT Textbooks Repository
+
+All essential standard textbooks and official government reports for Banking & Civil Services are 100% free and open-access:
+
+#### 1. 📖 NCERT Official Portals (Class 6 to 12)
+* **Official NCERT Portal:** [ncert.nic.in/textbook.php](https://ncert.nic.in/textbook.php)
+  • **Mathematics (Class 9, 10, 11):** Number Systems, Linear & Quadratic Equations, Arithmetic Progressions, Mensuration, Permutations & Probability.
+  • **English (Class 9–12):** Words and Expressions Workbooks (Grammar & Sentence structure), Hornbill, Flamingo.
+  • **Indian Polity (Class 11):** *"Indian Constitution at Work"* — Essential foundation for UPSC GS-2 & Banking GK.
+  • **Economy (Class 11 & 12):** *"Indian Economic Development"* & *"Introductory Macroeconomics"* (Money & Banking, Credit Multiplier, Budget).
+  • **History (Class 12 Themes 1, 2, 3):** Ancient, Medieval, and Modern Indian History.
+  • **Geography (Class 11):** *"Fundamentals of Physical Geography"* & *"India: Physical Environment"*.
+  • **Computer Science (Class 11 & 12):** Architecture, Boolean Logic, DBMS, Computer Networks & Cybersecurity.
+
+#### 2. 🏦 Reserve Bank of India (RBI) Official Publications
+* **RBI Financial Education Portal:** [rbi.org.in/financialeducation](https://www.rbi.org.in/financialeducation/) — Banking architecture, credit counseling, currency systems.
+* **Monetary Policy Framework Primer:** [rbi.org.in](https://www.rbi.org.in/Scripts/MonetaryPolicyFramework.aspx) — Repo, SDF, CRR, SLR, and MPC policy mechanisms.
+* **RBI Banking FAQs:** [rbi.org.in/scripts/FS_FAQs.aspx](https://www.rbi.org.in/scripts/FS_FAQs.aspx) — Official FAQs on commercial banks, NBFCs, KYC, and Ombudsman.
+
+#### 3. ⚖️ Governance & Ethics (UPSC GS-4)
+* **2nd ARC 4th Report "Ethics in Governance":** [darpg.gov.in](https://darpg.gov.in/arc-reports) — The definitive reference report for Civil Services ethics.
+* **IGNOU eGyanKosh Ethics Modules:** [egyankosh.ac.in](https://egyankosh.ac.in/) — Open courseware on moral philosophy and civil service values.
+* **Constitution of India (Ministry of Law & Justice):** [legislative.gov.in](https://legislative.gov.in/constitution-of-india/) — Unedited official text with all amendments.
+
+#### 4. 🌐 Central Digital Libraries & Open Portals
+* **ePathshala Portal:** [epathshala.nic.in](https://epathshala.nic.in/) — Central government e-books and flipbooks.
+* **National Digital Library of India (NDLI):** [ndl.iitkgp.ac.in](https://ndl.iitkgp.ac.in/) — Sponsored by Ministry of Education & IIT Kharagpur.
+* **PRS Legislative Research:** [prsindia.org](https://prsindia.org/) — Non-partisan analysis of Parliamentary bills and standing committee reports.
+
+💡 *Pro Tip: Go to [Study Modules Hub](study-modules.html) and click **"📖 Free Books"** on any of our 13 modules to view and download exact PDFs!*`
   };
 
   // Helper: Match local KB response
   function getLocalResponse(text){
     const q = text.toLowerCase();
     if(q.includes("creator") || q.includes("developer") || q.includes("who made") || q.includes("who built") || q.includes("portfolio") || q.includes("raghav")) return LOCAL_KB.creator_info;
+    if(q.includes("ncert") || q.includes("pdf book") || q.includes("textbook") || q.includes("standard book") || (q.includes("book") && (q.includes("free") || q.includes("download") || q.includes("read") || q.includes("link") || q.includes("list")))) return LOCAL_KB.ncert_books;
     if(q.includes("bank") && q.includes("syllab")) return LOCAL_KB.banking_syllabus;
     if(q.includes("upsc") && (q.includes("syllab") || q.includes("pattern") || q.includes("stage"))) return LOCAL_KB.upsc_syllabus;
     if(q.includes("ssc") && (q.includes("syllab") || q.includes("pattern") || q.includes("cgl"))) return LOCAL_KB.ssc_syllabus;
@@ -643,6 +675,7 @@ Visit the creator's portfolio at [raghavfolio-8op53xas.manus.space](https://ragh
 
       <div class="bec-chips">
         <button class="bec-chip" data-q="Who created BankExamV2 and where can I view the creator portfolio?">👨‍💻 Creator Profile</button>
+        <button class="bec-chip" data-q="Where can I find free NCERT and official PDF books for Bank and UPSC exams?">📖 NCERT &amp; PDF Books</button>
         <button class="bec-chip" data-q="What is the detailed 2026 syllabus for Banking?">📚 Banking Syllabus</button>
         <button class="bec-chip" data-q="Give me high-yield speed math calculation shortcuts with examples">⚡ Speed Math</button>
         <button class="bec-chip" data-q="Give me a 6-month study schedule for SBI PO prelims and mains">📅 6-Month Plan</button>
