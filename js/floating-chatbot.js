@@ -223,13 +223,49 @@ All essential standard textbooks and official government reports for Banking & C
 * **Exam Pattern:** 120 Questions • 360 Marks • 120 Minutes
 * 90 Subject Specific Questions + 30 Compulsory General Studies & UP GK Questions.
 
-👉 **Interactive Module:** Open our dedicated [UP Teacher Master Module](study-modules.html?module=up-teacher) with 1,160+ questions and direct NCERT/SCERT textbook flipbooks!`
+👉 **Interactive Module:** Open our dedicated [UP Teacher Master Module](study-modules.html?module=up-teacher) with 1,160+ questions and direct NCERT/SCERT textbook flipbooks!`,
+
+    uppsc_ro_aro_syllabus: `### 🏛️ UPPSC RO/ARO (समीक्षा अधिकारी एवं सहायक समीक्षा अधिकारी) Pattern & Syllabus (2026–2027)
+
+#### 📌 1. प्रारंभिक परीक्षा (Prelims: 200 Questions • 200 Marks • Negative Marking 1/3)
+* **पेपर-1: सामान्य अध्ययन (General Studies):** 140 Questions • 140 Marks • 120 Minutes
+  • सामान्य विज्ञान, भारत का इतिहास, भारतीय राष्ट्रीय आन्दोलन (विशेष वेटेज 15+ Qs)
+  • भारतीय राज्यव्यवस्था, अर्थव्यवस्था एवं संस्कृति, भारतीय कृषि, वाणिज्य एवं व्यापार
+  • जनसंख्या, पर्यावरण एवं नगरीकरण (भारतीय परिप्रेक्ष्य)
+  • विश्व भूगोल, भारत का भूगोल एवं प्राकृतिक संसाधन
+  • राष्ट्रीय एवं अन्तर्राष्ट्रीय महत्वपूर्ण घटनाक्रम (समसामयिकी 20+ Qs)
+  • सामान्य बौद्धिक क्षमता (तार्किक तर्कशक्ति)
+  • उत्तर प्रदेश विशेष ज्ञान (शिक्षा, संस्कृति, कृषि, उद्योग, व्यापार, रहन-सहन एवं सामाजिक प्रथाएं - 18-20 Qs)
+* **पेपर-2: सामान्य हिन्दी (General Hindi):** 60 Questions • 60 Marks • 60 Minutes (6 Modules x 10 Qs each)
+  • (1) विलोम (10 शब्द)
+  • (2) वाक्य एवं वर्तनी शुद्धि (10 वाक्य/शब्द)
+  • (3) अनेक शब्दों के लिए एक शब्द (10 शब्द)
+  • (4) तत्सम एवं तद्भव शब्द (10 शब्द)
+  • (5) विशेष्य और विशेषण (10 शब्द)
+  • (6) पर्यायवाची शब्द (10 शब्द)
+
+#### 📌 2. मुख्य परीक्षा (Mains: 400 Marks • सीधा चयन, कोई साक्षात्कार नहीं!)
+* **पेपर-1: सामान्य अध्ययन (GS):** 120 Questions • 120 Marks • 2 Hours (वस्तुनिष्ठ / Objective)
+* **पेपर-2 (खंड-क): परम्परागत सामान्य हिन्दी एवं आलेखन:** 100 Marks • 2.5 Hours
+  • दिए गए गद्यांश का शीर्षक, सारांश एवं तीन रेखांकित अंशों की व्याख्या (21 अंक)
+  • किसी भी दिए हुए सरकारी पत्र का सारणी रूप (Tabular form) में सार-लेखन (15 अंक)
+  • शासकीय पत्राचार (24 अंक): शासकीय पत्र, अर्धशासकीय पत्र, कार्यालय ज्ञाप, परिपत्र, विज्ञप्ति, अनुस्मारक
+  • प्रशासनिक शब्दावली (20 अंक): 5 शब्द अंग्रेजी से हिन्दी (10 अंक), 5 शब्द हिन्दी से अंग्रेजी (10 अंक)
+  • मुहावरे तथा लोकोक्तियाँ (10 अंक)
+  • कम्प्यूटर ज्ञान (10 अंक)
+* **पेपर-2 (खंड-ख): सामान्य शब्द ज्ञान एवं व्याकरण (वस्तुनिष्ठ):** 60 Marks • 30 Minutes
+  • विलोम (6), वाक्य-वर्तनी शुद्धि (6), अनेक शब्द (6), तत्सम-तद्भव (6), विशेष्य-विशेषण (6)
+* **पेपर-3: हिन्दी निबंध (Hindi Essay):** 120 Marks • 3 Hours
+  • 3 निबंध (प्रत्येक 600 शब्द, 40 अंक): साहित्य एवं संस्कृति, सामाजिक/राजनीतिक क्षेत्र, विज्ञान एवं प्रौद्योगिकी, आर्थिक क्षेत्र, कृषि एवं व्यापार, राष्ट्रीय एवं अन्तर्राष्ट्रीय घटनाक्रम, प्राकृतिक आपदाएं, राष्ट्रीय विकास योजनाएं।
+
+👉 **Interactive Module:** Open our dedicated [UPPSC RO/ARO Master Module](study-modules.html?module=uppsc-ro-aro) or visit [Standalone App](https://raghavendra-exp.github.io/uppsc-ro-aro-master/) with 1,000+ questions, official drafting simulator, and 600-word essay lab!`
   };
 
   // Helper: Match local KB response
   function getLocalResponse(text){
     const q = text.toLowerCase();
     if(q.includes("creator") || q.includes("developer") || q.includes("who made") || q.includes("who built") || q.includes("portfolio") || q.includes("raghav")) return LOCAL_KB.creator_info;
+    if(q.includes("ro/aro") || q.includes("ro aro") || q.includes("uppsc ro") || q.includes("समीक्षा अधिकारी") || q.includes("सहायक समीक्षा अधिकारी") || q.includes("drafting") || q.includes("आलेखन") || q.includes("samiksha adhikari")) return LOCAL_KB.uppsc_ro_aro_syllabus;
     if(q.includes("teacher") || q.includes("super tet") || q.includes("uptet") || q.includes("ctet") || q.includes("tgt") || q.includes("prt") || q.includes("teaching")) return LOCAL_KB.teaching_syllabus;
     if(q.includes("ncert") || q.includes("pdf book") || q.includes("textbook") || q.includes("standard book") || (q.includes("book") && (q.includes("free") || q.includes("download") || q.includes("read") || q.includes("link") || q.includes("list")))) return LOCAL_KB.ncert_books;
     if(q.includes("bank") && q.includes("syllab")) return LOCAL_KB.banking_syllabus;

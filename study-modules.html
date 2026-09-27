@@ -351,6 +351,7 @@
     .tag-bank { background: rgba(37,99,235,0.18); color: #60A5FA; border: 1px solid rgba(37,99,235,0.3); }
     .tag-upsc { background: rgba(245,158,11,0.18); color: #FBBF24; border: 1px solid rgba(245,158,11,0.3); }
     .tag-teach { background: rgba(217,119,6,0.18); color: #F59E0B; border: 1px solid rgba(217,119,6,0.3); }
+    .tag-psc { background: rgba(217,119,6,0.18); color: #F59E0B; border: 1px solid rgba(217,119,6,0.3); }
 
     /* Desktop Select (Catalog mode or wide screens) */
     .mod-select {
@@ -479,6 +480,10 @@
     .quick-chip.active.cat-teach {
       background: linear-gradient(135deg, #EA580C, #C2410C);
       box-shadow: 0 2px 8px rgba(234,88,12,0.4);
+    }
+    .quick-chip.active.cat-psc {
+      background: linear-gradient(135deg, #D97706, #B45309);
+      box-shadow: 0 2px 8px rgba(217,119,6,0.4);
     }
 
     /* Viewer Container (100% Flex) */
@@ -705,6 +710,7 @@
     .mod-card-tag.bank { color: var(--pr-light); }
     .mod-card-tag.upsc { color: var(--amber); }
     .mod-card-tag.teach { color: #EA580C; }
+    .mod-card-tag.psc { color: #D97706; }
 
     .mod-card-title {
       font-size: 16px;
@@ -1360,6 +1366,9 @@
         <optgroup label="👨‍🏫 Teaching &amp; State Recruitment">
           <option value="up-teacher">👨‍🏫 UP Teacher Master (Super TET &amp; UP TGT)</option>
         </optgroup>
+        <optgroup label="⚖️ State Public Service &amp; Officer Grade">
+          <option value="uppsc-ro-aro">🏛️ UPPSC RO/ARO Master (समीक्षा अधिकारी)</option>
+        </optgroup>
       </select>
     </div>
 
@@ -1447,6 +1456,9 @@
       <button class="quick-chip cat-teach" data-id="up-teacher" onclick="switchModule('up-teacher')">
         <span>👨‍🏫</span> <span>UP Teacher</span>
       </button>
+      <button class="quick-chip cat-psc" data-id="uppsc-ro-aro" onclick="switchModule('uppsc-ro-aro')">
+        <span>🏛️</span> <span>UPPSC RO/ARO</span>
+      </button>
     </div>
   </nav>
 
@@ -1468,7 +1480,7 @@
   <!-- Module Catalog / Directory Grid View -->
   <main id="catalogSection">
     <div class="catalog-hero">
-      <span class="cat-badge">⚡ 14 Specialized Exam Master Suites</span>
+      <span class="cat-badge">⚡ 15 Specialized Exam Master Suites</span>
       <h1>Ready-Made Interactive Study Modules</h1>
       <p>High-yield digital textbooks, dynamic visualizers, topic master labs, and full practice engines. Embedded seamlessly inside BankExamV2 for distraction-free preparation.</p>
       <div style="margin-top:12px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
@@ -1480,9 +1492,10 @@
 
     <div class="filter-bar">
       <div class="filter-pills">
-        <button class="filter-pill active" onclick="filterCatalog('all', this)">All Modules (14)</button>
+        <button class="filter-pill active" onclick="filterCatalog('all', this)">All Modules (15)</button>
         <button class="filter-pill" onclick="filterCatalog('bank', this)">🏦 Bank Exams (7)</button>
         <button class="filter-pill" onclick="filterCatalog('upsc', this)">🏛️ UPSC &amp; Civil Services (6)</button>
+        <button class="filter-pill" onclick="filterCatalog('psc', this)">⚖️ State PSC &amp; RO/ARO (1)</button>
         <button class="filter-pill" onclick="filterCatalog('teach', this)">👨‍🏫 Teaching &amp; TET (1)</button>
       </div>
       <div class="search-input-box">
@@ -1504,7 +1517,7 @@
         <a href="contact.html" style="color:var(--txt);text-decoration:none">Contact</a>
         <a href="privacy-policy.html" style="color:var(--txt);text-decoration:none">Privacy Policy</a>
       </div>
-      <div>&copy; 2026 <a href="https://raghavfolio-8op53xas.manus.space/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Raghavbegins (Raghavendra)</a> &bull; 14 Interactive Study Modules &bull; Free Forever</div>
+      <div>&copy; 2026 <a href="https://raghavfolio-8op53xas.manus.space/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Raghavbegins (Raghavendra)</a> &bull; 15 Interactive Study Modules &bull; Free Forever</div>
     </div>
   </main>
 
@@ -2296,6 +2309,62 @@
             url: 'https://dled.nios.ac.in/'
           }
         ]
+      },
+
+      // ⚖️ State Public Service & Officer Grade Exams
+      'uppsc-ro-aro': {
+        id: 'uppsc-ro-aro',
+        repo: 'uppsc-ro-aro-master',
+        path: 'https://raghavendra-exp.github.io/uppsc-ro-aro-master/',
+        title: 'UPPSC RO/ARO Master (समीक्षा अधिकारी एवं सहायक समीक्षा अधिकारी)',
+        tag: 'UPPSC RO/ARO',
+        cat: 'psc',
+        icon: '🏛️',
+        desc: 'Complete bilingual preparation system for UP Secretariat Review Officer (RO) & Assistant Review Officer (ARO). 1,000+ MCQs, Prelims GS (140) + Hindi (60), Mains 400-mark engine with Official Drafting Simulator, 600-word Hindi Essay Lab, 2013-2024 PYQs, and UP Special GK.',
+        features: ['1,000+ Practice MCQs', 'Official Drafting Lab', '600-Word Essay Lab', 'PYQ Bank (2013-2024)', 'UP Special GK Vault', 'Bilingual EN/HI'],
+        exams: 'UPPSC RO/ARO (सचिवालय / लोक सेवा आयोग), UP PCS, State Civil Services',
+        books: [
+          {
+            title: 'NCERT Class 11 & 12 Indian History & National Movement',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT History',
+            desc: 'Themes in Indian History Parts 1, 2, and 3: 1857 Revolt, Indian National Movement (1885-1947), and UP freedom fighters.',
+            url: 'https://ncert.nic.in/textbook.php'
+          },
+          {
+            title: 'NCERT Class 11 Indian Constitution at Work (Polity & Governance)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 11',
+            desc: 'Fundamental Rights, Directive Principles, Executive, Legislature, Judiciary, Federalism, Local Governments, and Constitutional Amendments.',
+            url: 'https://ncert.nic.in/textbook.php?keps2=0-10'
+          },
+          {
+            title: 'UPPSC Official Notification, Syllabus & Administrative Guidelines',
+            source: 'Uttar Pradesh Public Service Commission (UPPSC, Prayagraj)',
+            type: 'govt',
+            badge: 'UPPSC Official',
+            desc: 'Official notification, rules of procedure, negative marking guidelines, and syllabus gazette for Review Officer / Assistant Review Officer Examination.',
+            url: 'https://uppsc.up.nic.in/'
+          },
+          {
+            title: 'Uttar Pradesh Information & Public Relations Directorate Reports',
+            source: 'Information and Public Relations Department (Govt of Uttar Pradesh)',
+            type: 'govt',
+            badge: 'UP Govt Official',
+            desc: 'Official publications on UP culture, geography, One District One Product (ODOP), state budget, industrial corridors, and public welfare schemes.',
+            url: 'http://information.up.gov.in/'
+          },
+          {
+            title: 'Central Hindi Directorate Administrative Glossary & Terminologies',
+            source: 'Ministry of Education & Commission for Scientific and Technical Terminology (CSTT)',
+            type: 'govt',
+            badge: 'CSTT Glossary',
+            desc: 'Official administrative glossary (प्रशासनिक शब्दावली) mandated for official English-to-Hindi and Hindi-to-English translation in UPPSC Mains Paper 2.',
+            url: 'https://cstt.education.gov.in/'
+          }
+        ]
       }
     };
 
@@ -2333,7 +2402,15 @@
       'super-tet': 'up-teacher',
       'prt': 'up-teacher',
       'tgt': 'up-teacher',
-      'uptet': 'up-teacher'
+      'uptet': 'up-teacher',
+      'uppsc-ro-aro': 'uppsc-ro-aro',
+      'uppsc-ro-aro-master': 'uppsc-ro-aro',
+      'ro-aro': 'uppsc-ro-aro',
+      'roaro': 'uppsc-ro-aro',
+      'uppsc-ro': 'uppsc-ro-aro',
+      'uppsc': 'uppsc-ro-aro',
+      'samiksha-adhikari': 'uppsc-ro-aro',
+      'drafting': 'uppsc-ro-aro'
     };
 
     let currentModuleId = null;
@@ -2398,6 +2475,8 @@
       bankGroup.label = '🏦 Major Banking Exams';
       const upscGroup = document.createElement('optgroup');
       upscGroup.label = '🏛️ UPSC & Civil Services';
+      const pscGroup = document.createElement('optgroup');
+      pscGroup.label = '⚖️ State PSC & RO/ARO';
       const teachGroup = document.createElement('optgroup');
       teachGroup.label = '👨‍🏫 Teaching & State Recruitment';
 
@@ -2407,11 +2486,13 @@
         opt.textContent = `${mod.icon} ${mod.title}`;
         if (mod.cat === 'bank') bankGroup.appendChild(opt);
         else if (mod.cat === 'teach') teachGroup.appendChild(opt);
+        else if (mod.cat === 'psc') pscGroup.appendChild(opt);
         else upscGroup.appendChild(opt);
       });
 
       select.appendChild(bankGroup);
       select.appendChild(upscGroup);
+      select.appendChild(pscGroup);
       select.appendChild(teachGroup);
     }
 
@@ -2704,6 +2785,7 @@
       if (text.includes('Bank')) cat = 'bank';
       if (text.includes('UPSC')) cat = 'upsc';
       if (text.includes('Teaching')) cat = 'teach';
+      if (text.includes('State PSC') || text.includes('RO/ARO') || text.includes('PSC')) cat = 'psc';
       renderCatalog(cat, val);
     }
 
