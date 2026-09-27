@@ -350,6 +350,7 @@
     }
     .tag-bank { background: rgba(37,99,235,0.18); color: #60A5FA; border: 1px solid rgba(37,99,235,0.3); }
     .tag-upsc { background: rgba(245,158,11,0.18); color: #FBBF24; border: 1px solid rgba(245,158,11,0.3); }
+    .tag-teach { background: rgba(217,119,6,0.18); color: #F59E0B; border: 1px solid rgba(217,119,6,0.3); }
 
     /* Desktop Select (Catalog mode or wide screens) */
     .mod-select {
@@ -474,6 +475,10 @@
     .quick-chip.active.cat-upsc {
       background: linear-gradient(135deg, #D97706, #B45309);
       box-shadow: 0 2px 8px rgba(217,119,6,0.4);
+    }
+    .quick-chip.active.cat-teach {
+      background: linear-gradient(135deg, #EA580C, #C2410C);
+      box-shadow: 0 2px 8px rgba(234,88,12,0.4);
     }
 
     /* Viewer Container (100% Flex) */
@@ -699,6 +704,7 @@
     }
     .mod-card-tag.bank { color: var(--pr-light); }
     .mod-card-tag.upsc { color: var(--amber); }
+    .mod-card-tag.teach { color: #EA580C; }
 
     .mod-card-title {
       font-size: 16px;
@@ -1333,7 +1339,7 @@
 
       <!-- Desktop Dropdown (hidden in viewer mode and on mobile screens) -->
       <select class="mod-select desktop-only-select" id="moduleSelect" onchange="switchModule(this.value)">
-        <option value="">-- Browse All Ready-Made Modules (13) --</option>
+        <option value="">-- Browse All Ready-Made Modules (14) --</option>
         <optgroup label="🏦 Major Bank Exams">
           <option value="bank-quant">📐 Bank Quant Master (Arithmetic &amp; DI)</option>
           <option value="bank-reasoning">🧩 Bank Reasoning Ability Master</option>
@@ -1350,6 +1356,9 @@
           <option value="history">📜 Complete History of India &amp; Culture Atlas</option>
           <option value="geography">🗺️ Geography of India &amp; Bharat Map Atlas</option>
           <option value="india-world">🌐 India &amp; World: IR &amp; Govt Schemes</option>
+        </optgroup>
+        <optgroup label="👨‍🏫 Teaching &amp; State Recruitment">
+          <option value="up-teacher">👨‍🏫 UP Teacher Master (Super TET &amp; UP TGT)</option>
         </optgroup>
       </select>
     </div>
@@ -1435,6 +1444,9 @@
       <button class="quick-chip cat-upsc" data-id="india-world" onclick="switchModule('india-world')">
         <span>🌐</span> <span>India &amp; World</span>
       </button>
+      <button class="quick-chip cat-teach" data-id="up-teacher" onclick="switchModule('up-teacher')">
+        <span>👨‍🏫</span> <span>UP Teacher</span>
+      </button>
     </div>
   </nav>
 
@@ -1456,7 +1468,7 @@
   <!-- Module Catalog / Directory Grid View -->
   <main id="catalogSection">
     <div class="catalog-hero">
-      <span class="cat-badge">⚡ 13 Specialized Exam Master Suites</span>
+      <span class="cat-badge">⚡ 14 Specialized Exam Master Suites</span>
       <h1>Ready-Made Interactive Study Modules</h1>
       <p>High-yield digital textbooks, dynamic visualizers, topic master labs, and full practice engines. Embedded seamlessly inside BankExamV2 for distraction-free preparation.</p>
       <div style="margin-top:12px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
@@ -1468,9 +1480,10 @@
 
     <div class="filter-bar">
       <div class="filter-pills">
-        <button class="filter-pill active" onclick="filterCatalog('all', this)">All Modules (13)</button>
+        <button class="filter-pill active" onclick="filterCatalog('all', this)">All Modules (14)</button>
         <button class="filter-pill" onclick="filterCatalog('bank', this)">🏦 Bank Exams (7)</button>
         <button class="filter-pill" onclick="filterCatalog('upsc', this)">🏛️ UPSC &amp; Civil Services (6)</button>
+        <button class="filter-pill" onclick="filterCatalog('teach', this)">👨‍🏫 Teaching &amp; TET (1)</button>
       </div>
       <div class="search-input-box">
         <span class="search-icon">🔍</span>
@@ -1491,7 +1504,7 @@
         <a href="contact.html" style="color:var(--txt);text-decoration:none">Contact</a>
         <a href="privacy-policy.html" style="color:var(--txt);text-decoration:none">Privacy Policy</a>
       </div>
-      <div>&copy; 2026 <a href="https://raghavfolio-8op53xas.manus.space/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Raghavbegins (Raghavendra)</a> &bull; 13 Interactive Study Modules &bull; Free Forever</div>
+      <div>&copy; 2026 <a href="https://raghavfolio-8op53xas.manus.space/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Raghavbegins (Raghavendra)</a> &bull; 14 Interactive Study Modules &bull; Free Forever</div>
     </div>
   </main>
 
@@ -2227,6 +2240,62 @@
             url: 'https://ncert.nic.in/textbook.php?leps2=0-9'
           }
         ]
+      },
+
+      // 👨‍🏫 Major Teaching & State Recruitment Exams
+      'up-teacher': {
+        id: 'up-teacher',
+        repo: 'up-teacher-master',
+        path: 'https://raghavendra-exp.github.io/up-teacher-master/',
+        title: 'UP Teacher Master (Super TET, PRT & UP TGT)',
+        tag: 'UP TEACHER',
+        cat: 'teach',
+        icon: '👨‍🏫',
+        desc: 'Complete bilingual self-study preparation platform for UP Primary Assistant Teacher (Super TET / PRT), UP TGT (14 subjects) and UPTET under unified UPESSC. 1,160+ validated questions, UP Special GK, child pedagogy, and direct NCERT/SCERT integration.',
+        features: ['UP PRT & Super TET', 'UP TGT (14 Subjects)', '1,160+ Question Bank', 'UP Special GK Vault', 'Bilingual EN/HI'],
+        exams: 'UP Super TET (PRT), UP TGT, UPTET, CTET, KVS, DSSSB',
+        books: [
+          {
+            title: 'NCERT Class 1 to 10 Foundational Textbooks (All Core Subjects)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Official',
+            desc: 'Foundational textbooks for PRT and TGT disciplines: Mathematics, Science, Environmental Studies (EVS), Social Studies, Hindi, and English.',
+            url: 'https://ncert.nic.in/textbook.php'
+          },
+          {
+            title: 'UP SCERT Primary Textbooks (Kalrav, Gintara, Hamara Parivesh)',
+            source: 'State Council of Educational Research & Training (SCERT Uttar Pradesh)',
+            type: 'govt',
+            badge: 'UP SCERT',
+            desc: 'Official basic education department textbooks mandated for UP Assistant Teacher (Super TET) recruitment syllabus.',
+            url: 'http://scertup.co.in/'
+          },
+          {
+            title: 'ePathshala National Teacher & Student Educational Portal',
+            source: 'Ministry of Education & NCERT (Govt of India)',
+            type: 'govt',
+            badge: 'ePathshala Portal',
+            desc: 'Direct access to digital flipbooks, educational audio-visual content, and child psychology learning units for teaching aspirants.',
+            url: 'https://epathshala.nic.in/'
+          },
+          {
+            title: 'National Education Policy (NEP 2020) & NCF-SE Official Gazettes',
+            source: 'Ministry of Education (Government of India)',
+            type: 'govt',
+            badge: 'Govt Gazette',
+            desc: 'Foundational policy frameworks, 5+3+3+4 pedagogical structure, ECCE guidelines, and competency-based assessment whitepapers.',
+            url: 'https://www.education.gov.in/nep/about-nep'
+          },
+          {
+            title: 'NIOS D.El.Ed / Diploma in Elementary Education Course Modules',
+            source: 'National Institute of Open Schooling (Govt of India)',
+            type: 'open',
+            badge: 'NIOS Official',
+            desc: 'Exhaustive teacher education materials covering Child Psychology, Teaching Skills, Learning Theories (Piaget, Vygotsky), and Inclusive Education.',
+            url: 'https://dled.nios.ac.in/'
+          }
+        ]
       }
     };
 
@@ -2255,7 +2324,16 @@
       'geography-of-india': 'geography',
       'geo': 'geography',
       'india-n-world': 'india-world',
-      'ir': 'india-world'
+      'ir': 'india-world',
+      'up-teacher': 'up-teacher',
+      'up-teacher-master': 'up-teacher',
+      'teacher': 'up-teacher',
+      'teaching': 'up-teacher',
+      'supertet': 'up-teacher',
+      'super-tet': 'up-teacher',
+      'prt': 'up-teacher',
+      'tgt': 'up-teacher',
+      'uptet': 'up-teacher'
     };
 
     let currentModuleId = null;
@@ -2320,17 +2398,21 @@
       bankGroup.label = '🏦 Major Banking Exams';
       const upscGroup = document.createElement('optgroup');
       upscGroup.label = '🏛️ UPSC & Civil Services';
+      const teachGroup = document.createElement('optgroup');
+      teachGroup.label = '👨‍🏫 Teaching & State Recruitment';
 
       Object.values(MODULES).forEach(mod => {
         const opt = document.createElement('option');
         opt.value = mod.id;
         opt.textContent = `${mod.icon} ${mod.title}`;
         if (mod.cat === 'bank') bankGroup.appendChild(opt);
+        else if (mod.cat === 'teach') teachGroup.appendChild(opt);
         else upscGroup.appendChild(opt);
       });
 
       select.appendChild(bankGroup);
       select.appendChild(upscGroup);
+      select.appendChild(teachGroup);
     }
 
     function openBooksModal(moduleId, event) {
@@ -2621,6 +2703,7 @@
       let cat = 'all';
       if (text.includes('Bank')) cat = 'bank';
       if (text.includes('UPSC')) cat = 'upsc';
+      if (text.includes('Teaching')) cat = 'teach';
       renderCatalog(cat, val);
     }
 

@@ -203,13 +203,34 @@ All essential standard textbooks and official government reports for Banking & C
 * **National Digital Library of India (NDLI):** [ndl.iitkgp.ac.in](https://ndl.iitkgp.ac.in/) — Sponsored by Ministry of Education & IIT Kharagpur.
 * **PRS Legislative Research:** [prsindia.org](https://prsindia.org/) — Non-partisan analysis of Parliamentary bills and standing committee reports.
 
-💡 *Pro Tip: Go to [Study Modules Hub](study-modules.html) and click **"📖 Free Books"** on any of our 13 modules to view and download exact PDFs!*`
+💡 *Pro Tip: Go to [Study Modules Hub](study-modules.html) and click **"📖 Free Books"** on any of our 14 modules to view and download exact PDFs!*`,
+
+    teaching_syllabus: `### 👨‍🏫 UP Teacher Recruitment & Teaching Exams Syllabus (2026–2027)
+
+#### 📌 1. UP Primary Assistant Teacher / Super TET (Unified UPESSC)
+* **Exam Pattern:** 120 Questions • 360 Marks • 120 Minutes (+3 Correct, -1 Incorrect)
+* **11 Core Sections:**
+  • **General Knowledge & Current Affairs:** 25 Questions (75 Marks) — UP Special GK, National & International Events
+  • **Languages:** Hindi (20 Qs), Sanskrit (5 Qs), English (5 Qs) — Grammar & Comprehension
+  • **Mathematics & Numerical Ability:** 16 Questions — Arithmetic, Algebra, Geometry, Statistics
+  • **Science & Environment:** 16 Questions — Everyday Physics/Chemistry/Biology, EVS & Ecosystem
+  • **Child Psychology (बाल मनोविज्ञान):** 8 Questions — Individual Differences, Factors affecting child learning
+  • **Teaching Skills (शिक्षण कौशल):** 8 Questions — Teaching Methods, TLM, Inclusive Education
+  • **Life Skills & Attitude (जीवन कौशल एवं अभिवृत्ति):** 8 Questions — Professional Ethics, Constitutional Values
+  • **Logical Reasoning & IT:** 9 Questions — Puzzles, Digital Education, Computers
+
+#### 📌 2. UP TGT (Trained Graduate Teacher - Classes 9 & 10)
+* **Exam Pattern:** 120 Questions • 360 Marks • 120 Minutes
+* 90 Subject Specific Questions + 30 Compulsory General Studies & UP GK Questions.
+
+👉 **Interactive Module:** Open our dedicated [UP Teacher Master Module](study-modules.html?module=up-teacher) with 1,160+ questions and direct NCERT/SCERT textbook flipbooks!`
   };
 
   // Helper: Match local KB response
   function getLocalResponse(text){
     const q = text.toLowerCase();
     if(q.includes("creator") || q.includes("developer") || q.includes("who made") || q.includes("who built") || q.includes("portfolio") || q.includes("raghav")) return LOCAL_KB.creator_info;
+    if(q.includes("teacher") || q.includes("super tet") || q.includes("uptet") || q.includes("ctet") || q.includes("tgt") || q.includes("prt") || q.includes("teaching")) return LOCAL_KB.teaching_syllabus;
     if(q.includes("ncert") || q.includes("pdf book") || q.includes("textbook") || q.includes("standard book") || (q.includes("book") && (q.includes("free") || q.includes("download") || q.includes("read") || q.includes("link") || q.includes("list")))) return LOCAL_KB.ncert_books;
     if(q.includes("bank") && q.includes("syllab")) return LOCAL_KB.banking_syllabus;
     if(q.includes("upsc") && (q.includes("syllab") || q.includes("pattern") || q.includes("stage"))) return LOCAL_KB.upsc_syllabus;
@@ -676,6 +697,7 @@ All essential standard textbooks and official government reports for Banking & C
       <div class="bec-chips">
         <button class="bec-chip" data-q="Who created BankExamV2 and where can I view the creator portfolio?">👨‍💻 Creator Profile</button>
         <button class="bec-chip" data-q="Where can I find free NCERT and official PDF books for Bank and UPSC exams?">📖 NCERT &amp; PDF Books</button>
+        <button class="bec-chip" data-q="What is the exam pattern and syllabus for UP Super TET and UP TGT?">👨‍🏫 UP Teacher Syllabus</button>
         <button class="bec-chip" data-q="What is the detailed 2026 syllabus for Banking?">📚 Banking Syllabus</button>
         <button class="bec-chip" data-q="Give me high-yield speed math calculation shortcuts with examples">⚡ Speed Math</button>
         <button class="bec-chip" data-q="Give me a 6-month study schedule for SBI PO prelims and mains">📅 6-Month Plan</button>
