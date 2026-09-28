@@ -81,7 +81,7 @@
         "name": "Ready-Made Interactive Study Modules for Indian Competitive Exams",
         "description": "Specialized digital textbooks and interactive practice laboratories for UPSC Civil Services and Bank Exams.",
         "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html",
-        "numberOfItems": 13,
+        "numberOfItems": 24,
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Bank Quantitative Aptitude Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=bank-quant" },
           { "@type": "ListItem", "position": 2, "name": "Bank Reasoning Ability Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=bank-reasoning" },
@@ -95,7 +95,18 @@
           { "@type": "ListItem", "position": 10, "name": "UPSC GS-II Governance, Constitution & Polity Master", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=gs2" },
           { "@type": "ListItem", "position": 11, "name": "Complete History of India & Indian Culture Atlas", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=history" },
           { "@type": "ListItem", "position": 12, "name": "Geography of India & Bharat Map Atlas", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=geography" },
-          { "@type": "ListItem", "position": 13, "name": "India & World: International Relations & Schemes", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=india-world" }
+          { "@type": "ListItem", "position": 13, "name": "India & World: International Relations & Schemes", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=india-world" },
+          { "@type": "ListItem", "position": 14, "name": "UP Teacher Master (Super TET & UP TGT)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=up-teacher" },
+          { "@type": "ListItem", "position": 15, "name": "UPPSC RO/ARO Master (समीक्षा अधिकारी)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=uppsc-ro-aro" },
+          { "@type": "ListItem", "position": 16, "name": "RRB Master India (Railway Recruitment Exams)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=rrb" },
+          { "@type": "ListItem", "position": 17, "name": "SSC Master India (Staff Selection Commission)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=ssc" },
+          { "@type": "ListItem", "position": 18, "name": "CUET Master India (Common University Entrance Test)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=cuet" },
+          { "@type": "ListItem", "position": 19, "name": "Law Entrance Master India (CLAT & AILET)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=law" },
+          { "@type": "ListItem", "position": 20, "name": "Engineering Entrance Master (JEE Main & Advanced)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=engineering" },
+          { "@type": "ListItem", "position": 21, "name": "MBA Entrance Master India (CAT, XAT, SNAP & NMAT)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=mba" },
+          { "@type": "ListItem", "position": 22, "name": "NEET Master India (Medical Entrance Exam)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=neet" },
+          { "@type": "ListItem", "position": 23, "name": "UPSSSC PET Master (Preliminary Eligibility Test)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=upsssc-pet" },
+          { "@type": "ListItem", "position": 24, "name": "UPPRPB Master (UP Police Constable & SI)", "url": "https://raghavendra-exp.github.io/bankexamv2/study-modules.html?module=upprpb" }
         ]
       }
     ]
@@ -220,6 +231,10 @@
       justify-content: space-between;
       gap: 10px;
       min-height: 48px;
+      width: 100%;
+      max-width: 100vw;
+      min-width: 0;
+      box-sizing: border-box;
     }
     [data-theme="light"] .mod-nav {
       background: rgba(255, 255, 255, 0.96);
@@ -352,6 +367,9 @@
     .tag-upsc { background: rgba(245,158,11,0.18); color: #FBBF24; border: 1px solid rgba(245,158,11,0.3); }
     .tag-teach { background: rgba(217,119,6,0.18); color: #F59E0B; border: 1px solid rgba(217,119,6,0.3); }
     .tag-psc { background: rgba(217,119,6,0.18); color: #F59E0B; border: 1px solid rgba(217,119,6,0.3); }
+    .tag-railways, .tag-ssc { background: rgba(14, 165, 233, 0.18); color: #38BDF8; border: 1px solid rgba(14, 165, 233, 0.3); }
+    .tag-entrance { background: rgba(168, 85, 247, 0.18); color: #C084FC; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .tag-state { background: rgba(234, 88, 12, 0.18); color: #FB923C; border: 1px solid rgba(234, 88, 12, 0.3); }
 
     /* Desktop Select (Catalog mode or wide screens) */
     .mod-select {
@@ -422,6 +440,10 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       z-index: 90;
+      width: 100%;
+      max-width: 100vw;
+      min-width: 0;
+      box-sizing: border-box;
     }
     .mod-quick-strip::-webkit-scrollbar {
       display: none;
@@ -484,6 +506,18 @@
     .quick-chip.active.cat-psc {
       background: linear-gradient(135deg, #D97706, #B45309);
       box-shadow: 0 2px 8px rgba(217,119,6,0.4);
+    }
+    .quick-chip.active.cat-railways, .quick-chip.active.cat-ssc {
+      background: linear-gradient(135deg, #0284C7, #0369A1);
+      box-shadow: 0 2px 8px rgba(2,132,199,0.4);
+    }
+    .quick-chip.active.cat-entrance {
+      background: linear-gradient(135deg, #9333EA, #7E22CE);
+      box-shadow: 0 2px 8px rgba(147,51,234,0.4);
+    }
+    .quick-chip.active.cat-state {
+      background: linear-gradient(135deg, #C2410C, #9A3412);
+      box-shadow: 0 2px 8px rgba(194,65,12,0.4);
     }
 
     /* Viewer Container (100% Flex) */
@@ -556,6 +590,9 @@
       margin: 0 auto;
       padding: 32px 18px 80px;
       width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      overflow-x: hidden;
     }
     .catalog-hero {
       text-align: center;
@@ -595,6 +632,10 @@
       gap: 12px;
       margin-bottom: 24px;
       flex-wrap: wrap;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
     }
     .filter-pills {
       display: flex;
@@ -711,6 +752,9 @@
     .mod-card-tag.upsc { color: var(--amber); }
     .mod-card-tag.teach { color: #EA580C; }
     .mod-card-tag.psc { color: #D97706; }
+    .mod-card-tag.railways, .mod-card-tag.ssc { color: #38BDF8; }
+    .mod-card-tag.entrance { color: #C084FC; }
+    .mod-card-tag.state { color: #FB923C; }
 
     .mod-card-title {
       font-size: 16px;
@@ -850,12 +894,22 @@
     /* Mobile Refinements */
     @media (max-width: 680px) {
       .mod-nav {
-        padding: 6px 10px;
+        padding: 6px 8px;
         min-height: 44px;
-        gap: 8px;
+        gap: 6px;
+        width: 100%;
+        max-width: 100vw;
+        min-width: 0;
+        box-sizing: border-box;
       }
       .mod-nav-left {
         gap: 6px;
+        min-width: 0;
+        flex-shrink: 1;
+      }
+      .mod-nav-right {
+        gap: 4px;
+        flex-shrink: 0;
       }
       #viewerShareBtn {
         display: none !important;
@@ -864,7 +918,7 @@
         display: none !important;
       }
       .mod-active-indicator {
-        max-width: 220px;
+        max-width: 180px;
         padding: 2px 4px;
         background: transparent;
         border: none;
@@ -874,7 +928,7 @@
         font-weight: 700 !important;
       }
       .mod-icon-btn, .mod-nav-back-btn {
-        padding: 5px 8px;
+        padding: 5px 7px;
         font-size: 11.5px;
         min-height: 30px;
       }
@@ -891,9 +945,16 @@
       .filter-bar {
         gap: 10px;
         margin-bottom: 18px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
       }
       .filter-pills {
         width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
         overflow-x: auto;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -911,11 +972,17 @@
       }
       .search-input-box {
         width: 100%;
-        min-width: 100%;
+        min-width: 0;
         max-width: 100%;
+        box-sizing: border-box;
       }
       #catalogSection {
         padding: 16px 12px 80px;
+        width: 100%;
+        max-width: 100vw;
+        min-width: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
       }
       .catalog-hero {
         margin-bottom: 20px;
@@ -929,7 +996,25 @@
       }
       .modules-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mod-nav {
+        padding: 6px 6px;
+      }
+      #catalogBackLink {
+        display: none !important;
+      }
+      .mod-logo-badge {
+        display: none !important;
+      }
+      .hide-mobile-xs {
+        display: none !important;
+      }
+      .mod-icon-btn {
+        padding: 5px 6px;
       }
       .module-card {
         padding: 16px;
@@ -1345,7 +1430,7 @@
 
       <!-- Desktop Dropdown (hidden in viewer mode and on mobile screens) -->
       <select class="mod-select desktop-only-select" id="moduleSelect" onchange="switchModule(this.value)">
-        <option value="">-- Browse All Ready-Made Modules (14) --</option>
+        <option value="">-- Browse All Ready-Made Modules (24) --</option>
         <optgroup label="🏦 Major Bank Exams">
           <option value="bank-quant">📐 Bank Quant Master (Arithmetic &amp; DI)</option>
           <option value="bank-reasoning">🧩 Bank Reasoning Ability Master</option>
@@ -1363,10 +1448,21 @@
           <option value="geography">🗺️ Geography of India &amp; Bharat Map Atlas</option>
           <option value="india-world">🌐 India &amp; World: IR &amp; Govt Schemes</option>
         </optgroup>
-        <optgroup label="👨‍🏫 Teaching &amp; State Recruitment">
-          <option value="up-teacher">👨‍🏫 UP Teacher Master (Super TET &amp; UP TGT)</option>
+        <optgroup label="🚆 SSC &amp; Railways Recruitment">
+          <option value="rrb">🚆 RRB Master India (NTPC, Group D, ALP, Tech)</option>
+          <option value="ssc">🏛️ SSC Master India (CGL, CHSL, GD, MTS, CPO)</option>
         </optgroup>
-        <optgroup label="⚖️ State Public Service &amp; Officer Grade">
+        <optgroup label="🎓 National Entrance &amp; University Exams">
+          <option value="cuet">🎓 CUET Master India (NTA Central Universities)</option>
+          <option value="law">⚖️ Law Entrance Master (CLAT &amp; AILET)</option>
+          <option value="engineering">⚡ Engineering Entrance Master (JEE Main &amp; Adv)</option>
+          <option value="mba">💼 MBA Entrance Master (CAT, XAT, SNAP &amp; NMAT)</option>
+          <option value="neet">🩺 NEET Master India (Medical Entrance NTA)</option>
+        </optgroup>
+        <optgroup label="👮 State Recruitment, Police &amp; Teaching">
+          <option value="upsssc-pet">📋 UPSSSC PET Master (UP State Group C)</option>
+          <option value="upprpb">👮 UPPRPB Master (UP Police Constable &amp; SI)</option>
+          <option value="up-teacher">👨‍🏫 UP Teacher Master (Super TET &amp; UP TGT)</option>
           <option value="uppsc-ro-aro">🏛️ UPPSC RO/ARO Master (समीक्षा अधिकारी)</option>
         </optgroup>
       </select>
@@ -1399,7 +1495,7 @@
       </button>
 
       <!-- Fullscreen Focus Mode -->
-      <button class="mod-icon-btn" onclick="toggleFocusMode()" title="Toggle Fullscreen Focus Mode">
+      <button class="mod-icon-btn hide-mobile-xs" onclick="toggleFocusMode()" title="Toggle Fullscreen Focus Mode">
         <span>⛶</span>
         <span class="btn-label">Focus</span>
       </button>
@@ -1459,6 +1555,33 @@
       <button class="quick-chip cat-psc" data-id="uppsc-ro-aro" onclick="switchModule('uppsc-ro-aro')">
         <span>🏛️</span> <span>UPPSC RO/ARO</span>
       </button>
+      <button class="quick-chip cat-railways" data-id="rrb" onclick="switchModule('rrb')">
+        <span>🚆</span> <span>RRB Railways</span>
+      </button>
+      <button class="quick-chip cat-ssc" data-id="ssc" onclick="switchModule('ssc')">
+        <span>🏛️</span> <span>SSC Master</span>
+      </button>
+      <button class="quick-chip cat-entrance" data-id="cuet" onclick="switchModule('cuet')">
+        <span>🎓</span> <span>CUET UG/PG</span>
+      </button>
+      <button class="quick-chip cat-entrance" data-id="law" onclick="switchModule('law')">
+        <span>⚖️</span> <span>Law (CLAT)</span>
+      </button>
+      <button class="quick-chip cat-entrance" data-id="engineering" onclick="switchModule('engineering')">
+        <span>⚡</span> <span>JEE Engg</span>
+      </button>
+      <button class="quick-chip cat-entrance" data-id="mba" onclick="switchModule('mba')">
+        <span>💼</span> <span>MBA (CAT)</span>
+      </button>
+      <button class="quick-chip cat-entrance" data-id="neet" onclick="switchModule('neet')">
+        <span>🩺</span> <span>NEET Medical</span>
+      </button>
+      <button class="quick-chip cat-state" data-id="upsssc-pet" onclick="switchModule('upsssc-pet')">
+        <span>📋</span> <span>UPSSSC PET</span>
+      </button>
+      <button class="quick-chip cat-state" data-id="upprpb" onclick="switchModule('upprpb')">
+        <span>👮</span> <span>UP Police</span>
+      </button>
     </div>
   </nav>
 
@@ -1480,7 +1603,7 @@
   <!-- Module Catalog / Directory Grid View -->
   <main id="catalogSection">
     <div class="catalog-hero">
-      <span class="cat-badge">⚡ 15 Specialized Exam Master Suites</span>
+      <span class="cat-badge">⚡ 24 Specialized Exam Master Suites</span>
       <h1>Ready-Made Interactive Study Modules</h1>
       <p>High-yield digital textbooks, dynamic visualizers, topic master labs, and full practice engines. Embedded seamlessly inside BankExamV2 for distraction-free preparation.</p>
       <div style="margin-top:12px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
@@ -1492,11 +1615,12 @@
 
     <div class="filter-bar">
       <div class="filter-pills">
-        <button class="filter-pill active" onclick="filterCatalog('all', this)">All Modules (15)</button>
+        <button class="filter-pill active" onclick="filterCatalog('all', this)">All Modules (24)</button>
         <button class="filter-pill" onclick="filterCatalog('bank', this)">🏦 Bank Exams (7)</button>
         <button class="filter-pill" onclick="filterCatalog('upsc', this)">🏛️ UPSC &amp; Civil Services (6)</button>
-        <button class="filter-pill" onclick="filterCatalog('psc', this)">⚖️ State PSC &amp; RO/ARO (1)</button>
-        <button class="filter-pill" onclick="filterCatalog('teach', this)">👨‍🏫 Teaching &amp; TET (1)</button>
+        <button class="filter-pill" onclick="filterCatalog('ssc-rrb', this)">🚆 SSC &amp; Railways (2)</button>
+        <button class="filter-pill" onclick="filterCatalog('entrance', this)">🎓 National Entrance (5)</button>
+        <button class="filter-pill" onclick="filterCatalog('state', this)">👮 State PSC, Police &amp; Teaching (4)</button>
       </div>
       <div class="search-input-box">
         <span class="search-icon">🔍</span>
@@ -1517,7 +1641,7 @@
         <a href="contact.html" style="color:var(--txt);text-decoration:none">Contact</a>
         <a href="privacy-policy.html" style="color:var(--txt);text-decoration:none">Privacy Policy</a>
       </div>
-      <div>&copy; 2026 <a href="https://raghavfolio-8op53xas.manus.space/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Raghavbegins (Raghavendra)</a> &bull; 15 Interactive Study Modules &bull; Free Forever</div>
+      <div>&copy; 2026 <a href="https://raghavfolio-8op53xas.manus.space/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Raghavbegins (Raghavendra)</a> &bull; 24 Interactive Study Modules &bull; Free Forever</div>
     </div>
   </main>
 
@@ -2365,6 +2489,494 @@
             url: 'https://cstt.education.gov.in/'
           }
         ]
+      },
+      // 🚆 SSC & Railways Recruitment
+      'rrb': {
+        id: 'rrb',
+        repo: 'rrb-master-india',
+        path: '../rrb-master-india/',
+        title: 'RRB Master India (Railway Recruitment Exams)',
+        tag: 'RAILWAYS',
+        cat: 'railways',
+        icon: '🚆',
+        desc: 'Comprehensive Ministry of Railways recruitment preparation for RRB NTPC (Graduate & Under-Graduate), Group D (Level-1), ALP (Assistant Loco Pilot), Technicians, and Junior Engineer (JE). Full bilingual CBT simulator and technical trade practice.',
+        features: ['RRB NTPC & Group D', 'ALP & Technician Trade Lab', 'CBT Mock Simulator', '1,000+ Bilingual PYQs', 'Pay Scale & Post Explorer'],
+        exams: 'RRB NTPC, RRB Group D, RRB ALP, RRB Technician, RRB JE',
+        books: [
+          {
+            title: 'NCERT Class 9 Science (Physics & Chemistry for Railways General Science)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 9',
+            desc: 'Fundamental physics and chemistry concepts frequently asked in RRB NTPC and Group D: Motion, Force, Work and Energy, Gravitation, and Matter.',
+            url: 'https://ncert.nic.in/textbook.php?iesc1=0-15'
+          },
+          {
+            title: 'NCERT Class 10 Science (General Science Foundations)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 10',
+            desc: 'Core science foundation for Railway CBT exams: Electricity, Magnetic Effects of Electric Current, Chemical Reactions, and Life Processes.',
+            url: 'https://ncert.nic.in/textbook.php?jesc1=0-16'
+          },
+          {
+            title: 'Indian Railways Official Year Book & Statistical Summary',
+            source: 'Ministry of Railways (Govt of India)',
+            type: 'govt',
+            badge: 'Govt Official',
+            desc: 'Official operational data, zone headquarters, railway history, manufacturing units, and modernization schemes critical for Railway GK.',
+            url: 'https://indianrailways.gov.in/'
+          },
+          {
+            title: 'NCERT Class 10 Contemporary India Geography (Transport & Railway Networks)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 10',
+            desc: 'Lifelines of National Economy chapter: Golden Quadrilateral, railway zones, freight corridors, and multi-modal transport networks.',
+            url: 'https://ncert.nic.in/textbook.php?jess1=0-7'
+          },
+          {
+            title: 'NIOS Secondary Course Science & Technology (Course 212)',
+            source: 'National Institute of Open Schooling (Govt of India)',
+            type: 'open',
+            badge: 'NIOS Official',
+            desc: 'Applied technical science modules covering basic mechanics, electricity, energy sources, and measurement techniques for RRB ALP & Technician.',
+            url: 'https://www.nios.ac.in/online-course-material/secondary-courses/science-and-technology-(212)-syllabus.aspx'
+          }
+        ]
+      },
+      'ssc': {
+        id: 'ssc',
+        repo: 'ssc-master-india',
+        path: '../ssc-master-india/',
+        title: 'SSC Master India (Staff Selection Commission)',
+        tag: 'SSC EXAMS',
+        cat: 'ssc',
+        icon: '🏛️',
+        desc: 'Complete all-in-one preparation for SSC CGL, CHSL, GD Constable, MTS, CPO SI, and Junior Engineer (JE). Tier-1 & Tier-2 modules, typing simulator, computer proficiency lab, and bilingual authentic PYQs.',
+        features: ['CGL & CHSL Tier 1 & 2', 'GD Constable & MTS Hub', 'CPO SI & JE Modules', 'Tier-2 Typing Simulator', 'Post Preference Guide'],
+        exams: 'SSC CGL, SSC CHSL, SSC GD, SSC MTS, SSC CPO, SSC JE',
+        books: [
+          {
+            title: 'NCERT Class 10 Mathematics (Core SSC Arithmetic & Advance Math)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 10',
+            desc: 'Core SSC Tier 1 & 2 syllabus: Real Numbers, Trigonometry, Heights & Distances, Circles, Triangles, Mensuration, and Statistics.',
+            url: 'https://ncert.nic.in/textbook.php?jemh1=0-14'
+          },
+          {
+            title: 'NCERT Class 11 Indian Constitution at Work (SSC Polity)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 11',
+            desc: 'High-scoring General Studies foundation for SSC CGL & CPO: Fundamental Rights, Parliament, Judiciary, Federalism, and Amendments.',
+            url: 'https://ncert.nic.in/textbook.php?keps2=0-10'
+          },
+          {
+            title: 'Staff Selection Commission Annual Reports & Official Notice Archives',
+            source: 'Staff Selection Commission (Govt of India)',
+            type: 'govt',
+            badge: 'SSC Official',
+            desc: 'Official exam schemes, tie-breaking criteria, medical standards, post codes, and qualifying cutoffs published directly by SSC.',
+            url: 'https://ssc.gov.in/'
+          },
+          {
+            title: 'NCERT Class 9 India and Contemporary World (History for SSC GS)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 9',
+            desc: 'Modern world and Indian history foundations: French Revolution, Industrial Revolution, Forest Society and Colonialism, and Socialism in Europe.',
+            url: 'https://ncert.nic.in/textbook.php?iess1=0-5'
+          },
+          {
+            title: 'NIOS Senior Secondary English & Grammar Workbook',
+            source: 'National Institute of Open Schooling (Govt of India)',
+            type: 'open',
+            badge: 'NIOS Official',
+            desc: 'High-yield English language workbook covering Active-Passive Voice, Direct-Indirect Speech, Idioms & Phrases, and Sentence Correction for Tier 2.',
+            url: 'https://www.nios.ac.in/online-course-material/sr-secondary-courses/english-(302)-syllabus.aspx'
+          }
+        ]
+      },
+      // 🎓 National Entrance & University Exams
+      'cuet': {
+        id: 'cuet',
+        repo: 'cuet-master-india',
+        path: '../cuet-master-india/',
+        title: 'CUET Master India (Common University Entrance Test)',
+        tag: 'CUET UG/PG',
+        cat: 'entrance',
+        icon: '🎓',
+        desc: 'Dedicated NTA CUET-UG & CUET-PG preparation platform. Covers Section IA/IB Languages, Section II 27 Domain Subjects (PCM, PCB, Commerce, Humanities), and Section III General Test with interactive university cutoff predictor.',
+        features: ['Section I Language Labs', '27 Domain Subjects (NCERT-grounded)', 'General Test Aptitude', 'CBT Test Engine', 'Central University Cutoff Predictor'],
+        exams: 'CUET UG, CUET PG, DU, BHU, JNU, Jamia, AU, Central & State Universities',
+        books: [
+          {
+            title: 'NCERT Rationalised Textbooks Portal (Official CUET Syllabus Benchmark)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Official',
+            desc: 'Official Class 12 NCERT textbooks which serve as the strict, 100% harmonized syllabus benchmark for all 27 CUET Domain Subjects.',
+            url: 'https://ncert.nic.in/textbook.php'
+          },
+          {
+            title: 'National Testing Agency (NTA) CUET Information Bulletin & Syllabus Archive',
+            source: 'National Testing Agency (Ministry of Education)',
+            type: 'govt',
+            badge: 'NTA Official',
+            desc: 'Official candidate information bulletin detailing normalization formula, negative marking scheme, subject eligibility codes, and slot structures.',
+            url: 'https://exams.nta.ac.in/CUET-UG/'
+          },
+          {
+            title: 'NCERT Class 12 Contemporary World Politics (Humanities Domain)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 12',
+            desc: 'Key domain syllabus for Political Science: Cold War Era, End of Bipolarity, US Hegemony, Alternative Centres of Power, and South Asia in World Politics.',
+            url: 'https://ncert.nic.in/textbook.php?leps1=0-9'
+          },
+          {
+            title: 'NCERT Class 12 Introductory Macroeconomics (Commerce & Economics Domain)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 12',
+            desc: 'Complete Economics domain syllabus: National Income Accounting, Money and Banking, Determination of Income and Employment, and Government Budget.',
+            url: 'https://ncert.nic.in/textbook.php?leec1=0-6'
+          },
+          {
+            title: 'University Grants Commission (UGC) Central Universities Directory',
+            source: 'University Grants Commission (Govt of India)',
+            type: 'govt',
+            badge: 'UGC Official',
+            desc: 'Authoritative directory of participating central universities, admission criteria, seat reservation norms, and undergraduate program requirements.',
+            url: 'https://www.ugc.gov.in/'
+          }
+        ]
+      },
+      'law': {
+        id: 'law',
+        repo: 'law-entrance-master',
+        path: '../law-entrance-master/',
+        title: 'Law Entrance Master India (CLAT & AILET)',
+        tag: 'LAW ENTRANCE',
+        cat: 'entrance',
+        icon: '⚖️',
+        desc: 'Comprehensive law school entrance platform for CLAT (UG & PG) and AILET. Passage-based Legal Reasoning simulator, Constitutional law repository, landmark Supreme Court judgment digests, and 26 National Law Universities (NLUs) cutoff explorer.',
+        features: ['Passage-Based Legal Reasoning', 'Constitution & Landmark Judgments', 'Critical Reading Speed Lab', 'NLU Cutoff Explorer', 'CLAT & AILET Mocks'],
+        exams: 'CLAT UG, CLAT PG, AILET, SLAT, LSAT India, MHCET Law',
+        books: [
+          {
+            title: 'Constitution of India (Full Official Up-to-Date Bare Act with Amendments)',
+            source: 'Legislative Department, Ministry of Law and Justice (Govt of India)',
+            type: 'govt',
+            badge: 'Bare Act Official',
+            desc: 'The authoritative source text of the Indian Constitution containing all 395 Articles, 12 Schedules, and Latest Constitutional Amendment Acts.',
+            url: 'https://cdnbbsr.s3waas.gov.in/s380537a945c7fafbce8c4b86a9ec5d826/uploads/2024/05/2024051082.pdf'
+          },
+          {
+            title: 'NCERT Class 11 Legal Studies Official Textbook',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 11',
+            desc: 'Comprehensive introduction to jurisprudence: Theory and Nature of Political Institutions, Nature and Sources of Law, Historical Evolution of the Indian Legal System.',
+            url: 'https://ncert.nic.in/textbook.php?kels1=0-7'
+          },
+          {
+            title: 'NCERT Class 12 Legal Studies (Judiciary, Arbitration & Human Rights)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 12',
+            desc: 'Core topics for CLAT Legal Reasoning: Structure of Courts, Alternate Dispute Resolution (ADR), Law of Torts, Law of Contracts, Criminal Law, and Human Rights in India.',
+            url: 'https://ncert.nic.in/textbook.php?lels1=0-8'
+          },
+          {
+            title: 'Supreme Court of India Landmark Judgments Digest (Official e-SCR Portal)',
+            source: 'Supreme Court of India (e-Committee)',
+            type: 'govt',
+            badge: 'Supreme Court',
+            desc: 'Official digital repository of landmark constitutional bench judgments, legal principles, ratios decidendi, and fundamental rights jurisprudence.',
+            url: 'https://www.sci.gov.in/'
+          },
+          {
+            title: 'Consortium of National Law Universities Official Candidate Repository',
+            source: 'Consortium of NLUs',
+            type: 'open',
+            badge: 'Consortium NLUs',
+            desc: 'Official sample questions, past year question archives, syllabus guidelines, and counseling seat allotment process for 26 NLUs.',
+            url: 'https://consortiumofnlus.ac.in/'
+          }
+        ]
+      },
+      'engineering': {
+        id: 'engineering',
+        repo: 'engineering-entrance-master',
+        path: '../engineering-entrance-master/',
+        title: 'Engineering Entrance Master (JEE Main & Advanced)',
+        tag: 'JEE ENGG',
+        cat: 'entrance',
+        icon: '⚡',
+        desc: 'Premier engineering entrance ecosystem for JEE Main, JEE Advanced, and BITSAT. 1,000+ authentic questions with KaTeX mathematical typesetting, interactive Formula Engine, Error Notebook, and JoSAA/CSAB counselling predictor.',
+        features: ['KaTeX Step-by-Step Solutions', 'Physics, Chemistry & Math Labs', 'Interactive Formula Sheet', 'JoSAA & BITSAT Predictor', 'Full CBT Exam Simulator'],
+        exams: 'JEE Main, JEE Advanced, BITSAT, WBJEE, MHT-CET, KCET, COMEDK',
+        books: [
+          {
+            title: 'NCERT Class 11 Physics (Part I & II - Official JEE Foundation)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 11',
+            desc: 'Foundational mechanics and thermodynamics: Kinematics, Laws of Motion, Work Energy and Power, Rotational Dynamics, Gravitation, and Thermodynamics.',
+            url: 'https://ncert.nic.in/textbook.php?keph1=0-8'
+          },
+          {
+            title: 'NCERT Class 12 Physics (Part I & II - Full Official Textbook)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 12',
+            desc: 'High-weightage JEE Advanced topics: Electrostatics, Current Electricity, Magnetism, Electromagnetic Induction, Wave Optics, and Modern Physics.',
+            url: 'https://ncert.nic.in/textbook.php?leph1=0-8'
+          },
+          {
+            title: 'NCERT Class 11 & 12 Chemistry (Physical, Organic & Inorganic JEE Gold Standard)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Chemistry',
+            desc: 'The definitive text for JEE Main Chemistry: Chemical Bonding, Thermodynamics, Equilibrium, Coordination Compounds, and Organic Reaction Mechanisms.',
+            url: 'https://ncert.nic.in/textbook.php?lech1=0-6'
+          },
+          {
+            title: 'NCERT Class 11 & 12 Mathematics (Pure & Applied Calculus & Algebra)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Math',
+            desc: 'Core mathematical concepts for JEE: Differential Calculus, Integral Calculus, Vectors, 3D Geometry, Matrices, Determinants, and Coordinate Geometry.',
+            url: 'https://ncert.nic.in/textbook.php?lemh1=0-6'
+          },
+          {
+            title: 'NTA National Testing Agency JEE Main Official Question Papers Archive',
+            source: 'National Testing Agency (Ministry of Education)',
+            type: 'govt',
+            badge: 'NTA JEE Portal',
+            desc: 'Official past shift question papers, final answer keys, percentile formulas, and tie-breaking norms published directly by NTA.',
+            url: 'https://jeemain.nta.nic.in/'
+          }
+        ]
+      },
+      'mba': {
+        id: 'mba',
+        repo: 'mba-entrance-master',
+        path: '../mba-entrance-master/',
+        title: 'MBA Entrance Master India (CAT, XAT, SNAP & NMAT)',
+        tag: 'MBA ENTRANCE',
+        cat: 'entrance',
+        icon: '💼',
+        desc: 'Elite management entrance preparation platform for CAT, XAT, SNAP, and NMAT. Features advanced Quantitative shortcuts, DILR matrix caselets, VARC reading speed lab, Decision Making laboratory, and IIM percentile conversion predictor.',
+        features: ['CAT Quantitative Aptitude', 'DILR Matrix Caselets', 'XAT Decision Making Lab', 'VARC Speed Trainer', 'IIM Selection & Cutoff Explorer'],
+        exams: 'CAT, XAT, SNAP, NMAT, CMAT, MAT, IIFT, TISS',
+        books: [
+          {
+            title: 'NCERT Class 10 & 11 Mathematics (Arithmetic, Coordinate & Modern Math Foundations)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Math',
+            desc: 'Clear, rigorous mathematical foundations for CAT Quant: Number Systems, Progressions (AP/GP), Quadratic Equations, and Coordinate Geometry.',
+            url: 'https://ncert.nic.in/textbook.php?jemh1=0-14'
+          },
+          {
+            title: 'Reserve Bank of India (RBI) Annual Report on Indian Economy & Corporate Finance',
+            source: 'Reserve Bank of India',
+            type: 'govt',
+            badge: 'RBI Official',
+            desc: 'Invaluable reading material for CAT/XAT Reading Comprehension (RC) and GD-PI: Macroeconomic trends, monetary policy, and corporate health.',
+            url: 'https://www.rbi.org.in/Scripts/AnnualPublications.aspx?head=Annual%20Report'
+          },
+          {
+            title: 'Ministry of Finance Economic Survey of India (Business Environment & DI)',
+            source: 'Department of Economic Affairs, Ministry of Finance (Govt of India)',
+            type: 'govt',
+            badge: 'Govt Official',
+            desc: 'Official data tables, charts, graphs, and sectoral economic insights ideal for Data Interpretation (DI) caselet preparation and interview rounds.',
+            url: 'https://www.indiabudget.gov.in/economicsurvey/'
+          },
+          {
+            title: 'IIM Ahmedabad Official Case Studies & Management Knowledge Repository',
+            source: 'Indian Institute of Management Ahmedabad (IIMA)',
+            type: 'open',
+            badge: 'IIM Ahmedabad',
+            desc: 'Executive summaries of real-world management decision scenarios, strategic thinking frameworks, and organizational dilemma analyses for XAT Decision Making.',
+            url: 'https://www.iima.ac.in/'
+          },
+          {
+            title: 'NIOS Senior Secondary Economics & Statistics for Business',
+            source: 'National Institute of Open Schooling (Govt of India)',
+            type: 'open',
+            badge: 'NIOS Official',
+            desc: 'Fundamental business statistics: Measures of Central Tendency, Dispersion, Index Numbers, and Correlation for CAT Data Interpretation.',
+            url: 'https://www.nios.ac.in/online-course-material/sr-secondary-courses/economics-(318)-syllabus.aspx'
+          }
+        ]
+      },
+      'neet': {
+        id: 'neet',
+        repo: 'neet-master',
+        path: '../neet-master/',
+        title: 'NEET Master India (Medical Entrance Exam)',
+        tag: 'NEET UG',
+        cat: 'entrance',
+        icon: '🩺',
+        desc: 'NMC & NTA harmonized pre-medical entrance ecosystem for NEET-UG. Features 100% line-by-line NCERT Biology mastery, high-yield Physics/Chemistry numericals, interactive flashcards with spaced repetition, and 720-mark timed mock exam simulation.',
+        features: ['100% Line-by-Line NCERT Biology', 'High-Yield Physics & Chem Sheets', '720-Mark Mock Simulator', 'Spaced Leitner Flashcards', 'AIIMS & GMC Cutoff Guide'],
+        exams: 'NEET UG, AIIMS, JIPMER, State Medical Colleges, AFMC',
+        books: [
+          {
+            title: 'NCERT Class 11 Biology (The 100% Gold Standard NEET Bible)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 11',
+            desc: 'Direct source of 45-50 NEET questions: Diversity in the Living World, Structural Organisation in Animals and Plants, Cell Structure, Plant & Human Physiology.',
+            url: 'https://ncert.nic.in/textbook.php?kebo1=0-22'
+          },
+          {
+            title: 'NCERT Class 12 Biology (Genetics, Evolution, Ecology & Biotechnology)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 12',
+            desc: 'Direct source of 45-50 NEET questions: Reproduction, Genetics and Evolution, Biology in Human Welfare, Biotechnology Principles, and Ecology.',
+            url: 'https://ncert.nic.in/textbook.php?lebo1=0-16'
+          },
+          {
+            title: 'NCERT Class 11 & 12 Chemistry (Physical, Inorganic & Organic Reaction Mechanisms)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Chemistry',
+            desc: 'Authoritative syllabus textbook for NEET Chemistry covering named reactions, coordination compounds, periodic trends, and chemical thermodynamics.',
+            url: 'https://ncert.nic.in/textbook.php?kech1=0-6'
+          },
+          {
+            title: 'National Medical Commission (NMC) Official NEET-UG Syllabus & Regulations',
+            source: 'National Medical Commission (Undergraduate Medical Education Board)',
+            type: 'govt',
+            badge: 'NMC Official',
+            desc: 'Official gazette notification defining the exact reduced and harmonized NEET-UG syllabus, eligibility criteria, and tie-breaking guidelines.',
+            url: 'https://www.nmc.org.in/'
+          },
+          {
+            title: 'National Testing Agency (NTA) NEET-UG Candidate Information Bulletin',
+            source: 'National Testing Agency (Ministry of Education)',
+            type: 'govt',
+            badge: 'NTA NEET',
+            desc: 'Official brochure containing examination format (200 minutes, 180 to attempt), OMR guidelines, bilingual language paper rules, and AIQ counseling norms.',
+            url: 'https://exams.nta.ac.in/NEET/'
+          }
+        ]
+      },
+      'upsssc-pet': {
+        id: 'upsssc-pet',
+        repo: 'upsssc-pet-master',
+        path: '../upsssc-pet-master/',
+        title: 'UPSSSC PET Master (Preliminary Eligibility Test)',
+        tag: 'UPSSSC PET',
+        cat: 'state',
+        icon: '📋',
+        desc: 'Official Uttar Pradesh Subordinate Services Selection Commission (UPSSSC) PET master preparation platform. Comprehensive 100-mark syllabus breakdown, Data Interpretation graph sets, Indian National Movement notes, and UP Lekhpal/VDO post gateway.',
+        features: ['100-Mark Official Syllabus Coverage', 'DI Table & Graph Masterclass', 'UP General Knowledge Atlas', 'Official 1/4 Negative Marking Mocks', 'Post Eligibility & Score Calculator'],
+        exams: 'UPSSSC PET, UP Lekhpal, Junior Assistant, VDO (Gram Vikas Adhikari), Forest Guard',
+        books: [
+          {
+            title: 'NCERT Class 10 Social Science: Democratic Politics & Economy',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 10',
+            desc: 'Foundational civics and economics matching UPSSSC PET syllabus: Power Sharing, Federalism, Democracy and Diversity, and Sectors of Indian Economy.',
+            url: 'https://ncert.nic.in/textbook.php?jess4=0-8'
+          },
+          {
+            title: 'Uttar Pradesh Government Official Portal & Statistical Handbook',
+            source: 'Department of Planning, Govt of Uttar Pradesh',
+            type: 'govt',
+            badge: 'UP Govt Official',
+            desc: 'Official demographic, agricultural, geographical, and welfare scheme statistics of Uttar Pradesh essential for UP Special GK.',
+            url: 'https://up.gov.in/'
+          },
+          {
+            title: 'NCERT Class 9 Economics: People as Resource & Poverty in India',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Class 9',
+            desc: 'Clear conceptual primers on Indian economy: The Story of Village Palampur, People as Resource, Poverty as a Challenge, and Food Security in India.',
+            url: 'https://ncert.nic.in/textbook.php?ieec1=0-4'
+          },
+          {
+            title: 'UPSSSC Official Syllabus & Past Year Exam Notification Archive',
+            source: 'Uttar Pradesh Subordinate Services Selection Commission (UPSSSC)',
+            type: 'govt',
+            badge: 'UPSSSC Official',
+            desc: 'Official marks distribution (15 subjects, 100 questions, 100 marks), scorecard validity rules, and shortlisting cutoffs for Group C posts.',
+            url: 'https://upsssc.gov.in/'
+          },
+          {
+            title: 'National Institute of Open Schooling (NIOS) Hindi & General Science Modules',
+            source: 'National Institute of Open Schooling (Govt of India)',
+            type: 'open',
+            badge: 'NIOS Official',
+            desc: 'Lucid study materials for Samanya Hindi (संधि, विलोम, पर्यायवाची, वाक्यांशों के लिए एक शब्द) and Elementary General Science.',
+            url: 'https://www.nios.ac.in/'
+          }
+        ]
+      },
+      'upprpb': {
+        id: 'upprpb',
+        repo: 'upprpb-master',
+        path: '../upprpb-master/',
+        title: 'UPPRPB Master (UP Police Constable & Sub-Inspector)',
+        tag: 'UP POLICE',
+        cat: 'state',
+        icon: '👮',
+        desc: 'Uttar Pradesh Police Recruitment and Promotion Board preparation hub. Covers Constable, Sub-Inspector (SI), Radio Operator, and Jail Warder. Specialized modules in General Hindi (सामान्य हिंदी), Law & Constitution (मूलविधि एवं संविधान), Mental Aptitude, and Physical Standards (PST/PET).',
+        features: ['General Hindi (सामान्य हिंदी) 37 Qs', 'Basic Law (मूलविधि) & Constitution', 'Mental Aptitude & Reasoning', 'PST/PET Physical Guide', '300-Mark & 400-Mark CBT Simulators'],
+        exams: 'UP Police Constable, UP Police SI (Daroga), Radio Operator, Computer Operator, Jail Warder',
+        books: [
+          {
+            title: 'Constitution of India Official Hindi Version (भारतीय संविधान आधिकारिक पाठ)',
+            source: 'Ministry of Law and Justice (Govt of India)',
+            type: 'govt',
+            badge: 'Bare Act Hindi',
+            desc: 'The official Hindi text of the Indian Constitution containing Fundamental Rights, Directive Principles, Executive, and Constitutional Institutions.',
+            url: 'https://cdnbbsr.s3waas.gov.in/s380537a945c7fafbce8c4b86a9ec5d826/uploads/2024/05/2024051082.pdf'
+          },
+          {
+            title: 'Bharatiya Nyaya Sanhita 2023 (Official Law Textbook by Ministry of Home Affairs)',
+            source: 'Ministry of Home Affairs (Govt of India)',
+            type: 'govt',
+            badge: 'New Law Codes',
+            desc: 'Essential reference for UP Police SI Moolvidhi (मूलविधि): Bharatiya Nyaya Sanhita (BNS), Bharatiya Nagarik Suraksha Sanhita (BNSS), and Bharatiya Sakshya Adhiniyam.',
+            url: 'https://www.mha.gov.in/'
+          },
+          {
+            title: 'NCERT Class 11 Indian Constitution at Work (Hindi Edition)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Hindi',
+            desc: 'भारत का संविधान सिद्धांत और व्यवहार: संविधान क्यों और कैसे, चुनाव और प्रतिनिधित्व, कार्यपालिका, विधायिका, न्यायपालिका और संघवाद।',
+            url: 'https://ncert.nic.in/textbook.php?khps2=0-10'
+          },
+          {
+            title: 'UP Police Recruitment Board (UPPRPB) Official Syllabus & Selection Rules',
+            source: 'Uttar Pradesh Police Recruitment and Promotion Board (UPPRPB)',
+            type: 'govt',
+            badge: 'UPPRPB Official',
+            desc: 'Official candidate notification covering physical standards (Height, Chest, Running), written examination syllabus, and normalized score rules.',
+            url: 'https://uppbpb.gov.in/'
+          },
+          {
+            title: 'NCERT Hindi Vyakaran aur Rachna (General Hindi Grammar Foundations)',
+            source: 'NCERT (National Council of Educational Research & Training)',
+            type: 'ncert',
+            badge: 'NCERT Hindi',
+            desc: 'Official Hindi grammar textbook covering Varnamala, Sandhi, Samas, Upsarg, Pratyay, Ras, Chhand, and Alankar for competitive police exams.',
+            url: 'https://ncert.nic.in/'
+          }
+        ]
       }
     };
 
@@ -2410,7 +3022,53 @@
       'uppsc-ro': 'uppsc-ro-aro',
       'uppsc': 'uppsc-ro-aro',
       'samiksha-adhikari': 'uppsc-ro-aro',
-      'drafting': 'uppsc-ro-aro'
+      'drafting': 'uppsc-ro-aro',
+      'rrb': 'rrb',
+      'rrb-master': 'rrb',
+      'rrb-master-india': 'rrb',
+      'ntpc': 'rrb',
+      'rrb-ntpc': 'rrb',
+      'railways': 'rrb',
+      'group-d': 'rrb',
+      'alp': 'rrb',
+      'ssc': 'ssc',
+      'ssc-master': 'ssc',
+      'ssc-master-india': 'ssc',
+      'cgl': 'ssc',
+      'chsl': 'ssc',
+      'ssc-cgl': 'ssc',
+      'cuet': 'cuet',
+      'cuet-master': 'cuet',
+      'cuet-master-india': 'cuet',
+      'cuet-ug': 'cuet',
+      'law': 'law',
+      'law-entrance': 'law',
+      'law-entrance-master': 'law',
+      'clat': 'law',
+      'ailet': 'law',
+      'engineering': 'engineering',
+      'engineering-entrance': 'engineering',
+      'engineering-entrance-master': 'engineering',
+      'jee': 'engineering',
+      'jee-main': 'engineering',
+      'jee-advanced': 'engineering',
+      'mba': 'mba',
+      'mba-entrance': 'mba',
+      'mba-entrance-master': 'mba',
+      'cat': 'mba',
+      'xat': 'mba',
+      'neet': 'neet',
+      'neet-master': 'neet',
+      'neet-ug': 'neet',
+      'medical': 'neet',
+      'upsssc-pet': 'upsssc-pet',
+      'upsssc-pet-master': 'upsssc-pet',
+      'pet': 'upsssc-pet',
+      'upprpb': 'upprpb',
+      'upprpb-master': 'upprpb',
+      'up-police': 'upprpb',
+      'uppolice': 'upprpb',
+      'constable': 'upprpb'
     };
 
     let currentModuleId = null;
@@ -2423,7 +3081,15 @@
       const q = searchQuery.toLowerCase().trim();
 
       Object.values(MODULES).forEach(mod => {
-        if (filter !== 'all' && mod.cat !== filter) return;
+        if (filter !== 'all') {
+          if (filter === 'ssc-rrb') {
+            if (mod.cat !== 'ssc' && mod.cat !== 'railways') return;
+          } else if (filter === 'state') {
+            if (mod.cat !== 'state' && mod.cat !== 'psc' && mod.cat !== 'teach') return;
+          } else if (mod.cat !== filter) {
+            return;
+          }
+        }
         if (q) {
           const match = mod.title.toLowerCase().includes(q) ||
                         mod.desc.toLowerCase().includes(q) ||
@@ -2475,25 +3141,35 @@
       bankGroup.label = '🏦 Major Banking Exams';
       const upscGroup = document.createElement('optgroup');
       upscGroup.label = '🏛️ UPSC & Civil Services';
-      const pscGroup = document.createElement('optgroup');
-      pscGroup.label = '⚖️ State PSC & RO/ARO';
-      const teachGroup = document.createElement('optgroup');
-      teachGroup.label = '👨‍🏫 Teaching & State Recruitment';
+      const sscGroup = document.createElement('optgroup');
+      sscGroup.label = '🚆 SSC & Railways Recruitment';
+      const entranceGroup = document.createElement('optgroup');
+      entranceGroup.label = '🎓 National Entrance & University Exams';
+      const stateGroup = document.createElement('optgroup');
+      stateGroup.label = '👮 State Recruitment, Police & Teaching';
 
       Object.values(MODULES).forEach(mod => {
         const opt = document.createElement('option');
         opt.value = mod.id;
         opt.textContent = `${mod.icon} ${mod.title}`;
-        if (mod.cat === 'bank') bankGroup.appendChild(opt);
-        else if (mod.cat === 'teach') teachGroup.appendChild(opt);
-        else if (mod.cat === 'psc') pscGroup.appendChild(opt);
-        else upscGroup.appendChild(opt);
+        if (mod.cat === 'bank') {
+          bankGroup.appendChild(opt);
+        } else if (mod.cat === 'upsc') {
+          upscGroup.appendChild(opt);
+        } else if (mod.cat === 'ssc' || mod.cat === 'railways') {
+          sscGroup.appendChild(opt);
+        } else if (mod.cat === 'entrance') {
+          entranceGroup.appendChild(opt);
+        } else {
+          stateGroup.appendChild(opt);
+        }
       });
 
       select.appendChild(bankGroup);
       select.appendChild(upscGroup);
-      select.appendChild(pscGroup);
-      select.appendChild(teachGroup);
+      select.appendChild(sscGroup);
+      select.appendChild(entranceGroup);
+      select.appendChild(stateGroup);
     }
 
     function openBooksModal(moduleId, event) {
@@ -2783,9 +3459,10 @@
       const text = activePill ? activePill.textContent : '';
       let cat = 'all';
       if (text.includes('Bank')) cat = 'bank';
-      if (text.includes('UPSC')) cat = 'upsc';
-      if (text.includes('Teaching')) cat = 'teach';
-      if (text.includes('State PSC') || text.includes('RO/ARO') || text.includes('PSC')) cat = 'psc';
+      else if (text.includes('UPSC')) cat = 'upsc';
+      else if (text.includes('SSC') || text.includes('Railways')) cat = 'ssc-rrb';
+      else if (text.includes('Entrance')) cat = 'entrance';
+      else if (text.includes('State') || text.includes('Police') || text.includes('Teaching') || text.includes('PSC')) cat = 'state';
       renderCatalog(cat, val);
     }
 
