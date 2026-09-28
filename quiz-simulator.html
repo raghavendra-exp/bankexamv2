@@ -81,47 +81,233 @@
       "hasPart": [
         {
           "@type": "Question",
+          "name": "Quadratic Equations Roots Comparison Drill",
           "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "assesses": "Quadratic Equations & Roots Comparison",
+          "typicalAgeRange": "18-35",
+          "educationalAlignment": [
+            {
+              "@type": "AlignmentObject",
+              "alignmentType": "educationalSubject",
+              "targetName": "Quantitative Aptitude"
+            }
+          ],
+          "encodingFormat": "text/html",
           "text": "Solve the quadratic equations: I. x² - 13x + 40 = 0, II. y² - 17y + 72 = 0. Determine the relationship between x and y.",
+          "comment": {
+            "@type": "Comment",
+            "text": "High-yield 5-second sign rule question for SBI PO and IBPS Clerk Prelims."
+          },
           "suggestedAnswer": [
-            { "@type": "Answer", "text": "x > y" },
-            { "@type": "Answer", "text": "x < y" },
-            { "@type": "Answer", "text": "x ≥ y" },
-            { "@type": "Answer", "text": "x = y or relationship cannot be established" }
+            {
+              "@type": "Answer",
+              "position": 1,
+              "encodingFormat": "text/html",
+              "text": "x > y",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: Roots of I are 5, 8 and roots of II are 8, 9. Since 5 < 8 and 8 = 8, x is not strictly greater than y."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "encodingFormat": "text/html",
+              "text": "x < y",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: 8 = 8, so equality holds for one pair of roots."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 3,
+              "encodingFormat": "text/html",
+              "text": "x ≥ y",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: Roots of I are smaller than or equal to roots of II."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 4,
+              "encodingFormat": "text/html",
+              "text": "x = y or relationship cannot be established",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: A definitive relationship (x ≤ y) is established."
+              }
+            }
           ],
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "x ≤ y"
+            "position": 5,
+            "encodingFormat": "text/html",
+            "text": "x ≤ y",
+            "comment": {
+              "@type": "Comment",
+              "text": "Correct: Roots of I are 5, 8 and roots of II are 8, 9. Comparing pairs gives x ≤ y."
+            },
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Factorizing equation I: x² - 13x + 40 = (x - 5)(x - 8) = 0 => x = 5, 8. Factorizing equation II: y² - 17y + 72 = (y - 8)(y - 9) = 0 => y = 8, 9. Comparing every pair: 5 < 8, 5 < 9, 8 = 8, 8 < 9. Therefore, x ≤ y."
+            }
           }
         },
         {
           "@type": "Question",
+          "name": "Missing Number Series Drill",
           "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "assesses": "Number Series & Pattern Identification",
+          "typicalAgeRange": "18-35",
+          "educationalAlignment": [
+            {
+              "@type": "AlignmentObject",
+              "alignmentType": "educationalSubject",
+              "targetName": "Quantitative Aptitude"
+            }
+          ],
+          "encodingFormat": "text/html",
           "text": "Find the missing number in the series: 14, 21, 35, 56, 84, 119, ?",
+          "comment": {
+            "@type": "Comment",
+            "text": "Differences between consecutive terms are multiples of 7: +7, +14, +21, +28, +35, +42."
+          },
           "suggestedAnswer": [
-            { "@type": "Answer", "text": "158" },
-            { "@type": "Answer", "text": "168" },
-            { "@type": "Answer", "text": "175" },
-            { "@type": "Answer", "text": "182" }
+            {
+              "@type": "Answer",
+              "position": 1,
+              "encodingFormat": "text/html",
+              "text": "158",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: Next difference should be 7 × 6 = 42."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "encodingFormat": "text/html",
+              "text": "168",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: Adding 42 to 119 yields 161, not 168."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 3,
+              "encodingFormat": "text/html",
+              "text": "175",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect calculation."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 4,
+              "encodingFormat": "text/html",
+              "text": "182",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect calculation."
+              }
+            }
           ],
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "161"
+            "position": 5,
+            "encodingFormat": "text/html",
+            "text": "161",
+            "comment": {
+              "@type": "Comment",
+              "text": "Correct: 119 + 42 = 161."
+            },
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "Differences between consecutive numbers: 21 - 14 = 7 (7×1); 35 - 21 = 14 (7×2); 56 - 35 = 21 (7×3); 84 - 56 = 28 (7×4); 119 - 84 = 35 (7×5). The next difference is 7 × 6 = 42. Hence, the missing term is 119 + 42 = 161."
+            }
           }
         },
         {
           "@type": "Question",
+          "name": "Compound Interest vs Simple Interest Difference Drill",
           "eduQuestionType": "Multiple choice",
+          "learningResourceType": "Practice problem",
+          "assesses": "Compound Interest, Simple Interest & Commercial Arithmetic",
+          "typicalAgeRange": "18-35",
+          "educationalAlignment": [
+            {
+              "@type": "AlignmentObject",
+              "alignmentType": "educationalSubject",
+              "targetName": "Quantitative Aptitude"
+            }
+          ],
+          "encodingFormat": "text/html",
           "text": "The difference between CI and SI on a sum of money for 2 years at 12% per annum is ₹144. Find the principal sum.",
+          "comment": {
+            "@type": "Comment",
+            "text": "2-year CI - SI shortcut formula: Difference = P × (R / 100)²."
+          },
           "suggestedAnswer": [
-            { "@type": "Answer", "text": "₹8,000" },
-            { "@type": "Answer", "text": "₹9,500" },
-            { "@type": "Answer", "text": "₹12,000" },
-            { "@type": "Answer", "text": "₹12,500" }
+            {
+              "@type": "Answer",
+              "position": 1,
+              "encodingFormat": "text/html",
+              "text": "₹8,000",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: 8000 × (0.12)² = ₹115.20."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 2,
+              "encodingFormat": "text/html",
+              "text": "₹9,500",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: 9500 × (0.12)² = ₹136.80."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 3,
+              "encodingFormat": "text/html",
+              "text": "₹12,000",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: 12000 × (0.12)² = ₹172.80."
+              }
+            },
+            {
+              "@type": "Answer",
+              "position": 4,
+              "encodingFormat": "text/html",
+              "text": "₹12,500",
+              "comment": {
+                "@type": "Comment",
+                "text": "Incorrect: 12500 × (0.12)² = ₹180.00."
+              }
+            }
           ],
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "₹10,000"
+            "position": 5,
+            "encodingFormat": "text/html",
+            "text": "₹10,000",
+            "comment": {
+              "@type": "Comment",
+              "text": "Correct: P = 144 / (0.12)² = 144 / 0.0144 = ₹10,000."
+            },
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": "For 2 years, the difference between Compound Interest and Simple Interest is given by: Difference = P × (R / 100)². Here Difference = ₹144 and Rate R = 12%. Substituting values: 144 = P × (12/100)² => 144 = P × (144 / 10000) => P = (144 × 10000) / 144 = ₹10,000. Therefore, Principal = ₹10,000."
+            }
           }
         }
       ]
