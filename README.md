@@ -53,7 +53,7 @@ That constraint is deliberate:
 index.html                              Homepage — tool directory, live stats, AI Prompt Studio
 quiz-simulator.html                     Interactive Mock Test & Practice Simulator (5-option, timer, shortcuts)
 <exam>_exam_prompt_generator.html       One file per exam category (20 of these)
-exam-mentor-chatbot.html                Local keyword-matching AI mentor chatbot (no API calls)
+study-modules.html                      24 Exam Master Suites & Free Study Modules
 trend-analysis-generator.html           Exam trend/pattern analysis tool
 IBPS_SBI_Clerk_Roadmap.html             Banking exam prep roadmap guide
 IBPS_SBI_Free_Library.html              Free banking study resource library

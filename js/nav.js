@@ -256,11 +256,11 @@
     "tags": "library books pdf notes download free quant reasoning"
   },
   {
-    "title": "AI Exam Mentor Chatbot",
-    "sub": "Instant Strategy & Motivation Chatbot",
-    "href": "exam-mentor-chatbot.html",
+    "title": "24 Ready-Made Interactive Study Modules",
+    "sub": "Topic Labs, Visualizers & NCERT Books for 24 Exams",
+    "href": "study-modules.html",
     "cat": "tool",
-    "tags": "mentor chatbot ai tutor motivation doubts help"
+    "tags": "modules textbook labs rrb ssc cuet jee neet upsc banking study"
   },
   {
     "title": "Exam Trend & Pattern Analysis Tool",
@@ -608,8 +608,8 @@
             <a href="railway_exam_prompt_generator.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">🚆</span> <span>Railway RRB NTPC</span>
             </a>
-            <a href="exam-mentor-chatbot.html" class="drawer-link" onclick="window.closeMobileDrawer()">
-              <span class="drawer-icon">🤖</span> <span>AI Exam Mentor</span>
+            <a href="study-modules.html" class="drawer-link" onclick="window.closeMobileDrawer()">
+              <span class="drawer-icon">⚡</span> <span>24 Study Modules</span>
             </a>
             <a href="trend-analysis-generator.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">📈</span> <span>Trend Analysis Tool</span>
@@ -760,16 +760,6 @@
     }
   }
 
-  // Universal Floating Chatbot Injector
-  function ensureFloatingChatbot(){
-    if (window.BankExamChatbotLoaded) return;
-    if (document.querySelector('script[src*="floating-chatbot.js"]')) return;
-    const script = document.createElement('script');
-    script.src = 'js/floating-chatbot.js';
-    script.defer = true;
-    (document.body || document.head).appendChild(script);
-  }
-
   // Initialize on DOMContentLoaded
   function initAll(){
     checkAndroidApp();
@@ -777,7 +767,6 @@
     initSpotlight();
     initCalculator();
     initMobileNav();
-    ensureFloatingChatbot();
   }
 
   if (document.readyState === 'loading') {
