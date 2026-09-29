@@ -275,6 +275,20 @@
     "href": "all-exam-roadmaps.html",
     "cat": "tool",
     "tags": "roadmap roadmaps strategy books best book list schedule timetable guide upsc ssc bank gate railway defence neet jee"
+  },
+  {
+    "title": "About BankExamV2 & Mission",
+    "sub": "100% Free AI Exam Prep, Pedagogical Pillars, Author Info & FAQs",
+    "href": "about.html",
+    "cat": "creator",
+    "tags": "about us mission vision faq free education raghavbegins platform story syllabus"
+  },
+  {
+    "title": "More Exams AI Prompt Generator",
+    "sub": "NET/JRF, Judiciary (PCS-J), Insurance, CA/CS/CMA & Agriculture",
+    "href": "more_exams_prompt_generator.html",
+    "cat": "tool",
+    "tags": "more exams net jrf cuet judiciary pcsj insurance ca cs cma agriculture icar afo prompt"
   }
 ];
 
@@ -610,6 +624,18 @@
             </a>
             <a href="trend-analysis-generator.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">📈</span> <span>Trend Analysis Tool</span>
+            </a>
+            <a href="more_exams_prompt_generator.html" class="drawer-link" onclick="window.closeMobileDrawer()">
+              <span class="drawer-icon">⚡</span> <span>More Exams AI (NET/Judiciary)</span>
+            </a>
+            <a href="about.html" class="drawer-link" onclick="window.closeMobileDrawer()" style="background:rgba(99,102,241,0.14);color:#818CF8;font-weight:700">
+              <span class="drawer-icon">📖</span> <span>About BankExamV2</span>
+            </a>
+            <a href="contact.html" class="drawer-link" onclick="window.closeMobileDrawer()">
+              <span class="drawer-icon">📞</span> <span>Contact Us</span>
+            </a>
+            <a href="privacy-policy.html" class="drawer-link" onclick="window.closeMobileDrawer()">
+              <span class="drawer-icon">🛡️</span> <span>Privacy Policy</span>
             </a>
           </div>
           <div class="drawer-footer">
