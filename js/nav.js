@@ -569,14 +569,14 @@
             <button class="drawer-link app-install-ui drawer-app-install" id="drawerChromeInstall" onclick="window.triggerChromeInstall(); window.closeMobileDrawer();" style="background:rgba(6,182,212,0.12);color:#38BDF8;font-weight:800;border:1px solid rgba(6,182,212,0.25);width:100%;text-align:left;display:flex;align-items:center;cursor:pointer">
               <span class="drawer-icon">⚡</span> <span>Install in Chrome (PWA)</span>
             </button>
-            <a href="index.html" class="drawer-link" onclick="window.closeMobileDrawer()">
+            <a href="./" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">🏠</span> <span>Home Portal</span>
             </a>
             <a href="https://raghavfolio-8op53xas.manus.space/" target="_blank" rel="noopener" class="drawer-link" onclick="window.closeMobileDrawer()" style="background:linear-gradient(135deg,rgba(99,102,241,0.18),rgba(168,85,247,0.18));color:#C084FC;font-weight:800;border:1px solid rgba(168,85,247,0.35)">
               <span class="drawer-icon">👨‍💻</span> <span>Creator Profile &amp; Portfolio</span>
             </a>
             <a href="study-modules.html" class="drawer-link" onclick="window.closeMobileDrawer()" style="background:rgba(96,165,250,0.12);color:#60A5FA;font-weight:800">
-              <span class="drawer-icon">📚</span> <span>Ready-Made Study Modules (13)</span>
+              <span class="drawer-icon">📚</span> <span>24 Ready-Made Study Modules</span>
             </a>
             <a href="bank_exam_prompt_generator.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">🏦</span> <span>Banking Hub (SBI/IBPS)</span>
@@ -584,10 +584,10 @@
             <a href="quiz-simulator.html" class="drawer-link" onclick="window.closeMobileDrawer()" style="color:var(--gr2); font-weight:700;">
               <span class="drawer-icon">🎯</span> <span>Mock Quiz Simulator (New)</span>
             </a>
-            <a href="index.html#coverage" class="drawer-link" onclick="window.closeMobileDrawer()">
+            <a href="./#coverage" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">📑</span> <span>What Each Tool Covers</span>
             </a>
-            <a href="index.html#promptStudio" class="drawer-link" onclick="window.closeMobileDrawer()">
+            <a href="./#promptStudio" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">⚡</span> <span>Live AI Prompt Studio</span>
             </a>
             <a href="all-exam-roadmaps.html" class="drawer-link" onclick="window.closeMobileDrawer()" style="background:rgba(245,158,11,.1);color:#D97706;font-weight:800">
@@ -607,9 +607,6 @@
             </a>
             <a href="railway_exam_prompt_generator.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">🚆</span> <span>Railway RRB NTPC</span>
-            </a>
-            <a href="study-modules.html" class="drawer-link" onclick="window.closeMobileDrawer()">
-              <span class="drawer-icon">⚡</span> <span>24 Study Modules</span>
             </a>
             <a href="trend-analysis-generator.html" class="drawer-link" onclick="window.closeMobileDrawer()">
               <span class="drawer-icon">📈</span> <span>Trend Analysis Tool</span>
@@ -642,10 +639,11 @@
       bnav = document.createElement('nav');
       bnav.id = 'mobileBottomNav';
       bnav.className = 'mobile-bottom-nav';
-      const p = location.pathname.split('/').pop() || 'index.html';
+      const p = location.pathname.split('/').pop() || '';
+      const isHome = (!p || p === 'index.html');
 
       bnav.innerHTML = `
-        <a href="index.html" class="bnav-item ${p==='index.html'?'active':''}">
+        <a href="./" class="bnav-item ${isHome ? 'active' : ''}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span>Home</span>
         </a>
@@ -657,7 +655,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span>Mock Quiz</span>
         </a>
-        <a href="index.html#promptStudio" class="bnav-item">
+        <a href="./#promptStudio" class="bnav-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <span>AI Studio</span>
         </a>
